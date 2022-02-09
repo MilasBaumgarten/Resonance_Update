@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c0e5ecba93e9b45b2b50882d35bd20, type: 3}
+  m_Name: Input_Settings
+  m_EditorClassIdentifier: 
+  forward: 119
+  backward: 115
+  left: 97
+  right: 100
+  moveHeldObjectOut: 114
+  moveHeldObjectIn: 102
+  armTool: 323
+  logbook: 9
+  interact: 323
+  closeLogbook: 27
