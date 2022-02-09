@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using UnityEngine.Networking;
+using Unity.Netcode;
 
 /**
  * Author: Leon Ullrich
@@ -19,7 +19,7 @@ public class Interact : NetworkBehaviour {
     [SerializeField]
     private Transform cam;
 
-    private NetworkIdentity objectNetID;
+    private NetworkObject objectNetID;
 
     // Use this for initialization
     void Start () {
@@ -31,51 +31,49 @@ public class Interact : NetworkBehaviour {
         if (Input.GetKeyDown(input.interact)) {
             RaycastHit hit;
             if (Physics.Raycast(cam.position, cam.forward, out hit, settings.maxDist, layerMask)) {
-
                 hit.transform.SendMessage("InteractedWith", gameObject);
-
             }
         }
 	}
 
     public void SyncEvent(GameObject connection) {
         // call the command
-        CmdInvokeEvent(connection);
+        //InvokeEventServerRpc(connection);
 
     }
 
     public void SyncTriggerEvent(GameObject connection) {
-        CmdInvokeTriggerEvent(connection);
+        //InvokeTriggerEventServerRpc(connection);
     }
 
-    [Command]
-    void CmdInvokeEvent(GameObject objectID) {
-        // Get the NetworkIdentity of the calling player
-        objectNetID = objectID.GetComponent<NetworkIdentity>();
-        // assign authority of this object to calling player
-        objectNetID.AssignClientAuthority(connectionToClient);
-        // Client can now call the RPC with his authority
-        RpcInvokeEvent(objectID);
-        // Remove authority of this object from the calling player
-        objectNetID.RemoveClientAuthority(connectionToClient);
-    }
+    //[ServerRpc]
+    //void InvokeEventServerRpc(GameObject objectID) {
+    //    //// Get the NetworkIdentity of the calling player
+    //    //objectNetID = objectID.GetComponent<NetworkObject>();
+    //    //// assign authority of this object to calling player
+    //    //objectNetID.AssignClientAuthority(connectionToClient);
+    //    //// Client can now call the RPC with his authority
+    //    //ClientRpcInvokeEvent(objectID);
+    //    //// Remove authority of this object from the calling player
+    //    //objectNetID.RemoveClientAuthority(connectionToClient);
+    //}
 
-    [Command]
-    void CmdInvokeTriggerEvent(GameObject objectID) {
-        objectNetID = objectID.GetComponent<NetworkIdentity>();
-        objectNetID.AssignClientAuthority(connectionToClient);
-        RpcInvokeTriggerEvent(objectID);
-        objectNetID.RemoveClientAuthority(connectionToClient);
-    }
+    //[ServerRpc]
+    //void InvokeTriggerEventServerRpc(GameObject objectID) {
+    //    //objectNetID = objectID.GetComponent<NetworkObject>();
+    //    //objectNetID.AssignClientAuthority(connectionToClient);
+    //    //ClientRpcInvokeTriggerEvent(objectID);
+    //    //objectNetID.RemoveClientAuthority(connectionToClient);
+    //}
 
-    [ClientRpc]
-    void RpcInvokeEvent(GameObject objectID) {
-        // call InvokeEvent-Method on object
-        objectID.GetComponent<InteractableObject>().InvokeEvent();
-    }
+    //[ClientRpc]
+    //void InvokeEventClientRpc(GameObject objectID) {
+    //    // call InvokeEvent-Method on object
+    //    objectID.GetComponent<InteractableObject>().InvokeEvent();
+    //}
 
-    [ClientRpc]
-    void RpcInvokeTriggerEvent(GameObject objectID) {
-        objectID.GetComponent<ColliderTrigger>().Trigger();
-    }
+    //[ClientRpc]
+    //void InvokeTriggerEventClientRpc(GameObject objectID) {
+    //    objectID.GetComponent<ColliderTrigger>().Trigger();
+    //}
 }

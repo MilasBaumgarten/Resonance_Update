@@ -1,14 +1,13 @@
 ﻿using UnityEngine;
-using UnityEngine.Networking;
+using Unity.Netcode;
 
 public class SpawnSetup : NetworkBehaviour {
 
     [SerializeField]
     Behaviour[] ToDisable;
-    GameObject sceneCam;
 
     void Start() {
-        if (!isLocalPlayer) {
+        if (!IsLocalPlayer) {
             foreach (Behaviour component in ToDisable) {
                 component.enabled = false;
             }

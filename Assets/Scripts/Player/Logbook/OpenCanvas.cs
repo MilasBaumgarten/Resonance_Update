@@ -1,43 +1,30 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Networking;
-
+﻿using UnityEngine;
+using Unity.Netcode;
 
 public class OpenCanvas : NetworkBehaviour {
-    
-    public LogbookManager logbook;
-    public InputSettings input;
+	public LogbookManager logbook;
+	public InputSettings input;
 
-    void Start() {
-        if (!isLocalPlayer)
-            this.enabled = false;
+	void Start() {
+		if (!IsLocalPlayer)
+			this.enabled = false;
+	}
 
-    }
-
-    // Update is called once per frame
-    void Update () {
-        if (Input.GetKeyDown(input.logbook)) {
+	// Update is called once per frame
+	void Update() {
+		if (Input.GetKeyDown(input.logbook)) {
 			if (logbook.isActive) {
 				logbook.DisablePanel();
-
-               
 			} else {
-                logbook.openLogbook();
-             
-            }
-			
-        }
+				logbook.openLogbook();
+			}
+		}
 
-        if(Input.GetKeyDown(input.closeLogbook)) {
-
-            if (logbook.isActive)
-            {
-                logbook.DisablePanel();
-
-            }
-
-        }
-    }
+		if (Input.GetKeyDown(input.closeLogbook)) {
+			if (logbook.isActive) {
+				logbook.DisablePanel();
+			}
+		}
+	}
 }
 

@@ -22,7 +22,7 @@ public class SelectLightmapStatic : EditorWindow
         {
             StaticEditorFlags flags = GameObjectUtility.GetStaticEditorFlags(EachGO);
 
-            if ((flags & StaticEditorFlags.LightmapStatic) != 0)
+            if ((flags & StaticEditorFlags.ContributeGI) != 0)
             {
                 if (EachGO.GetComponent<MeshFilter>() != null)
                 {

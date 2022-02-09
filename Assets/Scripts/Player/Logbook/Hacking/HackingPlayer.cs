@@ -83,7 +83,7 @@ public class HackingPlayer : MonoBehaviour {
             {
 
                 strikes = 0;
-                Hacking.localInstance.CmdAddMistake();
+                Hacking.localInstance.AddMistakeServerRpc();
                 StopCoroutine("Strike");
                 StartCoroutine("Strike");
                 //hacking.AddMistake();

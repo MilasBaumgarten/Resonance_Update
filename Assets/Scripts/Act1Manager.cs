@@ -2,7 +2,7 @@
 // Provides some functionality that is only needed in act1
 
 using UnityEngine;
-using UnityEngine.Networking;
+using Unity.Netcode;
 
 public class Act1Manager : NetworkBehaviour {
 
@@ -19,29 +19,21 @@ public class Act1Manager : NetworkBehaviour {
 
 	// Increase the nummber of interactions whenever one of the players collect an Object
 	public void increaseNummberOfInteractions() {
-
 		nummberOfInteractions++;
 
 		if (nummberOfInteractions >= targetNummberOfInteractions) {
-
-			CmdSetPlayerReady();
-
+			SetPlayerReadyServerRpc();
 		}
-
 	}
 
-	[Command]
-	public void CmdSetPlayerReady() {
-
-		RpcSetPlayerReady();
-
+	[ServerRpc]
+	public void SetPlayerReadyServerRpc() {
+		SetPlayerReadyClientRpc();
 	}
 
 	[ClientRpc]
-	void RpcSetPlayerReady() {
-
+	void SetPlayerReadyClientRpc() {
 		doorColl1.enabled = true;
 		doorColl2.enabled = true;
-
 	}
 }

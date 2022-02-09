@@ -57,28 +57,28 @@ public class ForceModule : ArmToolModule {
     }
 
     public override void Function(GameObject interactTarget) {
-        if (grabbing) {
-            armTool.CmdModuleInteract(this.interactTarget);
-            
-            // unlock player
-            headBob.SetBobbing(true);
-            playerMovement.enabled = true;
+   //     if (grabbing) {
+			//armTool.ModuleInteractServerRpc(this.interactTarget);
 
-        } else {
-            if (interactTarget) {
-                // if an interactable object is hit and it is within range, interact with it
-                if (interactTarget.GetComponent<ForceModuleBehaviour>()) {
-                    this.interactTarget = interactTarget;
-                    armTool.CmdModuleInteract(interactTarget);
-                    holdPos.localPosition = Vector3.forward * (interactTarget.transform.position - transform.position).magnitude;
+			//// unlock player
+			//headBob.SetBobbing(true);
+   //         playerMovement.enabled = true;
 
-                    // lock player
-                    headBob.SetBobbing(false);
-                    playerMovement.enabled = false;
-                }
-            }
-        }
-        onGrab.Invoke();
+   //     } else {
+   //         if (interactTarget) {
+   //             // if an interactable object is hit and it is within range, interact with it
+   //             if (interactTarget.GetComponent<ForceModuleBehaviour>()) {
+   //                 this.interactTarget = interactTarget;
+   //                 armTool.ModuleInteractServerRpc(interactTarget);
+   //                 holdPos.localPosition = Vector3.forward * (interactTarget.transform.position - transform.position).magnitude;
+
+   //                 // lock player
+   //                 headBob.SetBobbing(false);
+   //                 playerMovement.enabled = false;
+   //             }
+   //         }
+   //     }
+   //     onGrab.Invoke();
     }
 
     protected override void OnTriggerEnter(Collider other) {

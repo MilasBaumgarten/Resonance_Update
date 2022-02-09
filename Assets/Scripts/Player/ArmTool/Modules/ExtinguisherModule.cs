@@ -13,7 +13,7 @@ public class ExtinguisherModule : ArmToolModule {
     }
 
     public override void Function(GameObject interactionTarget) {
-        armTool.CmdModuleInteract(extinguisher);
+        //armTool.ModuleInteractServerRpc(extinguisher);
     }
 
     protected override void OnTriggerEnter(Collider other) {

@@ -7,10 +7,9 @@ public class SceneChanger : MonoBehaviour {
 	
 	private void OnTriggerEnter(Collider other) {
         ChangeScene();
-
     }
 
     public void ChangeScene() {
-        LobbyManager.s_Singleton.ChangeScene(sceneName);
+        //LobbyManager.s_Singleton.ChangeScene(sceneName);
     }
 }

@@ -6,49 +6,35 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class BothPlayersEnter : MonoBehaviour {
+	[SerializeField]
+	[Tooltip("The name of the event to be called")]
+	private string nameOfEvent;
 
+	public static GameObject player1;
+	public static GameObject player2;
 
-    [SerializeField]
-    [Tooltip ("The name of the event to be called")]
-    private string nameOfEvent;
+	public UnityEvent onBothPlayersEntered;
 
-    public static GameObject player1;
-    public static GameObject player2;
+	//Is the first player already inside the trigger area?
+	private bool player1Entered = false;
 
-    public UnityEvent onBothPlayersEntered;
+	void OnTriggerEnter(Collider other) {
+		if (other.tag == "Player") {
+			// If the first player is already inside the area, trigger the event
+			if (player1Entered) {
+				player2 = other.gameObject;
+				onBothPlayersEntered.Invoke();
+			} else {
+				player1 = other.gameObject;
+				player1Entered = true;
+			}
+		}
+	}
 
-    //Is the first player already inside the trigger area?
-    private bool player1Entered = false;
-
-    void OnTriggerEnter(Collider other) {
-
-        if (other.tag == "Player") {
-
-            // If the first player is already inside the area, trigger the event
-            if (player1Entered) {
-
-                player2 = other.gameObject;
-                onBothPlayersEntered.Invoke();
-
-            }
-            else
-            {
-
-                player1 = other.gameObject;
-                player1Entered = true;
-            }
-
-        }
-
-    }
-
-    void OnTriggerExit(Collider other) {
-
-        // If the first player exits the trigger area before the other player enters it
-        if (other.tag == "Player") {
-
-            player1Entered = false;
-
-        }
-    }
+	void OnTriggerExit(Collider other) {
+		// If the first player exits the trigger area before the other player enters it
+		if (other.tag == "Player") {
+			player1Entered = false;
+		}
+	}
 }

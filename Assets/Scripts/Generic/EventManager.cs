@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine.Events;
-using UnityEngine.Networking;
+using Unity.Netcode;
 /*
  * by Andre Spittel 04.10.2018
  * -----------------------------------------------------------------------------------------------
@@ -20,106 +20,101 @@ using UnityEngine.Networking;
  */
 
 public class EventManager : NetworkBehaviour {
-    
-    private Dictionary<string, UnityEvent> eventDictionary;
-    
-    //------------------------------------------------------------------------------------------------------------------
-    // Singleton format, if unclear please google Singleton
 
-    public static EventManager instance = null;
+	private Dictionary<string, UnityEvent> eventDictionary;
 
-    void Awake() {
-        // Check if instance already exists
-        if (instance == null) {
-            // if not, set instance to this
-            instance = this;
-        }
-        
-        // If instance already exists and it's not this:
-        else if (instance != this) {
-            // Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
-            Destroy(gameObject);
-        }
+	//------------------------------------------------------------------------------------------------------------------
+	// Singleton format, if unclear please google Singleton
 
-        // Sets this to not be destroyed when reloading scene
-        //DontDestroyOnLoad(gameObject);
-        
-        Init();
-    }
+	public static EventManager instance = null;
 
-    void Init() {
-        
-        if (eventDictionary == null) {
-            eventDictionary = new Dictionary<string, UnityEvent>();
-        }
-    }
-    
-    // Singleton format end
-    //------------------------------------------------------------------------------------------------------------------
-    // This function is called through the singleton like: Eventmanager.instance.StartListening("ExampleEventName", ExampleFunctionName)
-    // and should be called in the "Start" or "OnEnable" method.
-    // It is used to decide, what function you want to call if an event is triggered.
-    // Parameter:
-    //             eventName = The name of the event you are waiting for to be called.
-    //             listener = The name of the function you want to call, if someone called the event.
+	void Awake() {
+		// Check if instance already exists
+		if (instance == null) {
+			// if not, set instance to this
+			instance = this;
+		}
 
-    public void StartListening(string eventName, UnityAction listener) {
-        
-        UnityEvent thisEvent = null;
-        
-        if (eventDictionary.TryGetValue(eventName, out thisEvent)) {
-            thisEvent.AddListener(listener);
-        } else {
-            thisEvent = new UnityEvent();
-            thisEvent.AddListener(listener);
-            eventDictionary.Add(eventName, thisEvent);
-        }
-    }
-    
-    // This function is called through the singleton like: Eventmanager.instance.StopListening("ExampleEventName", ExampleFunctionName)
-    // and should be called in the "OnDisable" method.
-    // This function removes Listener. The listener NEEDS to be removed or we will have memory leak.
-    // Parameter:
-    //             eventName = The name of the event that is registered in the list.
-    //             listener = The name of the function that is registered in the list.
+		// If instance already exists and it's not this:
+		else if (instance != this) {
+			// Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
+			Destroy(gameObject);
+		}
 
-    public void StopListening(string eventName, UnityAction listener) {
-        
-        if (instance == null) 
-            return;
-        
-        UnityEvent thisEvent = null;
-        
-        if (eventDictionary.TryGetValue(eventName, out thisEvent)) {
-            thisEvent.RemoveListener(listener);
-        }
-    }
+		Init();
+	}
 
-    // This function is called through the singleton like: Eventmanager.instance.TriggerEvent("ExampleEventName")
-    // and should be called whenever you want to trigger an Event.
-    // This function triggers an event on all Clients. (remember, the server is a client aswell)
-    // Parameter:
-    //             eventName = The name of the event you are calling.
-    
-    public void TriggerEvent(string eventName) {
-        
-        //need to check for isServer because clients are forbidden to use RpcCalls
-        if (isServer) {
-            RpcNetworkTriggerEvent(eventName);
-        }
-    }
-    
-    // RpcFunction to trigger the event on all clients. Used in TriggerEvent function.
+	void Init() {
 
-    [ClientRpc]
-    private void RpcNetworkTriggerEvent(string eventName) {
-        
-        UnityEvent thisEvent = null;
-        
-        if (eventDictionary.TryGetValue(eventName, out thisEvent)) {
-            thisEvent.Invoke();
-            
-        }
-    }
+		if (eventDictionary == null) {
+			eventDictionary = new Dictionary<string, UnityEvent>();
+		}
+	}
 
+	// Singleton format end
+	//------------------------------------------------------------------------------------------------------------------
+	// This function is called through the singleton like: Eventmanager.instance.StartListening("ExampleEventName", ExampleFunctionName)
+	// and should be called in the "Start" or "OnEnable" method.
+	// It is used to decide, what function you want to call if an event is triggered.
+	// Parameter:
+	//             eventName = The name of the event you are waiting for to be called.
+	//             listener = The name of the function you want to call, if someone called the event.
+
+	public void StartListening(string eventName, UnityAction listener) {
+
+		UnityEvent thisEvent = null;
+
+		if (eventDictionary.TryGetValue(eventName, out thisEvent)) {
+			thisEvent.AddListener(listener);
+		} else {
+			thisEvent = new UnityEvent();
+			thisEvent.AddListener(listener);
+			eventDictionary.Add(eventName, thisEvent);
+		}
+	}
+
+	// This function is called through the singleton like: Eventmanager.instance.StopListening("ExampleEventName", ExampleFunctionName)
+	// and should be called in the "OnDisable" method.
+	// This function removes Listener. The listener NEEDS to be removed or we will have memory leak.
+	// Parameter:
+	//             eventName = The name of the event that is registered in the list.
+	//             listener = The name of the function that is registered in the list.
+
+	public void StopListening(string eventName, UnityAction listener) {
+
+		if (instance == null)
+			return;
+
+		UnityEvent thisEvent = null;
+
+		if (eventDictionary.TryGetValue(eventName, out thisEvent)) {
+			thisEvent.RemoveListener(listener);
+		}
+	}
+
+	// This function is called through the singleton like: Eventmanager.instance.TriggerEvent("ExampleEventName")
+	// and should be called whenever you want to trigger an Event.
+	// This function triggers an event on all Clients. (remember, the server is a client aswell)
+	// Parameter:
+	//             eventName = The name of the event you are calling.
+
+	public void TriggerEvent(string eventName) {
+
+		//need to check for isServer because clients are forbidden to use RpcCalls
+		if (IsServer) {
+			NetworkTriggerEventClientRpc(eventName);
+		}
+	}
+
+	// RpcFunction to trigger the event on all clients. Used in TriggerEvent function.
+
+	[ClientRpc]
+	private void NetworkTriggerEventClientRpc(string eventName) {
+
+		UnityEvent thisEvent = null;
+
+		if (eventDictionary.TryGetValue(eventName, out thisEvent)) {
+			thisEvent.Invoke();
+		}
+	}
 }

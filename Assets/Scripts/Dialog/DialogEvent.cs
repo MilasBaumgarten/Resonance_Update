@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Networking;
+﻿using UnityEngine;
+using Unity.Netcode;
 
 /**
  * Author: Leon Ullrich
@@ -12,69 +10,61 @@ using UnityEngine.Networking;
 
 public class DialogEvent : NetworkBehaviour {
 
-    // the name of the csv-file (without .csv file-extension!)
-    [Tooltip("The name of the csv-file (without .csv file-extension")]
-    public string filename = "";
-    // for showing dialog and playing audio just once
-    private bool hasPlayed = false;
+	// the name of the csv-file (without .csv file-extension!)
+	[Tooltip("The name of the csv-file (without .csv file-extension")]
+	public string filename = "";
+	// for showing dialog and playing audio just once
+	private bool hasPlayed = false;
 
-    [Tooltip("Is this a one liner or Dialog?")]
-    public bool isOneLiner = false;
+	[Tooltip("Is this a one liner or Dialog?")]
+	public bool isOneLiner = false;
 
-    [Tooltip("Used if you wish to play a one liner instead of a complete dialog")]
-    public string oneLinerID;
+	[Tooltip("Used if you wish to play a one liner instead of a complete dialog")]
+	public string oneLinerID;
 
 
-    public void StartDialog() {
-        Play();
-    }
+	public void StartDialog() {
+		Play();
+	}
 
-    private void Play() {
-        if (isOneLiner) {
+	private void Play() {
+		if (isOneLiner) {
+			DialogTextFromExcel dialogText = new DialogTextFromExcel();
 
-            DialogTextFromExcel dialogText = new DialogTextFromExcel();
+			dialogText.GetOneLinerValues();
 
-            dialogText.GetOneLinerValues();
+			if (dialogText.oneLinerID.Contains(oneLinerID)) {
+				DialogSystem.instance.dialogQueue.Add(oneLinerID);
+			} else {
+				Debug.LogError("One-Liner ID not found! " + oneLinerID);
+			}
+		} else {
+			DialogSystem.instance.dialogQueue.Add(filename); // called from script DialogTriggerListener
+		}
 
-            if (dialogText.oneLinerID.Contains(oneLinerID)) {
-                DialogSystem.instance.dialogQueue.Add(oneLinerID);
-            }
-            else {
-                Debug.LogError("One-Liner ID not found! " + oneLinerID);
-            }
-        }
-        else {
-            DialogSystem.instance.dialogQueue.Add(filename); // called from script DialogTriggerListener
-        }
+		hasPlayed = true;
+	}
 
-        hasPlayed = true;
-    }
+	/// <summary>Used to play dialog or oneliners from outside of this script</summary>
+	public void playDialog() {
+		if (hasPlayed) {
+			return;
+		}
 
-    /// <summary>Used to play dialog or oneliners from outside of this script</summary>
-    public void playDialog() {
+		if (isOneLiner) {
+			DialogTextFromExcel dialogText = new DialogTextFromExcel();
 
-        if (hasPlayed) {
+			dialogText.GetOneLinerValues();
 
-            return;
+			if (dialogText.oneLinerID.Contains(oneLinerID)) {
+				DialogSystem.instance.StartOneLiner(oneLinerID);
+			} else {
+				Debug.LogError("One-Liner ID not found! " + oneLinerID);
+			}
+		} else {
+			DialogSystem.instance.StartDialog(filename); // called from script DialogTriggerListener
+		}
 
-        }
-
-        if (isOneLiner) {
-
-            DialogTextFromExcel dialogText = new DialogTextFromExcel();
-
-            dialogText.GetOneLinerValues();
-
-            if (dialogText.oneLinerID.Contains(oneLinerID)) {
-                DialogSystem.instance.StartOneLiner(oneLinerID);
-            }
-            else {
-                Debug.LogError("One-Liner ID not found! " + oneLinerID);
-            }
-        }
-        else {
-            DialogSystem.instance.StartDialog(filename); // called from script DialogTriggerListener
-        }
-        hasPlayed = false;
-    }
+		hasPlayed = false;
+	}
 }

@@ -5,78 +5,72 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.Video;
 
-public class Akt1Ending : MonoBehaviour
-{
-    [Header("Fade Settings")]
-    [SerializeField]
-    private GameObject fadeCanvasObject;
-    //[SerializeField]
-    //private Image fadeImage;
-    [SerializeField]
-    private Color fadeColor;
-    [SerializeField]
-    [Range(0.01f, 0.5f)]
-    private float fadeTime;
-    
-    [Header("Video Settings")]
-    [SerializeField]
-    [Space]
-    private VideoPlayer endingVideo;
-    [SerializeField]
-    private RawImage videoScreen;
+public class Akt1Ending : MonoBehaviour {
+	[Header("Fade Settings")]
+	[SerializeField]
+	private GameObject fadeCanvasObject;
+	//[SerializeField]
+	//private Image fadeImage;
+	[SerializeField]
+	private Color fadeColor;
+	[SerializeField]
+	[Range(0.01f, 0.5f)]
+	private float fadeTime;
 
-    [SerializeField]
-    private UnityEvent afterVideoFinished;
+	[Header("Video Settings")]
+	[SerializeField]
+	[Space]
+	private VideoPlayer endingVideo;
+	[SerializeField]
+	private RawImage videoScreen;
 
-    private float fadeAlpha;
-    private bool startEnd = false;
+	[SerializeField]
+	private UnityEvent afterVideoFinished;
 
-    private void Start()
-    {
-        #region Fade Presets
-        fadeCanvasObject.SetActive(false);
-        fadeAlpha = 0;
-        fadeColor.a = fadeAlpha;
-        videoScreen.color = fadeColor;
-        #endregion
-    }
+	private float fadeAlpha;
+	private bool startEnd = false;
 
-    public void StartEnding()
-    {
-        StartCoroutine(Ending());
-    }
+	private void Start() {
+		#region Fade Presets
+		fadeCanvasObject.SetActive(false);
+		fadeAlpha = 0;
+		fadeColor.a = fadeAlpha;
+		videoScreen.color = fadeColor;
+		#endregion
+	}
 
-    private IEnumerator Ending()
-    {
-        fadeCanvasObject.SetActive(true);
-        float steps = 0.05f;
+	public void StartEnding() {
+		StartCoroutine(Ending());
+	}
 
-        while (fadeAlpha < 1)
-        {
-            fadeAlpha += steps;
-            fadeColor.a = fadeAlpha;
-            videoScreen.color = fadeColor;
-            yield return new WaitForSeconds(fadeTime);
-        }
-        
-        endingVideo.Prepare();
-        WaitForSeconds wait = new WaitForSeconds(1);
+	private IEnumerator Ending() {
+		fadeCanvasObject.SetActive(true);
+		float steps = 0.05f;
 
-        while (!endingVideo.isPrepared)
-        {
-            yield return wait;
-            break;
-        }
+		while (fadeAlpha < 1) {
+			fadeAlpha += steps;
+			fadeColor.a = fadeAlpha;
+			videoScreen.color = fadeColor;
+			yield return new WaitForSeconds(fadeTime);
+		}
 
-        videoScreen.color = Color.white;
-        videoScreen.texture = endingVideo.texture;
-        endingVideo.Play();
+		endingVideo.Prepare();
+		WaitForSeconds wait = new WaitForSeconds(1);
 
-        yield return new WaitForSeconds((float) endingVideo.clip.length);
+		while (!endingVideo.isPrepared) {
+			yield return wait;
+			break;
+		}
 
-        afterVideoFinished.Invoke();
+		videoScreen.color = Color.white;
+		videoScreen.texture = endingVideo.texture;
+		endingVideo.Play();
 
-        yield return null;
-    }
+		yield return new WaitForSeconds((float)endingVideo.clip.length);
+
+		afterVideoFinished.Invoke();
+
+		yield return null;
+	}
 
 }

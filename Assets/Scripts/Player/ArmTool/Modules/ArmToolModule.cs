@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
-using UnityEngine.Networking;
+using Unity.Netcode;
 
 [RequireComponent(typeof(Collider))]
-public abstract class ArmToolModule : NetworkBehaviour{
+public abstract class ArmToolModule : NetworkBehaviour {
 
     protected ArmTool armTool;
 
@@ -15,9 +15,9 @@ public abstract class ArmToolModule : NetworkBehaviour{
     }
 
     protected virtual void OnTriggerEnter(Collider other) {
-        ArmTool armTool = other.GetComponent<ArmTool>();
-        if (armTool) {
-            armTool.ModulePickUp(this.gameObject);
-        }
+        //ArmTool armTool = other.GetComponent<ArmTool>();
+        //if (armTool != null) {
+        //    armTool.ModulePickUp(this.gameObject);
+        //}
     }
 }

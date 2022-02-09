@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Networking;
+using Unity.Netcode;
 
 /**
  * Author: Leon Ullrich
@@ -8,7 +8,7 @@ using UnityEngine.Networking;
  * - put this script on an object that can be interacted with
  */
 
-[RequireComponent(typeof(NetworkIdentity))]
+[RequireComponent(typeof(NetworkObject))]
 public class InteractableObject : NetworkBehaviour {
 
     // enum for character selection
@@ -61,7 +61,7 @@ public class InteractableObject : NetworkBehaviour {
                 if (!syncThisEvent)
                     InvokeEvent();
                 else {
-                    if (callingPlayer.GetComponent<NetworkIdentity>().isLocalPlayer) {
+                    if (callingPlayer.GetComponent<NetworkObject>().IsLocalPlayer) {
                         // pass reference of this object to calling player
                         callingPlayer.GetComponent<Interact>().SyncEvent(gameObject);
                     }
@@ -72,7 +72,7 @@ public class InteractableObject : NetworkBehaviour {
             if (!syncThisEvent)
                 InvokeEvent();
             else {
-                if (callingPlayer.GetComponent<NetworkIdentity>().isLocalPlayer) {
+                if (callingPlayer.GetComponent<NetworkObject>().IsLocalPlayer) {
                     // pass reference of this object to calling player
                     callingPlayer.GetComponent<Interact>().SyncEvent(gameObject);
                 }

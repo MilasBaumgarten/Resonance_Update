@@ -1,36 +1,25 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Networking;
+﻿using UnityEngine;
+using Unity.Netcode;
 
 public class Soundchanger : MonoBehaviour {
-    public AudioClip backGround;
-    public AudioSource source;
-    public bool repeat;
-    private bool trigger = true;
+	public AudioClip backGround;
+	public AudioSource source;
+	public bool repeat;
+	private bool trigger = true;
 
+	private void OnTriggerEnter(Collider michi) {
+		if (trigger) {
+			if (michi.tag.Equals("Player")) {
+				NetworkObject netID = michi.GetComponent<NetworkObject>();
+				if (netID != null) {
+					if (netID.IsLocalPlayer) {
+						source.clip = backGround;
+						source.Play();
+					}
 
-    private void OnTriggerEnter(Collider michi)
-    {
-        if (trigger)
-        {
-            if (michi.tag.Equals("Player"))
-            {
-                NetworkIdentity netID = michi.GetComponent<NetworkIdentity>();
-                if (netID != null)
-                {
-                    if (netID.isLocalPlayer)
-                    {
-                        source.clip = backGround;
-                        source.Play();
-                    }
-                    if (!repeat) trigger = false;
-
-                }
-
-            }
-        }
-    }
-
-
+					if (!repeat) trigger = false;
+				}
+			}
+		}
+	}
 }

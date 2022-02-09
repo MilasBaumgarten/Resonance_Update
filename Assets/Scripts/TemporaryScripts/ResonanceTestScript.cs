@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using UnityEngine.Networking;
+using Unity.Netcode;
 
 /*
  * by Andre Spittel 15.10.2018
@@ -21,48 +21,48 @@ public class ResonanceTestScript : NetworkBehaviour {
 
     // This update checks for the player input, and changes the bools (the decisions).
     private void Update() {
-        if (activated && isLocalPlayer) {
-            if (!isServer) {
+        if (activated && IsLocalPlayer) {
+            if (!IsServer) {
                 if (Input.GetKeyDown(KeyCode.J)) {
                     Debug.Log("Client pressed J");
-                    CmdPressedJ();
+                    PressedJServerRpc();
                 }
                 if (Input.GetKeyDown(KeyCode.N)) {
                     Debug.Log("Client pressed N");
-                    CmdPressedN();
+                    PressedNServerRpc();
                 }
             }
-            else if (isServer) {
+            else if (IsServer) {
                 if (Input.GetKeyDown(KeyCode.J)) {
                     Debug.Log("Server pressed J");
-                    RpcPressedJ();
+                    PressedJClientRpc();
                 }
 
                 if (Input.GetKeyDown(KeyCode.N)) {
                     Debug.Log("Server pressed N");
-                    RpcPressedN();
+                    PressedNClientRpc();
                 }
             }
         }
     }
 
-    [Command]
-    private void CmdPressedJ() {
-        RpcPressedJ();
+    [ServerRpc]
+    private void PressedJServerRpc() {
+        PressedJClientRpc();
     }
 
-    [Command]
-    private void CmdPressedN() {
-        RpcPressedN();
+    [ServerRpc]
+    private void PressedNServerRpc() {
+        PressedNClientRpc();
     }
 
     [ClientRpc]
-    private void RpcPressedJ() {
+    private void PressedJClientRpc() {
         pressedJ = true;
     }
     
     [ClientRpc]
-    private void RpcPressedN() {
+    private void PressedNClientRpc() {
         pressedN = true;
     }
 }

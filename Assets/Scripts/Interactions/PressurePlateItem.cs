@@ -3,12 +3,10 @@
  * Should be attached to: nothing, PressurePlate automatically adds this component to objects lying on it to create a connection.
  */
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
+using Unity.Netcode;
 
-[RequireComponent(typeof(NetworkIdentity))]
+[RequireComponent(typeof(NetworkObject))]
 public class PressurePlateItem : MonoBehaviour {
 
 	private int collisions;

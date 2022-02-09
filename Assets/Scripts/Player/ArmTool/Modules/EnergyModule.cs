@@ -20,12 +20,12 @@ public class EnergyModule : ArmToolModule {
     }
 
     public override void Function(GameObject interactionTarget) {
-        if (interactionTarget) {
-            Socket targetSocket = interactionTarget.transform.GetComponent<Socket>();
-            if (targetSocket) {
-                armTool.CmdModuleInteract(interactionTarget);
-            }
-        }
+        //if (interactionTarget) {
+        //    Socket targetSocket = interactionTarget.transform.GetComponent<Socket>();
+        //    if (targetSocket) {
+        //        armTool.ModuleInteractServerRpc(interactionTarget);
+        //    }
+        //}
     }
 
     protected override void OnTriggerEnter(Collider other) {

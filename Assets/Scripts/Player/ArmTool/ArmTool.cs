@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
-using UnityEngine.Networking;
+using Unity.Netcode;
 using UnityEngine.UI;
 
 public class ArmTool : NetworkBehaviour {
-
     [SerializeField]
     private StateMachine stateMachine;
     [SerializeField]
@@ -21,7 +20,6 @@ public class ArmTool : NetworkBehaviour {
     InputSettings input;
     Settings settings;
 
-    // Use this for initialization
     void Start() {
         input = GameManager.instance.input;
         settings = GameManager.instance.settings;
@@ -33,61 +31,60 @@ public class ArmTool : NetworkBehaviour {
         ChangeIconColor();
     }
 
-    // Update is called once per frame
-    void Update() {
-        if (isLocalPlayer) {
-            if (Input.GetKeyDown(input.armTool)) {
+    //void Update() {
+    //    if (IsLocalPlayer) {
+    //        if (Input.GetKeyDown(input.armTool)) {
 
-                GameObject interactTarget;
-                RaycastHit hit;
-                if (Physics.Raycast(cam.position, cam.forward, out hit, settings.maxDist, layerMask)) {
-                    interactTarget = hit.transform.gameObject;
-                    if (interactTarget.GetComponent<Interactable>()) {
-                        CmdInteract(interactTarget);
-                    }
-                    if (equipped[selected]) {
-                        equipped[selected].Function(interactTarget);
-                    }
-                } else {
-                    if (equipped[selected]) {
-                        equipped[selected].Function(null);
-                    }
-                }
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha1) && equipped[1]) {
-                if(selected == 1) {
-                    selected = 0;
-                    ChangeIconColor();
-                } else {
-                    selected = 1;
-                    ChangeIconColor();
-                }
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha2) && equipped[2]) {
-                if (selected == 2) {
-                    selected = 0;
-                    ChangeIconColor();
-                } else {
-                    selected = 2;
-                    ChangeIconColor();
-                }
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha3) && equipped[3]) {
-                if (selected == 3) {
-                    selected = 0;
-                    ChangeIconColor();
-                } else {
-                    selected = 3;
-                    ChangeIconColor();
-                }
-            }
-            if(selected > 0) {
-                armUp = true;
-            } else {
-                armUp = false;
-            }
-        }
-    }
+    //            GameObject interactTarget;
+    //            RaycastHit hit;
+    //            if (Physics.Raycast(cam.position, cam.forward, out hit, settings.maxDist, layerMask)) {
+    //                interactTarget = hit.transform.gameObject;
+    //                if (interactTarget.GetComponent<Interactable>()) {
+    //                    InteractServerRpc(interactTarget);
+    //                }
+    //                if (equipped[selected]) {
+    //                    equipped[selected].Function(interactTarget);
+    //                }
+    //            } else {
+    //                if (equipped[selected]) {
+    //                    equipped[selected].Function(null);
+    //                }
+    //            }
+    //        }
+    //        if (Input.GetKeyDown(KeyCode.Alpha1) && equipped[1]) {
+    //            if(selected == 1) {
+    //                selected = 0;
+    //                ChangeIconColor();
+    //            } else {
+    //                selected = 1;
+    //                ChangeIconColor();
+    //            }
+    //        }
+    //        if (Input.GetKeyDown(KeyCode.Alpha2) && equipped[2]) {
+    //            if (selected == 2) {
+    //                selected = 0;
+    //                ChangeIconColor();
+    //            } else {
+    //                selected = 2;
+    //                ChangeIconColor();
+    //            }
+    //        }
+    //        if (Input.GetKeyDown(KeyCode.Alpha3) && equipped[3]) {
+    //            if (selected == 3) {
+    //                selected = 0;
+    //                ChangeIconColor();
+    //            } else {
+    //                selected = 3;
+    //                ChangeIconColor();
+    //            }
+    //        }
+    //        if(selected > 0) {
+    //            armUp = true;
+    //        } else {
+    //            armUp = false;
+    //        }
+    //    }
+    //}
 
     public void DeselectTool()
     {
@@ -104,9 +101,9 @@ public class ArmTool : NetworkBehaviour {
         }
     }
 
-    public void ModulePickUp(GameObject obj) {
-        CmdAddModule(obj);
-    }
+    //public void ModulePickUp(GameObject obj) {
+    //    AddModuleServerRpc(obj);
+    //}
 
     private void AddModule(GameObject obj) {
         ArmToolModule module = obj.GetComponent<ArmToolModule>();
@@ -138,60 +135,60 @@ public class ArmTool : NetworkBehaviour {
         //maybe replace current selected module??
     }
 
-    public void RemoveModule(System.Type type) {
-        foreach(ArmToolModule module in equipped) {
-            if (module) {
-                if(module.GetType() == type) {
-                    CmdRemoveModule(equipped[selected].gameObject);
-                }
-            }
-        }
-        //TODO update HUD and maybe shift remaining modules
-    }
+    //public void RemoveModule(System.Type type) {
+    //    foreach(ArmToolModule module in equipped) {
+    //        if (module) {
+    //            if(module.GetType() == type) {
+				//	RemoveModuleServerRpc(equipped[selected].gameObject);
+				//}
+    //        }
+    //    }
+    //    //TODO update HUD and maybe shift remaining modules
+    //}
 
-    [Command]
-    void CmdInteract(GameObject target) {
-        // send the server a command telling it the player is intending to interact with something
-        RpcInteract(target);
-    }
+    //[ServerRpc]
+    //void InteractServerRpc(GameObject target) {
+    //    // send the server a command telling it the player is intending to interact with something
+    //    InteractClientRpc(target);
+    //}
 
-    [Command]
-    void CmdAddModule(GameObject obj) {
-        RpcAddModule(obj);
-    }
+    //[ServerRpc]
+    //void AddModuleServerRpc(GameObject obj) {
+    //    AddModuleClientRpc(obj);
+    //}
 
-    [Command]
-    void CmdRemoveModule(GameObject obj) {
-        RpcRemoveModule(obj);
-    }
+    //[ServerRpc]
+    //void RemoveModuleServerRpc(GameObject obj) {
+    //    RemoveModuleClientRpc(obj);
+    //}
 
-    [ClientRpc]
-    void RpcInteract(GameObject target) {
-        // send a call to all clients informing them about the interaction
-        target.GetComponent<Interactable>().Interact(this);
-    }
+    //[ClientRpc]
+    //void InteractClientRpc(GameObject target) {
+    //    // send a call to all clients informing them about the interaction
+    //    target.GetComponent<Interactable>().Interact(this);
+    //}
 
-    [ClientRpc]
-    void RpcAddModule(GameObject obj) {
-        AddModule(obj);
-    }
+    //[ClientRpc]
+    //void AddModuleClientRpc(GameObject obj) {
+    //    AddModule(obj);
+    //}
 
-    [ClientRpc]
-    void RpcRemoveModule(GameObject obj) {
-        Destroy(obj);
-        equipped[selected] = null;
-        ChangeIconColor();
-    }
+    //[ClientRpc]
+    //void RemoveModuleClientRpc(GameObject obj) {
+    //    Destroy(obj);
+    //    equipped[selected] = null;
+    //    ChangeIconColor();
+    //}
 
-    [Command]
-    public void CmdModuleInteract(GameObject target) {
-        // send the server a command telling it the player is intending to interact with something
-        RpcModuleInteract(target);
-    }
+    //[ServerRpc]
+    //public void ModuleInteractServerRpc(GameObject target) {
+    //    // send the server a command telling it the player is intending to interact with something
+    //    ModuleInteractClientRpc(target);
+    //}
 
-    [ClientRpc]
-    void RpcModuleInteract(GameObject target) {
-        // send a call to all clients informing them about the interaction
-        target.GetComponent<ArmToolModuleBehaviour>().Interact(equipped[selected]);
-    }
+    //[ClientRpc]
+    //void ModuleInteractClientRpc(GameObject target) {
+    //    // send a call to all clients informing them about the interaction
+    //    target.GetComponent<ArmToolModuleBehaviour>().Interact(equipped[selected]);
+    //}
 }

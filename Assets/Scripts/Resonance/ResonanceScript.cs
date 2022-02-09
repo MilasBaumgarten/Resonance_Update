@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
+using Unity.Netcode;
 
 /*
  * by Andre Spittel 15.10.2018

@@ -7,7 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Logic;
-using UnityEngine.Networking;
+using Unity.Netcode;
 
 [RequireComponent(typeof(Collider))]
 public class PressurePlate : Trigger
@@ -18,10 +18,10 @@ public class PressurePlate : Trigger
 
 
 	// store registered objects to count them by identity
-	private Dictionary<uint, GameObject> objectsCounted;
+	private Dictionary<ulong, GameObject> objectsCounted;
 
 	void Start() {
-		objectsCounted = new Dictionary<uint, GameObject>();
+		objectsCounted = new Dictionary<ulong, GameObject>();
 	}
 
 	public void OnCollisionEnter(Collision collision) {
@@ -34,8 +34,8 @@ public class PressurePlate : Trigger
 				+ new Vector3(0, gameObject.transform.position.y, 0))) {
 
 				// if it is a new object, then add it
-				if (!objectsCounted.ContainsKey(collision.gameObject.GetComponent<NetworkIdentity>().netId.Value)) {
-					objectsCounted.Add(collision.gameObject.GetComponent<NetworkIdentity>().netId.Value, collision.gameObject); //register object
+				if (!objectsCounted.ContainsKey(collision.gameObject.GetComponent<NetworkObject>().NetworkObjectId)) {
+					objectsCounted.Add(collision.gameObject.GetComponent<NetworkObject>().NetworkObjectId, collision.gameObject); //register object
 
 					// add PressurePlateItem component and hand over reference to this PressurePlate object
 					// this creates a connection between added object and PressurePlate
@@ -53,9 +53,9 @@ public class PressurePlate : Trigger
 
 	public void OnCollisionExit(Collision collision) {
 		// delete object if it was registered before (if it was registered before then it is also a valid object)
-		if (objectsCounted.ContainsKey(collision.gameObject.GetComponent<NetworkIdentity>().netId.Value)) {
+		if (objectsCounted.ContainsKey(collision.gameObject.GetComponent<NetworkObject>().NetworkObjectId)) {
 
-			objectsCounted.Remove(collision.gameObject.GetComponent<NetworkIdentity>().netId.Value); // unregister object
+			objectsCounted.Remove(collision.gameObject.GetComponent<NetworkObject>().NetworkObjectId); // unregister object
 			Destroy(collision.gameObject.GetComponent<PressurePlateItem>()); // remove PressurePlateItem component
 
 			// if state changes from true to false because of leaving object

@@ -1,6 +1,5 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Networking;
+﻿using UnityEngine;
+using Unity.Netcode;
 
 public class GameManager : NetworkBehaviour {
 
@@ -20,11 +19,9 @@ public class GameManager : NetworkBehaviour {
             instance = this;
         } else if (instance != this) {
             Destroy(gameObject);
-            //DontDestroyOnLoad(gameObject);
         }
 
         catrionaName = catrionaName.ToLower();
         robertName = robertName.ToLower();
     }
-
 }

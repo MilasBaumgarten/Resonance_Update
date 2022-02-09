@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
-using UnityEngine.Networking;
+using Unity.Netcode;
+using UnityEngine.SceneManagement;
 
 namespace Logic.Actions {
 	public class PlayerWantsSceneChange : Action {
@@ -7,7 +8,7 @@ namespace Logic.Actions {
 
 		public override void Activate() {
 			base.Activate();
-			NetworkManager.singleton.ServerChangeScene(loadScene);
+			NetworkManager.Singleton.SceneManager.LoadScene(loadScene, LoadSceneMode.Single);
 		}
 	}
 }
