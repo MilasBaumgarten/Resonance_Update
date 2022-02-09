@@ -1,0 +1,363 @@
+fileFormatVersion: 2
+guid: fc6d8fe6ee93ea744a280957a1ae3294
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Hammer_low
+    100004: Mutter_low
+    100006: Nagel_low
+    100008: Platte_low
+    100010: PlatteMond_low
+    100012: PlatteStern_low
+    100014: Rohrzange_low
+    100016: Schraube_low
+    100018: Schraubenschluessel_low
+    100020: Schraubenzieher_low
+    400000: //RootNode
+    400002: Hammer_low
+    400004: Mutter_low
+    400006: Nagel_low
+    400008: Platte_low
+    400010: PlatteMond_low
+    400012: PlatteStern_low
+    400014: Rohrzange_low
+    400016: Schraube_low
+    400018: Schraubenschluessel_low
+    400020: Schraubenzieher_low
+    2100000: unnamed
+    2300000: Hammer_low
+    2300002: Mutter_low
+    2300004: Nagel_low
+    2300006: Platte_low
+    2300008: PlatteMond_low
+    2300010: PlatteStern_low
+    2300012: Rohrzange_low
+    2300014: Schraube_low
+    2300016: Schraubenschluessel_low
+    2300018: Schraubenzieher_low
+    3300000: Hammer_low
+    3300002: Mutter_low
+    3300004: Nagel_low
+    3300006: Platte_low
+    3300008: PlatteMond_low
+    3300010: PlatteStern_low
+    3300012: Rohrzange_low
+    3300014: Schraube_low
+    3300016: Schraubenschluessel_low
+    3300018: Schraubenzieher_low
+    4300000: PlatteStern_low
+    4300002: Mutter_low
+    4300004: Schraube_low
+    4300006: Platte_low
+    4300008: Nagel_low
+    4300010: PlatteMond_low
+    4300012: Schraubenzieher_low
+    4300014: Schraubenschluessel_low
+    4300016: Rohrzange_low
+    4300018: Hammer_low
+    7400000: PlatteStern_low|Axt_HIGH|Default Take|Layer0
+    7400002: PlatteStern_low|Axt_LOW|Default Take|Layer0
+    7400004: PlatteStern_low|Hammer_HIGH|Default Take|Layer0
+    7400006: PlatteStern_low|Hammer|Default Take|Layer0
+    7400008: PlatteStern_low|Mutter_HIGH|Default Take|Layer0
+    7400010: PlatteStern_low|Mutter|Default Take|Layer0
+    7400012: PlatteStern_low|Nagel_HIGH|Default Take|Layer0
+    7400014: PlatteStern_low|Nagel|Default Take|Layer0
+    7400016: PlatteStern_low|Platte_HIGH|Default Take|Layer0
+    7400018: PlatteStern_low|PlatteMond_HIGH|Default Take|Layer0
+    7400020: PlatteStern_low|PlatteMond|Default Take|Layer0
+    7400022: PlatteStern_low|PlatteStern_HIGH|Default Take|Layer0
+    7400024: PlatteStern_low|PlatteStern|Default Take|Layer0
+    7400026: PlatteStern_low|Platte|Default Take|Layer0
+    7400028: PlatteStern_low|Rohrzange_HIGH|Default Take|Layer0
+    7400030: PlatteStern_low|Rohrzange|Default Take|Layer0
+    7400032: PlatteStern_low|Schraube_HIGH|Default Take|Layer0
+    7400034: PlatteStern_low|Schraubenschl_ssel_HIGH|Default Take|Layer0
+    7400036: PlatteStern_low|Schraubenschl_ssel|Default Take|Layer0
+    7400038: PlatteStern_low|Schraubenzieher|Default Take|Layer0
+    7400040: PlatteStern_low|Schraube|Default Take|Layer0
+    7400042: PlatteStern_low|Schreibenzieher_HIGH|Default Take|Layer0
+    7400044: Mutter_low|Axt_HIGH|Default Take|Layer0
+    7400046: Mutter_low|Axt_LOW|Default Take|Layer0
+    7400048: Mutter_low|Hammer_HIGH|Default Take|Layer0
+    7400050: Mutter_low|Hammer|Default Take|Layer0
+    7400052: Mutter_low|Mutter_HIGH|Default Take|Layer0
+    7400054: Mutter_low|Mutter|Default Take|Layer0
+    7400056: Mutter_low|Nagel_HIGH|Default Take|Layer0
+    7400058: Mutter_low|Nagel|Default Take|Layer0
+    7400060: Mutter_low|Platte_HIGH|Default Take|Layer0
+    7400062: Mutter_low|PlatteMond_HIGH|Default Take|Layer0
+    7400064: Mutter_low|PlatteMond|Default Take|Layer0
+    7400066: Mutter_low|PlatteStern_HIGH|Default Take|Layer0
+    7400068: Mutter_low|PlatteStern|Default Take|Layer0
+    7400070: Mutter_low|Platte|Default Take|Layer0
+    7400072: Mutter_low|Rohrzange_HIGH|Default Take|Layer0
+    7400074: Mutter_low|Rohrzange|Default Take|Layer0
+    7400076: Mutter_low|Schraube_HIGH|Default Take|Layer0
+    7400078: Mutter_low|Schraubenschl_ssel_HIGH|Default Take|Layer0
+    7400080: Mutter_low|Schraubenschl_ssel|Default Take|Layer0
+    7400082: Mutter_low|Schraubenzieher|Default Take|Layer0
+    7400084: Mutter_low|Schraube|Default Take|Layer0
+    7400086: Mutter_low|Schreibenzieher_HIGH|Default Take|Layer0
+    7400088: Schraube_low|Axt_HIGH|Default Take|Layer0
+    7400090: Schraube_low|Axt_LOW|Default Take|Layer0
+    7400092: Schraube_low|Hammer_HIGH|Default Take|Layer0
+    7400094: Schraube_low|Hammer|Default Take|Layer0
+    7400096: Schraube_low|Mutter_HIGH|Default Take|Layer0
+    7400098: Schraube_low|Mutter|Default Take|Layer0
+    7400100: Schraube_low|Nagel_HIGH|Default Take|Layer0
+    7400102: Schraube_low|Nagel|Default Take|Layer0
+    7400104: Schraube_low|Platte_HIGH|Default Take|Layer0
+    7400106: Schraube_low|PlatteMond_HIGH|Default Take|Layer0
+    7400108: Schraube_low|PlatteMond|Default Take|Layer0
+    7400110: Schraube_low|PlatteStern_HIGH|Default Take|Layer0
+    7400112: Schraube_low|PlatteStern|Default Take|Layer0
+    7400114: Schraube_low|Platte|Default Take|Layer0
+    7400116: Schraube_low|Rohrzange_HIGH|Default Take|Layer0
+    7400118: Schraube_low|Rohrzange|Default Take|Layer0
+    7400120: Schraube_low|Schraube_HIGH|Default Take|Layer0
+    7400122: Schraube_low|Schraubenschl_ssel_HIGH|Default Take|Layer0
+    7400124: Schraube_low|Schraubenschl_ssel|Default Take|Layer0
+    7400126: Schraube_low|Schraubenzieher|Default Take|Layer0
+    7400128: Schraube_low|Schraube|Default Take|Layer0
+    7400130: Schraube_low|Schreibenzieher_HIGH|Default Take|Layer0
+    7400132: Platte_low|Axt_HIGH|Default Take|Layer0
+    7400134: Platte_low|Axt_LOW|Default Take|Layer0
+    7400136: Platte_low|Hammer_HIGH|Default Take|Layer0
+    7400138: Platte_low|Hammer|Default Take|Layer0
+    7400140: Platte_low|Mutter_HIGH|Default Take|Layer0
+    7400142: Platte_low|Mutter|Default Take|Layer0
+    7400144: Platte_low|Nagel_HIGH|Default Take|Layer0
+    7400146: Platte_low|Nagel|Default Take|Layer0
+    7400148: Platte_low|Platte_HIGH|Default Take|Layer0
+    7400150: Platte_low|PlatteMond_HIGH|Default Take|Layer0
+    7400152: Platte_low|PlatteMond|Default Take|Layer0
+    7400154: Platte_low|PlatteStern_HIGH|Default Take|Layer0
+    7400156: Platte_low|PlatteStern|Default Take|Layer0
+    7400158: Platte_low|Platte|Default Take|Layer0
+    7400160: Platte_low|Rohrzange_HIGH|Default Take|Layer0
+    7400162: Platte_low|Rohrzange|Default Take|Layer0
+    7400164: Platte_low|Schraube_HIGH|Default Take|Layer0
+    7400166: Platte_low|Schraubenschl_ssel_HIGH|Default Take|Layer0
+    7400168: Platte_low|Schraubenschl_ssel|Default Take|Layer0
+    7400170: Platte_low|Schraubenzieher|Default Take|Layer0
+    7400172: Platte_low|Schraube|Default Take|Layer0
+    7400174: Platte_low|Schreibenzieher_HIGH|Default Take|Layer0
+    7400176: Nagel_low|Axt_HIGH|Default Take|Layer0
+    7400178: Nagel_low|Axt_LOW|Default Take|Layer0
+    7400180: Nagel_low|Hammer_HIGH|Default Take|Layer0
+    7400182: Nagel_low|Hammer|Default Take|Layer0
+    7400184: Nagel_low|Mutter_HIGH|Default Take|Layer0
+    7400186: Nagel_low|Mutter|Default Take|Layer0
+    7400188: Nagel_low|Nagel_HIGH|Default Take|Layer0
+    7400190: Nagel_low|Nagel|Default Take|Layer0
+    7400192: Nagel_low|Platte_HIGH|Default Take|Layer0
+    7400194: Nagel_low|PlatteMond_HIGH|Default Take|Layer0
+    7400196: Nagel_low|PlatteMond|Default Take|Layer0
+    7400198: Nagel_low|PlatteStern_HIGH|Default Take|Layer0
+    7400200: Nagel_low|PlatteStern|Default Take|Layer0
+    7400202: Nagel_low|Platte|Default Take|Layer0
+    7400204: Nagel_low|Rohrzange_HIGH|Default Take|Layer0
+    7400206: Nagel_low|Rohrzange|Default Take|Layer0
+    7400208: Nagel_low|Schraube_HIGH|Default Take|Layer0
+    7400210: Nagel_low|Schraubenschl_ssel_HIGH|Default Take|Layer0
+    7400212: Nagel_low|Schraubenschl_ssel|Default Take|Layer0
+    7400214: Nagel_low|Schraubenzieher|Default Take|Layer0
+    7400216: Nagel_low|Schraube|Default Take|Layer0
+    7400218: Nagel_low|Schreibenzieher_HIGH|Default Take|Layer0
+    7400220: PlatteMond_low|Axt_HIGH|Default Take|Layer0
+    7400222: PlatteMond_low|Axt_LOW|Default Take|Layer0
+    7400224: PlatteMond_low|Hammer_HIGH|Default Take|Layer0
+    7400226: PlatteMond_low|Hammer|Default Take|Layer0
+    7400228: PlatteMond_low|Mutter_HIGH|Default Take|Layer0
+    7400230: PlatteMond_low|Mutter|Default Take|Layer0
+    7400232: PlatteMond_low|Nagel_HIGH|Default Take|Layer0
+    7400234: PlatteMond_low|Nagel|Default Take|Layer0
+    7400236: PlatteMond_low|Platte_HIGH|Default Take|Layer0
+    7400238: PlatteMond_low|PlatteMond_HIGH|Default Take|Layer0
+    7400240: PlatteMond_low|PlatteMond|Default Take|Layer0
+    7400242: PlatteMond_low|PlatteStern_HIGH|Default Take|Layer0
+    7400244: PlatteMond_low|PlatteStern|Default Take|Layer0
+    7400246: PlatteMond_low|Platte|Default Take|Layer0
+    7400248: PlatteMond_low|Rohrzange_HIGH|Default Take|Layer0
+    7400250: PlatteMond_low|Rohrzange|Default Take|Layer0
+    7400252: PlatteMond_low|Schraube_HIGH|Default Take|Layer0
+    7400254: PlatteMond_low|Schraubenschl_ssel_HIGH|Default Take|Layer0
+    7400256: PlatteMond_low|Schraubenschl_ssel|Default Take|Layer0
+    7400258: PlatteMond_low|Schraubenzieher|Default Take|Layer0
+    7400260: PlatteMond_low|Schraube|Default Take|Layer0
+    7400262: PlatteMond_low|Schreibenzieher_HIGH|Default Take|Layer0
+    7400264: Schraubenzieher_low|Axt_HIGH|Default Take|Layer0
+    7400266: Schraubenzieher_low|Axt_LOW|Default Take|Layer0
+    7400268: Schraubenzieher_low|Hammer_HIGH|Default Take|Layer0
+    7400270: Schraubenzieher_low|Hammer|Default Take|Layer0
+    7400272: Schraubenzieher_low|Mutter_HIGH|Default Take|Layer0
+    7400274: Schraubenzieher_low|Mutter|Default Take|Layer0
+    7400276: Schraubenzieher_low|Nagel_HIGH|Default Take|Layer0
+    7400278: Schraubenzieher_low|Nagel|Default Take|Layer0
+    7400280: Schraubenzieher_low|Platte_HIGH|Default Take|Layer0
+    7400282: Schraubenzieher_low|PlatteMond_HIGH|Default Take|Layer0
+    7400284: Schraubenzieher_low|PlatteMond|Default Take|Layer0
+    7400286: Schraubenzieher_low|PlatteStern_HIGH|Default Take|Layer0
+    7400288: Schraubenzieher_low|PlatteStern|Default Take|Layer0
+    7400290: Schraubenzieher_low|Platte|Default Take|Layer0
+    7400292: Schraubenzieher_low|Rohrzange_HIGH|Default Take|Layer0
+    7400294: Schraubenzieher_low|Rohrzange|Default Take|Layer0
+    7400296: Schraubenzieher_low|Schraube_HIGH|Default Take|Layer0
+    7400298: Schraubenzieher_low|Schraubenschl_ssel_HIGH|Default Take|Layer0
+    7400300: Schraubenzieher_low|Schraubenschl_ssel|Default Take|Layer0
+    7400302: Schraubenzieher_low|Schraubenzieher|Default Take|Layer0
+    7400304: Schraubenzieher_low|Schraube|Default Take|Layer0
+    7400306: Schraubenzieher_low|Schreibenzieher_HIGH|Default Take|Layer0
+    7400308: Schraubenschluessel_low|Axt_HIGH|Default Take|Layer0
+    7400310: Schraubenschluessel_low|Axt_LOW|Default Take|Layer0
+    7400312: Schraubenschluessel_low|Hammer_HIGH|Default Take|Layer0
+    7400314: Schraubenschluessel_low|Hammer|Default Take|Layer0
+    7400316: Schraubenschluessel_low|Mutter_HIGH|Default Take|Layer0
+    7400318: Schraubenschluessel_low|Mutter|Default Take|Layer0
+    7400320: Schraubenschluessel_low|Nagel_HIGH|Default Take|Layer0
+    7400322: Schraubenschluessel_low|Nagel|Default Take|Layer0
+    7400324: Schraubenschluessel_low|Platte_HIGH|Default Take|Layer0
+    7400326: Schraubenschluessel_low|PlatteMond_HIGH|Default Take|Layer0
+    7400328: Schraubenschluessel_low|PlatteMond|Default Take|Layer0
+    7400330: Schraubenschluessel_low|PlatteStern_HIGH|Default Take|Layer0
+    7400332: Schraubenschluessel_low|PlatteStern|Default Take|Layer0
+    7400334: Schraubenschluessel_low|Platte|Default Take|Layer0
+    7400336: Schraubenschluessel_low|Rohrzange_HIGH|Default Take|Layer0
+    7400338: Schraubenschluessel_low|Rohrzange|Default Take|Layer0
+    7400340: Schraubenschluessel_low|Schraube_HIGH|Default Take|Layer0
+    7400342: Schraubenschluessel_low|Schraubenschl_ssel_HIGH|Default Take|Layer0
+    7400344: Schraubenschluessel_low|Schraubenschl_ssel|Default Take|Layer0
+    7400346: Schraubenschluessel_low|Schraubenzieher|Default Take|Layer0
+    7400348: Schraubenschluessel_low|Schraube|Default Take|Layer0
+    7400350: Schraubenschluessel_low|Schreibenzieher_HIGH|Default Take|Layer0
+    7400352: Rohrzange_low|Axt_HIGH|Default Take|Layer0
+    7400354: Rohrzange_low|Axt_LOW|Default Take|Layer0
+    7400356: Rohrzange_low|Hammer_HIGH|Default Take|Layer0
+    7400358: Rohrzange_low|Hammer|Default Take|Layer0
+    7400360: Rohrzange_low|Mutter_HIGH|Default Take|Layer0
+    7400362: Rohrzange_low|Mutter|Default Take|Layer0
+    7400364: Rohrzange_low|Nagel_HIGH|Default Take|Layer0
+    7400366: Rohrzange_low|Nagel|Default Take|Layer0
+    7400368: Rohrzange_low|Platte_HIGH|Default Take|Layer0
+    7400370: Rohrzange_low|PlatteMond_HIGH|Default Take|Layer0
+    7400372: Rohrzange_low|PlatteMond|Default Take|Layer0
+    7400374: Rohrzange_low|PlatteStern_HIGH|Default Take|Layer0
+    7400376: Rohrzange_low|PlatteStern|Default Take|Layer0
+    7400378: Rohrzange_low|Platte|Default Take|Layer0
+    7400380: Rohrzange_low|Rohrzange_HIGH|Default Take|Layer0
+    7400382: Rohrzange_low|Rohrzange|Default Take|Layer0
+    7400384: Rohrzange_low|Schraube_HIGH|Default Take|Layer0
+    7400386: Rohrzange_low|Schraubenschl_ssel_HIGH|Default Take|Layer0
+    7400388: Rohrzange_low|Schraubenschl_ssel|Default Take|Layer0
+    7400390: Rohrzange_low|Schraubenzieher|Default Take|Layer0
+    7400392: Rohrzange_low|Schraube|Default Take|Layer0
+    7400394: Rohrzange_low|Schreibenzieher_HIGH|Default Take|Layer0
+    7400396: Hammer_low|Axt_HIGH|Default Take|Layer0
+    7400398: Hammer_low|Axt_LOW|Default Take|Layer0
+    7400400: Hammer_low|Hammer_HIGH|Default Take|Layer0
+    7400402: Hammer_low|Hammer|Default Take|Layer0
+    7400404: Hammer_low|Mutter_HIGH|Default Take|Layer0
+    7400406: Hammer_low|Mutter|Default Take|Layer0
+    7400408: Hammer_low|Nagel_HIGH|Default Take|Layer0
+    7400410: Hammer_low|Nagel|Default Take|Layer0
+    7400412: Hammer_low|Platte_HIGH|Default Take|Layer0
+    7400414: Hammer_low|PlatteMond_HIGH|Default Take|Layer0
+    7400416: Hammer_low|PlatteMond|Default Take|Layer0
+    7400418: Hammer_low|PlatteStern_HIGH|Default Take|Layer0
+    7400420: Hammer_low|PlatteStern|Default Take|Layer0
+    7400422: Hammer_low|Platte|Default Take|Layer0
+    7400424: Hammer_low|Rohrzange_HIGH|Default Take|Layer0
+    7400426: Hammer_low|Rohrzange|Default Take|Layer0
+    7400428: Hammer_low|Schraube_HIGH|Default Take|Layer0
+    7400430: Hammer_low|Schraubenschl_ssel_HIGH|Default Take|Layer0
+    7400432: Hammer_low|Schraubenschl_ssel|Default Take|Layer0
+    7400434: Hammer_low|Schraubenzieher|Default Take|Layer0
+    7400436: Hammer_low|Schraube|Default Take|Layer0
+    7400438: Hammer_low|Schreibenzieher_HIGH|Default Take|Layer0
+    9500000: //RootNode
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

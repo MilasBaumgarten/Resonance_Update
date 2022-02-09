@@ -1,0 +1,161 @@
+fileFormatVersion: 2
+guid: d488aba3eaa9cb245ad9270d84e57022
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: backside
+    100004: con_beam
+    100006: con_beam1
+    100008: con_link
+    100010: con_link1
+    100012: con_plate
+    100014: con_plate1
+    100016: left_connector
+    100018: Light_01
+    100020: Light_02
+    100022: Light_03
+    100024: light_panel
+    100026: right_connector
+    400000: //RootNode
+    400002: backside
+    400004: con_beam
+    400006: con_beam1
+    400008: con_link
+    400010: con_link1
+    400012: con_plate
+    400014: con_plate1
+    400016: left_connector
+    400018: Light_01
+    400020: Light_02
+    400022: Light_03
+    400024: light_panel
+    400026: right_connector
+    2100000: wallight_case1
+    2100002: wallight_glas1
+    2300000: backside
+    2300002: con_beam
+    2300004: con_beam1
+    2300006: con_link
+    2300008: con_link1
+    2300010: con_plate
+    2300012: con_plate1
+    2300014: Light_01
+    2300016: Light_02
+    2300018: Light_03
+    2300020: light_panel
+    3300000: backside
+    3300002: con_beam
+    3300004: con_beam1
+    3300006: con_link
+    3300008: con_link1
+    3300010: con_plate
+    3300012: con_plate1
+    3300014: Light_01
+    3300016: Light_02
+    3300018: Light_03
+    3300020: light_panel
+    4300000: backside
+    4300002: Light_01
+    4300004: Light_02
+    4300006: Light_03
+    4300008: light_panel
+    4300010: con_link
+    4300012: con_link1
+    4300014: con_plate
+    4300016: con_beam
+    4300018: con_plate1
+    4300020: con_beam1
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wallight_case1
+    second: {fileID: 2100000, guid: b51bbbc848045a149b622bc0d0d6af6f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wallight_glas1
+    second: {fileID: 2100000, guid: 1baae0a7666952847b9f59c6e054473a, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 10
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
