@@ -4,9 +4,9 @@ using Unity.Collections;
 
 public class CharacterSelector : NetworkBehaviour {
 	[SerializeField]
-	private Material catrionaMat;
+	private GameObject catriona;
 	[SerializeField]
-	private Material robertMat;
+	private GameObject robert;
 
 	public NetworkVariable<FixedString64Bytes> selectedCharacter = new NetworkVariable<FixedString64Bytes>("");
 
@@ -21,10 +21,12 @@ public class CharacterSelector : NetworkBehaviour {
 
 		switch (newCharacter.ToString()) {
 			case "CATRIONA":
-				GetComponent<MeshRenderer>().material = catrionaMat;
+				catriona.SetActive(true);
+				robert.SetActive(false);
 				break;
 			case "ROBERT":
-				GetComponent<MeshRenderer>().material = robertMat;
+				catriona.SetActive(false);
+				robert.SetActive(true);
 				break;
 			default:
 				Debug.Log($"character string not set or unknown: {newCharacter}");
