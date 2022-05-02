@@ -88,7 +88,7 @@ public class LobbyManager : NetworkBehaviour {
 		//check that two players are in the lobby
 		if (currentLobby.Players.Count != 2) {
 			Debug.LogWarning($"Expected a player count of 2, found: {currentLobby.Players.Count}!");
-			return false;
+			//return false;
 		}
 		UpdatePlayerCharactersClientRpc(selectedCharacter);
 		return true;
