@@ -10,7 +10,7 @@ public class CharacterSelector : NetworkBehaviour {
 
 	public NetworkVariable<FixedString64Bytes> selectedCharacter = new NetworkVariable<FixedString64Bytes>("");
 
-	[ServerRpc]
+	[ServerRpc(RequireOwnership = false)]
 	public void SetSelectedCharacterServerRPC(string character) {
 		selectedCharacter.Value = character;
 	}

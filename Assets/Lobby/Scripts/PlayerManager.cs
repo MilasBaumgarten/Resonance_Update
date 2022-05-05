@@ -20,6 +20,7 @@ public class PlayerManager : NetworkBehaviour {
 			Instance = this;
 			DontDestroyOnLoad(this);
 		} else {
+			Debug.Log("Destroy!");
 			Destroy(this);
 		}
 	}
@@ -33,11 +34,7 @@ public class PlayerManager : NetworkBehaviour {
 	}
 
 	private void SceneManager_OnLoadComplete(ulong clientId, string sceneName, UnityEngine.SceneManagement.LoadSceneMode loadSceneMode) {
-		if (!IsOwner) {
-			return;
-		}
-
-		if (sceneName == lobbySceneName) {
+		if (!IsOwner || sceneName == lobbySceneName) {
 			return;
 		}
 
@@ -61,7 +58,8 @@ public class PlayerManager : NetworkBehaviour {
 		newPlayer.SetActive(true);
 		netObj.SpawnAsPlayerObject(clientId, false);
 
-		SelectCharacterClientRPC(newPlayer.GetComponent<NetworkObject>(), characterName);
+		newPlayer.GetComponent<CharacterSelector>().SetSelectedCharacterServerRPC(characterName);
+		//SelectCharacterClientRPC(newPlayer.GetComponent<NetworkObject>(), characterName);
 
 		Debug.Log("Player was spawned as: " + characterName);
 

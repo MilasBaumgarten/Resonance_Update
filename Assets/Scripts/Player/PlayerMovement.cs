@@ -6,20 +6,20 @@
 // For syncing a NetworkManager is required
 
 using UnityEngine;
-using Unity.Netcode.Components;
+using Unity.Netcode.Samples;
 
-[RequireComponent(typeof(NetworkTransform), typeof(CharacterController))]
+[RequireComponent(typeof(ClientNetworkTransform), typeof(CharacterController))]
 
 public class PlayerMovement : MonoBehaviour {
 
 	private Settings playerSettings;
-	private InputSettings input;
 
 	private float vSpeed = 0;
 
 	private float playerSpeed;
-
 	private Vector3 moveDirection;
+
+	//private Vector3 moveDirection;
 	[SerializeField]
 	private Animator anim;
 
@@ -31,7 +31,6 @@ public class PlayerMovement : MonoBehaviour {
 		if (!anim) anim = transform.GetComponentInChildren<Animator>();
 
 		playerSettings = GameManager.instance.settings;
-		input = GameManager.instance.input;
 
 		// use move speed from settings
 		playerSpeed = playerSettings.moveSpeed;
@@ -44,6 +43,7 @@ public class PlayerMovement : MonoBehaviour {
 	void Update() {
 		moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical")); // Get input as a Vector3
 																								 // Input used to move the player in different directions
+
 		UpdateAnimation(moveDirection);
 		if (moveDirection.magnitude > 0f) {
 			moveDirection *= playerSpeed * Time.deltaTime;
