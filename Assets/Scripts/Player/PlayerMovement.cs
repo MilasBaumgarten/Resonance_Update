@@ -5,17 +5,18 @@
 // Should be attached to the PlayerPrefab
 // For syncing a NetworkManager is required
 
+using Photon.Pun;
 using UnityEngine;
-using Unity.Netcode.Samples;
 
-[RequireComponent(typeof(ClientNetworkTransform), typeof(CharacterController))]
+[RequireComponent(typeof(CharacterController))]
 
-public class PlayerMovement : MonoBehaviour {
+public class PlayerMovement : MonoBehaviourPun {
 
-	private Settings playerSettings;
+	//private Settings playerSettings;
 
 	private float vSpeed = 0;
 
+	[SerializeField]
 	private float playerSpeed;
 	private Vector3 moveDirection;
 
@@ -27,13 +28,18 @@ public class PlayerMovement : MonoBehaviour {
 	private CharacterController characterController;
 
 	private void Start() {
+		// check if is local player
+		if (photonView.IsMine == false && PhotonNetwork.IsConnected == true) {
+			enabled = false;
+		}
+
 		characterController = GetComponent<CharacterController>();
 		if (!anim) anim = transform.GetComponentInChildren<Animator>();
 
-		playerSettings = GameManager.instance.settings;
+		//playerSettings = GameManager.instance.settings;
 
 		// use move speed from settings
-		playerSpeed = playerSettings.moveSpeed;
+		//playerSpeed = playerSettings.moveSpeed;
 	}
 
 	private void OnDisable() {
