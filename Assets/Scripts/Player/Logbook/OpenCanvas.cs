@@ -1,13 +1,23 @@
 ﻿using UnityEngine;
-using Unity.Netcode;
+using Photon.Pun;
 
-public class OpenCanvas : NetworkBehaviour {
-	public LogbookManager logbook;
-	public InputSettings input;
+public class OpenCanvas : MonoBehaviourPun {
+	[SerializeField]
+	private InputSettings input;
+
+	[SerializeField]
+	private LogbookManager logbookCatriona;
+	[SerializeField]
+	private LogbookManager logbookRobert;
+
+	private LogbookManager logbook;
 
 	void Start() {
-		if (!IsLocalPlayer)
-			this.enabled = false;
+		// check if is local player
+		if (photonView.IsMine == false && PhotonNetwork.IsConnected == true) {
+			enabled = false;
+		}
+		logbook = GetComponent<PlayerManager>().logbook;
 	}
 
 	// Update is called once per frame

@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
-using Unity.Netcode;
 using UnityEngine.UI;
+using Photon.Pun;
 
-public class ArmTool : NetworkBehaviour {
+public class ArmTool : MonoBehaviourPun {
     [SerializeField]
     private StateMachine stateMachine;
     [SerializeField]
@@ -13,16 +13,20 @@ public class ArmTool : NetworkBehaviour {
     private Image toolIcon;
     [SerializeField]
     private Transform modules;
-    private int layerMask = ~(1 << 9);
+    private int layerMask = ~(1 << 9);  // TODO: DAFUQ
     private Transform cam;
     public bool armUp = false;
 
-    InputSettings input;
-    Settings settings;
+    [SerializeField]
+    private InputSettings input;
+    [SerializeField]
+    private Settings settings;
 
     void Start() {
-        input = GameManager.instance.input;
-        settings = GameManager.instance.settings;
+        if (photonView.IsMine == false && PhotonNetwork.IsConnected == true) {
+            enabled = false;
+        }
+
         cam = transform.GetComponentInChildren<Camera>().transform;
         equipped = new ArmToolModule[4];
         foreach (Transform child in modules) {
@@ -31,62 +35,62 @@ public class ArmTool : NetworkBehaviour {
         ChangeIconColor();
     }
 
-    //void Update() {
-    //    if (IsLocalPlayer) {
-    //        if (Input.GetKeyDown(input.armTool)) {
+	//void Update() {
+	//	if (IsLocalPlayer) {
+	//		if (Input.GetKeyDown(input.armTool)) {
 
-    //            GameObject interactTarget;
-    //            RaycastHit hit;
-    //            if (Physics.Raycast(cam.position, cam.forward, out hit, settings.maxDist, layerMask)) {
-    //                interactTarget = hit.transform.gameObject;
-    //                if (interactTarget.GetComponent<Interactable>()) {
-    //                    InteractServerRpc(interactTarget);
-    //                }
-    //                if (equipped[selected]) {
-    //                    equipped[selected].Function(interactTarget);
-    //                }
-    //            } else {
-    //                if (equipped[selected]) {
-    //                    equipped[selected].Function(null);
-    //                }
-    //            }
-    //        }
-    //        if (Input.GetKeyDown(KeyCode.Alpha1) && equipped[1]) {
-    //            if(selected == 1) {
-    //                selected = 0;
-    //                ChangeIconColor();
-    //            } else {
-    //                selected = 1;
-    //                ChangeIconColor();
-    //            }
-    //        }
-    //        if (Input.GetKeyDown(KeyCode.Alpha2) && equipped[2]) {
-    //            if (selected == 2) {
-    //                selected = 0;
-    //                ChangeIconColor();
-    //            } else {
-    //                selected = 2;
-    //                ChangeIconColor();
-    //            }
-    //        }
-    //        if (Input.GetKeyDown(KeyCode.Alpha3) && equipped[3]) {
-    //            if (selected == 3) {
-    //                selected = 0;
-    //                ChangeIconColor();
-    //            } else {
-    //                selected = 3;
-    //                ChangeIconColor();
-    //            }
-    //        }
-    //        if(selected > 0) {
-    //            armUp = true;
-    //        } else {
-    //            armUp = false;
-    //        }
-    //    }
-    //}
+	//			GameObject interactTarget;
+	//			RaycastHit hit;
+	//			if (Physics.Raycast(cam.position, cam.forward, out hit, settings.maxDist, layerMask)) {
+	//				interactTarget = hit.transform.gameObject;
+	//				if (interactTarget.GetComponent<Interactable>()) {
+	//					InteractServerRpc(interactTarget);
+	//				}
+	//				if (equipped[selected]) {
+	//					equipped[selected].Function(interactTarget);
+	//				}
+	//			} else {
+	//				if (equipped[selected]) {
+	//					equipped[selected].Function(null);
+	//				}
+	//			}
+	//		}
+	//		if (Input.GetKeyDown(KeyCode.Alpha1) && equipped[1]) {
+	//			if (selected == 1) {
+	//				selected = 0;
+	//				ChangeIconColor();
+	//			} else {
+	//				selected = 1;
+	//				ChangeIconColor();
+	//			}
+	//		}
+	//		if (Input.GetKeyDown(KeyCode.Alpha2) && equipped[2]) {
+	//			if (selected == 2) {
+	//				selected = 0;
+	//				ChangeIconColor();
+	//			} else {
+	//				selected = 2;
+	//				ChangeIconColor();
+	//			}
+	//		}
+	//		if (Input.GetKeyDown(KeyCode.Alpha3) && equipped[3]) {
+	//			if (selected == 3) {
+	//				selected = 0;
+	//				ChangeIconColor();
+	//			} else {
+	//				selected = 3;
+	//				ChangeIconColor();
+	//			}
+	//		}
+	//		if (selected > 0) {
+	//			armUp = true;
+	//		} else {
+	//			armUp = false;
+	//		}
+	//	}
+	//}
 
-    public void DeselectTool()
+	public void DeselectTool()
     {
         this.selected = 0;
         ChangeIconColor();

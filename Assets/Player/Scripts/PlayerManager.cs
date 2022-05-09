@@ -6,14 +6,23 @@ public class PlayerManager : MonoBehaviourPun {
 	[Tooltip("The local player instance. Use this to know if the local player is represented in the Scene")]
 	public static GameObject LocalPlayerInstance;
 
-	[Tooltip("The Player's UI GameObject Prefab")]
-	[SerializeField]
-	public GameObject PlayerUiPrefab;
-
 	[SerializeField]
 	private GameObject catrionaModel;
 	[SerializeField]
 	private GameObject robertModel;
+
+	[SerializeField]
+	private LogbookManager logbookCatriona;
+	[SerializeField]
+	private LogbookManager logbookRobert;
+
+	public LogbookManager logbook { get; private set; }
+
+	[SerializeField]
+	private Animator catrionaAnimator;
+	[SerializeField]
+	private Animator robertAnimator;
+	public Animator animator { get; private set; }
 
 	[SerializeField]
 	private Vector3 spawnOffset = new Vector3(0.0f, 0.6f, 0.0f);
@@ -21,7 +30,7 @@ public class PlayerManager : MonoBehaviourPun {
 	void Awake() {
 		// #Important
 		// used in GameManager.cs: we keep track of the localPlayer instance to prevent instantiation when levels are synchronized
-		if (photonView.IsMine) {
+		if (photonView.IsMine == false && PhotonNetwork.IsConnected == true) {
 			LocalPlayerInstance = gameObject;
 		}
 		// #Critical
@@ -29,14 +38,8 @@ public class PlayerManager : MonoBehaviourPun {
 		DontDestroyOnLoad(gameObject);
 
 		SceneManager.sceneLoaded += OnSceneLoaded;
-	}
 
-	private void Start() {
-		if (PlayerUiPrefab != null) {
-			SetupPlayer();
-		} else {
-			Debug.LogWarning("<Color=Red><a>Missing</a></Color> PlayerUiPrefab reference on player Prefab.", this);
-		}
+		SetupPlayer();
 	}
 
 	void OnSceneLoaded(Scene scene, LoadSceneMode loadingMode) {
@@ -49,28 +52,27 @@ public class PlayerManager : MonoBehaviourPun {
 			transform.position = new Vector3(0f, 5f, 0f);
 		}
 
-		if (PlayerUiPrefab != null) {
-			SetupPlayer();
-		} else {
-			Debug.LogWarning("<Color=Red><a>Missing</a></Color> PlayerUiPrefab reference on player Prefab.", this);
-		}
+		SetupPlayer();
 	}
 
 	private void SetupPlayer() {
-		GameObject _uiGo = Instantiate(PlayerUiPrefab);
-		_uiGo.SendMessage("SetTarget", this, SendMessageOptions.RequireReceiver);
-
 		// set player visuals
 		string nickname = photonView.Owner.NickName;
 		if (nickname.Equals(CharacterEnum.CATRIONA.ToString())) {
 			catrionaModel.SetActive(true);
 			robertModel.SetActive(false);
+			logbook = logbookCatriona;
+			animator = catrionaAnimator;
 			Debug.LogWarning("<Color=Green><a>Player</a></Color> set to Catriona.");
-		} else if (nickname.Equals(CharacterEnum.ROBERT.ToString())) {
+		}
+		else if (nickname.Equals(CharacterEnum.ROBERT.ToString())) {
 			catrionaModel.SetActive(false);
 			robertModel.SetActive(true);
+			logbook = logbookRobert;
+			animator = robertAnimator;
 			Debug.LogWarning("<Color=Green><a>Player</a></Color> set to Robert.");
-		} else {
+		}
+		else {
 			Debug.LogWarning("<Color=Red><a>Player</a></Color> nickname: " + nickname + " is unknown.");
 		}
 

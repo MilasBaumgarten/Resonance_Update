@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 /**
  * Author: Leon Ullrich
@@ -9,6 +7,7 @@ using UnityEngine;
  * 
  * Changes: Noah Stolz
  * Added variable to disable bobbing outside of script
+ * 
  */
 public class HeadBob : MonoBehaviour {
     // Initial position of the camera

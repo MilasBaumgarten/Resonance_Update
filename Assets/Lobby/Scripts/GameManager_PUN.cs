@@ -33,8 +33,17 @@ public class GameManager_PUN : MonoBehaviourPunCallbacks {
 			Debug.LogError("PhotonNetwork : Trying to Load a level but we are not the master Client");
 			return;
 		}
-		Debug.LogFormat("PhotonNetwork : Loading Level : {0}", PhotonNetwork.CurrentRoom.PlayerCount);
-		PhotonNetwork.LoadLevel("Room_" + PhotonNetwork.CurrentRoom.PlayerCount);
+
+		// ToDo: erst Lobby laden und dann die Szene (veränderbar)
+
+		if (PhotonNetwork.CurrentRoom.PlayerCount == 2) {
+			Debug.LogFormat("PhotonNetwork : Loading Level : Act1_Base");
+			PhotonNetwork.LoadLevel("Act1_Base");
+
+		} else {
+			Debug.LogFormat("PhotonNetwork : Loading Level : {0}", PhotonNetwork.CurrentRoom.PlayerCount);
+			PhotonNetwork.LoadLevel("Room_" + PhotonNetwork.CurrentRoom.PlayerCount);
+		}
 	}
 
 	/// <summary>
@@ -47,7 +56,7 @@ public class GameManager_PUN : MonoBehaviourPunCallbacks {
 	public override void OnPlayerEnteredRoom(Player other) {
 		Debug.LogFormat("OnPlayerEnteredRoom() {0}", other.NickName); // not seen if you're the player connecting
 		if (PhotonNetwork.IsMasterClient) {
-			Debug.LogFormat("OnPlayerEnteredRoom IsMasterClient {0}", PhotonNetwork.IsMasterClient); // called before OnPlayerLeftRoom
+			Debug.LogFormat("OnPlayerEnteredRoom IsMasterClient {0}", PhotonNetwork.IsMasterClient);
 			LoadArena();
 		}
 	}
@@ -55,7 +64,7 @@ public class GameManager_PUN : MonoBehaviourPunCallbacks {
 	public override void OnPlayerLeftRoom(Player other) {
 		Debug.LogFormat("OnPlayerLeftRoom() {0}", other.NickName); // seen when other disconnects
 		if (PhotonNetwork.IsMasterClient) {
-			Debug.LogFormat("OnPlayerLeftRoom IsMasterClient {0}", PhotonNetwork.IsMasterClient); // called before OnPlayerLeftRoom
+			Debug.LogFormat("OnPlayerLeftRoom IsMasterClient {0}", PhotonNetwork.IsMasterClient);
 			LoadArena();
 		}
 	}

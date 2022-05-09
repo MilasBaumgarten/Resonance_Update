@@ -1,9 +1,18 @@
-﻿// Author: Noah Stolz
-// changes: Felix Werner (11.10.2018)
-// added gravity: Leon Ullrich (31.10.2018)
-// Allows the player to move
-// Should be attached to the PlayerPrefab
-// For syncing a NetworkManager is required
+﻿/*
+ * Author: Noah Stolz
+ * 
+ * changes: 
+ * Felix Werner (11.10.2018)
+ * added gravity: Leon Ullrich (31.10.2018)
+ * Allows the player to move
+ * 
+ * Should be attached to the PlayerPrefab
+ * For syncing a NetworkManager is required
+
+ * Changes: Milas Baumgarten
+ * - update to Unity 2020.3
+ * - implement new Network Code
+ */
 
 using Photon.Pun;
 using UnityEngine;
@@ -20,14 +29,8 @@ public class PlayerMovement : MonoBehaviourPun {
 	private float playerSpeed;
 	private Vector3 moveDirection;
 
-	[SerializeField]
-	private Animator catrionaAnimator;
-	[SerializeField]
-	private Animator robertAnimator;
-	private Animator anim;
-
-	[Tooltip("CharacterController attached to the prefab")]
 	private CharacterController characterController;
+	private Animator animator;
 
 	private void Start() {
 		// check if is local player
@@ -36,15 +39,7 @@ public class PlayerMovement : MonoBehaviourPun {
 		}
 
 		characterController = GetComponent<CharacterController>();
-
-		string nickname = photonView.Owner.NickName;
-		if (nickname.Equals(CharacterEnum.CATRIONA.ToString())) {
-			anim = catrionaAnimator;
-		} else if (nickname.Equals(CharacterEnum.ROBERT.ToString())) {
-			anim = robertAnimator;
-		} else {
-			Debug.LogWarning("<Color=Red><a>Player</a></Color> nickname: " + nickname + " is unknown.");
-		}
+		animator = GetComponent<PlayerManager>().animator;
 	}
 
 	private void OnDisable() {
@@ -65,9 +60,9 @@ public class PlayerMovement : MonoBehaviourPun {
 
 	void UpdateAnimation(Vector3 inputDir) {
 		// Animator stuff
-		if (anim) {
-			anim.SetFloat("horizontalSpeed", inputDir.x);
-			anim.SetFloat("verticalSpeed", inputDir.z);
+		if (animator) {
+			animator.SetFloat("horizontalSpeed", inputDir.x);
+			animator.SetFloat("verticalSpeed", inputDir.z);
 		}
 	}
 
