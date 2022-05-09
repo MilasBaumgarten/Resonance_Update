@@ -20,8 +20,10 @@ public class PlayerMovement : MonoBehaviourPun {
 	private float playerSpeed;
 	private Vector3 moveDirection;
 
-	//private Vector3 moveDirection;
 	[SerializeField]
+	private Animator catrionaAnimator;
+	[SerializeField]
+	private Animator robertAnimator;
 	private Animator anim;
 
 	[Tooltip("CharacterController attached to the prefab")]
@@ -34,12 +36,15 @@ public class PlayerMovement : MonoBehaviourPun {
 		}
 
 		characterController = GetComponent<CharacterController>();
-		if (!anim) anim = transform.GetComponentInChildren<Animator>();
 
-		//playerSettings = GameManager.instance.settings;
-
-		// use move speed from settings
-		//playerSpeed = playerSettings.moveSpeed;
+		string nickname = photonView.Owner.NickName;
+		if (nickname.Equals(CharacterEnum.CATRIONA.ToString())) {
+			anim = catrionaAnimator;
+		} else if (nickname.Equals(CharacterEnum.ROBERT.ToString())) {
+			anim = robertAnimator;
+		} else {
+			Debug.LogWarning("<Color=Red><a>Player</a></Color> nickname: " + nickname + " is unknown.");
+		}
 	}
 
 	private void OnDisable() {

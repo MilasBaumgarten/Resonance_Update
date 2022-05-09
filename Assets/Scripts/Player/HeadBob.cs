@@ -23,13 +23,12 @@ public class HeadBob : MonoBehaviour {
     [HideInInspector]
     public bool stopSmooth = false;
 
+    [SerializeField]
     private Settings playerSettings;
 
     float timer = Mathf.PI / 2;
 
     void Start() {
-		playerSettings = GameManager.instance.settings;
-
         // initialize values
         camPos = transform.localPosition;
         restPosition = camPos;

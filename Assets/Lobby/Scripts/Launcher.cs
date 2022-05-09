@@ -3,7 +3,6 @@ using Photon.Pun;
 using Photon.Realtime;
 
 public class Launcher : MonoBehaviourPunCallbacks {
-	#region Private Serializable Fields
 	/// <summary>
 	/// The maximum number of players per room. When a room is full, it can't be joined by new players, and so new room will be created.
 	/// </summary>
@@ -17,9 +16,7 @@ public class Launcher : MonoBehaviourPunCallbacks {
 	[Tooltip("The UI Label to inform the user that the connection is in progress")]
 	[SerializeField]
 	private GameObject progressLabel;
-	#endregion
 
-	#region Private Fields
 	/// <summary>
 	/// This client's version number. Users are separated from each other by gameVersion (which allows you to make breaking changes).
 	/// </summary>
@@ -31,9 +28,10 @@ public class Launcher : MonoBehaviourPunCallbacks {
 	/// Typically this is used for the OnConnectedToMaster() callback.
 	/// </summary>
 	bool isConnecting;
-	#endregion
 
-	#region MonoBehaviour CallBacks
+	// Store the PlayerPref Key to avoid typos
+	const string playerNamePrefKey = "PlayerName";
+
 	void Awake() {
 		// #Critical
 		// this makes sure we can use PhotonNetwork.LoadLevel() on the master client and all clients in the same room sync their level automatically
@@ -44,9 +42,7 @@ public class Launcher : MonoBehaviourPunCallbacks {
 		progressLabel.SetActive(false);
 		controlPanel.SetActive(true);
 	}
-	#endregion
 
-	#region Public Methods
 	/// <summary>
 	/// Start the connection process.
 	/// - If already connected, we attempt joining a random room
@@ -67,9 +63,12 @@ public class Launcher : MonoBehaviourPunCallbacks {
 			PhotonNetwork.GameVersion = gameVersion;
 		}
 	}
-	#endregion
 
-	#region Photon Callbacks
+	public void ConnectWithNickname(string value) {
+		PhotonNetwork.NickName = value;
+		Connect();
+	}
+
 	public override void OnConnectedToMaster() {
 		Debug.Log("PUN Basics Tutorial/Launcher: OnConnectedToMaster() was called by PUN");
 
@@ -108,5 +107,4 @@ public class Launcher : MonoBehaviourPunCallbacks {
 		controlPanel.SetActive(true);
 		Debug.LogWarningFormat("PUN Basics Tutorial/Launcher: OnDisconnected() was called by PUN with reason {0}", cause);
 	}
-	#endregion
 }

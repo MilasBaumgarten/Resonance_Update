@@ -20,7 +20,7 @@ public class PlayerNameInputField : MonoBehaviour {
     /// </summary>
     void Start() {
         string defaultName = string.Empty;
-        TMP_InputField _inputField = this.GetComponent<TMP_InputField>();
+        TMP_InputField _inputField = GetComponent<TMP_InputField>();
         if (_inputField != null) {
             if (PlayerPrefs.HasKey(playerNamePrefKey)) {
                 defaultName = PlayerPrefs.GetString(playerNamePrefKey);
@@ -40,7 +40,7 @@ public class PlayerNameInputField : MonoBehaviour {
     public void SetPlayerName(string value) {
         // #Important
         if (string.IsNullOrEmpty(value)) {
-            Debug.LogError("Player Name is null or empty");
+            //Debug.LogError("Player Name is null or empty");
             return;
         }
         PhotonNetwork.NickName = value;
