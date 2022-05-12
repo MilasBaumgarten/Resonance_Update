@@ -6,6 +6,9 @@
 
 ## Programming
 - RotateCamerToVector macht Kamera kaputt, wenn sich zu früh beim zurückdrehen bewegt wird
+- ForceTool:
+	- bewegt sich nur Horizontal (ist das vlt sogar gewollt?)
+	- abwählen geht nur, wenn Objekt direkt angeschaut wird
 - replace InputSettings with Unity build in solution
 
 ## Art

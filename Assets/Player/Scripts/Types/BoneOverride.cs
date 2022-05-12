@@ -1,34 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BoneOverride : MonoBehaviour {
+	[SerializeField]
+	private bool aimAtTarget;
+	public Transform LookAtTarget;
+	public Vector3 Offset;
 
+	[HideInInspector]
+	public bool isActive;
 
-    [SerializeField]
-    private bool aimAtTarget;
-    public Transform LookAtTarget;
-    public Vector3 Offset;
+	[SerializeField]
+	private Animator anim;
 
-    [HideInInspector]
-    public bool isActive;
+	void LateUpdate() {
+		if (aimAtTarget) {
+			transform.LookAt(LookAtTarget.position);
+		}
 
-    [SerializeField]
-    private Animator anim;
-  
-    Transform Bone;
-    // Use this for initialization
-    void Start () {
-
-        Bone = this.transform;
-    }
-	
-	// Update is called once per frame
-	void LateUpdate () {
-
-      
-            if(aimAtTarget) Bone.LookAt(LookAtTarget.position);
-            Bone.rotation = Bone.rotation * Quaternion.Euler(Offset);
-     
-    }
+		transform.rotation = transform.rotation * Quaternion.Euler(Offset);
+	}
 }

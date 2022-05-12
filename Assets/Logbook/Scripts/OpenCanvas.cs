@@ -20,7 +20,6 @@ public class OpenCanvas : MonoBehaviourPun {
 		logbook = GetComponent<PlayerManager>().logbook;
 	}
 
-	// Update is called once per frame
 	void Update() {
 		if (Input.GetKeyDown(input.logbook)) {
 			if (logbook.isActive) {

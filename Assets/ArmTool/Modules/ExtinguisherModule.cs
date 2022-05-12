@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using UnityEngine.Networking;
+﻿using Photon.Pun;
+using UnityEngine;
 
 public class ExtinguisherModule : ArmToolModule {
 
@@ -12,11 +12,7 @@ public class ExtinguisherModule : ArmToolModule {
         }
     }
 
-    public override void Function(GameObject interactionTarget) {
-        //armTool.ModuleInteractServerRpc(extinguisher);
-    }
-
-    protected override void OnTriggerEnter(Collider other) {
-        base.OnTriggerEnter(other);
+    public override void Function(GameObject interactTarget) {
+        armTool.photonView.RPC("InteractModuleRpc", RpcTarget.All, extinguisher);
     }
 }

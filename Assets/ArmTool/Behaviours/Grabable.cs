@@ -7,10 +7,9 @@
 
 using System.Collections.Generic;
 using UnityEngine;
-using Unity.Netcode;
 using Logic.Triggers;
 
-[RequireComponent(typeof(Rigidbody), typeof(NetworkObject), typeof(ArmToolInteractionTrigger))]
+[RequireComponent(typeof(Rigidbody), typeof(ArmToolInteractionTrigger))]
 public class Grabable : ForceModuleBehaviour {
 	protected List<Transform> targetPositions;    // a list of all players' hold positions
 	protected List<LineRenderer> beamRenderers;

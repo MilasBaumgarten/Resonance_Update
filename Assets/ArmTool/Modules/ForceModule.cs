@@ -1,23 +1,27 @@
-﻿using UnityEngine;
+﻿using Photon.Pun;
+using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Networking;
 
 public class ForceModule : ArmToolModule {
+    [SerializeField]
+    private Settings settings;
+    [SerializeField]
+    private InputSettings input;
 
-    private Transform cam; // the camera attachtched to the player object
     [SerializeField]
     private Transform holdPos;  // the transform of the position infront of the player where objects should be held at
-    private bool grabbing = false;      // indicates if the player is already interacting
-    private GameObject interactTarget;
-
-    Settings settings;
-    InputSettings input;
-
-    private int layerMask = ~(1 << 9);
 
     public UnityEvent onGrab;
 
+    //private Transform cam; // the camera attachtched to the player object
+    private bool grabbing = false;      // indicates if the player is already interacting
+    //private GameObject interactTarget;
+
+    //private int layerMask = ~(1 << 9);
+
+    [SerializeField]
     private HeadBob headBob;
+    [SerializeField]
     private PlayerMovement playerMovement;
     private LineRenderer beamRenderer;
 
@@ -28,12 +32,12 @@ public class ForceModule : ArmToolModule {
     }
 
     private void Start() {
-        settings = GameManager.instance.settings;
-        input = GameManager.instance.input;
         beamRenderer = GetComponentInChildren<LineRenderer>();
         if (beamRenderer.enabled) {
             beamRenderer.enabled = false;
         }
+
+        //cam = Camera.main.transform;
     }
 
     private void Update() {
@@ -48,42 +52,30 @@ public class ForceModule : ArmToolModule {
         }
     }
 
-    public override void AttachTo(ArmTool armTool) {
-        base.AttachTo(armTool);
-        playerMovement = armTool.GetComponent<PlayerMovement>();
-        cam = armTool.GetComponentInChildren<Camera>().transform;
-        headBob = cam.GetComponent<HeadBob>();
-        holdPos = cam.parent.GetChild(1).transform;
-    }
-
     public override void Function(GameObject interactTarget) {
-   //     if (grabbing) {
-			//armTool.ModuleInteractServerRpc(this.interactTarget);
+		if (grabbing) {
+            armTool.photonView.RPC("InteractModuleRpc", RpcTarget.All, interactTarget);
 
-			//// unlock player
-			//headBob.SetBobbing(true);
-   //         playerMovement.enabled = true;
+			// unlock player
+			headBob.SetBobbing(true);
+			playerMovement.enabled = true;
 
-   //     } else {
-   //         if (interactTarget) {
-   //             // if an interactable object is hit and it is within range, interact with it
-   //             if (interactTarget.GetComponent<ForceModuleBehaviour>()) {
-   //                 this.interactTarget = interactTarget;
-   //                 armTool.ModuleInteractServerRpc(interactTarget);
-   //                 holdPos.localPosition = Vector3.forward * (interactTarget.transform.position - transform.position).magnitude;
+		} else {
+			if (interactTarget) {
+				// if an interactable object is hit and it is within range, interact with it
+				if (interactTarget.GetComponent<ForceModuleBehaviour>()) {
+					//this.interactTarget = interactTarget;
+                    armTool.photonView.RPC("InteractModuleRpc", RpcTarget.All, interactTarget);
+                    holdPos.localPosition = Vector3.forward * (interactTarget.transform.position - transform.position).magnitude;
 
-   //                 // lock player
-   //                 headBob.SetBobbing(false);
-   //                 playerMovement.enabled = false;
-   //             }
-   //         }
-   //     }
-   //     onGrab.Invoke();
-    }
-
-    protected override void OnTriggerEnter(Collider other) {
-        base.OnTriggerEnter(other);
-    }
+					// lock player
+					headBob.SetBobbing(false);
+					playerMovement.enabled = false;
+				}
+			}
+		}
+		onGrab.Invoke();
+	}
 
     // Toggle between true and false
     public void ToggleGrab() {

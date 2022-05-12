@@ -1,16 +1,11 @@
-﻿// Author: Feix Werner
-//
-//
+﻿using Photon.Pun;
 using UnityEngine;
-using UnityEngine.Networking;
 
 public class EnergyModule : ArmToolModule {
 
     [SerializeField]
     private GameObject cablePrefab;
-    private GameObject cable;
-    private Socket start;
-    [SerializeField]
+	[SerializeField]
     private float maxDist = 5f;
 
     public override Color color {
@@ -19,16 +14,12 @@ public class EnergyModule : ArmToolModule {
         }
     }
 
-    public override void Function(GameObject interactionTarget) {
-        //if (interactionTarget) {
-        //    Socket targetSocket = interactionTarget.transform.GetComponent<Socket>();
-        //    if (targetSocket) {
-        //        armTool.ModuleInteractServerRpc(interactionTarget);
-        //    }
-        //}
-    }
-
-    protected override void OnTriggerEnter(Collider other) {
-        base.OnTriggerEnter(other);
-    }
+    public override void Function(GameObject interactTarget) {
+		if (interactTarget) {
+			Socket targetSocket = interactTarget.transform.GetComponent<Socket>();
+			if (targetSocket) {
+                armTool.photonView.RPC("InteractModuleRpc", RpcTarget.All, interactTarget);
+            }
+		}
+	}
 }

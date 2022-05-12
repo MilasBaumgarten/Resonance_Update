@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Photon.Pun;
+using System;
 
 public class StateMachine : MonoBehaviourPun {
 	[SerializeField]
@@ -15,13 +16,19 @@ public class StateMachine : MonoBehaviourPun {
 	private LogbookManager logbook;
 
 	private void Start() {
-		string nickname = photonView.Owner.NickName;
+		string nickname = CharacterEnum.CATRIONA.ToString();
+		try {
+			nickname = photonView.Owner.NickName;
+		} catch (Exception e) {
+			Debug.Log("Playing in Offline Mode and owner was not found fast enough.\n" + e.Message);
+		}
+
 		if (nickname.Equals(CharacterEnum.CATRIONA.ToString())) {
 			boneOverrides = boneOverridesCatriona;
 		} else if (nickname.Equals(CharacterEnum.ROBERT.ToString())) {
 			boneOverrides = boneOverridesRobert;
 		} else {
-			Debug.LogWarning("<Color=Red><a>Player</a></Color> nickname: " + nickname + " is unknown.");
+			Debug.Log("<Color=Red><a>Player</a></Color> nickname: " + nickname + " is unknown.");
 		}
 
 		anim = GetComponent<PlayerManager>().animator;

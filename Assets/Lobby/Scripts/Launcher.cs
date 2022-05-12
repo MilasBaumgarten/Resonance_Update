@@ -20,7 +20,8 @@ public class Launcher : MonoBehaviourPunCallbacks {
 	/// <summary>
 	/// This client's version number. Users are separated from each other by gameVersion (which allows you to make breaking changes).
 	/// </summary>
-	string gameVersion = "0.0.1";
+	[SerializeField]
+	private string gameVersion = "0.0.1";
 
 	/// <summary>
 	/// Keep track of the current process. Since connection is asynchronous and is based on several callbacks from Photon,
@@ -28,9 +29,6 @@ public class Launcher : MonoBehaviourPunCallbacks {
 	/// Typically this is used for the OnConnectedToMaster() callback.
 	/// </summary>
 	bool isConnecting;
-
-	// Store the PlayerPref Key to avoid typos
-	const string playerNamePrefKey = "PlayerName";
 
 	void Awake() {
 		// #Critical

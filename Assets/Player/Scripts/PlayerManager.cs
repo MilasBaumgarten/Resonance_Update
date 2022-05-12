@@ -1,10 +1,11 @@
 using Photon.Pun;
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerManager : MonoBehaviourPun {
+public class PlayerManager : MonoBehaviourPunCallbacks {
 	[Tooltip("The local player instance. Use this to know if the local player is represented in the Scene")]
-	public static GameObject LocalPlayerInstance;
+	public static GameObject localPlayerInstance;
 
 	[SerializeField]
 	private GameObject catrionaModel;
@@ -30,8 +31,9 @@ public class PlayerManager : MonoBehaviourPun {
 	void Awake() {
 		// #Important
 		// used in GameManager.cs: we keep track of the localPlayer instance to prevent instantiation when levels are synchronized
-		if (photonView.IsMine == false && PhotonNetwork.IsConnected == true) {
-			LocalPlayerInstance = gameObject;
+		//if (photonView.IsMine == false && PhotonNetwork.IsConnected == true) {
+		if (photonView.IsMine) {
+			localPlayerInstance = gameObject;
 		}
 		// #Critical
 		// we flag as don't destroy on load so that instance survives level synchronization, thus giving a seamless experience when levels load.
@@ -40,6 +42,15 @@ public class PlayerManager : MonoBehaviourPun {
 		SceneManager.sceneLoaded += OnSceneLoaded;
 
 		SetupPlayer();
+	}
+
+	private void Start() {
+		// setup offline mode for Debugging
+		if (!PhotonNetwork.IsConnected) {
+			Debug.Log("Using Photon in Offline Mode.");
+			PhotonNetwork.OfflineMode = true;
+			PhotonNetwork.NickName = CharacterEnum.CATRIONA.ToString();
+		}
 	}
 
 	void OnSceneLoaded(Scene scene, LoadSceneMode loadingMode) {
@@ -52,28 +63,34 @@ public class PlayerManager : MonoBehaviourPun {
 			transform.position = new Vector3(0f, 5f, 0f);
 		}
 
-		SetupPlayer();
+		if (!localPlayerInstance && !PhotonNetwork.OfflineMode) {
+			SetupPlayer();
+		}
 	}
 
 	private void SetupPlayer() {
 		// set player visuals
-		string nickname = photonView.Owner.NickName;
+		string nickname = CharacterEnum.CATRIONA.ToString();
+		try {
+			nickname = photonView.Owner.NickName;
+		} catch (Exception e) {
+			Debug.Log("Playing in Offline Mode and owner was not found fast enough.\n" + e.Message);
+		}
+		
 		if (nickname.Equals(CharacterEnum.CATRIONA.ToString())) {
 			catrionaModel.SetActive(true);
 			robertModel.SetActive(false);
 			logbook = logbookCatriona;
 			animator = catrionaAnimator;
-			Debug.LogWarning("<Color=Green><a>Player</a></Color> set to Catriona.");
-		}
-		else if (nickname.Equals(CharacterEnum.ROBERT.ToString())) {
+			Debug.Log("<Color=Green><a>Player</a></Color> set to Catriona.");
+		} else if (nickname.Equals(CharacterEnum.ROBERT.ToString())) {
 			catrionaModel.SetActive(false);
 			robertModel.SetActive(true);
 			logbook = logbookRobert;
 			animator = robertAnimator;
-			Debug.LogWarning("<Color=Green><a>Player</a></Color> set to Robert.");
-		}
-		else {
-			Debug.LogWarning("<Color=Red><a>Player</a></Color> nickname: " + nickname + " is unknown.");
+			Debug.Log("<Color=Green><a>Player</a></Color> set to Robert.");
+		} else {
+			Debug.Log("<Color=Red><a>Player</a></Color> nickname: " + nickname + " is unknown.");
 		}
 
 		// move player to spawnpoint
@@ -87,7 +104,19 @@ public class PlayerManager : MonoBehaviourPun {
 		}
 	}
 
-	public void OnDisable() {
+	public override void OnDisable() {
+		base.OnDisable();
 		SceneManager.sceneLoaded -= OnSceneLoaded;
+	}
+
+	public override void OnConnectedToMaster() {
+		Debug.Log("PUN Basics Tutorial/Launcher: OnConnectedToMaster() was called by PUN");
+		PhotonNetwork.CreateRoom("DebugRoom");
+	}
+
+	public override void OnJoinedRoom() {
+		Debug.Log(PhotonNetwork.PlayerList[0]);
+		photonView.TransferOwnership(PhotonNetwork.PlayerList[0]);
+		localPlayerInstance = gameObject;
 	}
 }
