@@ -1,19 +1,17 @@
-﻿using System.Collections;
+﻿/**
+* Author: Marisa Schmelzer
+* Description:
+*  - must be attached to Logbook Canvas
+*  - enables and disables the wanted screens from the logbook
+*  - each canvas child needs a unique name
+* 
+*/
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
 
 public class LogbookManager : MonoBehaviour {
-
-	/**
-    * Author: Marisa Schmelzer
-    * Description:
-    *  - must be attached to Logbook Canvas
-    *  - enables and disables the wanted screens from the logbook
-    *  - each canvas child needs a unique name
-    * 
-    */
-
 	[SerializeField]
 	[Tooltip("The parent that all panels are children of")]
 	private Transform panelParent;
@@ -29,9 +27,9 @@ public class LogbookManager : MonoBehaviour {
 	[SerializeField]
 	private RectTransform targetTransform;
 
-	[SerializeField]
-	[Tooltip("The hacking minigame")]
-	private Hacking hacking;
+	//[SerializeField]
+	//[Tooltip("The hacking minigame")]
+	//private Hacking hacking;
 
 	[SerializeField]
 	[Tooltip("The RotateCameraToVector component attached to the camera")]
@@ -68,14 +66,10 @@ public class LogbookManager : MonoBehaviour {
 	bool scaleUpDown;
 
 	void Awake() {
-
 		defaultScale = panelParent.parent.transform.localScale.y;
-
 	}
 
-	// Use this for initialization
 	void Start() {
-
 		cornersRect[0].anchoredPosition = startTransform.anchoredPosition;
 		cornersRect[1].anchoredPosition = startTransform.anchoredPosition;
 
@@ -95,26 +89,20 @@ public class LogbookManager : MonoBehaviour {
 
 	// saves name of the child from Canvas and the gameObject in the dictionary
 	private void AddToDictionary() {
-
 		foreach (Transform child in panelParent) {
 			panels.Add(child.gameObject.name, child.gameObject);
 		}
-
-
 	}
 
 	// disable all panels who are children to the canvas where the script is attached to
 	public void DisableAllPanels() {
 		foreach (KeyValuePair<string, GameObject> panel in panels) {
-
 			panel.Value.SetActive(false);
-
 		}
 	}
 
 	// enables the wanted Panel through comparing the name who is saved in the dictionary
 	public void EnableOnePanel(string panelName) {
-
 		// clear
 		DisableAllPanels();
 		// look if it exists in the dictionary and enable it
@@ -140,7 +128,7 @@ public class LogbookManager : MonoBehaviour {
 
 		StartCoroutine("ScaleUp");
 
-		hacking.OnStopHacking(false);
+		//hacking.OnStopHacking(false);
 
 		isActive = false;
 
@@ -199,32 +187,21 @@ public class LogbookManager : MonoBehaviour {
 		Cursor.lockState = CursorLockMode.None;
 		Cursor.visible = true;
 		isActive = true;
-
 	}
 
 	IEnumerator ScaleUp() {
-
 		float startScale;
-
 		float stepSize;
 
 		if (scaleUpDown) {
-
 			startScale = defaultScale;
-
 			panelParent.parent.transform.localScale = new Vector3(0f, 0f, panelParent.parent.transform.localScale.z);
-
 			stepSize = startScale / (openCloseTime + 0.00001f);
 
-
 		} else {
-
 			startScale = 0f;
-
 			panelParent.parent.transform.localScale = new Vector3(defaultScale, defaultScale, panelParent.parent.transform.localScale.z);
-
 			stepSize = defaultScale / -(openCloseTime + 0.00001f);
-
 		}
 
 		float currentScale = panelParent.parent.transform.localScale.y;
@@ -232,54 +209,34 @@ public class LogbookManager : MonoBehaviour {
 		yield return new WaitForSeconds(delay);
 
 		if (scaleUpDown) {
-
 			while (currentScale < startScale) {
-
 				panelParent.parent.transform.localScale = new Vector3(currentScale += (stepSize * Time.deltaTime), currentScale += (stepSize * Time.deltaTime), panelParent.parent.transform.localScale.z);
 				yield return null;
-
 			}
-
 		} else {
-
 			while (currentScale > 0f) {
-
 				panelParent.parent.transform.localScale = new Vector3(currentScale += (stepSize * Time.deltaTime), currentScale += (stepSize * Time.deltaTime), panelParent.parent.transform.localScale.z);
 				yield return null;
-
 			}
-
 		}
-
-
 
 		if (scaleUpDown) {
-
 			panelParent.parent.transform.localScale = new Vector3(startScale, startScale, panelParent.parent.transform.localScale.z);
-
 		} else {
-
 			panelParent.parent.transform.localScale = new Vector3(0f, 0f, panelParent.parent.transform.localScale.z);
 			endOfClosing();
-
 		}
 
-
 		yield return null;
-
 	}
 
 
 
 	IEnumerator moveCorners1() {
-
 		float correction = 0.00055f;
 
-
 		if (openCloseTime == 0f) {
-
 			openCloseTime = 0.0001f;
-
 		}
 
 		yield return new WaitForSeconds(delay);
@@ -293,7 +250,6 @@ public class LogbookManager : MonoBehaviour {
 		cornersRect[1].anchoredPosition = startTransform.anchoredPosition;
 
 		while (i < 83 * openCloseTime) {
-
 			cornersRect[0].anchoredPosition = new Vector3(cornersRect[0].anchoredPosition.x - (stepSizeX * Time.deltaTime * correction), cornersRect[0].anchoredPosition.y - (stepSizeY * Time.deltaTime * correction), 0);
 			cornersRect[1].anchoredPosition = new Vector3(cornersRect[1].anchoredPosition.x + (stepSizeX * Time.deltaTime * correction), cornersRect[1].anchoredPosition.y - (stepSizeY * Time.deltaTime * correction), 0);
 
@@ -305,7 +261,6 @@ public class LogbookManager : MonoBehaviour {
 
 		//corners[0].position = new Vector3(startScale, startScale, panelParent.parent.transform.localScale.z);
 		yield return null;
-
 	}
 
 	// Makes the logbook first wide then full size
@@ -355,5 +310,4 @@ public class LogbookManager : MonoBehaviour {
 
         }
     }*/
-
 }

@@ -7,7 +7,6 @@ using UnityEngine;
 using Unity.Netcode;
 
 public class CollectContent : MonoBehaviour {
-
 	[SerializeField]
 	[Tooltip("The CanvasController attached to the logbook")]
 	private LogbookManager logbookManager;

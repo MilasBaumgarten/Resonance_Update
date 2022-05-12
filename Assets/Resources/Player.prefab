@@ -6885,6 +6885,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTransform: {fileID: 6817432182413529455}
+  playerManager: {fileID: 2856724370747048973}
   speed: 600
   duration: 90
 --- !u!1 &1942263619151008
@@ -9047,8 +9048,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1201023376253927575}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.056, y: 1.417, z: 0.306}
+  m_LocalRotation: {x: 0.5434523, y: -0.16233143, z: 0.09146693, w: 0.8184998}
+  m_LocalPosition: {x: -3.1902568, y: 2.1110163, z: 0.35933584}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4543328280443832}
@@ -20306,6 +20307,11 @@ PrefabInstance:
       propertyPath: rotateCamToVect
       value: 
       objectReference: {fileID: 638743344868706431}
+    - target: {fileID: 1510574221374420604, guid: b1880ad461d6fd5418939d8e4572d14e,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1231663946092024}
     - target: {fileID: 1510574221374420604, guid: b1880ad461d6fd5418939d8e4572d14e,
         type: 3}
       propertyPath: m_Enabled
