@@ -90,6 +90,7 @@ public class Grabable : ArmToolModuleBehaviour {
 	public override void Interact(ArmToolModule module) {
 		ForceModule forceModule = module as ForceModule;
 		LineRenderer beamRenderer = forceModule.GetBeamRenderer();
+
 		if (forceModule.GetGrabStatus()) {
 			RemoveGrab(forceModule.GetHoldPosition());
 			beamRenderers.Remove(beamRenderer);
@@ -112,7 +113,8 @@ public class Grabable : ArmToolModuleBehaviour {
 			}
 			trigger.Interact();
 		}
-		forceModule.ToggleGrab();
+
+		//forceModule.ToggleGrab();
 	}
 
 	protected virtual void ApplyForce(Rigidbody rb, Vector3 dist, float movePower, int targetCount) {

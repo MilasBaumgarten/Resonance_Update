@@ -101,14 +101,11 @@ public class ArmTool : MonoBehaviourPun {
 
 	[PunRPC]
 	public void InteractRpc(GameObject target) {
-		Debug.Log(string.Format("RPC: 'InteractRpc' Parameter: {0} PhotonView: {1}", target.name, photonView));
 		target.GetComponent<Interactable>().Interact(this);
 	}
 
 	[PunRPC]
 	public void InteractModuleRpc(GameObject target) {
-		Debug.Log(target);
-		Debug.Log(string.Format("RPC: 'InteractModuleRpc' Parameter: {0} PhotonView: {1}", target.name, photonView));
 		// send the server a command telling it the player is intending to interact with something
 		target.GetComponent<ArmToolModuleBehaviour>().Interact(equipped[selected]);
 	}

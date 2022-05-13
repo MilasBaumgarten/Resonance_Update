@@ -15,11 +15,11 @@ public class ForceModule : ArmToolModule {
 
     //private Transform cam; // the camera attachtched to the player object
     private bool grabbing = false;      // indicates if the player is already interacting
-    //private GameObject interactTarget;
+	private GameObject grabbingTarget;
 
-    //private int layerMask = ~(1 << 9);
+	//private int layerMask = ~(1 << 9);
 
-    [SerializeField]
+	[SerializeField]
     private HeadBob headBob;
     [SerializeField]
     private PlayerMovement playerMovement;
@@ -54,33 +54,35 @@ public class ForceModule : ArmToolModule {
 
     public override void Function(GameObject interactTarget) {
 		if (grabbing) {
-            armTool.photonView.RPC("InteractModuleRpc", RpcTarget.All, interactTarget);
+            armTool.photonView.RPC("InteractModuleRpc", RpcTarget.All, grabbingTarget);
 
 			// unlock player
 			headBob.SetBobbing(true);
 			playerMovement.enabled = true;
-
+            grabbing = false;
 		} else {
 			if (interactTarget) {
 				// if an interactable object is hit and it is within range, interact with it
 				if (interactTarget.GetComponent<ArmToolModuleBehaviour>()) {
-					//this.interactTarget = interactTarget;
-                    armTool.photonView.RPC("InteractModuleRpc", RpcTarget.All, interactTarget);
+					grabbingTarget = interactTarget;
+					armTool.photonView.RPC("InteractModuleRpc", RpcTarget.All, interactTarget);
                     holdPos.localPosition = Vector3.forward * (interactTarget.transform.position - transform.position).magnitude;
 
 					// lock player
 					headBob.SetBobbing(false);
 					playerMovement.enabled = false;
-				}
+                    grabbing = true;
+
+                }
 			}
 		}
 		onGrab.Invoke();
 	}
 
     // Toggle between true and false
-    public void ToggleGrab() {
-        grabbing = !grabbing;
-    }
+    //public void ToggleGrab() {
+    //    grabbing = !grabbing;
+    //}
 
     public bool GetGrabStatus() {
         return grabbing;
