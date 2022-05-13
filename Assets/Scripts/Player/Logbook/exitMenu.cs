@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.SceneManagement;
-using Unity.Netcode;
 
 /**
  * Author: Leon Ullrich
  * - Disconnects the player from the server/stops the server and loads the MainMenu-Scene
  */
 
-public class exitMenu : NetworkBehaviour {
+// TODO: reenable or delete
+public class exitMenu : MonoBehaviour {
  //   private List<PlayerController> playerControllers;
  //   private NetworkIdentity ownPlayerID;
 

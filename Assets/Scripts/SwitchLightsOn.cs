@@ -1,23 +1,23 @@
-﻿using System.Collections.Generic;
+﻿using Photon.Pun;
+using System.Collections.Generic;
 using UnityEngine;
-using Unity.Netcode;
 
-
-public class SwitchLightsOn : NetworkBehaviour {
+// TODO: reenable
+public class SwitchLightsOn : MonoBehaviourPun {
     [SerializeField]
     private List<Light> switchableLights = new List<Light>();
 
     [SerializeField]
     private Color normalLightColor = new Color();
 
-    private NetworkObject identity;
-    private NetworkObject playerIdentity;
+    //private NetworkObject identity;
+    //private NetworkObject playerIdentity;
 
     //NetworkVariable<GameObject> player = new NetworkVariable<GameObject>();
     GameObject player;
 
 	void Awake() {
-        identity = GetComponent<NetworkObject>();
+        //identity = GetComponent<NetworkObject>();
     }
 
     void Start() {
@@ -41,11 +41,11 @@ public class SwitchLightsOn : NetworkBehaviour {
     //    //identity.RemoveClientAuthority(playerIdentity.connectionToClient);
     //}
 
-    [ClientRpc]
-    void TurnLightOnClientRpc() {
-        foreach (Light light in switchableLights) {
-            light.enabled = true;
-            light.color = normalLightColor;
-        }
-    }
+    //[ClientRpc]
+    //void TurnLightOnClientRpc() {
+    //    foreach (Light light in switchableLights) {
+    //        light.enabled = true;
+    //        light.color = normalLightColor;
+    //    }
+    //}
 }

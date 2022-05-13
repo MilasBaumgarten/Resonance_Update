@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using Unity.Netcode;
 
 /**
  * Author: Leon Ullrich
@@ -8,7 +7,8 @@ using Unity.Netcode;
  * - put this on the player
  */
 
-public class Interact : NetworkBehaviour {
+// TODO: reenable
+public class Interact : MonoBehaviour {
 
     public InputSettings input;
     public Settings settings;
@@ -19,7 +19,7 @@ public class Interact : NetworkBehaviour {
     [SerializeField]
     private Transform cam;
 
-    private NetworkObject objectNetID;
+    //private NetworkObject objectNetID;
 
     // Use this for initialization
     void Start () {
@@ -29,11 +29,10 @@ public class Interact : NetworkBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (Input.GetKeyDown(input.interact)) {
-            RaycastHit hit;
-            if (Physics.Raycast(cam.position, cam.forward, out hit, settings.maxDist, layerMask)) {
-                hit.transform.SendMessage("InteractedWith", gameObject);
-            }
-        }
+			if (Physics.Raycast(cam.position, cam.forward, out RaycastHit hit, settings.maxDist, layerMask)) {
+				hit.transform.SendMessage("InteractedWith", gameObject);
+			}
+		}
 	}
 
     public void SyncEvent(GameObject connection) {

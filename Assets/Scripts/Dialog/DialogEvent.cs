@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using Unity.Netcode;
 
 /**
  * Author: Leon Ullrich
@@ -8,7 +7,7 @@ using Unity.Netcode;
  * - put this script on the object which triggers the dialog
  */
 
-public class DialogEvent : NetworkBehaviour {
+public class DialogEvent : MonoBehaviour {
 
 	// the name of the csv-file (without .csv file-extension!)
 	[Tooltip("The name of the csv-file (without .csv file-extension")]

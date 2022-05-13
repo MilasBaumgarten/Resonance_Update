@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using UnityEngine;
-using Unity.Netcode;
 
 /*
  * by Andre Spittel 15.10.2018
@@ -11,8 +10,8 @@ using Unity.Netcode;
  * Place this script onto your Object that wants to trigger the Resonance
  */
 
-[RequireComponent(typeof(NetworkObject), typeof(Collider))]
-public class ResonanceTriggerScript : NetworkBehaviour {
+[RequireComponent(typeof(Collider))]
+public class ResonanceTriggerScript : MonoBehaviour {
 
 	// We need the reference to get the player´s input, and to set the bool "activated" in ResonanceTestScript to true,
 	// if the player collided with the resonance.
@@ -22,7 +21,6 @@ public class ResonanceTriggerScript : NetworkBehaviour {
 	public ImageFade image;
 
 	private AudioSource background;
-	private Collider activatingPlayer;
 
 	// When someone triggers the resonance, the one who triggers it will have the instance of the ResonanceTestScript, so
 	// only he will be able to activate the dialogues.

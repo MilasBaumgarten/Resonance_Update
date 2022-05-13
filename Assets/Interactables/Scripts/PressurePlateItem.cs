@@ -4,23 +4,12 @@
  */
 
 using UnityEngine;
-using Unity.Netcode;
 
-[RequireComponent(typeof(NetworkObject))]
 public class PressurePlateItem : MonoBehaviour {
 
 	private int collisions;
-	private PressurePlate connectedPressurePlate = null;
 
-	public PressurePlate ConnectedPressurePlate {
-		get {
-			return connectedPressurePlate;
-		}
-
-		set {
-			connectedPressurePlate = value;
-		}
-	}
+	public PressurePlate connectedPressurePlate { get; set; } = null;
 
 	private void Start() {
 		collisions = 1; // script is added to object because of collision, therefore it is initialized with 1

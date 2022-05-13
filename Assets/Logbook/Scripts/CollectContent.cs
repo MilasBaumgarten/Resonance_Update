@@ -4,7 +4,6 @@
 
 using System.Collections.Generic;
 using UnityEngine;
-using Unity.Netcode;
 
 public class CollectContent : MonoBehaviour {
 	[SerializeField]
@@ -32,7 +31,8 @@ public class CollectContent : MonoBehaviour {
 	private Dictionary<string, GameObject> logbookEntryButtonDict = new Dictionary<string, GameObject>();
 
 	void Start() {
-		networkInstance = player.GetComponent<NetworkObject>().NetworkObjectId;
+		// TODO: reenable
+		//networkInstance = player.GetComponent<NetworkObject>().NetworkObjectId;
 
 		// Get all the Entries
 		for (int i = 0; i < EntryParents.Length; i++) {

@@ -1,10 +1,11 @@
 ﻿// Author: Noah Stolz
 // Used to set the position of the Players
 
+using Photon.Pun;
 using UnityEngine;
-using Unity.Netcode;
 
-public class SetPlayerPositions : NetworkBehaviour {
+// TODO: reenable
+public class SetPlayerPositions : MonoBehaviourPun {
 
 	[SerializeField]
 	[Tooltip("The position player1 should be set to")]
@@ -16,7 +17,7 @@ public class SetPlayerPositions : NetworkBehaviour {
 
 	public void triggerEvent() {
 		//EventManager.instance.TriggerEvent("setPlayerPosition");
-		SetPlayerPositionServerRpc();
+		//SetPlayerPositionServerRpc();
 	}
 
 	/// <summary>
@@ -27,14 +28,14 @@ public class SetPlayerPositions : NetworkBehaviour {
 		BothPlayersEnter.player2.transform.position = player2Pos.position;
 	}
 
-	[ServerRpc]
-	void SetPlayerPositionServerRpc() {
-		SetPlayerPositionClientRpc();
-	}
+	//[ServerRpc]
+	//void SetPlayerPositionServerRpc() {
+	//	SetPlayerPositionClientRpc();
+	//}
 
-	[ClientRpc]
-	void SetPlayerPositionClientRpc() {
-		BothPlayersEnter.player1.transform.position = player1Pos.position;
-		BothPlayersEnter.player2.transform.position = player2Pos.position;
-	}
+	//[ClientRpc]
+	//void SetPlayerPositionClientRpc() {
+	//	BothPlayersEnter.player1.transform.position = player1Pos.position;
+	//	BothPlayersEnter.player2.transform.position = player2Pos.position;
+	//}
 }

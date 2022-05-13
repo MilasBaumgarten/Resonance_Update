@@ -1,8 +1,8 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using UnityEngine;
-using Unity.Netcode;
 
-public class ResonanceAnimation : NetworkBehaviour {
+public class ResonanceAnimation : MonoBehaviour {
 
 	public GameObject decisionA;
 	public GameObject decisionB;
@@ -23,19 +23,16 @@ public class ResonanceAnimation : NetworkBehaviour {
 
 	private bool triggerA;
 	private bool triggerB;
-	private float zoomTmp;
-	private GameObject player;
 
 	private void OnTriggerEnter(Collider other) {
 
-		if (other.GetComponent<NetworkObject>().IsLocalPlayer) {
+		if (other.GetComponent<PhotonView>().IsMine) {
 			cam = other.transform.GetComponentInChildren<Camera>();
 			playerMove = other.GetComponent<PlayerMovement>();
 			camMove = other.GetComponent<CameraMovement>();
 			headbob = other.transform.GetComponentInChildren<HeadBob>();
 
 			StartCoroutine(AnimateMovement());
-			player = other.gameObject;
 			savedRot = other.transform;
 		}
 	}

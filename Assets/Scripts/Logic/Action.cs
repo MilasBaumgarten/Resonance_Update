@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using Photon.Pun;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace Logic {
 
-    public abstract class Action : MonoBehaviour {
+    public abstract class Action : MonoBehaviourPun {
 
         [SerializeField]
         [Tooltip("Event is called when the Action gets activated")]

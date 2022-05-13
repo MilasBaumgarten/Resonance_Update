@@ -10,7 +10,7 @@ using UnityEngine;
 using Logic.Triggers;
 
 [RequireComponent(typeof(Rigidbody), typeof(ArmToolInteractionTrigger))]
-public class Grabable : ForceModuleBehaviour {
+public class Grabable : ArmToolModuleBehaviour {
 	protected List<Transform> targetPositions;    // a list of all players' hold positions
 	protected List<LineRenderer> beamRenderers;
 	protected Rigidbody rb;

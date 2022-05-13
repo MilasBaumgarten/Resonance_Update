@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using Unity.Netcode;
 
 public class Soundchanger : MonoBehaviour {
 	public AudioClip backGround;
@@ -10,15 +9,16 @@ public class Soundchanger : MonoBehaviour {
 	private void OnTriggerEnter(Collider michi) {
 		if (trigger) {
 			if (michi.tag.Equals("Player")) {
-				NetworkObject netID = michi.GetComponent<NetworkObject>();
-				if (netID != null) {
-					if (netID.IsLocalPlayer) {
-						source.clip = backGround;
-						source.Play();
-					}
+				// TODO: reenable
+				//NetworkObject netID = michi.GetComponent<NetworkObject>();
+				//if (netID != null) {
+				//	if (netID.IsLocalPlayer) {
+				//		source.clip = backGround;
+				//		source.Play();
+				//	}
 
-					if (!repeat) trigger = false;
-				}
+				//	if (!repeat) trigger = false;
+				//}
 			}
 		}
 	}

@@ -1,7 +1,6 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
 using System.Collections.Generic;
 using UnityEngine;
-using Unity.Netcode;
 using UnityEngine.SceneManagement;
 
 /**
@@ -15,12 +14,13 @@ using UnityEngine.SceneManagement;
  * - SceneLoader NEEDS localPlayerAuthority for this to work
  */
 
-public class LoadCreditSceneForBothPlayers : NetworkBehaviour {
+// TODO: reenable
+public class LoadCreditSceneForBothPlayers : MonoBehaviourPun {
 
     private List<GameObject> playerControllers;
     //private List<PlayerController> playerControllers;
-    private NetworkObject ownPlayerID;
-    private NetworkObject otherPlayerID;
+    //private NetworkObject ownPlayerID;
+    //private NetworkObject otherPlayerID;
 
     //public void LoadCreditScene() {
     //    StartCoroutine("WaitAndThenLoad");

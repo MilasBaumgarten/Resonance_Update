@@ -2,12 +2,13 @@
 // Controlls the hacking minigame
 // Should be attached to the hacking tab in the logbook
 
+using Photon.Pun;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-using Unity.Netcode;
 
-public class Hacking : NetworkBehaviour {
+// TODO: reenable or delete
+public class Hacking : MonoBehaviourPun {
 
 	[SerializeField]
 	[Tooltip("The logbookManager attached to the logbook")]
@@ -87,7 +88,7 @@ public class Hacking : NetworkBehaviour {
 	}
 
 	void Start() {
-		if (IsLocalPlayer) {
+		if (photonView.IsMine) {
 			localInstance = this;
 		}
 
@@ -163,15 +164,15 @@ public class Hacking : NetworkBehaviour {
 	}
 
 	#region addMistake
-	[ServerRpc]
-	public void AddMistakeServerRpc() {
-		AddMistakeClientRpc();
-	}
+	//[ServerRpc]
+	//public void AddMistakeServerRpc() {
+	//	AddMistakeClientRpc();
+	//}
 
-	[ClientRpc]
-	void AddMistakeClientRpc() {
-		Hacking.localInstance.AddMistake();
-	}
+	//[ClientRpc]
+	//void AddMistakeClientRpc() {
+	//	Hacking.localInstance.AddMistake();
+	//}
 
 	public void AddMistake() {
 		hackMasterMind.AddChoice(0, true);
@@ -193,7 +194,7 @@ public class Hacking : NetworkBehaviour {
 			return;
 		}
 
-		if (IsLocalPlayer) {
+		if (photonView.IsMine) {
 			StartHacking();
 		}
 
@@ -206,18 +207,18 @@ public class Hacking : NetworkBehaviour {
 
 	#region stopHacking
 	public void StopHacking() {
-		StopHackingServerRpc();
+		//StopHackingServerRpc();
 	}
 
-	[ServerRpc]
-	public void StopHackingServerRpc() {
-		StopHackingClientRpc();
-	}
+	//[ServerRpc]
+	//public void StopHackingServerRpc() {
+	//	StopHackingClientRpc();
+	//}
 
-	[ClientRpc]
-	void StopHackingClientRpc() {
-		localInstance.OnStopHacking(true);
-	}
+	//[ClientRpc]
+	//void StopHackingClientRpc() {
+	//	localInstance.OnStopHacking(true);
+	//}
 
 	public void OnStopHacking(bool loss) {
 		if (loss)
@@ -230,7 +231,7 @@ public class Hacking : NetworkBehaviour {
 		}
 
 		if (!player1 && currentlyHacking) {
-			StartPunishmentCountdownServerRpc(true);
+			//StartPunishmentCountdownServerRpc(true);
 		}
 
 		if (player1) {
@@ -241,15 +242,15 @@ public class Hacking : NetworkBehaviour {
 	}
 	#endregion
 
-	[ServerRpc]
-	public void StartPunishmentCountdownServerRpc(bool start) {
-		StartPunishmentCountdownClientRpc(start);
-	}
+	//[ServerRpc]
+	//public void StartPunishmentCountdownServerRpc(bool start) {
+	//	StartPunishmentCountdownClientRpc(start);
+	//}
 
-	[ClientRpc]
-	void StartPunishmentCountdownClientRpc(bool start) {
-		StartPunishmentCountdown(start);
-	}
+	//[ClientRpc]
+	//void StartPunishmentCountdownClientRpc(bool start) {
+	//	StartPunishmentCountdown(start);
+	//}
 
 	public void StartPunishmentCountdown(bool start) {
 		if (start) {

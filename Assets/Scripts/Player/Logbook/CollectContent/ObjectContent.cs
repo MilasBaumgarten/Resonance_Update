@@ -3,7 +3,6 @@
 // Should be attached to the Object that the Player needs to interact with
 
 using UnityEngine;
-using Unity.Netcode;
 using UnityEngine.Events;
 
 public class ObjectContent : Interactable {
@@ -48,7 +47,9 @@ public class ObjectContent : Interactable {
 	private bool collected = false;
 
 	public static int getPlayerNetworkId(GameObject player) {
-		return (int)player.GetComponent<NetworkObject>().NetworkObjectId;
+		// TODO: reenable
+		//return (int) player.GetComponent<NetworkObject>().NetworkObjectId;
+		return -1;
 	}
 
 	/// <summary>Calls the collectContent event when the player interacts with the object this component is attached to/summary>
@@ -59,7 +60,8 @@ public class ObjectContent : Interactable {
 
 		collected = true;
 
-		networkInstance = armTool.gameObject.GetComponent<NetworkObject>().NetworkObjectId;
+		// TODO: reenable
+		//networkInstance = armTool.gameObject.GetComponent<NetworkObject>().NetworkObjectId;
 
 		player = armTool.gameObject;
 

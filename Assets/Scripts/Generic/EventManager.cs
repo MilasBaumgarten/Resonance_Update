@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Photon.Pun;
+using System.Collections.Generic;
 using UnityEngine.Events;
-using Unity.Netcode;
 /*
  * by Andre Spittel 04.10.2018
  * -----------------------------------------------------------------------------------------------
@@ -19,7 +19,7 @@ using Unity.Netcode;
  * "EventTriggerTest" (action).
  */
 
-public class EventManager : NetworkBehaviour {
+public class EventManager : MonoBehaviourPun {
 
 	private Dictionary<string, UnityEvent> eventDictionary;
 
@@ -101,20 +101,21 @@ public class EventManager : NetworkBehaviour {
 	public void TriggerEvent(string eventName) {
 
 		//need to check for isServer because clients are forbidden to use RpcCalls
-		if (IsServer) {
-			NetworkTriggerEventClientRpc(eventName);
+		if (PhotonNetwork.IsMasterClient) {
+			// TODO: reenable
+			//NetworkTriggerEventClientRpc(eventName);
 		}
 	}
 
 	// RpcFunction to trigger the event on all clients. Used in TriggerEvent function.
 
-	[ClientRpc]
-	private void NetworkTriggerEventClientRpc(string eventName) {
+	//[ClientRpc]
+	//private void NetworkTriggerEventClientRpc(string eventName) {
 
-		UnityEvent thisEvent = null;
+	//	UnityEvent thisEvent = null;
 
-		if (eventDictionary.TryGetValue(eventName, out thisEvent)) {
-			thisEvent.Invoke();
-		}
-	}
+	//	if (eventDictionary.TryGetValue(eventName, out thisEvent)) {
+	//		thisEvent.Invoke();
+	//	}
+	//}
 }

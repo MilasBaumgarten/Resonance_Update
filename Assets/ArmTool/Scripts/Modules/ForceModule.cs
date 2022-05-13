@@ -63,7 +63,7 @@ public class ForceModule : ArmToolModule {
 		} else {
 			if (interactTarget) {
 				// if an interactable object is hit and it is within range, interact with it
-				if (interactTarget.GetComponent<ForceModuleBehaviour>()) {
+				if (interactTarget.GetComponent<ArmToolModuleBehaviour>()) {
 					//this.interactTarget = interactTarget;
                     armTool.photonView.RPC("InteractModuleRpc", RpcTarget.All, interactTarget);
                     holdPos.localPosition = Vector3.forward * (interactTarget.transform.position - transform.position).magnitude;

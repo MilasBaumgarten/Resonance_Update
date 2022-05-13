@@ -3,11 +3,9 @@
  * Should be attached to: Pressure Plate
  */
 
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Logic;
-using Unity.Netcode;
 
 [RequireComponent(typeof(Collider))]
 public class PressurePlate : Trigger
@@ -34,35 +32,37 @@ public class PressurePlate : Trigger
 				+ new Vector3(0, gameObject.transform.position.y, 0))) {
 
 				// if it is a new object, then add it
-				if (!objectsCounted.ContainsKey(collision.gameObject.GetComponent<NetworkObject>().NetworkObjectId)) {
-					objectsCounted.Add(collision.gameObject.GetComponent<NetworkObject>().NetworkObjectId, collision.gameObject); //register object
+				// TODO: reenable
+				//if (!objectsCounted.ContainsKey(collision.gameObject.GetComponent<NetworkObject>().NetworkObjectId)) {
+				//	objectsCounted.Add(collision.gameObject.GetComponent<NetworkObject>().NetworkObjectId, collision.gameObject); //register object
 
-					// add PressurePlateItem component and hand over reference to this PressurePlate object
-					// this creates a connection between added object and PressurePlate
-					collision.gameObject.AddComponent(typeof(PressurePlateItem));
-					collision.gameObject.GetComponent<PressurePlateItem>().ConnectedPressurePlate = gameObject.GetComponent<PressurePlate>();
+				//	// add PressurePlateItem component and hand over reference to this PressurePlate object
+				//	// this creates a connection between added object and PressurePlate
+				//	collision.gameObject.AddComponent(typeof(PressurePlateItem));
+				//	collision.gameObject.GetComponent<PressurePlateItem>().ConnectedPressurePlate = gameObject.GetComponent<PressurePlate>();
 
-					// if needed amount is reached
-					if (objectsCounted.Count == objectsNeeded) {
-						FlipState();
-					}
-				}
+				//	// if needed amount is reached
+				//	if (objectsCounted.Count == objectsNeeded) {
+				//		FlipState();
+				//	}
+				//}
 			}
 		}
 	}
 
 	public void OnCollisionExit(Collision collision) {
 		// delete object if it was registered before (if it was registered before then it is also a valid object)
-		if (objectsCounted.ContainsKey(collision.gameObject.GetComponent<NetworkObject>().NetworkObjectId)) {
+		// TODO: reenable
+		//if (objectsCounted.ContainsKey(collision.gameObject.GetComponent<NetworkObject>().NetworkObjectId)) {
 
-			objectsCounted.Remove(collision.gameObject.GetComponent<NetworkObject>().NetworkObjectId); // unregister object
-			Destroy(collision.gameObject.GetComponent<PressurePlateItem>()); // remove PressurePlateItem component
+		//	objectsCounted.Remove(collision.gameObject.GetComponent<NetworkObject>().NetworkObjectId); // unregister object
+		//	Destroy(collision.gameObject.GetComponent<PressurePlateItem>()); // remove PressurePlateItem component
 
-			// if state changes from true to false because of leaving object
-			if (objectsCounted.Count == objectsNeeded - 1) {
-				FlipState();
-			}
-		}
+		//	// if state changes from true to false because of leaving object
+		//	if (objectsCounted.Count == objectsNeeded - 1) {
+		//		FlipState();
+		//	}
+		//}
 	}
 
 	public bool IsValidObject(GameObject toCheck) {

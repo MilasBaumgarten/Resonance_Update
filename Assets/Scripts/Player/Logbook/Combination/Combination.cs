@@ -2,14 +2,15 @@
 // Is anyone even still reading these?
 // Should be attached to the player
 
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Unity.Netcode;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class Combination : NetworkBehaviour {
+// TODO: reenable
+public class Combination : MonoBehaviourPun {
 
 	[SerializeField]
 	private LogbookManager logbookManager;
@@ -59,7 +60,7 @@ public class Combination : NetworkBehaviour {
 	}
 
 	void Start() {
-		if (IsLocalPlayer) {
+		if (photonView.IsMine) {
 			localInstance = this;
 		}
 	}
@@ -119,7 +120,7 @@ public class Combination : NetworkBehaviour {
 			timerText.text = (Mathf.FloorToInt(time / 60).ToString() + ":" + (time % 60).ToString());
 			//CmdUpdateTimer(timerText.text);
 		} else {
-			OnFailServerRpc();
+			//OnFailServerRpc();
 			CancelInvoke("Countdown");
 		}
 	}
@@ -167,21 +168,21 @@ public class Combination : NetworkBehaviour {
 
 		if (checkAtCompletion && correctCombination.Length == currentCombination.Count) {
 			if (checkForSuccess()) {
-				OnSuccessServerRpc();
+				//OnSuccessServerRpc();
 			} else {
-				OnFailServerRpc();
+				//OnFailServerRpc();
 			}
 
 		} else if (correctCombination.Length == currentCombination.Count) {
 			if (checkForSuccess()) {
-				OnSuccessServerRpc();
+				//OnSuccessServerRpc();
 			} else {
-				OnFailServerRpc();
+				//OnFailServerRpc();
 			}
 
 		} else if (!checkAtCompletion) {
 			if (!checkForSuccess()) {
-				OnFailServerRpc();
+				//OnFailServerRpc();
 			} else {
 				logbookManager.DisablePanel();
 			}
@@ -203,7 +204,7 @@ public class Combination : NetworkBehaviour {
 	}
 
 	public void GetText(Text text) {
-		AddSelectionServerRpc(text.text);
+		//AddSelectionServerRpc(text.text);
 	}
 
 	public void Failed() {
@@ -245,37 +246,37 @@ public class Combination : NetworkBehaviour {
 		clearCurrent();
 	}
 
-	[ServerRpc]
-	void AddSelectionServerRpc(string code) {
-		AddSelectionClientRpc(code);
-	}
+	//[ServerRpc]
+	//void AddSelectionServerRpc(string code) {
+	//	AddSelectionClientRpc(code);
+	//}
 
-	[ClientRpc]
-	void AddSelectionClientRpc(string code) {
-		localInstance.AddSelection(code);
-	}
+	//[ClientRpc]
+	//void AddSelectionClientRpc(string code) {
+	//	localInstance.AddSelection(code);
+	//}
 
-	[ServerRpc]
-	void OnFailServerRpc() {
-		OnFailClientRpc();
-	}
+	//[ServerRpc]
+	//void OnFailServerRpc() {
+	//	OnFailClientRpc();
+	//}
 
-	[ClientRpc]
-	void OnFailClientRpc() {
-		localInstance.Failed();
-	}
+	//[ClientRpc]
+	//void OnFailClientRpc() {
+	//	localInstance.Failed();
+	//}
 
-	[ServerRpc]
-	void OnSuccessServerRpc() {
-		OnSuccessClientRpc();
-	}
+	//[ServerRpc]
+	//void OnSuccessServerRpc() {
+	//	OnSuccessClientRpc();
+	//}
 
-	[ClientRpc]
-	void OnSuccessClientRpc() {
-		localInstance.OnSuccess();
-	}
+	//[ClientRpc]
+	//void OnSuccessClientRpc() {
+	//	localInstance.OnSuccess();
+	//}
 
-	// TODO use it somewhere
+	// TODO: use it somewhere
 	//[ServerRpc]
 	//void OnStartServerRpc(string[] correctCombination, bool checkAtCompletion, int startTime, GameObject comObj) {
 	//	OnStartClientRpc(correctCombination, checkAtCompletion, startTime, comObj);

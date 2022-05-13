@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Unity.Netcode;
 
 /*
  * by Andre Spittel 15.10.2018
@@ -18,7 +17,7 @@ using Unity.Netcode;
  * 		-Dialogues wont show up on a builded scene
  */
 
-public class ResonanceScript : NetworkBehaviour {
+public class ResonanceScript : MonoBehaviour {
 
 	[SerializeField] private Transform spawnPoint;
 	

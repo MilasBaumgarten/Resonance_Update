@@ -1,10 +1,11 @@
 ﻿// Author: Noah Stolz
 // Used to start an InvokeWithDelay event with networking
 
+using Photon.Pun;
 using UnityEngine;
-using Unity.Netcode;
 
-public class StartEvent : NetworkBehaviour {
+// TODO: reenable
+public class StartEvent : MonoBehaviourPun {
 	[SerializeField]
 	private GameObject obj;
 

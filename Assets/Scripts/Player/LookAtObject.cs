@@ -3,11 +3,11 @@
 // Should be attached to the PlayerPrefab
 // Requires the PlayerPrefab to have a canvas with two Text-Objects
 
+using Photon.Pun;
 using UnityEngine;
-using Unity.Netcode;
 using UnityEngine.UI;
 
-public class LookAtObject : NetworkBehaviour {
+public class LookAtObject : MonoBehaviourPun {
 
 	[SerializeField]
 	[Tooltip("The UI-Text that displays the object name")]
@@ -34,7 +34,7 @@ public class LookAtObject : NetworkBehaviour {
 
 	// Use this for initialization
 	void Start() {
-		if (!IsLocalPlayer) {
+		if (!photonView.IsMine) {
 			this.enabled = false;
 		}
 	}
