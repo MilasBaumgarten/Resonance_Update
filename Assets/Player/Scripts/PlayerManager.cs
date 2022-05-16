@@ -29,14 +29,11 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
 	private Vector3 spawnOffset = new Vector3(0.0f, 0.6f, 0.0f);
 
 	void Awake() {
-		// #Important
 		// used in GameManager.cs: we keep track of the localPlayer instance to prevent instantiation when levels are synchronized
-		//if (photonView.IsMine == false && PhotonNetwork.IsConnected == true) {
 		if (photonView.IsMine) {
 			localPlayerInstance = gameObject;
 		}
-		// #Critical
-		// we flag as don't destroy on load so that instance survives level synchronization, thus giving a seamless experience when levels load.
+
 		DontDestroyOnLoad(gameObject);
 
 		SceneManager.sceneLoaded += OnSceneLoaded;

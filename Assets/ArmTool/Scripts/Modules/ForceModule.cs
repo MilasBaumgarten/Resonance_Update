@@ -36,8 +36,6 @@ public class ForceModule : ArmToolModule {
         if (beamRenderer.enabled) {
             beamRenderer.enabled = false;
         }
-
-        //cam = Camera.main.transform;
     }
 
     private void Update() {
@@ -78,11 +76,6 @@ public class ForceModule : ArmToolModule {
 		}
 		onGrab.Invoke();
 	}
-
-    // Toggle between true and false
-    //public void ToggleGrab() {
-    //    grabbing = !grabbing;
-    //}
 
     public bool GetGrabStatus() {
         return grabbing;

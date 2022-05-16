@@ -5,8 +5,9 @@
 - Options Menu: implement options for Camera Controls
 
 ## Programming
-- RotateCamerToVector macht Kamera kaputt, wenn sich zu früh beim zurückdrehen bewegt wird
 - replace InputSettings with Unity build in solution
+- Kamera ruckelt manchmal herum
+	- nur in Editor, wenn Spieler ausgewählt ist
 
 ## Art
 - Sprites für UI Buttons im Hauptmenu

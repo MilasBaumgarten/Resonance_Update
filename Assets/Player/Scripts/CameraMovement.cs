@@ -9,12 +9,11 @@ using Photon.Pun;
 using UnityEngine;
 
 public class CameraMovement : MonoBehaviourPun {
-	public Transform playerCamera;
+	[SerializeField]
+	private Transform playerCamera;
 
 	[SerializeField]
 	private Settings playerSettings;
-
-	RotateCameraToVector rotCamToVec;
 
 	float hSens;
 	float vSens;
@@ -37,8 +36,6 @@ public class CameraMovement : MonoBehaviourPun {
 			playerCamera.gameObject.SetActive(false);
 		}
 
-		rotCamToVec = playerCamera.GetComponent<RotateCameraToVector>();
-
 		Cursor.lockState = CursorLockMode.Locked;
 
 		UpdateValues();
@@ -58,12 +55,8 @@ public class CameraMovement : MonoBehaviourPun {
 			rotY = Mathf.Clamp(rotY - Input.GetAxis("Mouse Y") * vSens * Time.deltaTime, minAngle, maxAngle);
 		}
 
-		if (rotCamToVec) {
-			rotCamToVec.StopCoroutine("RotateToward");
-		}
-
 		// Rotate the player
-		this.transform.localEulerAngles = new Vector3(0, rotX, 0);
+		transform.localEulerAngles = new Vector3(0, rotX, 0);
 		// Tilt the Camera
 		playerCamera.transform.localEulerAngles = new Vector3(rotY, 0, 0);
 	}

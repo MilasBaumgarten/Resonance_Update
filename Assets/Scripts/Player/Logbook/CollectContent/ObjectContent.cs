@@ -75,6 +75,5 @@ public class ObjectContent : Interactable {
 		//currentLogIndex = logIndex;
 
 		EventManager.instance.TriggerEvent("collectContent");
-
 	}
 }

@@ -113,8 +113,6 @@ public class Grabable : ArmToolModuleBehaviour {
 			}
 			trigger.Interact();
 		}
-
-		//forceModule.ToggleGrab();
 	}
 
 	protected virtual void ApplyForce(Rigidbody rb, Vector3 dist, float movePower, int targetCount) {

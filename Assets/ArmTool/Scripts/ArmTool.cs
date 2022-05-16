@@ -31,10 +31,6 @@ public class ArmTool : MonoBehaviourPun {
 		}
 
 		cam = transform.GetComponentInChildren<Camera>().transform;
-		equipped = new ArmToolModule[4];
-		foreach (Transform child in modules) {
-			equipped[child.GetSiblingIndex()] = child.GetComponent<ArmToolModule>();
-		}
 		ChangeIconColor();
 	}
 

@@ -11,6 +11,10 @@ enum CameraState {
 }
 
 public class RotateCameraToVector : MonoBehaviour {
+	[SerializeField]
+	private Transform playerCamera;
+	[SerializeField]
+	private CameraMovement cameraMovement;
 
 	[SerializeField]
 	[Tooltip("The transfrom the cam is rotated to")]
@@ -22,10 +26,15 @@ public class RotateCameraToVector : MonoBehaviour {
 	[SerializeField]
 	[Tooltip("How fast the cam should rotate")]
 	private float speed;
+	private float move_in_speed;
+	private float move_out_speed;
 
 	[SerializeField]
 	[Tooltip("How long the rotation should last")]
-	private int duration;
+	private int move_in_duration;
+	[SerializeField]
+	[Tooltip("How long the rotation should last")]
+	private int move_out_duration;
 
 	private Quaternion lookRotation;
 	private Quaternion startRotation;
@@ -33,7 +42,8 @@ public class RotateCameraToVector : MonoBehaviour {
 	private CameraState state;
 
 	void Start() {
-		speed /= duration;
+		move_in_speed = speed / move_in_duration;
+		move_out_speed = speed / move_out_duration;
 		targetTransform = playerManager.logbook.transform;
 	}
 
@@ -41,6 +51,7 @@ public class RotateCameraToVector : MonoBehaviour {
 		if (!back) {
 			startRotation = transform.rotation;
 			state = CameraState.MOVE_IN;
+			cameraMovement.SetCameraFree(false);
 		} else {
 			state = CameraState.BACK;
 			lookRotation = startRotation;
@@ -49,6 +60,7 @@ public class RotateCameraToVector : MonoBehaviour {
 		}
 	}
 
+	// TODO: improve lookRotation accuracy
 	private void Update() {
 		if (state == CameraState.IDLE) {
 			return;
@@ -62,12 +74,21 @@ public class RotateCameraToVector : MonoBehaviour {
 			lookRotation = Quaternion.LookRotation(direction);
 		}
 
-		transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * speed);
+		lookRotation = Quaternion.Euler(lookRotation.eulerAngles.x, transform.rotation.eulerAngles.y, 0);
+
+		if (state == CameraState.MOVE_IN) {
+			transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * move_in_speed);
+		} 
+		else if (state == CameraState.BACK) {
+			transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * move_out_speed);
+		}
+		
 	}
 
 	IEnumerator SetCameraToIdle() {
-		yield return new WaitForSeconds(duration * Time.fixedDeltaTime);
+		yield return new WaitForSeconds(move_out_duration * Time.fixedDeltaTime);
 
 		state = CameraState.IDLE;
+		cameraMovement.SetCameraFree(true);
 	}
 }
