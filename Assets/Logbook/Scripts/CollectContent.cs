@@ -2,6 +2,8 @@
 // Used to get text and images from GameObjects with ObjectContent
 // Should be attached to the PlayerPrefab
 
+using ExitGames.Client.Photon;
+using Photon.Pun;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,15 +26,14 @@ public class CollectContent : MonoBehaviour {
 
 	public bool bothPlayers = true;
 
-	private ulong networkInstance;
+	private int networkInstance;
 
 	// The Dictionary that contains all logbook entries with the name if their gameobject
 	private Dictionary<string, GameObject> logbookEntryDict = new Dictionary<string, GameObject>();
 	private Dictionary<string, GameObject> logbookEntryButtonDict = new Dictionary<string, GameObject>();
 
 	void Start() {
-		// TODO: reenable
-		//networkInstance = player.GetComponent<NetworkObject>().NetworkObjectId;
+		networkInstance = player.GetPhotonView().ViewID;
 
 		// Get all the Entries
 		for (int i = 0; i < EntryParents.Length; i++) {
@@ -51,14 +52,16 @@ public class CollectContent : MonoBehaviour {
 		}
 	}
 
-	void OnEnable() {
-		// Start listening for the event
-		EventManager.instance.StartListening("collectContent", CollectCont);
+	private void OnEnable() {
+		PhotonNetwork.AddCallbackTarget(this);
 	}
 
-	void OnDisable() {
-		// Stop listening when this script is disabled
-		EventManager.instance.StopListening("collectContent", CollectCont);
+	private void OnDisable() {
+		PhotonNetwork.RemoveCallbackTarget(this);
+	}
+
+	public void OnEvent(EventData photonEvent) {
+		CollectCont();
 	}
 
 
@@ -66,7 +69,7 @@ public class CollectContent : MonoBehaviour {
 	public void CollectCont() {
 		if (!ObjectContent.currentBothPlayers) {
 			if (networkInstance != ObjectContent.currentPlayerId) {
-				//print("wrong player");
+				Debug.LogWarning("wrong player");
 				return;
 			}
 		}
@@ -93,9 +96,9 @@ public class CollectContent : MonoBehaviour {
 			entryButton.SetActive(true);
 		}
 
-		if (networkInstance == ObjectContent.currentPlayerId && ObjectContent.currentType != "special") {
+		if (networkInstance == ObjectContent.currentPlayerId && ObjectContent.currentType != ContentType.special) {
 			logbookManager.openLogbook();
-			logbookManager.EnableOnePanel(ObjectContent.currentType);
+			logbookManager.EnableOnePanel(ObjectContent.currentType) ;
 		}
 	}
 }

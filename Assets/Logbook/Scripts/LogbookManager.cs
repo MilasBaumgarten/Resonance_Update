@@ -7,11 +7,12 @@
 * 
 */
 
+using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LogbookManager : MonoBehaviour {
+public class LogbookManager : SerializedMonoBehaviour {
 	[SerializeField]
 	[Tooltip("The parent that all panels are children of")]
 	private Transform panelParent;
@@ -26,10 +27,6 @@ public class LogbookManager : MonoBehaviour {
 	private RectTransform startTransform;
 	[SerializeField]
 	private RectTransform targetTransform;
-
-	//[SerializeField]
-	//[Tooltip("The hacking minigame")]
-	//private Hacking hacking;
 
 	[SerializeField]
 	[Tooltip("The RotateCameraToVector component attached to the camera")]
@@ -51,7 +48,9 @@ public class LogbookManager : MonoBehaviour {
 	[Tooltip("the audio manager attached to the logbook")]
 	private LogbookAudio logbookAudio;
 
-	Dictionary<string, GameObject> panels;
+	//Dictionary<string, GameObject> panels_old;
+	[SerializeField]
+	private Dictionary<ContentType, GameObject> panels;
 
 	[HideInInspector] public bool isActive = false;
 
@@ -73,10 +72,6 @@ public class LogbookManager : MonoBehaviour {
 		cornersRect[0].anchoredPosition = startTransform.anchoredPosition;
 		cornersRect[1].anchoredPosition = startTransform.anchoredPosition;
 
-		// saves the names as key and the belonging GameObjects
-		panels = new Dictionary<string, GameObject>();
-
-		AddToDictionary();
 		DisableAllPanels();
 
 		// store for CameraMovment script
@@ -87,22 +82,16 @@ public class LogbookManager : MonoBehaviour {
 		headBob = player.transform.Find("Head").Find("Camera").GetComponent<HeadBob>();
 	}
 
-	// saves name of the child from Canvas and the gameObject in the dictionary
-	private void AddToDictionary() {
-		foreach (Transform child in panelParent) {
-			panels.Add(child.gameObject.name, child.gameObject);
-		}
-	}
 
 	// disable all panels who are children to the canvas where the script is attached to
 	public void DisableAllPanels() {
-		foreach (KeyValuePair<string, GameObject> panel in panels) {
+		foreach (KeyValuePair<ContentType, GameObject> panel in panels) {
 			panel.Value.SetActive(false);
 		}
 	}
 
 	// enables the wanted Panel through comparing the name who is saved in the dictionary
-	public void EnableOnePanel(string panelName) {
+	public void EnableOnePanel(ContentType panelName) {
 		// clear
 		DisableAllPanels();
 		// look if it exists in the dictionary and enable it

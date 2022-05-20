@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using ExitGames.Client.Photon;
+using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -46,13 +48,22 @@ public class ResonanceScript : MonoBehaviour {
 
 	private void Start() {
 		//listener = GameObject.Find("DialogManager").GetComponent<DialogSystem>();
-		 
-		EventManager.instance.StartListening("ResonanceTrigger", BeginResonance);
-
 	}
-	
-	 // A function to express the whole sequence of the resonance.
-    private void BeginResonance() {
+
+	private void OnEnable() {
+		PhotonNetwork.AddCallbackTarget(this);
+	}
+
+	private void OnDisable() {
+		PhotonNetwork.RemoveCallbackTarget(this);
+	}
+
+	public void OnEvent(EventData photonEvent) {
+		BeginResonance();
+	}
+
+	// A function to express the whole sequence of the resonance.
+	private void BeginResonance() {
 	    EnableArea();
 	    
 	    players = GetPlayers();

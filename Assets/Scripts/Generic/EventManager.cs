@@ -20,7 +20,6 @@ using UnityEngine.Events;
  */
 
 public class EventManager : MonoBehaviourPun {
-
 	private Dictionary<string, UnityEvent> eventDictionary;
 
 	//------------------------------------------------------------------------------------------------------------------

@@ -4,22 +4,15 @@
 
 using UnityEngine.Events;
 
-public class InteractEvent : Interactable
-{
+public class InteractEvent : Interactable {
+	public UnityEvent onInteract;
 
-    public UnityEvent onInteract;
+	public override void Interact(ArmTool armTool) {
 
-    public override void Interact(ArmTool armTool)
-    {
+		onInteract.Invoke();
 
-        onInteract.Invoke();
-
-        if(gameObject.name == "ForschungsKonsole")
-        {
-
-            armTool.GetComponent<ResearchConsole>().Open();
-
-        }
-
-    }
+		if (gameObject.name == "ForschungsKonsole") {
+			armTool.GetComponent<ResearchConsole>().Open();
+		}
+	}
 }
