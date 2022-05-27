@@ -1,11 +1,12 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
-
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Video;
 
-public class Akt1Ending : MonoBehaviour {
+public class Akt1Ending : MonoBehaviourPun {
 	[Header("Fade Settings")]
 	[SerializeField]
 	private GameObject fadeCanvasObject;
@@ -25,21 +26,44 @@ public class Akt1Ending : MonoBehaviour {
 	private RawImage videoScreen;
 
 	[SerializeField]
-	private UnityEvent afterVideoFinished;
+	private float holdTimeUntilSkip = 1.0f;
+	private float heldTime = 0.0f;
+
+	[SerializeField]
+	private string nextScene;
 
 	private float fadeAlpha;
-	private bool startEnd = false;
+
+	private bool cutsceneRunning = false;
 
 	private void Start() {
-		#region Fade Presets
 		fadeCanvasObject.SetActive(false);
 		fadeAlpha = 0;
 		fadeColor.a = fadeAlpha;
 		videoScreen.color = fadeColor;
-		#endregion
+	}
+
+	private void Update() {
+		if (!cutsceneRunning) {
+			return;
+		}
+
+		if (Input.anyKey) {
+			if (heldTime >= holdTimeUntilSkip) {
+				StopCoroutine(Ending());
+				photonView.RPC("RequestSceneChangeRPC", RpcTarget.MasterClient);
+			} else {
+				heldTime += Time.deltaTime;
+			}
+		} else {
+			if (heldTime > 0) {
+				heldTime -= Time.deltaTime;
+			}
+		}
 	}
 
 	public void StartEnding() {
+		cutsceneRunning = true;
 		StartCoroutine(Ending());
 	}
 
@@ -68,9 +92,13 @@ public class Akt1Ending : MonoBehaviour {
 
 		yield return new WaitForSeconds((float)endingVideo.clip.length);
 
-		afterVideoFinished.Invoke();
+		photonView.RPC("RequestSceneChangeRPC", RpcTarget.MasterClient);
 
 		yield return null;
 	}
 
+	[PunRPC]
+	void RequestSceneChangeRPC() {
+		SceneManager.LoadScene(nextScene);
+	}
 }

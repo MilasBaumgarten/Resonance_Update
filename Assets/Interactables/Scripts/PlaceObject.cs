@@ -24,7 +24,7 @@ public class PlaceObject : MonoBehaviour {
         
         if (targetObject.Equals(col.gameObject)) {
             
-            EventManager.instance.TriggerEvent("placeObject");
+            EventManager.instance.TriggerEvent("placeObject");  // TODO: change
             SnapPosition(col.gameObject);
 
         }
