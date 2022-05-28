@@ -1,8 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class DoorHandler : MonoBehaviour {
+	[SerializeField]
+	private bool permanentlyClosed = false;
+	[SerializeField]
+	private LayerMask collisionMask;
+
+	[SerializeField]
+	private AudioSource openAudio;
+	[SerializeField]
+	private AudioSource closeAudio;
+
+	[SerializeField]
+	private AudioSource errorAudio;
 
 	private Animation anim;
 	private bool isInCollider;
@@ -14,14 +24,29 @@ public class DoorHandler : MonoBehaviour {
 	}
 
 	private void OnTriggerEnter(Collider other) {
-        anim.Play();
-        isInCollider = true;
+		// check the layer
+		if ((collisionMask.value & 1 << other.gameObject.layer) != 0) {
+			if (permanentlyClosed) {
+				errorAudio.Play();
+				return;
+			}
+
+			anim.Play();
+			isInCollider = true;
+			openAudio.Play();
+		}
 	}
 
 	private void OnTriggerExit(Collider other) {
-		isInCollider = false;
-		foreach (AnimationState animationState in anim) {
-			animationState.speed = 1;
+		if ((collisionMask.value & 1 << other.gameObject.layer) != 0) {
+			if (permanentlyClosed) {
+				return;
+			}
+
+			isInCollider = false;
+			foreach (AnimationState animationState in anim) {
+				animationState.speed = 1;
+			}
 		}
 	}
 
@@ -33,9 +58,14 @@ public class DoorHandler : MonoBehaviour {
 		}
 	}
 
+	public void PlayCloseSound() {
+		closeAudio.Play();
+	}
+
 	public void StaysInDoor() {
 		if (isInCollider) {
-            anim.Rewind();
+            
+			anim.Rewind();
 			anim.Play();
 		}
 	}

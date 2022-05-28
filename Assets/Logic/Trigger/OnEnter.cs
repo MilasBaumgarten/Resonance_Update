@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿using UnityEngine;
 
 namespace Logic.Triggers {
     public class OnEnter : Trigger {
@@ -15,7 +12,7 @@ namespace Logic.Triggers {
             if ((collisionMask.value & 1 << other.gameObject.layer) != 0) {
                 // called from script Trigger
                 Interact();
-            }         
+            }
         }
     }
 }

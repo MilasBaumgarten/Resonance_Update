@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviourPunCallbacks {
+	[SerializeField]
+	private bool localDebugMode = false;
+
 	[Tooltip("The local player instance. Use this to know if the local player is represented in the Scene")]
 	public static GameObject localPlayerInstance;
 
@@ -88,6 +91,10 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
 			Debug.Log("<Color=Green><a>Player</a></Color> set to Robert.");
 		} else {
 			Debug.Log("<Color=Red><a>Player</a></Color> nickname: " + nickname + " is unknown.");
+		}
+
+		if (localDebugMode) {
+			return;
 		}
 
 		// move player to spawnpoint

@@ -12,7 +12,7 @@ namespace Logic {
 
         ///<summary> activates the action </summary>
         public virtual void Activate() {
-            OnActionActivated.Invoke(); //invoke OnActionActivated
+            OnActionActivated.Invoke();
         }
 
         ///<summary> activates the action with generic parameters </summary>
