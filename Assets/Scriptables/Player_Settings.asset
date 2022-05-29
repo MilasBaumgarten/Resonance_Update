@@ -4,15 +4,16 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df1a70e4f4ba36f45aa5bff1260f5cd2, type: 3}
   m_Name: Player_Settings
   m_EditorClassIdentifier: 
-  violenceAlert: 1
-  messageAlert: 1
+  violenceAlert: 0
+  messageAlert: 0
   displaySubtitles: 1
   isEnglish: 0
   horizontalSensitivity: 10
@@ -32,7 +33,7 @@ MonoBehaviour:
   forceToolButton: 323
   moveOut: 114
   moveIn: 102
-  bobbingEnabled: 1
+  bobbingEnabled: 0
   bobbingHeight: 0.15
   bobbingWidth: 0.1
   bobbingSpeed: 9.2

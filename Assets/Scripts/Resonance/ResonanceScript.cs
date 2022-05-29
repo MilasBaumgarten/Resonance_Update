@@ -1,7 +1,8 @@
-﻿using System.Collections;
+﻿using ExitGames.Client.Photon;
+using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
 
 /*
  * by Andre Spittel 15.10.2018
@@ -18,7 +19,7 @@ using UnityEngine.Networking;
  * 		-Dialogues wont show up on a builded scene
  */
 
-public class ResonanceScript : NetworkBehaviour {
+public class ResonanceScript : MonoBehaviour {
 
 	[SerializeField] private Transform spawnPoint;
 	
@@ -47,13 +48,22 @@ public class ResonanceScript : NetworkBehaviour {
 
 	private void Start() {
 		//listener = GameObject.Find("DialogManager").GetComponent<DialogSystem>();
-		 
-		EventManager.instance.StartListening("ResonanceTrigger", BeginResonance);
-
 	}
-	
-	 // A function to express the whole sequence of the resonance.
-    private void BeginResonance() {
+
+	private void OnEnable() {
+		PhotonNetwork.AddCallbackTarget(this);
+	}
+
+	private void OnDisable() {
+		PhotonNetwork.RemoveCallbackTarget(this);
+	}
+
+	public void OnEvent(EventData photonEvent) {
+		BeginResonance();
+	}
+
+	// A function to express the whole sequence of the resonance.
+	private void BeginResonance() {
 	    EnableArea();
 	    
 	    players = GetPlayers();

@@ -1,82 +1,104 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
-
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Video;
 
-public class Akt1Ending : MonoBehaviour
-{
-    [Header("Fade Settings")]
-    [SerializeField]
-    private GameObject fadeCanvasObject;
-    //[SerializeField]
-    //private Image fadeImage;
-    [SerializeField]
-    private Color fadeColor;
-    [SerializeField]
-    [Range(0.01f, 0.5f)]
-    private float fadeTime;
-    
-    [Header("Video Settings")]
-    [SerializeField]
-    [Space]
-    private VideoPlayer endingVideo;
-    [SerializeField]
-    private RawImage videoScreen;
+public class Akt1Ending : MonoBehaviourPun {
+	[Header("Fade Settings")]
+	[SerializeField]
+	private GameObject fadeCanvasObject;
+	//[SerializeField]
+	//private Image fadeImage;
+	[SerializeField]
+	private Color fadeColor;
+	[SerializeField]
+	[Range(0.01f, 0.5f)]
+	private float fadeTime;
 
-    [SerializeField]
-    private UnityEvent afterVideoFinished;
+	[Header("Video Settings")]
+	[SerializeField]
+	[Space]
+	private VideoPlayer endingVideo;
+	[SerializeField]
+	private RawImage videoScreen;
 
-    private float fadeAlpha;
-    private bool startEnd = false;
+	[SerializeField]
+	private float holdTimeUntilSkip = 1.0f;
+	private float heldTime = 0.0f;
 
-    private void Start()
-    {
-        #region Fade Presets
-        fadeCanvasObject.SetActive(false);
-        fadeAlpha = 0;
-        fadeColor.a = fadeAlpha;
-        videoScreen.color = fadeColor;
-        #endregion
-    }
+	[SerializeField]
+	private string nextScene;
 
-    public void StartEnding()
-    {
-        StartCoroutine(Ending());
-    }
+	private float fadeAlpha;
 
-    private IEnumerator Ending()
-    {
-        fadeCanvasObject.SetActive(true);
-        float steps = 0.05f;
+	private bool cutsceneRunning = false;
 
-        while (fadeAlpha < 1)
-        {
-            fadeAlpha += steps;
-            fadeColor.a = fadeAlpha;
-            videoScreen.color = fadeColor;
-            yield return new WaitForSeconds(fadeTime);
-        }
-        
-        endingVideo.Prepare();
-        WaitForSeconds wait = new WaitForSeconds(1);
+	private void Start() {
+		fadeCanvasObject.SetActive(false);
+		fadeAlpha = 0;
+		fadeColor.a = fadeAlpha;
+		videoScreen.color = fadeColor;
+	}
 
-        while (!endingVideo.isPrepared)
-        {
-            yield return wait;
-            break;
-        }
+	private void Update() {
+		if (!cutsceneRunning) {
+			return;
+		}
 
-        videoScreen.color = Color.white;
-        videoScreen.texture = endingVideo.texture;
-        endingVideo.Play();
+		if (Input.anyKey) {
+			if (heldTime >= holdTimeUntilSkip) {
+				StopCoroutine(Ending());
+				photonView.RPC("RequestSceneChangeRPC", RpcTarget.MasterClient);
+			} else {
+				heldTime += Time.deltaTime;
+			}
+		} else {
+			if (heldTime > 0) {
+				heldTime -= Time.deltaTime;
+			}
+		}
+	}
 
-        yield return new WaitForSeconds((float) endingVideo.clip.length);
+	public void StartEnding() {
+		cutsceneRunning = true;
+		StartCoroutine(Ending());
+	}
 
-        afterVideoFinished.Invoke();
+	private IEnumerator Ending() {
+		fadeCanvasObject.SetActive(true);
+		float steps = 0.05f;
 
-        yield return null;
-    }
+		while (fadeAlpha < 1) {
+			fadeAlpha += steps;
+			fadeColor.a = fadeAlpha;
+			videoScreen.color = fadeColor;
+			yield return new WaitForSeconds(fadeTime);
+		}
 
+		endingVideo.Prepare();
+		WaitForSeconds wait = new WaitForSeconds(1);
+
+		while (!endingVideo.isPrepared) {
+			yield return wait;
+			break;
+		}
+
+		videoScreen.color = Color.white;
+		videoScreen.texture = endingVideo.texture;
+		endingVideo.Play();
+
+		yield return new WaitForSeconds((float)endingVideo.clip.length);
+
+		photonView.RPC("RequestSceneChangeRPC", RpcTarget.MasterClient);
+
+		yield return null;
+	}
+
+	[PunRPC]
+	void RequestSceneChangeRPC() {
+		SceneManager.LoadScene(nextScene);
+	}
 }

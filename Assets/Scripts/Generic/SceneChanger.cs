@@ -1,5 +1,4 @@
-﻿using Prototype.NetworkLobby;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SceneChanger : MonoBehaviour {
 
@@ -7,10 +6,10 @@ public class SceneChanger : MonoBehaviour {
 	
 	private void OnTriggerEnter(Collider other) {
         ChangeScene();
-
     }
 
     public void ChangeScene() {
-        LobbyManager.s_Singleton.ChangeScene(sceneName);
+        // TODO: reenable
+        //LobbyManager.s_Singleton.ChangeScene(sceneName);
     }
 }

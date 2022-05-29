@@ -1,7 +1,6 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 
 /**
@@ -15,55 +14,57 @@ using UnityEngine.SceneManagement;
  * - SceneLoader NEEDS localPlayerAuthority for this to work
  */
 
-public class LoadCreditSceneForBothPlayers : NetworkBehaviour {
+// TODO: reenable
+public class LoadCreditSceneForBothPlayers : MonoBehaviourPun {
 
-    private List<PlayerController> playerControllers;
-    private NetworkIdentity ownPlayerID;
-    private NetworkIdentity otherPlayerID;
+    private List<GameObject> playerControllers;
+    //private List<PlayerController> playerControllers;
+    //private NetworkObject ownPlayerID;
+    //private NetworkObject otherPlayerID;
 
-    public void LoadCreditScene() {
-        StartCoroutine("WaitAndThenLoad");
-    }
+    //public void LoadCreditScene() {
+    //    StartCoroutine("WaitAndThenLoad");
+    //}
 
-    IEnumerator WaitForClientDisconnect() {
+    //IEnumerator WaitForClientDisconnect() {
 
-        while(NetworkManager.singleton.numPlayers > 1) {
-            yield return new WaitForEndOfFrame();
-        }
+    //    while(NetworkManager.Singleton.numPlayers > 1) {
+    //        yield return new WaitForEndOfFrame();
+    //    }
 
-        NetworkManager.singleton.StopHost();
-        // load new scene
-        SceneManager.LoadScene("CreditsEndgame");
-    }
+    //    NetworkManager.Singleton.StopHost();
+    //    // load new scene
+    //    SceneManager.LoadScene("CreditsEndgame");
+    //}
 
-    IEnumerator WaitAndThenLoad()
-    {
-        yield return new WaitForSecondsRealtime(2);
-        //find own player
+    //IEnumerator WaitAndThenLoad()
+    //{
+    //    yield return new WaitForSecondsRealtime(2);
+    //    //find own player
 
-        playerControllers = NetworkManager.singleton.client.connection.playerControllers;
-        foreach (PlayerController controller in playerControllers)
-        {
-            if (controller.IsValid)
-            {
-                if (controller.gameObject.GetComponent<NetworkIdentity>().isLocalPlayer)
-                {
-                    ownPlayerID = controller.gameObject.GetComponent<NetworkIdentity>();
-                    break;
-                }
-            }
-        }
+    //    playerControllers = NetworkManager.Singleton.client.connection.playerControllers;
+    //    foreach (PlayerController controller in playerControllers)
+    //    {
+    //        if (controller.IsValid)
+    //        {
+    //            if (controller.gameObject.GetComponent<NetworkIdentity>().isLocalPlayer)
+    //            {
+    //                ownPlayerID = controller.gameObject.GetComponent<NetworkIdentity>();
+    //                break;
+    //            }
+    //        }
+    //    }
 
-        // check if player is host
-        if (!ownPlayerID.isServer)
-        {
-            NetworkManager.singleton.StopClient();
-            // load new scene
-            SceneManager.LoadScene("CreditsEndgame");
-        }
-        else
-        {
-            StartCoroutine(WaitForClientDisconnect());
-        }
-    }
+    //    // check if player is host
+    //    if (!ownPlayerID.isServer)
+    //    {
+    //        NetworkManager.singleton.StopClient();
+    //        // load new scene
+    //        SceneManager.LoadScene("CreditsEndgame");
+    //    }
+    //    else
+    //    {
+    //        StartCoroutine(WaitForClientDisconnect());
+    //    }
+    //}
 }

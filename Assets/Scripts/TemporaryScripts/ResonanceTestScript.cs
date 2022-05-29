@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using UnityEngine.Networking;
+using Photon.Pun;
 
 /*
  * by Andre Spittel 15.10.2018
@@ -11,7 +11,7 @@ using UnityEngine.Networking;
  * This script is temporary, to test the functionality of the resonances. It tracks if a player made a decision (pressed
  * J or N) and sends these to the server, if its the client. If its the server, It sends the decision to all clients.
  */
-public class ResonanceTestScript : NetworkBehaviour {
+public class ResonanceTestScript : MonoBehaviourPun {
 
     // This bool only gets true, if the player collided with the resonance. The code is in the ResonanceScript.
     [HideInInspector] public bool activated;
@@ -21,48 +21,48 @@ public class ResonanceTestScript : NetworkBehaviour {
 
     // This update checks for the player input, and changes the bools (the decisions).
     private void Update() {
-        if (activated && isLocalPlayer) {
-            if (!isServer) {
+        if (activated && photonView.IsMine) {
+            if (!PhotonNetwork.IsMasterClient) {
                 if (Input.GetKeyDown(KeyCode.J)) {
                     Debug.Log("Client pressed J");
-                    CmdPressedJ();
+                    //PressedJServerRpc();
                 }
                 if (Input.GetKeyDown(KeyCode.N)) {
                     Debug.Log("Client pressed N");
-                    CmdPressedN();
+                    //PressedNServerRpc();
                 }
             }
-            else if (isServer) {
+            else if (PhotonNetwork.IsMasterClient) {
                 if (Input.GetKeyDown(KeyCode.J)) {
                     Debug.Log("Server pressed J");
-                    RpcPressedJ();
+                    //PressedJClientRpc();
                 }
 
                 if (Input.GetKeyDown(KeyCode.N)) {
                     Debug.Log("Server pressed N");
-                    RpcPressedN();
+                    //PressedNClientRpc();
                 }
             }
         }
     }
 
-    [Command]
-    private void CmdPressedJ() {
-        RpcPressedJ();
-    }
+    //[ServerRpc]
+    //private void PressedJServerRpc() {
+    //    PressedJClientRpc();
+    //}
 
-    [Command]
-    private void CmdPressedN() {
-        RpcPressedN();
-    }
+    //[ServerRpc]
+    //private void PressedNServerRpc() {
+    //    PressedNClientRpc();
+    //}
 
-    [ClientRpc]
-    private void RpcPressedJ() {
-        pressedJ = true;
-    }
+    //[ClientRpc]
+    //private void PressedJClientRpc() {
+    //    pressedJ = true;
+    //}
     
-    [ClientRpc]
-    private void RpcPressedN() {
-        pressedN = true;
-    }
+    //[ClientRpc]
+    //private void PressedNClientRpc() {
+    //    pressedN = true;
+    //}
 }

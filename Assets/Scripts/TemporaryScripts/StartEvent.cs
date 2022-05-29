@@ -1,35 +1,25 @@
 ﻿// Author: Noah Stolz
 // Used to start an InvokeWithDelay event with networking
 
+using Photon.Pun;
 using UnityEngine;
-using UnityEngine.Networking;
 
-public class StartEvent : NetworkBehaviour {
+// TODO: reenable
+public class StartEvent : MonoBehaviourPun {
+	[SerializeField]
+	private GameObject obj;
 
-    [SerializeField]
-    private GameObject obj;
-    
-    public void CallEvent()
-    {
+	public void CallEvent() {
+		//CallEventServerRpc(obj);
+	}
 
+	//[ServerRpc]
+	//void CallEventServerRpc(GameObject obj) {
+	//	CallEventClientRpc(obj);
+	//}
 
-        CmdCallEvent(obj);
-
-    }
-
-    [Command]
-    void CmdCallEvent(GameObject obj)
-    {
-
-        RpcCallEvent(obj);
-
-    }
-
-    [ClientRpc]
-    void RpcCallEvent(GameObject obj)
-    {
-
-        obj.GetComponent<InvokeWithDelay>().OnButtonClicked();
-
-    }
+	//[ClientRpc]
+	//void CallEventClientRpc(GameObject obj) {
+	//	obj.GetComponent<InvokeWithDelay>().OnButtonClicked();
+	//}
 }

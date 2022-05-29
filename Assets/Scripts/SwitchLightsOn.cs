@@ -1,24 +1,23 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
 
-
-public class SwitchLightsOn : NetworkBehaviour {
+// TODO: reenable
+public class SwitchLightsOn : MonoBehaviourPun {
     [SerializeField]
     private List<Light> switchableLights = new List<Light>();
 
     [SerializeField]
     private Color normalLightColor = new Color();
 
-    private NetworkIdentity identity;
-    private NetworkIdentity playerIdentity;
+    //private NetworkObject identity;
+    //private NetworkObject playerIdentity;
 
-    [SyncVar]
+    //NetworkVariable<GameObject> player = new NetworkVariable<GameObject>();
     GameObject player;
 
-    void Awake() {
-        identity = GetComponent<NetworkIdentity>();
+	void Awake() {
+        //identity = GetComponent<NetworkObject>();
     }
 
     void Start() {
@@ -30,23 +29,23 @@ public class SwitchLightsOn : NetworkBehaviour {
     private void OnTriggerEnter(Collider other) {
         if (other.tag.Equals("Player")) {
             player = other.gameObject;
-            CmdTurnLightOn(player);
+            //TurnLightOnServerRpc(player);
         }
     }
 
-    [Command]
-    void CmdTurnLightOn(GameObject player) {
-        playerIdentity = player.GetComponent<NetworkIdentity>();
-        identity.AssignClientAuthority(playerIdentity.connectionToClient);
-        RpcTurnLightOn();
-        identity.RemoveClientAuthority(playerIdentity.connectionToClient);
-    }
+    //[ServerRpc]
+    //void TurnLightOnServerRpc(GameObject player) {
+    //    //playerIdentity = player.GetComponent<NetworkObject>();
+    //    //identity.AssignClientAuthority(playerIdentity.connectionToClient);
+    //    //RpcTurnLightOn();
+    //    //identity.RemoveClientAuthority(playerIdentity.connectionToClient);
+    //}
 
-    [ClientRpc]
-    void RpcTurnLightOn() {
-        foreach (Light light in switchableLights) {
-            light.enabled = true;
-            light.color = normalLightColor;
-        }
-    }
+    //[ClientRpc]
+    //void TurnLightOnClientRpc() {
+    //    foreach (Light light in switchableLights) {
+    //        light.enabled = true;
+    //        light.color = normalLightColor;
+    //    }
+    //}
 }

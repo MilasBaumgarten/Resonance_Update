@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 /**
  * Author: Leon Ullrich
@@ -9,6 +7,7 @@ using UnityEngine;
  * 
  * Changes: Noah Stolz
  * Added variable to disable bobbing outside of script
+ * 
  */
 public class HeadBob : MonoBehaviour {
     // Initial position of the camera
@@ -23,13 +22,12 @@ public class HeadBob : MonoBehaviour {
     [HideInInspector]
     public bool stopSmooth = false;
 
+    [SerializeField]
     private Settings playerSettings;
 
     float timer = Mathf.PI / 2;
 
     void Start() {
-		playerSettings = GameManager.instance.settings;
-
         // initialize values
         camPos = transform.localPosition;
         restPosition = camPos;

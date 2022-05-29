@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
-using System;
 using System.Collections;
 using TMPro;
+using UnityEngine.Events;
 
 /**
  * Author: Leon Ullrich
@@ -40,19 +39,20 @@ using TMPro;
  */
 [RequireComponent(typeof(AudioSource))]
 public class DialogSystem : MonoBehaviour {
-
+	[SerializeField]
+	private PlayerManager player;
     [Tooltip("Reference to player settings to ask if dialog-subtitles should be displayed in english or german")]
-    public Settings playerSettings;
+	[SerializeField]
+	private Settings playerSettings;
 
 	// the text object in which the subtitles are displayed
+	[SerializeField]
 	private TextMeshProUGUI dialogSubtitles;
 	// should the text be displayed in german?
 	[Tooltip("Should the Dialog be in german or english?")]
     [SerializeField]
 	private bool isEnglish;
     [Tooltip("Should subtitles be displayed?")]
-    [SerializeField]
-    private bool displaySubtitles;
 	// audio source
 	private AudioSource audioSource;
 	// for loading the needed audio source
@@ -72,6 +72,8 @@ public class DialogSystem : MonoBehaviour {
     // bool to check if a dialog is playing
     [HideInInspector]
     public bool dialogPlaying = false;
+
+	// TODO: use dialog Queue & Callbacks instead of directly playing audio
     [HideInInspector]
     public ArrayList dialogQueue;
 
@@ -80,7 +82,12 @@ public class DialogSystem : MonoBehaviour {
 
 	public static DialogSystem instance = null;
 
-	void Awake() {
+	void Start() {
+		if (!player.photonView.IsMine) {
+			Destroy(this);
+			return;
+		}
+
 		// Check if instance already exists
 		if (instance == null) {
 			// if not, set instance to this
@@ -91,16 +98,8 @@ public class DialogSystem : MonoBehaviour {
 		else if (instance != this) {
 			// Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
 			Destroy(gameObject);
+			Debug.LogError("Additional Dialog System was found! Only one Dialog System should exist and it should be part of the player.");
 		}
-
-		// Sets this to not be destroyed when reloading scene
-		//DontDestroyOnLoad(gameObject);
-
-	}
-
-	// Singleton format end
-
-	private void Start() {
 
         dialogQueue = new ArrayList();
 
@@ -108,13 +107,9 @@ public class DialogSystem : MonoBehaviour {
         audioClip = audioSource.clip;
 		dialogTextFromExcel = new DialogTextFromExcel();
 
-		if (dialogSubtitles == null) {
-			dialogSubtitles = GameObject.Find("DialogSubtitles").GetComponent<TextMeshProUGUI>();
-			dialogSubtitles.enabled = false;
-		}
+		dialogSubtitles.enabled = false;
 
         isEnglish = playerSettings.isEnglish;
-        displaySubtitles = playerSettings.displaySubtitles;
     }
 
     void Update() {
@@ -128,8 +123,10 @@ public class DialogSystem : MonoBehaviour {
                 StartOneLiner(dialogQueue[0].ToString());
             } else {
                 StartDialog(dialogQueue[0].ToString());
-            }           
-        }
+            }
+
+			dialogQueue.RemoveAt(0);
+		}
     }
 
     // call this method from another gameobject/class to start the dialog routine
@@ -146,7 +143,7 @@ public class DialogSystem : MonoBehaviour {
 		// get values from csv-file
 		dialogTextFromExcel.GetValues(filename);
 		//enable text-object, if they should be displayed
-        if(displaySubtitles)
+        if(playerSettings.displaySubtitles)
 		    dialogSubtitles.enabled = true;
         // set dialogPlaying-flag to true
         dialogPlaying = true;
@@ -170,16 +167,17 @@ public class DialogSystem : MonoBehaviour {
         dialogPlaying = false;
         // clear values
         dialogTextFromExcel.ClearData();
-        // remove first element in queue
-        dialogQueue.RemoveAt(0);
-    }
+
+		// remove first element in queue
+		//dialogQueue.RemoveAt(0);
+	}
 
     /// <summary>Play a one Liner in german or english</summary>
     /// <param name="ID">The ID of the oneliner</param>
     IEnumerator PlayOneLiner(string ID) {
 
 		// Enable text-object that displays subtitles, if they should be displayed
-        if(displaySubtitles)
+        if(playerSettings.displaySubtitles)
 		    dialogSubtitles.enabled = true;
         // set dialogPlaying-flag to true
         dialogPlaying = true;

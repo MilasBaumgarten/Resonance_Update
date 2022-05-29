@@ -1,10 +1,10 @@
 ﻿// Author: Noah Stolz
 // Provides some functionality that is only needed in act1
 
+using Photon.Pun;
 using UnityEngine;
-using UnityEngine.Networking;
 
-public class Act1Manager : NetworkBehaviour {
+public class Act1Manager : MonoBehaviourPun {
 
 	[SerializeField]
 	[Tooltip("How many times should the player interact with something before they can move on")]
@@ -19,29 +19,22 @@ public class Act1Manager : NetworkBehaviour {
 
 	// Increase the nummber of interactions whenever one of the players collect an Object
 	public void increaseNummberOfInteractions() {
-
 		nummberOfInteractions++;
 
 		if (nummberOfInteractions >= targetNummberOfInteractions) {
-
-			CmdSetPlayerReady();
-
+			// TODO: reenable
+			//SetPlayerReadyServerRpc();
 		}
-
 	}
 
-	[Command]
-	public void CmdSetPlayerReady() {
+	//[ServerRpc]
+	//public void SetPlayerReadyServerRpc() {
+	//	SetPlayerReadyClientRpc();
+	//}
 
-		RpcSetPlayerReady();
-
-	}
-
-	[ClientRpc]
-	void RpcSetPlayerReady() {
-
-		doorColl1.enabled = true;
-		doorColl2.enabled = true;
-
-	}
+	//[ClientRpc]
+	//void SetPlayerReadyClientRpc() {
+	//	doorColl1.enabled = true;
+	//	doorColl2.enabled = true;
+	//}
 }

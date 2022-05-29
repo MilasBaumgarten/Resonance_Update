@@ -3,93 +3,74 @@
 // Should be attached to the PlayerPrefab
 // Requires the PlayerPrefab to have a canvas with two Text-Objects
 
-using System.Collections;
-using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
-using UnityEngine.Networking;
 using UnityEngine.UI;
 
-public class LookAtObject : NetworkBehaviour {
+public class LookAtObject : MonoBehaviourPun {
 
-    [SerializeField]
-    [Tooltip("The UI-Text that displays the object name")]
-    private Text nameText;
+	[SerializeField]
+	[Tooltip("The UI-Text that displays the object name")]
+	private Text nameText;
 
-    [SerializeField]
-    [Tooltip("The UI-Text that displays the object info")]
-    private Text infoText;
+	[SerializeField]
+	[Tooltip("The UI-Text that displays the object info")]
+	private Text infoText;
 
-    [SerializeField]
-    [Tooltip("Camera attached to PlayerPrefab")]
-    private Camera cam;
+	[SerializeField]
+	[Tooltip("Camera attached to PlayerPrefab")]
+	private Camera cam;
 
-    [SerializeField]
-    [Tooltip("How far away can an Object be and still get registered")]
-    private float maxDistance = 5f;
+	[SerializeField]
+	[Tooltip("How far away can an Object be and still get registered")]
+	private float maxDistance = 5f;
 
-    // Transform of the viewed Object
-    private Transform objectTransform;
-    // Transform of the Object that was viewed in the previous frame
-    private Transform lastObjTransform;
-    private RaycastHit rayHit;
-    private Ray ray;
+	// Transform of the viewed Object
+	private Transform objectTransform;
+	// Transform of the Object that was viewed in the previous frame
+	private Transform lastObjTransform;
+	private RaycastHit rayHit;
+	private Ray ray;
 
 	// Use this for initialization
-	void Start () {
-
-        if (!isLocalPlayer) {
-
-            this.enabled = false;
-
-        }
-            
-
+	void Start() {
+		if (!photonView.IsMine) {
+			this.enabled = false;
+		}
 	}
-	
+
 	// Update is called once per frame
-	void Update () {
+	void Update() {
+		ray = cam.ScreenPointToRay(Input.mousePosition);
 
-        ray = cam.ScreenPointToRay(Input.mousePosition);
+		if (Physics.Raycast(ray, out rayHit)) {
+			objectTransform = rayHit.transform;
 
-        if (Physics.Raycast(ray, out rayHit)) {
+			// Uses the position of the player and the object the find the distance between them
+			float distance = Vector3.Magnitude(objectTransform.position - this.transform.position);
 
-            objectTransform = rayHit.transform;
+			if (distance > maxDistance) {
+				infoText.text = " ";
+				nameText.text = " ";
+				return;
+			}
 
-            // Uses the position of the player and the object the find the distance between them
-            float distance = Vector3.Magnitude(objectTransform.position - this.transform.position);
+			// Makes sure that getComponent is not called more than once when the object stays the same
+			if (objectTransform == lastObjTransform) {
+				return;
+			}
 
-            if (distance > maxDistance) {
+			lastObjTransform = objectTransform;
 
-                infoText.text = " ";
-                nameText.text = " ";
-                return;
+			ObjectInfo objInfo = objectTransform.GetComponent<ObjectInfo>();
 
-            }
-
-            // Makes sure that getComponent is not called more than once when the object stays the same
-            if (objectTransform == lastObjTransform) {
-
-                return;
-
-            }
-            lastObjTransform = objectTransform;
-
-            ObjectInfo objInfo = objectTransform.GetComponent<ObjectInfo>();
-
-            if (objInfo != null) {
-
-                infoText.text = objInfo.objectInfo;
-                nameText.text = objInfo.objectName;
-
-            } else {
-
-                infoText.text = " ";
-                nameText.text = " ";
-
-            }
-
-        }
-
-    }
-
+			if (objInfo != null) {
+				infoText.text = objInfo.objectInfo;
+				nameText.text = objInfo.objectName;
+			} else {
+				infoText.text = " ";
+				nameText.text = " ";
+			}
+		}
+	}
 }
