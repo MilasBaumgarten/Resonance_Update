@@ -119,7 +119,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
 	}
 
 	public override void OnJoinedRoom() {
-		Debug.Log(PhotonNetwork.PlayerList[0]);
 		photonView.TransferOwnership(PhotonNetwork.PlayerList[0]);
 		localPlayerInstance = gameObject;
 	}

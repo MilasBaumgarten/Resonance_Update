@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using TMPro;
+using UnityEngine.Events;
 
 /**
  * Author: Leon Ullrich
@@ -71,6 +72,8 @@ public class DialogSystem : MonoBehaviour {
     // bool to check if a dialog is playing
     [HideInInspector]
     public bool dialogPlaying = false;
+
+	// TODO: use dialog Queue & Callbacks instead of directly playing audio
     [HideInInspector]
     public ArrayList dialogQueue;
 
@@ -120,8 +123,10 @@ public class DialogSystem : MonoBehaviour {
                 StartOneLiner(dialogQueue[0].ToString());
             } else {
                 StartDialog(dialogQueue[0].ToString());
-            }           
-        }
+            }
+
+			dialogQueue.RemoveAt(0);
+		}
     }
 
     // call this method from another gameobject/class to start the dialog routine
@@ -162,9 +167,10 @@ public class DialogSystem : MonoBehaviour {
         dialogPlaying = false;
         // clear values
         dialogTextFromExcel.ClearData();
-        // remove first element in queue
-        dialogQueue.RemoveAt(0);
-    }
+
+		// remove first element in queue
+		//dialogQueue.RemoveAt(0);
+	}
 
     /// <summary>Play a one Liner in german or english</summary>
     /// <param name="ID">The ID of the oneliner</param>

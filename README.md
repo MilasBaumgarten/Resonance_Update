@@ -12,6 +12,11 @@
 - fix Error bei Dialogen
 - fix Logbuch Add Object Stuff
 - replace InputSettings with Unity build in solution
+- Interaktion überarbeiten
+	- Interaktion Prompt
+	- nicht an ArmTool knüpfen (bzw. permanent aktiv)
+	- sollte über Proximity funktionieren
+- ForceTool Prompts bei Benutzung einfügen
 
 ## Art
 - Sprites für UI Buttons im Hauptmenu

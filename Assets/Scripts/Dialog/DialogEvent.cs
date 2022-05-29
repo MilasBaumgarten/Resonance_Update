@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Linq;
+using UnityEngine;
+using UnityEngine.Events;
 
 /**
  * Author: Leon Ullrich
@@ -21,15 +24,21 @@ public class DialogEvent : MonoBehaviour {
 	[Tooltip("Used if you wish to play a one liner instead of a complete dialog")]
 	public string oneLinerID;
 
+	[SerializeField]
+	private UnityEvent afterDialogFinishedEvent;
 
 	public void StartDialog() {
 		Play();
 	}
 
 	private void Play() {
-		if (isOneLiner) {
-			DialogTextFromExcel dialogText = new DialogTextFromExcel();
+		if (hasPlayed) {
+			return;
+		}
 
+		DialogTextFromExcel dialogText = new DialogTextFromExcel();
+
+		if (isOneLiner) {
 			dialogText.GetOneLinerValues();
 
 			if (dialogText.oneLinerID.Contains(oneLinerID)) {
@@ -38,7 +47,11 @@ public class DialogEvent : MonoBehaviour {
 				Debug.LogError("One-Liner ID not found! " + oneLinerID);
 			}
 		} else {
-			DialogSystem.instance.dialogQueue.Add(filename); // called from script DialogTriggerListener
+			dialogText.GetValues(filename);
+			float dialogTime = dialogText.timeToDisplay.Sum();
+
+			StartCoroutine(WaitForDialogFinish(dialogTime));
+			DialogSystem.instance.StartDialog(filename); // called from script DialogTriggerListener
 		}
 
 		hasPlayed = true;
@@ -47,23 +60,17 @@ public class DialogEvent : MonoBehaviour {
 	/// <summary>Used to play dialog or oneliners from outside of this script</summary>
 	public void playDialog() {
 		if (hasPlayed) {
-			return;
-		}
-
-		if (isOneLiner) {
-			DialogTextFromExcel dialogText = new DialogTextFromExcel();
-
-			dialogText.GetOneLinerValues();
-
-			if (dialogText.oneLinerID.Contains(oneLinerID)) {
-				DialogSystem.instance.StartOneLiner(oneLinerID);
-			} else {
-				Debug.LogError("One-Liner ID not found! " + oneLinerID);
-			}
+			Play();
 		} else {
-			DialogSystem.instance.StartDialog(filename); // called from script DialogTriggerListener
+			Play();
+			hasPlayed = false;
 		}
+	}
 
-		hasPlayed = false;
+	IEnumerator WaitForDialogFinish(float duration) {
+		Debug.Log(duration);
+		yield return new WaitForSeconds(duration);
+
+		afterDialogFinishedEvent.Invoke();
 	}
 }
