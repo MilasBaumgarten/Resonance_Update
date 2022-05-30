@@ -3,9 +3,7 @@
 - MainMenu: implement functionality for Credits Button
 - MainMenu: LobbyMenu visuell an andere Menus anpassen
 - Options Menu: implement options for Camera Controls
-- Act 3_4: kleine Tür ist zu klein
 - Act 3_4: Kollisionen mit Deko sind akward (Spieler wird hochgedrückt)
-- Act 3_4: Licht ist oft zu schwach
 
 ## Programming
 - fix Resonances
