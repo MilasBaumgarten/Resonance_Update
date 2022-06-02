@@ -998,6 +998,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 2ec0297e00d7f534e9d236e08cd0dae1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 34c2ab5824487104bbfe3022800884cf, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ec0297e00d7f534e9d236e08cd0dae1, type: 3}
 --- !u!4 &56742581 stripped
@@ -1333,28 +1337,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2787bac6fc9d3714ea0959346e3bc731, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameOfSuccessEvent: HackingEnd
-  player1: 1
-  time: 60
-  difficulty: 3
-  MasterMindTries: 6
-  MasterMindColors: 4
-  onSuccess:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1576484263}
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!4 &78318472 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4440174283368458, guid: 6f025609e690cbc48b8ceeb9d8fe9600,
@@ -7347,6 +7329,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 2ec0297e00d7f534e9d236e08cd0dae1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 34c2ab5824487104bbfe3022800884cf, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ec0297e00d7f534e9d236e08cd0dae1, type: 3}
 --- !u!4 &508336203 stripped
@@ -8024,17 +8010,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2787bac6fc9d3714ea0959346e3bc731, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameOfSuccessEvent: HackingGaskammer
-  player1: 1
-  time: 100
-  difficulty: 3
-  MasterMindTries: 6
-  MasterMindColors: 4
-  onSuccess:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!4 &551399165 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4440174283368458, guid: 6f025609e690cbc48b8ceeb9d8fe9600,
@@ -13866,14 +13841,6 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4557864465145706, guid: 573f1f939bbce2242a9ec71903195c49, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4557864465145706, guid: 573f1f939bbce2242a9ec71903195c49, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4557864465145706, guid: 573f1f939bbce2242a9ec71903195c49, type: 3}
       propertyPath: m_LocalPosition.x
       value: 116.43994
       objectReference: {fileID: 0}
@@ -14101,12 +14068,12 @@ PrefabInstance:
     - target: {fileID: 6009167467892819955, guid: 227ef32a980110f43b12f034378fa3d9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.96294785
+      value: -1.916
       objectReference: {fileID: 0}
     - target: {fileID: 6009167467892819955, guid: 227ef32a980110f43b12f034378fa3d9,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -72.41851
+      value: -73.998
       objectReference: {fileID: 0}
     - target: {fileID: 6009167467892819955, guid: 227ef32a980110f43b12f034378fa3d9,
         type: 3}
@@ -14522,17 +14489,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2787bac6fc9d3714ea0959346e3bc731, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameOfSuccessEvent: Gaslager
-  player1: 1
-  time: 120
-  difficulty: 4
-  MasterMindTries: 6
-  MasterMindColors: 5
-  onSuccess:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!114 &1041736696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14545,27 +14501,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8258ea15b8f74c4889ce485d21cbbb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 0
-    i1: 0
-    i2: 0
-    i3: 0
-    i4: 0
-    i5: 0
-    i6: 0
-    i7: 0
-    i8: 0
-    i9: 0
-    i10: 0
-    i11: 0
-    i12: 0
-    i13: 0
-    i14: 0
-    i15: 0
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
 --- !u!65 &1041736697
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15114,20 +15049,12 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4557864465145706, guid: 573f1f939bbce2242a9ec71903195c49, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4557864465145706, guid: 573f1f939bbce2242a9ec71903195c49, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4557864465145706, guid: 573f1f939bbce2242a9ec71903195c49, type: 3}
       propertyPath: m_LocalPosition.x
       value: 116.43994
       objectReference: {fileID: 0}
     - target: {fileID: 4557864465145706, guid: 573f1f939bbce2242a9ec71903195c49, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 114.73526
+      value: 114.801
       objectReference: {fileID: 0}
     - target: {fileID: 4557864465145706, guid: 573f1f939bbce2242a9ec71903195c49, type: 3}
       propertyPath: m_LocalPosition.z
@@ -15661,6 +15588,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 2ec0297e00d7f534e9d236e08cd0dae1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 34c2ab5824487104bbfe3022800884cf, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ec0297e00d7f534e9d236e08cd0dae1, type: 3}
 --- !u!4 &1133643696 stripped
@@ -15731,14 +15662,6 @@ PrefabInstance:
     - target: {fileID: 4557864465145706, guid: 573f1f939bbce2242a9ec71903195c49, type: 3}
       propertyPath: m_RootOrder
       value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4557864465145706, guid: 573f1f939bbce2242a9ec71903195c49, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4557864465145706, guid: 573f1f939bbce2242a9ec71903195c49, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4557864465145706, guid: 573f1f939bbce2242a9ec71903195c49, type: 3}
       propertyPath: m_LocalPosition.x
@@ -17187,6 +17110,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 2ec0297e00d7f534e9d236e08cd0dae1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 34c2ab5824487104bbfe3022800884cf, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ec0297e00d7f534e9d236e08cd0dae1, type: 3}
 --- !u!4 &1223194091 stripped
@@ -19312,12 +19239,12 @@ PrefabInstance:
     - target: {fileID: 3835478008762257703, guid: 98c2ad24ce68e244e9bd4848408bd055,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.9639149
+      value: -1.9150329
       objectReference: {fileID: 0}
     - target: {fileID: 3835478008762257703, guid: 98c2ad24ce68e244e9bd4848408bd055,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -71.81211
+      value: -73.3916
       objectReference: {fileID: 0}
     - target: {fileID: 3835478008762257703, guid: 98c2ad24ce68e244e9bd4848408bd055,
         type: 3}
@@ -21253,18 +21180,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 511702884}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1523278820
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1523278819}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db87d02528bdd27459a9e97fe294cd8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1523278821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21299,9 +21214,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1523278820}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: LoadCreditScene
+      - m_Target: {fileID: 1523278827}
+        m_TargetAssemblyTypeName: Logic.Actions.PlayerWantsSceneChange, Assembly-CSharp
+        m_MethodName: Activate
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -21317,6 +21232,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 511702884}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1523278827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1523278819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c3ff0cd90d568d46856462181c782c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnActionActivated:
+    m_PersistentCalls:
+      m_Calls: []
+  loadScene: CreditsEndgame
 --- !u!1001 &1530547929
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21695,21 +21626,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door (8)
       objectReference: {fileID: 0}
-    - target: {fileID: 1291467224991662, guid: 573f1f939bbce2242a9ec71903195c49, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4557864465145706, guid: 573f1f939bbce2242a9ec71903195c49, type: 3}
       propertyPath: m_RootOrder
       value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4557864465145706, guid: 573f1f939bbce2242a9ec71903195c49, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4557864465145706, guid: 573f1f939bbce2242a9ec71903195c49, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4557864465145706, guid: 573f1f939bbce2242a9ec71903195c49, type: 3}
       propertyPath: m_LocalPosition.x
@@ -21743,19 +21662,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 90
       objectReference: {fileID: 0}
-    - target: {fileID: 65286616632375624, guid: 573f1f939bbce2242a9ec71903195c49,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 573f1f939bbce2242a9ec71903195c49, type: 3}
---- !u!65 &1576484263 stripped
-BoxCollider:
-  m_CorrespondingSourceObject: {fileID: 65286616632375624, guid: 573f1f939bbce2242a9ec71903195c49,
-    type: 3}
-  m_PrefabInstance: {fileID: 1576484262}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1576484264 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4557864465145706, guid: 573f1f939bbce2242a9ec71903195c49,
@@ -24823,31 +24731,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4543328280443832, guid: 58a2ef949ee909c489ab353f8317e5fa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -161.94
       objectReference: {fileID: 0}
     - target: {fileID: 4543328280443832, guid: 58a2ef949ee909c489ab353f8317e5fa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -8.911
       objectReference: {fileID: 0}
     - target: {fileID: 4543328280443832, guid: 58a2ef949ee909c489ab353f8317e5fa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -36.83
       objectReference: {fileID: 0}
     - target: {fileID: 4543328280443832, guid: 58a2ef949ee909c489ab353f8317e5fa, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.64312595
       objectReference: {fileID: 0}
     - target: {fileID: 4543328280443832, guid: 58a2ef949ee909c489ab353f8317e5fa, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4543328280443832, guid: 58a2ef949ee909c489ab353f8317e5fa, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.76576036
       objectReference: {fileID: 0}
     - target: {fileID: 4543328280443832, guid: 58a2ef949ee909c489ab353f8317e5fa, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4543328280443832, guid: 58a2ef949ee909c489ab353f8317e5fa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -24855,7 +24763,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4543328280443832, guid: 58a2ef949ee909c489ab353f8317e5fa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -99.949
       objectReference: {fileID: 0}
     - target: {fileID: 4543328280443832, guid: 58a2ef949ee909c489ab353f8317e5fa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -24882,13 +24790,19 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 452308676761030985, guid: 58a2ef949ee909c489ab353f8317e5fa,
         type: 3}
+    - target: {fileID: 2856724370747048973, guid: 58a2ef949ee909c489ab353f8317e5fa,
+        type: 3}
+      propertyPath: localDebugMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3538517994099819405, guid: 58a2ef949ee909c489ab353f8317e5fa,
         type: 3}
       propertyPath: serializationData.Prefab
       value: 
       objectReference: {fileID: 3538517994099819405, guid: 58a2ef949ee909c489ab353f8317e5fa,
         type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2066562250798530401, guid: 58a2ef949ee909c489ab353f8317e5fa, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 58a2ef949ee909c489ab353f8317e5fa, type: 3}
 --- !u!1 &1792647684
 GameObject:
@@ -26388,17 +26302,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2787bac6fc9d3714ea0959346e3bc731, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameOfSuccessEvent: HackingGaskammer
-  player1: 0
-  time: 100
-  difficulty: 3
-  MasterMindTries: 6
-  MasterMindColors: 4
-  onSuccess:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!4 &1833346193 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4440174283368458, guid: 6f025609e690cbc48b8ceeb9d8fe9600,
@@ -26799,14 +26702,6 @@ PrefabInstance:
     - target: {fileID: 4557864465145706, guid: 573f1f939bbce2242a9ec71903195c49, type: 3}
       propertyPath: m_RootOrder
       value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4557864465145706, guid: 573f1f939bbce2242a9ec71903195c49, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4557864465145706, guid: 573f1f939bbce2242a9ec71903195c49, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4557864465145706, guid: 573f1f939bbce2242a9ec71903195c49, type: 3}
       propertyPath: m_LocalPosition.x
@@ -27508,14 +27403,6 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4557864465145706, guid: 573f1f939bbce2242a9ec71903195c49, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4557864465145706, guid: 573f1f939bbce2242a9ec71903195c49, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4557864465145706, guid: 573f1f939bbce2242a9ec71903195c49, type: 3}
       propertyPath: m_LocalPosition.x
       value: 138.93994
       objectReference: {fileID: 0}
@@ -28200,17 +28087,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2787bac6fc9d3714ea0959346e3bc731, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameOfSuccessEvent: HackingEnd
-  player1: 0
-  time: 60
-  difficulty: 3
-  MasterMindTries: 6
-  MasterMindColors: 4
-  onSuccess:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!4 &1997022228 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4440174283368458, guid: 6f025609e690cbc48b8ceeb9d8fe9600,

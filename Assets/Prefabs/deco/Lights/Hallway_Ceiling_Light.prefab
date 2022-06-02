@@ -44,7 +44,6 @@ GameObject:
   - component: {fileID: 4512537545362668}
   - component: {fileID: 33840834425252404}
   - component: {fileID: 23977500252717586}
-  - component: {fileID: 65808256237619088}
   m_Layer: 0
   m_Name: light_body_low
   m_TagString: Untagged
@@ -117,19 +116,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &65808256237619088
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1084156426463636}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.4514698, y: 0.42962337, z: 3.3935559}
-  m_Center: {x: 0.0000038146973, y: 0, z: 0}
 --- !u!1 &1128671646151274
 GameObject:
   m_ObjectHideFlags: 0

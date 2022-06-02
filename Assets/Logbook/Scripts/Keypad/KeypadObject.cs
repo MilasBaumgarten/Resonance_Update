@@ -5,69 +5,53 @@ using UnityEngine;
 using System;
 using UnityEngine.Events;
 
-public class KeypadObject : Interactable{
+public class KeypadObject : Interactable {
 
-    [SerializeField]
-    [Tooltip("The code that will trigger the event, MUST be unique")]
-    private string correctCode;
+	[SerializeField]
+	[Tooltip("The code that will trigger the event, MUST be unique")]
+	private string correctCode;
 
-    [Tooltip("The event that is called when the correct code is entered")]
-    public UnityEvent onSuccess;
+	[Tooltip("The event that is called when the correct code is entered")]
+	public UnityEvent onSuccess;
 
-    private bool solved = false;
+	private bool solved = false;
 
-    void Start()
-    {
+	void Start() {
+		int result;
 
-        int result;
+		if (!Int32.TryParse(correctCode, out result)) {
+			Debug.LogWarning("correctCode not set to a nummber");
+		}
+	}
 
-        if (!Int32.TryParse(correctCode,out result))
-        {
+	void OnEnable() {
+		// Start listening for the event
+		EventManager.instance.StartListening(correctCode, invokeOnSuccess);
+	}
 
-            Debug.LogWarning("correctCode not set to a nummber");
+	void OnDisable() {
+		// Stop listening when this script is disabled
+		EventManager.instance.StopListening(correctCode, invokeOnSuccess);
+	}
 
-        }
+	void invokeOnSuccess() {
+		solved = true;
+		onSuccess.Invoke();
+	}
 
-    }
+	public override void Interact(ArmTool armTool) {
 
-    void OnEnable()
-    {
+		if (solved) {
 
-        // Start listening for the event
-        EventManager.instance.StartListening(correctCode, invokeOnSuccess);
+			return;
 
-    }
+		}
 
-    void OnDisable()
-    {
+		Keypad keypad = armTool.gameObject.GetComponent<Keypad>();
 
-        // Stop listening when this script is disabled
-        EventManager.instance.StopListening(correctCode, invokeOnSuccess);
+		keypad.correctCode = this.correctCode;
 
-    }
+		keypad.OpenKeypad();
 
-    void invokeOnSuccess()
-    {
-        solved = true;
-        onSuccess.Invoke();
-
-    }
-
-    public override void Interact(ArmTool armTool)
-    {
-
-        if (solved)
-        {
-
-            return;
-
-        }
-
-        Keypad keypad = armTool.gameObject.GetComponent<Keypad>();
-
-        keypad.correctCode = this.correctCode;
-
-        keypad.OpenKeypad();
-
-    }
+	}
 }

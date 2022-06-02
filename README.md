@@ -4,6 +4,8 @@
 - MainMenu: LobbyMenu visuell an andere Menus anpassen
 - Options Menu: implement options for Camera Controls
 - Act 3_4: Kollisionen mit Deko sind akward (Spieler wird hochgedrückt)
+- Act 5: Tiles neu platzieren (sind alle krumm und schief)
+- Act 5: Gastank Wänden fehlt tlw. Kollision (außerdem kein Prefab)
 
 ## Programming
 - fix Resonances
