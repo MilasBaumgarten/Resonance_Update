@@ -2216,6 +2216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03989c39f75ea304d923fecdb9aacd91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onlyExecuteLocally: 0
   onInteract:
     m_PersistentCalls:
       m_Calls:
@@ -4732,6 +4733,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03989c39f75ea304d923fecdb9aacd91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onlyExecuteLocally: 0
   onInteract:
     m_PersistentCalls:
       m_Calls:
@@ -12350,6 +12352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03989c39f75ea304d923fecdb9aacd91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onlyExecuteLocally: 0
   onInteract:
     m_PersistentCalls:
       m_Calls:
@@ -14662,6 +14665,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03989c39f75ea304d923fecdb9aacd91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onlyExecuteLocally: 0
   onInteract:
     m_PersistentCalls:
       m_Calls:
@@ -19737,6 +19741,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 2104441271}
     m_Modifications:
     - target: {fileID: 124676548, guid: 39d0522fcf5ae4f41a6a5a0874d0d6f1, type: 3}
+      propertyPath: onlyExecuteLocally
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 124676548, guid: 39d0522fcf5ae4f41a6a5a0874d0d6f1, type: 3}
       propertyPath: onInteract.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 750643715}
@@ -19744,10 +19752,6 @@ PrefabInstance:
       propertyPath: onInteract.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1046914374}
-    - target: {fileID: 124676548, guid: 39d0522fcf5ae4f41a6a5a0874d0d6f1, type: 3}
-      propertyPath: onInteract.m_PersistentCalls.m_Calls.Array.data[2].m_Target
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 1144619787936160, guid: 39d0522fcf5ae4f41a6a5a0874d0d6f1, type: 3}
       propertyPath: m_Name
       value: Schottish_Icon (1)
@@ -19803,6 +19807,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39d0522fcf5ae4f41a6a5a0874d0d6f1, type: 3}
+--- !u!114 &2060675242 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 124676548, guid: 39d0522fcf5ae4f41a6a5a0874d0d6f1,
+    type: 3}
+  m_PrefabInstance: {fileID: 2060675241}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f5f8bbb444d6504f8dc944fa27f5289, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2060675248 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4742869244205604, guid: 39d0522fcf5ae4f41a6a5a0874d0d6f1,
@@ -20948,6 +20964,11 @@ PrefabInstance:
       propertyPath: objCont
       value: 
       objectReference: {fileID: 6}
+    - target: {fileID: 422361461942630737, guid: a0f10b0ba389d294ba88981e7bd30af6,
+        type: 3}
+      propertyPath: onlyExecuteLocally
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 422361461942630738, guid: a0f10b0ba389d294ba88981e7bd30af6,
         type: 3}
       propertyPath: m_Name
@@ -21079,6 +21100,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 608961275683459651, guid: 2ae31002d359f5d4393d0a058dd480c7,
         type: 3}
+      propertyPath: onlyExecuteLocally
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 608961275683459651, guid: 2ae31002d359f5d4393d0a058dd480c7,
+        type: 3}
       propertyPath: onInteract.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 750643715}
@@ -21166,11 +21192,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: MissionBriefingRob
       objectReference: {fileID: 0}
+    - target: {fileID: 2706600946956727202, guid: a6f7ba64f81acdf439ed8597ef8760a0,
+        type: 3}
+      propertyPath: onlyExecuteLocally
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2706600946956727203, guid: a6f7ba64f81acdf439ed8597ef8760a0,
         type: 3}
       propertyPath: objCont
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2060675242}
     - target: {fileID: 8422098438376827611, guid: a6f7ba64f81acdf439ed8597ef8760a0,
         type: 3}
       propertyPath: sceneViewId
@@ -21244,6 +21275,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2951273860220075634, guid: 5dc0815d155493244a97ace655e95cd2,
+        type: 3}
+      propertyPath: onlyExecuteLocally
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2951739955004114678, guid: 5dc0815d155493244a97ace655e95cd2,
         type: 3}
@@ -21321,6 +21357,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3266426673599780948, guid: f43d9653c006bce4d802a45bd094c656,
         type: 3}
+      propertyPath: onlyExecuteLocally
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3266426673599780948, guid: f43d9653c006bce4d802a45bd094c656,
+        type: 3}
       propertyPath: onInteract.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 750643715}
@@ -21343,6 +21384,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2104441271}
     m_Modifications:
+    - target: {fileID: 249258205, guid: c791852ac3618674d8c14f52b0414a98, type: 3}
+      propertyPath: onlyExecuteLocally
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 249258205, guid: c791852ac3618674d8c14f52b0414a98, type: 3}
       propertyPath: onInteract.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -21421,6 +21466,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ScreenCombinationRob
+      objectReference: {fileID: 0}
+    - target: {fileID: 5588504323492858860, guid: 93290a3e80d120a4d831fe21daa7f1c3,
+        type: 3}
+      propertyPath: onlyExecuteLocally
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5593021766223149647, guid: 93290a3e80d120a4d831fe21daa7f1c3,
         type: 3}

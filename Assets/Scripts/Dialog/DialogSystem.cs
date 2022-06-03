@@ -84,6 +84,7 @@ public class DialogSystem : MonoBehaviour {
 
 	void Start() {
 		if (!player.photonView.IsMine) {
+			Destroy(dialogSubtitles);
 			Destroy(this);
 			return;
 		}

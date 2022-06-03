@@ -23,6 +23,7 @@ public class ArmTool : MonoBehaviourPun {
 	private Settings settings;
 
 	private int layerMask = ~(1 << 9);  // TODO: DAFUQ
+	[SerializeField]
 	private Transform cam;
 
 	void Start() {
@@ -30,7 +31,6 @@ public class ArmTool : MonoBehaviourPun {
 			enabled = false;
 		}
 
-		cam = transform.GetComponentInChildren<Camera>().transform;
 		ChangeIconColor();
 	}
 

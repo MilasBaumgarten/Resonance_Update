@@ -7,6 +7,7 @@
 * 
 */
 
+using Photon.Pun;
 using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
@@ -69,6 +70,11 @@ public class LogbookManager : SerializedMonoBehaviour {
 	}
 
 	void Start() {
+		if (!player.GetPhotonView().IsMine) {
+			base.enabled = false;
+			return;
+		}
+
 		cornersRect[0].anchoredPosition = startTransform.anchoredPosition;
 		cornersRect[1].anchoredPosition = startTransform.anchoredPosition;
 
