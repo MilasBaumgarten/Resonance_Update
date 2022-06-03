@@ -21,11 +21,7 @@
 - ForceTool Prompts bei Benutzung einfügen
 - Cut Scenes generell skipbar machen (aktuell nur schön bei Act 1 Ende)
 	- UI für Skip einbauen
-	- Credits am Ende erst nach Ende des Lieds zum Menü springen lassen
 
 ## Art
 - Sprites für UI Buttons im Hauptmenu
 - Spieler sollte aufhören zu wackeln, wenn das Lagbuch geöffnet ist
-
-## Test
-- Animationen bei Player Prefab überprüfen (Robs Armature ist falsch skaliert)

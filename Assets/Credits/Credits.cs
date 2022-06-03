@@ -31,7 +31,7 @@ public class Credits : MonoBehaviour {
 
 	private void Update() {
 		if (Input.GetKeyDown(KeyCode.Escape) || (creditAnimation.GetCurrentAnimatorStateInfo(0).IsName("Credits") && creditAnimation.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)) {
-			PhotonNetwork.Disconnect();
+			EndCredits();
 		}
 
 		if (alphaFloat >= 0) {
@@ -39,5 +39,9 @@ public class Credits : MonoBehaviour {
 			alphaTransition.a = alphaFloat;
 			fadeImage.color = alphaTransition;
 		}
+	}
+	
+	public void EndCredits() {
+		PhotonNetwork.Disconnect();
 	}
 }

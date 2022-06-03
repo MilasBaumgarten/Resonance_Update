@@ -58,7 +58,9 @@ public class ForceModule : ArmToolModule {
 			headBob.SetBobbing(true);
 			playerMovement.enabled = true;
             grabbing = false;
-		} else {
+
+            onGrab.Invoke();
+        } else {
 			if (interactTarget) {
 				// if an interactable object is hit and it is within range, interact with it
 				if (interactTarget.GetComponent<ArmToolModuleBehaviour>()) {
@@ -71,10 +73,10 @@ public class ForceModule : ArmToolModule {
 					playerMovement.enabled = false;
                     grabbing = true;
 
+                    onGrab.Invoke();
                 }
 			}
 		}
-		onGrab.Invoke();
 	}
 
     public bool GetGrabStatus() {

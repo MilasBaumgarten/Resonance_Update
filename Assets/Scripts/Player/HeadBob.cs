@@ -40,8 +40,12 @@ public class HeadBob : MonoBehaviour {
     }
 
     void Bob() {
+        if (!bobbingEnabled) {
+            return;
+		}
+
         // if player is moving
-        if (bobbingEnabled && (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0) && !stopSmooth) {
+        if ((Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0) && !stopSmooth) {
 
             timer += playerSettings.bobbingSpeed * Time.deltaTime;
 

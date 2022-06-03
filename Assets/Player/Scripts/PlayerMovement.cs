@@ -67,6 +67,7 @@ public class PlayerMovement : MonoBehaviourPun {
 	}
 
 	void FixedUpdate() {
+		// check if player is grounded
 		if (!characterController.isGrounded) {
 			vSpeed += Physics.gravity.y * Time.deltaTime;
 			moveDirection.y = vSpeed;
