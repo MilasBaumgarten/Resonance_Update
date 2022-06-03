@@ -9,8 +9,7 @@ using Photon.Pun;
 using UnityEngine;
 
 public class CameraMovement : MonoBehaviourPun {
-	[SerializeField]
-	private Transform playerCamera;
+	public Transform playerCamera;
 
 	[SerializeField]
 	private Settings playerSettings;

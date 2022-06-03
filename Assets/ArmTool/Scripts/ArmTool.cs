@@ -45,7 +45,7 @@ public class ArmTool : MonoBehaviourPun {
 			if (Physics.Raycast(cam.position, cam.forward, out RaycastHit hit, settings.maxDist, layerMask)) {
 				interactTarget = hit.transform.gameObject;
 				if (interactTarget.GetComponent<Interactable>()) {
-					photonView.RPC("InteractRpc", RpcTarget.All, interactTarget);
+					photonView.RPC("InteractRpc", RpcTarget.All, interactTarget.GetPhotonView().ViewID);
 				}
 				if (equipped[selected]) {
 					equipped[selected].Function(interactTarget);
@@ -96,13 +96,15 @@ public class ArmTool : MonoBehaviourPun {
 	}
 
 	[PunRPC]
-	public void InteractRpc(GameObject target) {
+	public void InteractRpc(int targetId) {
+		PhotonView target = PhotonNetwork.GetPhotonView(targetId);
 		target.GetComponent<Interactable>().Interact(this);
 	}
 
 	[PunRPC]
-	public void InteractModuleRpc(GameObject target) {
+	public void InteractModuleRpc(int targetId) {
 		// send the server a command telling it the player is intending to interact with something
+		PhotonView target = PhotonNetwork.GetPhotonView(targetId);
 		target.GetComponent<ArmToolModuleBehaviour>().Interact(equipped[selected]);
 	}
 }

@@ -17,6 +17,9 @@ public class Launcher : MonoBehaviourPunCallbacks {
 	[SerializeField]
 	private GameObject progressLabel;
 
+	[SerializeField]
+	private string lobbyScene;
+
 	/// <summary>
 	/// This client's version number. Users are separated from each other by gameVersion (which allows you to make breaking changes).
 	/// </summary>
@@ -92,11 +95,11 @@ public class Launcher : MonoBehaviourPunCallbacks {
 
 		// #Critical: We only load if we are the first player, else we rely on `PhotonNetwork.AutomaticallySyncScene` to sync our instance scene.
 		if (PhotonNetwork.CurrentRoom.PlayerCount == 1) {
-			Debug.Log("We load the 'Room_1' ");
+			Debug.Log("We load the lobby");
 
 			// #Critical
 			// Load the Room Level.
-			PhotonNetwork.LoadLevel("Room_1");
+			PhotonNetwork.LoadLevel(lobbyScene);
 		}
 	}
 

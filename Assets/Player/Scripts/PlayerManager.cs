@@ -31,6 +31,8 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
 	[SerializeField]
 	private Vector3 spawnOffset = new Vector3(0.0f, 0.6f, 0.0f);
 
+	private string nickname;
+
 	void Awake() {
 		// used in GameManager.cs: we keep track of the localPlayer instance to prevent instantiation when levels are synchronized
 		if (photonView.IsMine) {
@@ -40,6 +42,13 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
 		DontDestroyOnLoad(gameObject);
 
 		SceneManager.sceneLoaded += OnSceneLoaded;
+
+		try {
+			nickname = photonView.Owner.NickName;
+		} catch (Exception e) {
+			Debug.Log("Playing in Offline Mode and owner was not found fast enough.\n" + e.Message);
+			nickname = CharacterEnum.CATRIONA.ToString();
+		}
 
 		SetupPlayer();
 	}
@@ -54,10 +63,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
 	}
 
 	void OnSceneLoaded(Scene scene, LoadSceneMode loadingMode) {
-		CalledOnLevelWasLoaded(scene.buildIndex);
-	}
-
-	void CalledOnLevelWasLoaded(int level) {
 		// check if we are outside the Arena and if it's the case, spawn around the center of the arena in a safe zone
 		if (!Physics.Raycast(transform.position, -Vector3.up, 5f)) {
 			transform.position = new Vector3(0f, 5f, 0f);
@@ -66,17 +71,22 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
 		if (!localPlayerInstance && !PhotonNetwork.OfflineMode) {
 			SetupPlayer();
 		}
+
+		if (!localDebugMode) {
+			// move player to spawnpoint
+			GameObject[] spawners = GameObject.FindGameObjectsWithTag("SpawnPoint");
+
+			foreach (GameObject spawner in spawners) {
+				if (spawner.name.ToLower().Contains(nickname.ToLower())) {
+					transform.position = spawner.transform.position + spawnOffset;
+					break;
+				}
+			}
+		}
 	}
 
 	private void SetupPlayer() {
 		// set player visuals
-		string nickname = CharacterEnum.CATRIONA.ToString();
-		try {
-			nickname = photonView.Owner.NickName;
-		} catch (Exception e) {
-			Debug.Log("Playing in Offline Mode and owner was not found fast enough.\n" + e.Message);
-		}
-		
 		if (nickname.Equals(CharacterEnum.CATRIONA.ToString())) {
 			catrionaModel.SetActive(true);
 			robertModel.SetActive(false);
@@ -91,20 +101,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
 			Debug.Log("<Color=Green><a>Player</a></Color> set to Robert.");
 		} else {
 			Debug.Log("<Color=Red><a>Player</a></Color> nickname: " + nickname + " is unknown.");
-		}
-
-		if (localDebugMode) {
-			return;
-		}
-
-		// move player to spawnpoint
-		GameObject[] spawners = GameObject.FindGameObjectsWithTag("SpawnPoint");
-
-		foreach (GameObject spawner in spawners) {
-			if (spawner.name.ToLower().Contains(nickname.ToLower())) {
-				transform.position = spawner.transform.position + spawnOffset;
-				break;
-			}
 		}
 	}
 
