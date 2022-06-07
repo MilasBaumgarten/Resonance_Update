@@ -68,9 +68,7 @@ public class DialogEvent : MonoBehaviour {
 	}
 
 	IEnumerator WaitForDialogFinish(float duration) {
-		Debug.Log(duration);
 		yield return new WaitForSeconds(duration);
-
 		afterDialogFinishedEvent.Invoke();
 	}
 }

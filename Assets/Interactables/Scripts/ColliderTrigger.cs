@@ -82,8 +82,8 @@ public class ColliderTrigger : MonoBehaviour {
             } else {
                 // if both players can trigger this, continue as usual
                 if (triggeredBy == Characters.BothCharacters) {
-                    Debug.Log(other.gameObject.name);
-                    other.gameObject.GetComponent<Interact>().SyncTriggerEvent(gameObject);
+                    //other.gameObject.GetComponent<Interact>().SyncTriggerEvent(gameObject);
+                    Trigger();
                 }
                 // else, check if the entered player is the one who can trigger this
                 else {
@@ -91,14 +91,16 @@ public class ColliderTrigger : MonoBehaviour {
                     if (triggeredBy == Characters.Robert) {
                         if (other.transform.name.Contains("Rob")) {
 
-                            other.GetComponent<Interact>().SyncTriggerEvent(gameObject);
+                            //other.GetComponent<Interact>().SyncTriggerEvent(gameObject);
+                            Trigger();
                         }
                     }
                     // only cat can trigger
                     else if (triggeredBy == Characters.Catriona) {
                         if (other.transform.name.Contains("Cat")) {
 
-                            other.GetComponent<Interact>().SyncTriggerEvent(gameObject);
+                            //other.GetComponent<Interact>().SyncTriggerEvent(gameObject);
+                            Trigger();
                         }
                     }
                 }

@@ -9,10 +9,27 @@ public class GameManager_PUN : MonoBehaviourPunCallbacks {
 	[SerializeField]
 	private GameObject playerPrefab;
 
+	[SerializeField]
+	private string gameScene;
+
 	public Dictionary<string, GameObject> spawnPoints;
 
 	private void Start() {
-		if (PhotonNetwork.OfflineMode) {
+		DontDestroyOnLoad(this);
+	}
+
+	public override void OnEnable() {
+		base.OnEnable();
+		SceneManager.sceneLoaded += OnSceneLoaded;
+	}
+
+	public override void OnDisable() {
+		base.OnDisable();
+		SceneManager.sceneLoaded -= OnSceneLoaded;
+	}
+
+	void OnSceneLoaded(Scene scene, LoadSceneMode loadingMode) {
+		if (PhotonNetwork.OfflineMode || !PhotonNetwork.IsConnected) {
 			return;
 		}
 
@@ -42,12 +59,8 @@ public class GameManager_PUN : MonoBehaviourPunCallbacks {
 		// ToDo: erst Lobby laden und dann die Szene (veränderbar)
 
 		if (PhotonNetwork.CurrentRoom.PlayerCount == 2) {
-			Debug.LogFormat("PhotonNetwork : Loading Level : Act1_Base");
-			PhotonNetwork.LoadLevel("Act1_Base");
-
-		} else {
-			Debug.LogFormat("PhotonNetwork : Loading Level : {0}", PhotonNetwork.CurrentRoom.PlayerCount);
-			PhotonNetwork.LoadLevel("Room_" + PhotonNetwork.CurrentRoom.PlayerCount);
+			Debug.LogFormat("PhotonNetwork : Loading Level : " + gameScene);
+			PhotonNetwork.LoadLevel(gameScene);
 		}
 	}
 

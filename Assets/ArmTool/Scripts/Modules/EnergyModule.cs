@@ -15,11 +15,11 @@ public class EnergyModule : ArmToolModule {
     }
 
     public override void Function(GameObject interactTarget) {
-		if (interactTarget) {
-			Socket targetSocket = interactTarget.transform.GetComponent<Socket>();
-			if (targetSocket) {
-                armTool.photonView.RPC("InteractModuleRpc", RpcTarget.All, interactTarget);
-            }
-		}
+		//if (interactTarget) {
+		//	Socket targetSocket = interactTarget.transform.GetComponent<Socket>();
+		//	if (targetSocket) {
+  //              armTool.photonView.RPC("InteractModuleRpc", RpcTarget.All, interactTarget);
+  //          }
+		//}
 	}
 }

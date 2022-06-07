@@ -8,6 +8,11 @@ public class InteractEvent : Interactable {
 	public UnityEvent onInteract;
 
 	public override void Interact(ArmTool armTool) {
+		if (onlyExecuteLocally) {
+			if (!armTool.photonView.IsMine) {
+				return;
+			}
+		}
 
 		onInteract.Invoke();
 

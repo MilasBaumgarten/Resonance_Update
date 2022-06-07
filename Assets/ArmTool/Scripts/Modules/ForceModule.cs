@@ -52,18 +52,20 @@ public class ForceModule : ArmToolModule {
 
     public override void Function(GameObject interactTarget) {
 		if (grabbing) {
-            armTool.photonView.RPC("InteractModuleRpc", RpcTarget.All, grabbingTarget);
+            armTool.photonView.RPC("InteractModuleRpc", RpcTarget.All, grabbingTarget.GetPhotonView().ViewID);
 
 			// unlock player
 			headBob.SetBobbing(true);
 			playerMovement.enabled = true;
             grabbing = false;
-		} else {
+
+            onGrab.Invoke();
+        } else {
 			if (interactTarget) {
 				// if an interactable object is hit and it is within range, interact with it
 				if (interactTarget.GetComponent<ArmToolModuleBehaviour>()) {
 					grabbingTarget = interactTarget;
-					armTool.photonView.RPC("InteractModuleRpc", RpcTarget.All, interactTarget);
+					armTool.photonView.RPC("InteractModuleRpc", RpcTarget.All, interactTarget.GetPhotonView().ViewID);
                     holdPos.localPosition = Vector3.forward * (interactTarget.transform.position - transform.position).magnitude;
 
 					// lock player
@@ -71,10 +73,10 @@ public class ForceModule : ArmToolModule {
 					playerMovement.enabled = false;
                     grabbing = true;
 
+                    onGrab.Invoke();
                 }
 			}
 		}
-		onGrab.Invoke();
 	}
 
     public bool GetGrabStatus() {

@@ -84,6 +84,7 @@ public class DialogSystem : MonoBehaviour {
 
 	void Start() {
 		if (!player.photonView.IsMine) {
+			Destroy(dialogSubtitles);
 			Destroy(this);
 			return;
 		}
@@ -200,8 +201,9 @@ public class DialogSystem : MonoBehaviour {
 		dialogSubtitles.enabled = false;
         // set dialogPlaying-flag to false
         dialogPlaying = false;
-        // remove first element in queue
-        dialogQueue.RemoveAt(0);
+		// remove first element in queue
+		// TODO: reenable
+		//dialogQueue.RemoveAt(0);
 	}
 
 	private void PlayeOneShot(string subtitleText, string audioFilePath) {

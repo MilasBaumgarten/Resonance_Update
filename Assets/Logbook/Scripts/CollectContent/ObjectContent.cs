@@ -39,6 +39,12 @@ public class ObjectContent : Interactable {
 
 	/// <summary>Calls the collectContent event when the player interacts with the object this component is attached to/summary>
 	public override void Interact(ArmTool armTool) {
+		if (onlyExecuteLocally) {
+			if (!armTool.photonView.IsMine){
+				return;
+			}
+		}
+
 		if (collected) {
 			return;
 		}
