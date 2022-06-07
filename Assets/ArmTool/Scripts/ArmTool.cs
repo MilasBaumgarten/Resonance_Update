@@ -1,8 +1,15 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
+using System;
 
 public class ArmTool : MonoBehaviourPun {
+	[SerializeField]
+	private BoneOverride[] boneOverridesCatriona;
+	[SerializeField]
+	private BoneOverride[] boneOverridesRobert;
+	private BoneOverride[] boneOverrides;
+
 	[HideInInspector]
 	public bool armUp = false;
 
@@ -32,6 +39,22 @@ public class ArmTool : MonoBehaviourPun {
 		}
 
 		ChangeIconColor();
+
+		// setup Bone Overrides
+		string nickname = CharacterEnum.CATRIONA.ToString();
+		try {
+			nickname = photonView.Owner.NickName;
+		} catch (Exception e) {
+			Debug.Log("Playing in Offline Mode and owner was not found fast enough.\n" + e.Message);
+		}
+
+		if (nickname.Equals(CharacterEnum.CATRIONA.ToString())) {
+			boneOverrides = boneOverridesCatriona;
+		} else if (nickname.Equals(CharacterEnum.ROBERT.ToString())) {
+			boneOverrides = boneOverridesRobert;
+		} else {
+			Debug.Log("<Color=Red><a>Player</a></Color> nickname: " + nickname + " is unknown.");
+		}
 	}
 
 	void Update() {
@@ -74,10 +97,14 @@ public class ArmTool : MonoBehaviourPun {
 			ChangeIconColor();
 		}
 
-		if (selected < 3) {
-			armUp = true;
-		} else {
+		if (selected == 0) {
 			armUp = false;
+			boneOverrides[0].enabled = false;
+			boneOverrides[1].enabled = false;
+		} else {
+			armUp = true;
+			boneOverrides[0].enabled = true;
+			boneOverrides[1].enabled = true;
 		}
 	}
 

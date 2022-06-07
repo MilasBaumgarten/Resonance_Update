@@ -35,8 +35,8 @@ public class Keypad : MonoBehaviour {
     public void OpenKeypad()
     {
 
-        logbookManager.openLogbook();
-        logbookManager.EnableOnePanel(ContentType.keypad);
+        logbookManager.OpenLogbook();
+        logbookManager.EnableOnePanel("keypad");
 
         currentCode = "";
         resultDisplay.text = currentCode;

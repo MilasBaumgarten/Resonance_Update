@@ -27,7 +27,7 @@ public class NoInteractionCollect : MonoBehaviour {
 		nummberOfInteractions++;
 
 		if (nummberOfInteractions >= targetNummberOfInteractions) {
-			Invoke("addContent", delay);
+			Invoke("AddContent", delay);
 		}
 
 	}

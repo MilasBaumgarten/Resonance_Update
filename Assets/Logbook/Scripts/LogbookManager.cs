@@ -49,13 +49,18 @@ public class LogbookManager : SerializedMonoBehaviour {
 	[Tooltip("the audio manager attached to the logbook")]
 	private LogbookAudio logbookAudio;
 
-	//Dictionary<string, GameObject> panels_old;
+	private Dictionary<string, GameObject> panels = new Dictionary<string, GameObject>();
+
+	[HideInInspector]
+	public bool isActive = false;
+
 	[SerializeField]
-	private Dictionary<ContentType, GameObject> panels;
+	private GameObject player;
 
-	[HideInInspector] public bool isActive = false;
+	[SerializeField]
+	private BoneOverride boneOverride;
 
-	[SerializeField] private GameObject player;
+	private Animator animator;
 
 	private CameraMovement cameraMovement;
 
@@ -63,7 +68,7 @@ public class LogbookManager : SerializedMonoBehaviour {
 
 	private float defaultScale;
 
-	bool scaleUpDown;
+	private bool scaleUpDown;
 
 	void Awake() {
 		defaultScale = panelParent.parent.transform.localScale.y;
@@ -78,38 +83,37 @@ public class LogbookManager : SerializedMonoBehaviour {
 		cornersRect[0].anchoredPosition = startTransform.anchoredPosition;
 		cornersRect[1].anchoredPosition = startTransform.anchoredPosition;
 
+		foreach (Transform child in panelParent.transform) {
+			panels.Add(child.name, child.gameObject);
+		}
+
 		DisableAllPanels();
 
 		// store for CameraMovment script
 		cameraMovement = player.GetComponent<CameraMovement>();
-
 		playerMovement = player.GetComponent<PlayerMovement>();
 
 		headBob = player.transform.Find("Head").Find("Camera").GetComponent<HeadBob>();
+
+		animator = player.GetComponent<PlayerManager>().animator;
 	}
 
 
 	// disable all panels who are children to the canvas where the script is attached to
 	public void DisableAllPanels() {
-		foreach (KeyValuePair<ContentType, GameObject> panel in panels) {
+		foreach (KeyValuePair<string, GameObject> panel in panels) {
 			panel.Value.SetActive(false);
 		}
 	}
 
 	// enables the wanted Panel through comparing the name who is saved in the dictionary
-	public void EnableOnePanel(ContentType panelName) {
+	public void EnableOnePanel(string panelName) {
 		// clear
 		DisableAllPanels();
 		// look if it exists in the dictionary and enable it
 		if (panels[panelName]) {
 			panels[panelName].gameObject.SetActive(true);
 		}
-
-		// deactivate CameraMovement
-		cameraMovement.enabled = false;
-		Cursor.lockState = CursorLockMode.None;
-		Cursor.visible = true;
-		isActive = true;
 	}
 
 	public void DisablePanel() {
@@ -122,8 +126,6 @@ public class LogbookManager : SerializedMonoBehaviour {
 		scaleUpDown = false;
 
 		StartCoroutine("ScaleUp");
-
-		//hacking.OnStopHacking(false);
 
 		isActive = false;
 
@@ -139,6 +141,10 @@ public class LogbookManager : SerializedMonoBehaviour {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         isActive = false;*/
+
+		// Animation stuff
+		animator.ResetTrigger("logbook active");
+		boneOverride.enabled = true;
 	}
 
 	private void endOfClosing() {
@@ -159,7 +165,7 @@ public class LogbookManager : SerializedMonoBehaviour {
 
 	}
 
-	public void openLogbook() {
+	public void OpenLogbook() {
 		armTool.DeselectTool();
 
 		panelParent.parent.gameObject.SetActive(true);
@@ -182,6 +188,10 @@ public class LogbookManager : SerializedMonoBehaviour {
 		Cursor.lockState = CursorLockMode.None;
 		Cursor.visible = true;
 		isActive = true;
+
+		// Animation stuff
+		animator.SetTrigger("logbook active");
+		boneOverride.enabled = false;
 	}
 
 	IEnumerator ScaleUp() {

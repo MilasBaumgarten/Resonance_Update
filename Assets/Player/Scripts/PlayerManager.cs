@@ -31,7 +31,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
 	[SerializeField]
 	private Vector3 spawnOffset = new Vector3(0.0f, 0.6f, 0.0f);
 
-	private string nickname;
+	public string nickname { get; private set; }
 
 	void Awake() {
 		// used in GameManager.cs: we keep track of the localPlayer instance to prevent instantiation when levels are synchronized

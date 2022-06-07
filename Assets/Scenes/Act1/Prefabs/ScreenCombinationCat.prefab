@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 2951273860220075638}
   - component: {fileID: 2951273860220075633}
   - component: {fileID: 2951273860220075632}
-  - component: {fileID: 2951273860220075634}
+  - component: {fileID: 7550162171381598798}
   - component: {fileID: 2506105728235997487}
   m_Layer: 0
   m_Name: ScreenCombinationCat
@@ -323,7 +323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 2951273860220075635}
---- !u!114 &2951273860220075634
+--- !u!114 &7550162171381598798
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -332,14 +332,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 2951739955004114678}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03989c39f75ea304d923fecdb9aacd91, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f5f8bbb444d6504f8dc944fa27f5289, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onlyExecuteLocally: 1
+  bothPlayers: 0
+  typeOfContent: audio
+  nameOfObject: catTheme
   onInteract:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2951273860220075632}
-        m_TargetAssemblyTypeName: 
+        m_TargetAssemblyTypeName: AudioClips, Assembly-CSharp
         m_MethodName: PlayPauseAudio
         m_Mode: 1
         m_Arguments:
@@ -351,7 +355,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 2951273860220075639}
-        m_TargetAssemblyTypeName: 
+        m_TargetAssemblyTypeName: DialogEvent, Assembly-CSharp
         m_MethodName: StartDialog
         m_Mode: 1
         m_Arguments:

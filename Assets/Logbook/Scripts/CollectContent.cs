@@ -4,10 +4,11 @@
 
 using ExitGames.Client.Photon;
 using Photon.Pun;
+using Photon.Realtime;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollectContent : MonoBehaviour {
+public class CollectContent : MonoBehaviour, IOnEventCallback {
 	[SerializeField]
 	[Tooltip("The CanvasController attached to the logbook")]
 	private LogbookManager logbookManager;
@@ -61,44 +62,44 @@ public class CollectContent : MonoBehaviour {
 	}
 
 	public void OnEvent(EventData photonEvent) {
-		CollectCont();
+		if (photonEvent.Code == (byte) EventCodes.CollectContent) {
+			object[] data = (object[])photonEvent.CustomData;
+			CollectCont((string) data[0], (string) data[1], (bool) data[2], (int) data[3]);
+		}
 	}
 
 
 	/// <summary>Set a logbook entry to active based on the currentID of the ObjectContent class</summary>
-	public void CollectCont() {
-		if (!ObjectContent.currentBothPlayers) {
-			if (networkInstance != ObjectContent.currentPlayerId) {
+	public void CollectCont(string objectName, string objectType, bool bothPlayers, int playerId) {
+		if (!bothPlayers) {
+			if (networkInstance != playerId) {
 				Debug.LogWarning("wrong player");
 				return;
 			}
 		}
 
+		Debug.Log("Collecting: " + objectName);
+
 		// Can the entry be found inside the logbook?
-		if (!logbookEntryDict.ContainsKey(ObjectContent.currentName) && !logbookEntryButtonDict.ContainsKey(ObjectContent.currentName)) {
-			Debug.LogWarning("This entry does not exist in logbook: " + ObjectContent.currentName);
+		if (!logbookEntryDict.ContainsKey(objectName) || !logbookEntryButtonDict.ContainsKey(objectName)) {
+			Debug.LogWarning("This entry does not exist in logbook: " + objectName);
 			return;
 		}
 
-		if (logbookEntryDict.ContainsKey(ObjectContent.currentName)) {
-			GameObject entry = logbookEntryDict[ObjectContent.currentName];
+		GameObject entry = logbookEntryDict[objectName];
 
-			// TODO add special entries to the entryButton dictionary instead of normal entry dicionary
-			foreach (KeyValuePair<string, GameObject> ent in logbookEntryDict) {
-				ent.Value.SetActive(false);
-			}
-
-			entry.SetActive(true);
+		foreach (KeyValuePair<string, GameObject> ent in logbookEntryDict) {
+			ent.Value.SetActive(false);
 		}
 
-		if (logbookEntryButtonDict.ContainsKey(ObjectContent.currentName)) {
-			GameObject entryButton = logbookEntryButtonDict[ObjectContent.currentName];
-			entryButton.SetActive(true);
-		}
+		entry.SetActive(true);
 
-		if (networkInstance == ObjectContent.currentPlayerId && ObjectContent.currentType != ContentType.special) {
-			logbookManager.openLogbook();
-			logbookManager.EnableOnePanel(ObjectContent.currentType) ;
+		GameObject entryButton = logbookEntryButtonDict[objectName];
+		entryButton.SetActive(true);
+
+		if (networkInstance == playerId && objectType != "special") {
+			logbookManager.OpenLogbook();
+			logbookManager.EnableOnePanel(objectType) ;
 		}
 	}
 }
