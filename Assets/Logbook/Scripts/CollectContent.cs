@@ -97,7 +97,7 @@ public class CollectContent : MonoBehaviour, IOnEventCallback {
 		GameObject entryButton = logbookEntryButtonDict[objectName];
 		entryButton.SetActive(true);
 
-		if (networkInstance == playerId && objectType != "special") {
+		if (networkInstance == playerId) {
 			logbookManager.OpenLogbook();
 			logbookManager.EnableOnePanel(objectType) ;
 		}

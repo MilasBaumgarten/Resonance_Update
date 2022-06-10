@@ -1147,8 +1147,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 11400000, guid: 2b43902296d300b4a9e9c85d474c7e57, type: 2}
-  boneOverrideCat: {fileID: 114431446971884172}
-  boneOverrideRobert: {fileID: 7692021554566260636}
 --- !u!114 &-9020993894686777950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1227,9 +1225,7 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1390905174}
-  - {fileID: 0}
   - {fileID: 2060897435}
-  - {fileID: 0}
   - {fileID: 88002228419738461}
   sceneViewId: 0
   InstantiationId: 0
@@ -9231,7 +9227,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1201023376253927575}
   m_LocalRotation: {x: 0.5434523, y: -0.16233143, z: 0.09146693, w: 0.8184998}
-  m_LocalPosition: {x: -3.1902568, y: 2.1110163, z: 0.35933584}
+  m_LocalPosition: {x: -0.235, y: 1.6739, z: 0.332}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -20898,6 +20894,11 @@ PrefabInstance:
       objectReference: {fileID: 114218077991769444}
     - target: {fileID: 1510187567626997270, guid: b1880ad461d6fd5418939d8e4572d14e,
         type: 3}
+      propertyPath: boneOverride
+      value: 
+      objectReference: {fileID: 114431446971884172}
+    - target: {fileID: 1510187567626997270, guid: b1880ad461d6fd5418939d8e4572d14e,
+        type: 3}
       propertyPath: rotateCamToVect
       value: 
       objectReference: {fileID: 638743344868706431}
@@ -22945,6 +22946,11 @@ PrefabInstance:
       propertyPath: headBob
       value: 
       objectReference: {fileID: 114218077991769444}
+    - target: {fileID: 1510187567626997270, guid: b1880ad461d6fd5418939d8e4572d14e,
+        type: 3}
+      propertyPath: boneOverride
+      value: 
+      objectReference: {fileID: 7692021554566260636}
     - target: {fileID: 1510187567626997270, guid: b1880ad461d6fd5418939d8e4572d14e,
         type: 3}
       propertyPath: rotateCamToVect

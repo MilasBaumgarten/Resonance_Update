@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 public class DoorHandler : MonoBehaviour {
 	[SerializeField]
-	private bool permanentlyClosed = false;
+	[FormerlySerializedAs("permanentlyClosed")]
+	private bool locked = false;
 	[SerializeField]
 	private LayerMask collisionMask;
 
@@ -10,9 +12,10 @@ public class DoorHandler : MonoBehaviour {
 	private AudioSource openAudio;
 	[SerializeField]
 	private AudioSource closeAudio;
-
 	[SerializeField]
 	private AudioSource errorAudio;
+	[SerializeField]
+	private AudioSource unlockAudio;
 
 	private Animation anim;
 	private bool isInCollider;
@@ -26,7 +29,7 @@ public class DoorHandler : MonoBehaviour {
 	private void OnTriggerEnter(Collider other) {
 		// check the layer
 		if ((collisionMask.value & 1 << other.gameObject.layer) != 0) {
-			if (permanentlyClosed) {
+			if (locked) {
 				errorAudio.Play();
 				return;
 			}
@@ -39,7 +42,7 @@ public class DoorHandler : MonoBehaviour {
 
 	private void OnTriggerExit(Collider other) {
 		if ((collisionMask.value & 1 << other.gameObject.layer) != 0) {
-			if (permanentlyClosed) {
+			if (locked) {
 				return;
 			}
 
@@ -68,5 +71,10 @@ public class DoorHandler : MonoBehaviour {
 			anim.Rewind();
 			anim.Play();
 		}
+	}
+
+	public void UnlockDoor() {
+		locked = false;
+		unlockAudio.Play();
 	}
 }

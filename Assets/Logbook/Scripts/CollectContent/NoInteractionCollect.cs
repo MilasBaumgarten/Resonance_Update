@@ -4,7 +4,6 @@
 using UnityEngine;
 
 public class NoInteractionCollect : MonoBehaviour {
-
 	[SerializeField]
 	[Tooltip("The Object Content used to trigger")]
 	private ObjectContent objCont;
