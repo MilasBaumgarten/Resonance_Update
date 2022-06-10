@@ -29,5 +29,15 @@
 - Sprites für UI Buttons im Hauptmenu
 - Spieler sollte aufhören zu wackeln, wenn das Lagbuch geöffnet ist
 
+## Postprocessing
+- Postprocess Layer on camera should not be set to layermask "Everything"
+	- check all PP elements throughout the game in order to reduce required layermask to specific layers
+- Tweak camera PP volume effects to reduce visual bombardment (f.e. bloom 2 -> 1)
+
+## Music
+- Normalize all music tracks (stark differences in volume)
+- Reduce volume of background drones in most tracks (heavily used, drowns out instrumentation, example: GulianTheme_01_TL)
+
 ## SFX
+- Sound für Tür wird aufgeschlossen finden und einbauen
 - Sound für Tür wird aufgeschlossen finden und einbauen
