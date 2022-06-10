@@ -15,7 +15,6 @@
 ## Programming
 - fix Resonances
 - fix Error bei Dialogen
-- fix Logbuch Add Object Stuff
 - replace InputSettings with Unity build in solution
 - Interaktion überarbeiten
 	- Interaktion Prompt
@@ -39,5 +38,4 @@
 - Reduce volume of background drones in most tracks (heavily used, drowns out instrumentation, example: GulianTheme_01_TL)
 
 ## SFX
-- Sound für Tür wird aufgeschlossen finden und einbauen
 - Sound für Tür wird aufgeschlossen finden und einbauen
