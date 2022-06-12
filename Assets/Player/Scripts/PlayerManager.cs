@@ -15,12 +15,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
 	[SerializeField]
 	private GameObject robertModel;
 
-	[SerializeField]
-	private LogbookManager logbookCatriona;
-	[SerializeField]
-	private LogbookManager logbookRobert;
-
-	public LogbookManager logbook { get; private set; }
+	public LogbookManager logbook;
 
 	[SerializeField]
 	private Animator catrionaAnimator;
@@ -31,7 +26,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
 	[SerializeField]
 	private Vector3 spawnOffset = new Vector3(0.0f, 0.6f, 0.0f);
 
-	private string nickname;
+	public string nickname { get; private set; }
 
 	void Awake() {
 		// used in GameManager.cs: we keep track of the localPlayer instance to prevent instantiation when levels are synchronized
@@ -90,13 +85,11 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
 		if (nickname.Equals(CharacterEnum.CATRIONA.ToString())) {
 			catrionaModel.SetActive(true);
 			robertModel.SetActive(false);
-			logbook = logbookCatriona;
 			animator = catrionaAnimator;
 			Debug.Log("<Color=Green><a>Player</a></Color> set to Catriona.");
 		} else if (nickname.Equals(CharacterEnum.ROBERT.ToString())) {
 			catrionaModel.SetActive(false);
 			robertModel.SetActive(true);
-			logbook = logbookRobert;
 			animator = robertAnimator;
 			Debug.Log("<Color=Green><a>Player</a></Color> set to Robert.");
 		} else {

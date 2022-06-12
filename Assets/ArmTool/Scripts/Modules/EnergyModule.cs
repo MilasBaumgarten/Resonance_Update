@@ -5,8 +5,6 @@ public class EnergyModule : ArmToolModule {
 
     [SerializeField]
     private GameObject cablePrefab;
-	[SerializeField]
-    private float maxDist = 5f;
 
     public override Color color {
         get {
@@ -15,11 +13,11 @@ public class EnergyModule : ArmToolModule {
     }
 
     public override void Function(GameObject interactTarget) {
-		//if (interactTarget) {
-		//	Socket targetSocket = interactTarget.transform.GetComponent<Socket>();
-		//	if (targetSocket) {
-  //              armTool.photonView.RPC("InteractModuleRpc", RpcTarget.All, interactTarget);
-  //          }
-		//}
+		if (interactTarget) {
+			Socket targetSocket = interactTarget.transform.GetComponent<Socket>();
+			if (targetSocket) {
+				armTool.photonView.RPC("InteractModuleRpc", RpcTarget.All, interactTarget);
+			}
+		}
 	}
 }

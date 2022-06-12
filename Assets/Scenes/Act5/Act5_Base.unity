@@ -16941,7 +16941,8 @@ PrefabInstance:
       propertyPath: m_Materials.Array.size
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114077278140775794, guid: bb53ad9b968c79d4185b3dca0f50b04b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bb53ad9b968c79d4185b3dca0f50b04b, type: 3}
 --- !u!1 &1243811935
 GameObject:
@@ -22829,6 +22830,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7871811550bdc494fb0e682889a7e852, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onlyExecuteLocally: 0
   correctCode: 5842
   onSuccess:
     m_PersistentCalls:

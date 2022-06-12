@@ -9,7 +9,7 @@ public class ResearchConsole : MonoBehaviour {
 	private LogbookManager logbookManager;
 
 	public void Open() {
-		logbookManager.openLogbook();
-		logbookManager.EnableOnePanel(ContentType.research);
+		logbookManager.OpenLogbook();
+		logbookManager.EnableOnePanel("research");
 	}
 }

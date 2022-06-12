@@ -5,11 +5,6 @@ public class OpenCanvas : MonoBehaviourPun {
 	[SerializeField]
 	private InputSettings input;
 
-	[SerializeField]
-	private LogbookManager logbookCatriona;
-	[SerializeField]
-	private LogbookManager logbookRobert;
-
 	private LogbookManager logbook;
 
 	void Start() {
@@ -17,6 +12,7 @@ public class OpenCanvas : MonoBehaviourPun {
 		if (photonView.IsMine == false && PhotonNetwork.IsConnected == true) {
 			enabled = false;
 		}
+
 		logbook = GetComponent<PlayerManager>().logbook;
 	}
 
@@ -25,7 +21,7 @@ public class OpenCanvas : MonoBehaviourPun {
 			if (logbook.isActive) {
 				logbook.DisablePanel();
 			} else {
-				logbook.openLogbook();
+				logbook.OpenLogbook();
 			}
 		}
 

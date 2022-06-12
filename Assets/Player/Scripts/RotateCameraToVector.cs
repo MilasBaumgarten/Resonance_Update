@@ -41,10 +41,11 @@ public class RotateCameraToVector : MonoBehaviour {
 
 	private CameraState state;
 
+	private Vector3 direction;
+
 	void Start() {
 		move_in_speed = speed / move_in_duration;
 		move_out_speed = speed / move_out_duration;
-		targetTransform = playerManager.logbook.transform;
 	}
 
 	public void RotateCam(bool back) {
@@ -52,6 +53,12 @@ public class RotateCameraToVector : MonoBehaviour {
 			startRotation = transform.rotation;
 			state = CameraState.MOVE_IN;
 			cameraMovement.SetCameraFree(false);
+
+			//find the vector pointing to the target
+			direction = (targetTransform.position - transform.position).normalized;
+
+			//create the rotation
+			lookRotation = Quaternion.LookRotation(direction);
 		} else {
 			state = CameraState.BACK;
 			lookRotation = startRotation;
@@ -60,21 +67,10 @@ public class RotateCameraToVector : MonoBehaviour {
 		}
 	}
 
-	// TODO: improve lookRotation accuracy
 	private void Update() {
 		if (state == CameraState.IDLE) {
 			return;
 		}
-
-		if (state == CameraState.MOVE_IN) {
-			//find the vector pointing to the target
-			Vector3 direction = (targetTransform.position - transform.position).normalized;
-
-			//create the rotation
-			lookRotation = Quaternion.LookRotation(direction);
-		}
-
-		lookRotation = Quaternion.Euler(lookRotation.eulerAngles.x, transform.rotation.eulerAngles.y, 0);
 
 		if (state == CameraState.MOVE_IN) {
 			transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * move_in_speed);

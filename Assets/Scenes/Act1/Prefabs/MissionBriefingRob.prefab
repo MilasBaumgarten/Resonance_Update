@@ -49,8 +49,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f5f8bbb444d6504f8dc944fa27f5289, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onlyExecuteLocally: 1
   bothPlayers: 0
-  typeOfContent: 0
+  typeOfContent: text
   nameOfObject: MissionBriefing
   onInteract:
     m_PersistentCalls:

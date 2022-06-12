@@ -4,7 +4,6 @@
 using UnityEngine;
 
 public class NoInteractionCollect : MonoBehaviour {
-
 	[SerializeField]
 	[Tooltip("The Object Content used to trigger")]
 	private ObjectContent objCont;
@@ -27,7 +26,7 @@ public class NoInteractionCollect : MonoBehaviour {
 		nummberOfInteractions++;
 
 		if (nummberOfInteractions >= targetNummberOfInteractions) {
-			Invoke("addContent", delay);
+			Invoke("AddContent", delay);
 		}
 
 	}

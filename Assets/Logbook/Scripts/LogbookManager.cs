@@ -49,21 +49,27 @@ public class LogbookManager : SerializedMonoBehaviour {
 	[Tooltip("the audio manager attached to the logbook")]
 	private LogbookAudio logbookAudio;
 
-	//Dictionary<string, GameObject> panels_old;
+	private Dictionary<string, GameObject> panels = new Dictionary<string, GameObject>();
+
+	[HideInInspector]
+	public bool isActive = false;
+
 	[SerializeField]
-	private Dictionary<ContentType, GameObject> panels;
+	private GameObject player;
 
-	[HideInInspector] public bool isActive = false;
+	[SerializeField]
+	private BoneOverride boneOverrideCatriona;
+	[SerializeField]
+	private BoneOverride boneOverrideRobert;
+	private BoneOverride boneOverride;
 
-	[SerializeField] private GameObject player;
+	private Animator animator;
 
 	private CameraMovement cameraMovement;
 
 	private PlayerMovement playerMovement;
 
 	private float defaultScale;
-
-	bool scaleUpDown;
 
 	void Awake() {
 		defaultScale = panelParent.parent.transform.localScale.y;
@@ -78,38 +84,41 @@ public class LogbookManager : SerializedMonoBehaviour {
 		cornersRect[0].anchoredPosition = startTransform.anchoredPosition;
 		cornersRect[1].anchoredPosition = startTransform.anchoredPosition;
 
+		foreach (Transform child in panelParent.transform) {
+			panels.Add(child.name, child.gameObject);
+		}
+
+		if (player.GetComponent<PlayerManager>().nickname.Equals(CharacterEnum.CATRIONA)) {
+			boneOverride = boneOverrideCatriona;
+		} else {
+			boneOverride = boneOverrideRobert;
+		}
+
 		DisableAllPanels();
 
 		// store for CameraMovment script
 		cameraMovement = player.GetComponent<CameraMovement>();
-
 		playerMovement = player.GetComponent<PlayerMovement>();
 
-		headBob = player.transform.Find("Head").Find("Camera").GetComponent<HeadBob>();
+		animator = player.GetComponent<PlayerManager>().animator;
 	}
 
 
 	// disable all panels who are children to the canvas where the script is attached to
 	public void DisableAllPanels() {
-		foreach (KeyValuePair<ContentType, GameObject> panel in panels) {
+		foreach (KeyValuePair<string, GameObject> panel in panels) {
 			panel.Value.SetActive(false);
 		}
 	}
 
 	// enables the wanted Panel through comparing the name who is saved in the dictionary
-	public void EnableOnePanel(ContentType panelName) {
+	public void EnableOnePanel(string panelName) {
 		// clear
 		DisableAllPanels();
 		// look if it exists in the dictionary and enable it
 		if (panels[panelName]) {
 			panels[panelName].gameObject.SetActive(true);
 		}
-
-		// deactivate CameraMovement
-		cameraMovement.enabled = false;
-		Cursor.lockState = CursorLockMode.None;
-		Cursor.visible = true;
-		isActive = true;
 	}
 
 	public void DisablePanel() {
@@ -119,11 +128,7 @@ public class LogbookManager : SerializedMonoBehaviour {
 
 		rotateCamToVect.RotateCam(true);
 
-		scaleUpDown = false;
-
-		StartCoroutine("ScaleUp");
-
-		//hacking.OnStopHacking(false);
+		StartCoroutine(ScaleAnimation(false));
 
 		isActive = false;
 
@@ -139,6 +144,10 @@ public class LogbookManager : SerializedMonoBehaviour {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         isActive = false;*/
+
+		// Animation stuff
+		animator.ResetTrigger("logbook active");
+		boneOverride.enabled = true;
 	}
 
 	private void endOfClosing() {
@@ -147,8 +156,8 @@ public class LogbookManager : SerializedMonoBehaviour {
 		DisableAllPanels();
 
 		playerMovement.enabled = true;
-		//headBob.enabled = true;
-		headBob.SetBobbing(true);
+		headBob.enabled = true;
+		//headBob.SetBobbing(true);
 
 		// activate CameraMovement
 		// Lock cursor to middle of the screen
@@ -159,14 +168,12 @@ public class LogbookManager : SerializedMonoBehaviour {
 
 	}
 
-	public void openLogbook() {
+	public void OpenLogbook() {
 		armTool.DeselectTool();
 
 		panelParent.parent.gameObject.SetActive(true);
 
-		scaleUpDown = true;
-
-		StartCoroutine("ScaleUp");
+		StartCoroutine(ScaleAnimation(true));
 
 		StartCoroutine("moveCorners1");
 		rotateCamToVect.RotateCam(false);
@@ -175,48 +182,54 @@ public class LogbookManager : SerializedMonoBehaviour {
 
 		playerMovement.enabled = false;
 
-		headBob.SetBobbing(false);
+		//headBob.SetBobbing(false);
+		headBob.enabled = false;
 
 		// deactivate CameraMovement
 		cameraMovement.enabled = false;
 		Cursor.lockState = CursorLockMode.None;
 		Cursor.visible = true;
 		isActive = true;
+
+		// Animation stuff
+		animator.SetTrigger("logbook active");
+		boneOverride.enabled = false;
 	}
 
-	IEnumerator ScaleUp() {
-		float startScale;
+	IEnumerator ScaleAnimation(bool scaleUp) {
+		float goalScale;
 		float stepSize;
 
-		if (scaleUpDown) {
-			startScale = defaultScale;
+		if (scaleUp) {
+			goalScale = defaultScale;
 			panelParent.parent.transform.localScale = new Vector3(0f, 0f, panelParent.parent.transform.localScale.z);
-			stepSize = startScale / (openCloseTime + 0.00001f);
-
 		} else {
-			startScale = 0f;
+			goalScale = 0f;
 			panelParent.parent.transform.localScale = new Vector3(defaultScale, defaultScale, panelParent.parent.transform.localScale.z);
-			stepSize = defaultScale / -(openCloseTime + 0.00001f);
 		}
+		stepSize = defaultScale / (openCloseTime + 0.00001f);
 
 		float currentScale = panelParent.parent.transform.localScale.y;
 
-		yield return new WaitForSeconds(delay);
+		// only wait when opening the logbook
+		if (scaleUp) {
+			yield return new WaitForSeconds(delay);
+		}
 
-		if (scaleUpDown) {
-			while (currentScale < startScale) {
+		if (scaleUp) {
+			while (currentScale < goalScale) {
 				panelParent.parent.transform.localScale = new Vector3(currentScale += (stepSize * Time.deltaTime), currentScale += (stepSize * Time.deltaTime), panelParent.parent.transform.localScale.z);
 				yield return null;
 			}
 		} else {
 			while (currentScale > 0f) {
-				panelParent.parent.transform.localScale = new Vector3(currentScale += (stepSize * Time.deltaTime), currentScale += (stepSize * Time.deltaTime), panelParent.parent.transform.localScale.z);
+				panelParent.parent.transform.localScale = new Vector3(currentScale -= (stepSize * Time.deltaTime), currentScale -= (stepSize * Time.deltaTime), panelParent.parent.transform.localScale.z);
 				yield return null;
 			}
 		}
 
-		if (scaleUpDown) {
-			panelParent.parent.transform.localScale = new Vector3(startScale, startScale, panelParent.parent.transform.localScale.z);
+		if (scaleUp) {
+			panelParent.parent.transform.localScale = new Vector3(goalScale, goalScale, panelParent.parent.transform.localScale.z);
 		} else {
 			panelParent.parent.transform.localScale = new Vector3(0f, 0f, panelParent.parent.transform.localScale.z);
 			endOfClosing();
