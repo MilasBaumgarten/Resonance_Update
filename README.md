@@ -8,7 +8,6 @@
 - Act 5: Tiles neu platzieren (sind alle krumm und schief)
 - Act 5: Gastank Wänden fehlt tlw. Kollision (außerdem kein Prefab)
 - viel mehr Objekte interagierbar machen (vor allem Grabable)
-- freeze Movement Idle Animation when Logbook is open
 - Prefabs überprüfen und unnötige Collider (vor allem in Deko) löschen
 - Outlines for Interactables (ObjectContent) after Act 1
 

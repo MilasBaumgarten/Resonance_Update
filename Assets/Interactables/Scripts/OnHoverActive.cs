@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
 
 //author manuel fischer
@@ -15,7 +16,9 @@ public class OnHoverActive : MonoBehaviour {
 	[FormerlySerializedAs("OnMouseExitResponse")]
 	private UnityEvent OnMouseExitEvent;
 	private void OnMouseEnter() {
-		OnMouseEnterEvent.Invoke();
+		if (!EventSystem.current.IsPointerOverGameObject()){
+			OnMouseEnterEvent.Invoke();
+		}
 	}
 	private void OnMouseExit() {
 		OnMouseExitEvent.Invoke();

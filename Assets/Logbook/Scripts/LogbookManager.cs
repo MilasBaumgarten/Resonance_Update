@@ -58,6 +58,9 @@ public class LogbookManager : SerializedMonoBehaviour {
 	private GameObject player;
 
 	[SerializeField]
+	private BoneOverride boneOverrideCatriona;
+	[SerializeField]
+	private BoneOverride boneOverrideRobert;
 	private BoneOverride boneOverride;
 
 	private Animator animator;
@@ -67,8 +70,6 @@ public class LogbookManager : SerializedMonoBehaviour {
 	private PlayerMovement playerMovement;
 
 	private float defaultScale;
-
-	private bool scaleUpDown;
 
 	void Awake() {
 		defaultScale = panelParent.parent.transform.localScale.y;
@@ -87,13 +88,17 @@ public class LogbookManager : SerializedMonoBehaviour {
 			panels.Add(child.name, child.gameObject);
 		}
 
+		if (player.GetComponent<PlayerManager>().nickname.Equals(CharacterEnum.CATRIONA)) {
+			boneOverride = boneOverrideCatriona;
+		} else {
+			boneOverride = boneOverrideRobert;
+		}
+
 		DisableAllPanels();
 
 		// store for CameraMovment script
 		cameraMovement = player.GetComponent<CameraMovement>();
 		playerMovement = player.GetComponent<PlayerMovement>();
-
-		headBob = player.transform.Find("Head").Find("Camera").GetComponent<HeadBob>();
 
 		animator = player.GetComponent<PlayerManager>().animator;
 	}
@@ -123,9 +128,7 @@ public class LogbookManager : SerializedMonoBehaviour {
 
 		rotateCamToVect.RotateCam(true);
 
-		scaleUpDown = false;
-
-		StartCoroutine("ScaleUp");
+		StartCoroutine(ScaleAnimation(false));
 
 		isActive = false;
 
@@ -153,8 +156,8 @@ public class LogbookManager : SerializedMonoBehaviour {
 		DisableAllPanels();
 
 		playerMovement.enabled = true;
-		//headBob.enabled = true;
-		headBob.SetBobbing(true);
+		headBob.enabled = true;
+		//headBob.SetBobbing(true);
 
 		// activate CameraMovement
 		// Lock cursor to middle of the screen
@@ -170,9 +173,7 @@ public class LogbookManager : SerializedMonoBehaviour {
 
 		panelParent.parent.gameObject.SetActive(true);
 
-		scaleUpDown = true;
-
-		StartCoroutine("ScaleUp");
+		StartCoroutine(ScaleAnimation(true));
 
 		StartCoroutine("moveCorners1");
 		rotateCamToVect.RotateCam(false);
@@ -181,7 +182,8 @@ public class LogbookManager : SerializedMonoBehaviour {
 
 		playerMovement.enabled = false;
 
-		headBob.SetBobbing(false);
+		//headBob.SetBobbing(false);
+		headBob.enabled = false;
 
 		// deactivate CameraMovement
 		cameraMovement.enabled = false;
@@ -194,39 +196,40 @@ public class LogbookManager : SerializedMonoBehaviour {
 		boneOverride.enabled = false;
 	}
 
-	IEnumerator ScaleUp() {
-		float startScale;
+	IEnumerator ScaleAnimation(bool scaleUp) {
+		float goalScale;
 		float stepSize;
 
-		if (scaleUpDown) {
-			startScale = defaultScale;
+		if (scaleUp) {
+			goalScale = defaultScale;
 			panelParent.parent.transform.localScale = new Vector3(0f, 0f, panelParent.parent.transform.localScale.z);
-			stepSize = startScale / (openCloseTime + 0.00001f);
-
 		} else {
-			startScale = 0f;
+			goalScale = 0f;
 			panelParent.parent.transform.localScale = new Vector3(defaultScale, defaultScale, panelParent.parent.transform.localScale.z);
-			stepSize = defaultScale / -(openCloseTime + 0.00001f);
 		}
+		stepSize = defaultScale / (openCloseTime + 0.00001f);
 
 		float currentScale = panelParent.parent.transform.localScale.y;
 
-		yield return new WaitForSeconds(delay);
+		// only wait when opening the logbook
+		if (scaleUp) {
+			yield return new WaitForSeconds(delay);
+		}
 
-		if (scaleUpDown) {
-			while (currentScale < startScale) {
+		if (scaleUp) {
+			while (currentScale < goalScale) {
 				panelParent.parent.transform.localScale = new Vector3(currentScale += (stepSize * Time.deltaTime), currentScale += (stepSize * Time.deltaTime), panelParent.parent.transform.localScale.z);
 				yield return null;
 			}
 		} else {
 			while (currentScale > 0f) {
-				panelParent.parent.transform.localScale = new Vector3(currentScale += (stepSize * Time.deltaTime), currentScale += (stepSize * Time.deltaTime), panelParent.parent.transform.localScale.z);
+				panelParent.parent.transform.localScale = new Vector3(currentScale -= (stepSize * Time.deltaTime), currentScale -= (stepSize * Time.deltaTime), panelParent.parent.transform.localScale.z);
 				yield return null;
 			}
 		}
 
-		if (scaleUpDown) {
-			panelParent.parent.transform.localScale = new Vector3(startScale, startScale, panelParent.parent.transform.localScale.z);
+		if (scaleUp) {
+			panelParent.parent.transform.localScale = new Vector3(goalScale, goalScale, panelParent.parent.transform.localScale.z);
 		} else {
 			panelParent.parent.transform.localScale = new Vector3(0f, 0f, panelParent.parent.transform.localScale.z);
 			endOfClosing();
