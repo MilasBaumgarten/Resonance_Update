@@ -1792,7 +1792,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f94d343f0d2b34e07a9410054588dc7f, type: 2}
+  - {fileID: 2100000, guid: b323f5f5dcf6c3e4ea0e4624dc9be2d0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2369,7 +2369,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 44e7ec6247b9ecd48a17c965703008fa, type: 2}
+  - {fileID: 2100000, guid: b323f5f5dcf6c3e4ea0e4624dc9be2d0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4637,7 +4637,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f94d343f0d2b34e07a9410054588dc7f, type: 2}
+  - {fileID: 2100000, guid: b323f5f5dcf6c3e4ea0e4624dc9be2d0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9767,7 +9767,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: f96090edaea7c564c80586f4385918fd, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11875,8 +11874,8 @@ ParticleSystem:
     rowMode: 1
     sprites:
     - sprite: {fileID: 0}
-    flipU: 0.5
-    flipV: 0.5
+    flipU: 0
+    flipV: 0
   VelocityModule:
     enabled: 1
     x:
@@ -15166,7 +15165,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: f96090edaea7c564c80586f4385918fd, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -15200,7 +15198,7 @@ ParticleSystemRenderer:
   m_ShadowBias: 0
   m_RenderAlignment: 0
   m_Pivot: {x: 0, y: 0, z: 0}
-  m_Flip: {x: 0, y: 0, z: 0}
+  m_Flip: {x: 0.5, y: 0.5, z: 0}
   m_UseCustomVertexStreams: 1
   m_EnableGPUInstancing: 1
   m_ApplyActiveColorSpace: 1
@@ -15461,7 +15459,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f94d343f0d2b34e07a9410054588dc7f, type: 2}
+  - {fileID: 2100000, guid: b323f5f5dcf6c3e4ea0e4624dc9be2d0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -15968,7 +15966,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0f484eebeb361d44eb09d2bc4e040547, type: 2}
+  - {fileID: 2100000, guid: b323f5f5dcf6c3e4ea0e4624dc9be2d0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -17336,7 +17334,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 44e7ec6247b9ecd48a17c965703008fa, type: 2}
+  - {fileID: 2100000, guid: b323f5f5dcf6c3e4ea0e4624dc9be2d0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -22836,7 +22834,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: f96090edaea7c564c80586f4385918fd, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -23331,7 +23328,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 97177f0b323e0ce49bde06cbcd3eb7ab, type: 2}
+  - {fileID: 2100000, guid: b323f5f5dcf6c3e4ea0e4624dc9be2d0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -23510,7 +23507,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 44e7ec6247b9ecd48a17c965703008fa, type: 2}
+  - {fileID: 2100000, guid: b323f5f5dcf6c3e4ea0e4624dc9be2d0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -24649,7 +24646,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f94d343f0d2b34e07a9410054588dc7f, type: 2}
+  - {fileID: 2100000, guid: b323f5f5dcf6c3e4ea0e4624dc9be2d0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -28617,10 +28614,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueFileName: Resonanz7_Set09
-  materials: []
   fadeWaitValue: 0.01
   isDecision: 0
   isBlocked: 0
+  materials: []
   isTriggered: 0
   faded: 0
 --- !u!65 &65302830537664876
@@ -30932,7 +30929,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f94d343f0d2b34e07a9410054588dc7f, type: 2}
+  - {fileID: 2100000, guid: b323f5f5dcf6c3e4ea0e4624dc9be2d0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -32276,7 +32273,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 97177f0b323e0ce49bde06cbcd3eb7ab, type: 2}
+  - {fileID: 2100000, guid: b323f5f5dcf6c3e4ea0e4624dc9be2d0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -34810,8 +34807,8 @@ ParticleSystem:
     rowMode: 1
     sprites:
     - sprite: {fileID: 0}
-    flipU: 0.5
-    flipV: 0.5
+    flipU: 0
+    flipV: 0
   VelocityModule:
     enabled: 1
     x:
@@ -38101,7 +38098,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: f96090edaea7c564c80586f4385918fd, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -38949,10 +38945,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueFileName: Resonanz7_Set02
-  materials: []
   fadeWaitValue: 0.01
   isDecision: 0
   isBlocked: 0
+  materials: []
   isTriggered: 0
   faded: 0
 --- !u!65 &65879448396048396
@@ -39486,7 +39482,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 44e7ec6247b9ecd48a17c965703008fa, type: 2}
+  - {fileID: 2100000, guid: b323f5f5dcf6c3e4ea0e4624dc9be2d0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -40062,7 +40058,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f94d343f0d2b34e07a9410054588dc7f, type: 2}
+  - {fileID: 2100000, guid: b323f5f5dcf6c3e4ea0e4624dc9be2d0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -41101,7 +41097,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f94d343f0d2b34e07a9410054588dc7f, type: 2}
+  - {fileID: 2100000, guid: b323f5f5dcf6c3e4ea0e4624dc9be2d0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -48133,7 +48129,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 44e7ec6247b9ecd48a17c965703008fa, type: 2}
+  - {fileID: 2100000, guid: b323f5f5dcf6c3e4ea0e4624dc9be2d0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -55487,10 +55483,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueFileName: Resonanz7_Set04
-  materials: []
   fadeWaitValue: 0.01
   isDecision: 0
   isBlocked: 0
+  materials: []
   isTriggered: 0
   faded: 0
 --- !u!65 &65940712470283206
@@ -58151,8 +58147,8 @@ ParticleSystem:
     rowMode: 1
     sprites:
     - sprite: {fileID: 0}
-    flipU: 0.5
-    flipV: 0.5
+    flipU: 0
+    flipV: 0
   VelocityModule:
     enabled: 1
     x:
@@ -61442,7 +61438,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: f96090edaea7c564c80586f4385918fd, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -61476,7 +61471,7 @@ ParticleSystemRenderer:
   m_ShadowBias: 0
   m_RenderAlignment: 0
   m_Pivot: {x: 0, y: 0, z: 0}
-  m_Flip: {x: 0, y: 0, z: 0}
+  m_Flip: {x: 0.5, y: 0.5, z: 0}
   m_UseCustomVertexStreams: 1
   m_EnableGPUInstancing: 1
   m_ApplyActiveColorSpace: 1
@@ -62004,7 +61999,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f94d343f0d2b34e07a9410054588dc7f, type: 2}
+  - {fileID: 2100000, guid: b323f5f5dcf6c3e4ea0e4624dc9be2d0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -62990,7 +62985,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1447796195661402}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 226.3, y: 0, z: 120.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -63040,9 +63035,7 @@ MonoBehaviour:
   resonanceTrigger: {fileID: 0}
   sceneryList:
   - {fileID: 114099627620291066}
-  - {fileID: 114420703739697106}
   - {fileID: 114359874376242122}
-  - {fileID: 114745293160581412}
   - {fileID: 114159106838492214}
   - {fileID: 114430105018266684}
   - {fileID: 114389089419654982}
@@ -63233,7 +63226,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f94d343f0d2b34e07a9410054588dc7f, type: 2}
+  - {fileID: 2100000, guid: b323f5f5dcf6c3e4ea0e4624dc9be2d0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -64732,7 +64725,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f94d343f0d2b34e07a9410054588dc7f, type: 2}
+  - {fileID: 2100000, guid: b323f5f5dcf6c3e4ea0e4624dc9be2d0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -69962,7 +69955,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f94d343f0d2b34e07a9410054588dc7f, type: 2}
+  - {fileID: 2100000, guid: b323f5f5dcf6c3e4ea0e4624dc9be2d0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -77657,7 +77650,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: f96090edaea7c564c80586f4385918fd, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -78102,10 +78094,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueFileName: Resonanz7_Set06
-  materials: []
   fadeWaitValue: 0.01
   isDecision: 0
   isBlocked: 0
+  materials: []
   isTriggered: 0
   faded: 0
 --- !u!65 &65350762834616372
@@ -79340,7 +79332,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 44e7ec6247b9ecd48a17c965703008fa, type: 2}
+  - {fileID: 2100000, guid: b323f5f5dcf6c3e4ea0e4624dc9be2d0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -79575,7 +79567,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0f484eebeb361d44eb09d2bc4e040547, type: 2}
+  - {fileID: 2100000, guid: b323f5f5dcf6c3e4ea0e4624dc9be2d0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -79913,10 +79905,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueFileName: Resonanz7_Set01
-  materials: []
   fadeWaitValue: 0.01
-  isDecision: 1
+  isDecision: 0
   isBlocked: 0
+  materials: []
   isTriggered: 0
   faded: 0
 --- !u!65 &65116055849679662
@@ -80408,7 +80400,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 44e7ec6247b9ecd48a17c965703008fa, type: 2}
+  - {fileID: 2100000, guid: b323f5f5dcf6c3e4ea0e4624dc9be2d0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -82722,10 +82714,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueFileName: Resonanz7_Set03
-  materials: []
   fadeWaitValue: 0.01
-  isDecision: 1
+  isDecision: 0
   isBlocked: 0
+  materials: []
   isTriggered: 0
   faded: 0
 --- !u!65 &65710737733456110
@@ -83013,7 +83005,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f94d343f0d2b34e07a9410054588dc7f, type: 2}
+  - {fileID: 2100000, guid: b323f5f5dcf6c3e4ea0e4624dc9be2d0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -83742,7 +83734,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0f484eebeb361d44eb09d2bc4e040547, type: 2}
+  - {fileID: 2100000, guid: b323f5f5dcf6c3e4ea0e4624dc9be2d0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84975,10 +84967,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueFileName: Resonanz7_Set08
-  materials: []
   fadeWaitValue: 0.01
   isDecision: 0
   isBlocked: 0
+  materials: []
   isTriggered: 0
   faded: 0
 --- !u!65 &65951164273658502
@@ -86541,8 +86533,8 @@ ParticleSystem:
     rowMode: 1
     sprites:
     - sprite: {fileID: 0}
-    flipU: 0.5
-    flipV: 0.5
+    flipU: 0
+    flipV: 0
   VelocityModule:
     enabled: 1
     x:
@@ -89832,7 +89824,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: f96090edaea7c564c80586f4385918fd, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -89866,7 +89857,7 @@ ParticleSystemRenderer:
   m_ShadowBias: 0
   m_RenderAlignment: 0
   m_Pivot: {x: 0, y: 0, z: 0}
-  m_Flip: {x: 0, y: 0, z: 0}
+  m_Flip: {x: 0.5, y: 0.5, z: 0}
   m_UseCustomVertexStreams: 1
   m_EnableGPUInstancing: 1
   m_ApplyActiveColorSpace: 1
@@ -90053,7 +90044,7 @@ GameObject:
   - component: {fileID: 114745293160581412}
   - component: {fileID: 65611640851620650}
   m_Layer: 0
-  m_Name: DecisionScenery3A
+  m_Name: DecisionScenery3A_unused
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -90091,10 +90082,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueFileName: blocked
-  materials: []
   fadeWaitValue: 0.01
   isDecision: 1
   isBlocked: 1
+  materials: []
   isTriggered: 0
   faded: 0
 --- !u!65 &65611640851620650
@@ -96467,7 +96458,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f94d343f0d2b34e07a9410054588dc7f, type: 2}
+  - {fileID: 2100000, guid: b323f5f5dcf6c3e4ea0e4624dc9be2d0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -101890,7 +101881,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f94d343f0d2b34e07a9410054588dc7f, type: 2}
+  - {fileID: 2100000, guid: b323f5f5dcf6c3e4ea0e4624dc9be2d0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -103025,7 +103016,7 @@ GameObject:
   - component: {fileID: 114420703739697106}
   - component: {fileID: 65667950480836208}
   m_Layer: 0
-  m_Name: DecisionScenery1A
+  m_Name: DecisionScenery1A_unused
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -103063,10 +103054,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueFileName: blocked
-  materials: []
   fadeWaitValue: 0.01
   isDecision: 1
   isBlocked: 1
+  materials: []
   isTriggered: 0
   faded: 0
 --- !u!65 &65667950480836208
@@ -105567,10 +105558,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueFileName: Resonanz7_Set10
-  materials: []
   fadeWaitValue: 0.01
   isDecision: 0
   isBlocked: 0
+  materials: []
   isTriggered: 0
   faded: 0
 --- !u!65 &65530798016738156
@@ -106378,7 +106369,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f94d343f0d2b34e07a9410054588dc7f, type: 2}
+  - {fileID: 2100000, guid: b323f5f5dcf6c3e4ea0e4624dc9be2d0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -108224,7 +108215,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f94d343f0d2b34e07a9410054588dc7f, type: 2}
+  - {fileID: 2100000, guid: b323f5f5dcf6c3e4ea0e4624dc9be2d0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -108758,7 +108749,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f94d343f0d2b34e07a9410054588dc7f, type: 2}
+  - {fileID: 2100000, guid: b323f5f5dcf6c3e4ea0e4624dc9be2d0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -111180,7 +111171,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f94d343f0d2b34e07a9410054588dc7f, type: 2}
+  - {fileID: 2100000, guid: b323f5f5dcf6c3e4ea0e4624dc9be2d0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -112008,10 +111999,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueFileName: Resonanz7_Set07
-  materials: []
   fadeWaitValue: 0.01
   isDecision: 0
   isBlocked: 0
+  materials: []
   isTriggered: 0
   faded: 0
 --- !u!65 &65990070721913936
@@ -114612,7 +114603,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0f484eebeb361d44eb09d2bc4e040547, type: 2}
+  - {fileID: 2100000, guid: b323f5f5dcf6c3e4ea0e4624dc9be2d0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -114804,7 +114795,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 44e7ec6247b9ecd48a17c965703008fa, type: 2}
+  - {fileID: 2100000, guid: b323f5f5dcf6c3e4ea0e4624dc9be2d0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -118592,7 +118583,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f94d343f0d2b34e07a9410054588dc7f, type: 2}
+  - {fileID: 2100000, guid: b323f5f5dcf6c3e4ea0e4624dc9be2d0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -120084,7 +120075,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 44e7ec6247b9ecd48a17c965703008fa, type: 2}
+  - {fileID: 2100000, guid: b323f5f5dcf6c3e4ea0e4624dc9be2d0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -121305,10 +121296,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueFileName: Resonanz7_Set05
-  materials: []
   fadeWaitValue: 0.01
   isDecision: 0
   isBlocked: 0
+  materials: []
   isTriggered: 0
   faded: 0
 --- !u!65 &65084689929754984
@@ -122306,7 +122297,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 44e7ec6247b9ecd48a17c965703008fa, type: 2}
+  - {fileID: 2100000, guid: b323f5f5dcf6c3e4ea0e4624dc9be2d0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -123669,7 +123660,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f94d343f0d2b34e07a9410054588dc7f, type: 2}
+  - {fileID: 2100000, guid: b323f5f5dcf6c3e4ea0e4624dc9be2d0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

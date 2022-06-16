@@ -10,6 +10,7 @@
 - viel mehr Objekte interagierbar machen (vor allem Grabable)
 - Prefabs überprüfen und unnötige Collider (vor allem in Deko) löschen
 - Outlines for Interactables (ObjectContent) after Act 1
+- Spielerführung in Resonanzen verbessern (nächster Dialog sollte am Ende des aktuellen Dialogs direkt zu sehen sein)
 
 ## Programming
 - fix Resonances
@@ -22,10 +23,10 @@
 - ForceTool Prompts bei Benutzung einfügen
 - Cut Scenes generell skipbar machen (aktuell nur schön bei Act 1 Ende)
 	- UI für Skip einbauen
+- Entscheidungen in Resonanzen drehen Kamera, das sieht aktuell etwas awkward aus
 
 ## Art
 - Sprites für UI Buttons im Hauptmenu
-- Spieler sollte aufhören zu wackeln, wenn das Lagbuch geöffnet ist
 
 ## Postprocessing
 - Postprocess Layer on camera should not be set to layermask "Everything"
@@ -38,3 +39,6 @@
 
 ## SFX
 - Sound für Tür wird aufgeschlossen finden und einbauen
+
+# Backlog
+- mehr Dekoobjekte platzieren

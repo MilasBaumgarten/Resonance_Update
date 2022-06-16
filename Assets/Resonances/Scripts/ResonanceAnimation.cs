@@ -24,6 +24,8 @@ public class ResonanceAnimation : MonoBehaviour {
 	private bool triggerA;
 	private bool triggerB;
 
+	// TODO: camera animation breaks logbook view
+
 	private void OnTriggerEnter(Collider other) {
 
 		if (other.GetComponent<PhotonView>().IsMine) {
