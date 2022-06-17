@@ -41,7 +41,6 @@ public class DialogTextFromExcel {
 	/// Get the id, subtitles and audiofiles from the oneliner.csv
 	/// </summary>
 	public void GetOneLinerValues() {
-
 		// open streamreader 
 		using (var reader = new StreamReader(Application.streamingAssetsPath + "/resources/csv/oneliner.csv")) {
 
@@ -76,7 +75,6 @@ public class DialogTextFromExcel {
 	}
 
 	public void GetValues(string filename) {
-
 		// open streamreader
 		using (var reader = new StreamReader(Application.streamingAssetsPath + "/resources/csv/" + filename + ".csv")) {
 			// while streamreader has not reached end of file
@@ -117,10 +115,6 @@ public class DialogTextFromExcel {
         englishSubtitles.Clear();
         germanAudio.Clear();
         englishAudio.Clear();
-    }
-
-    public void ClearOneLinerData() {
-
     }
 
     public float GetTimeToDisplay() {

@@ -10,10 +10,9 @@
 - viel mehr Objekte interagierbar machen (vor allem Grabable)
 - Prefabs überprüfen und unnötige Collider (vor allem in Deko) löschen
 - Outlines for Interactables (ObjectContent) after Act 1
-- Spielerführung in Resonanzen verbessern (nächster Dialog sollte am Ende des aktuellen Dialogs direkt zu sehen sein)
+- Spielerführung in Resonanzen verbessern (nächster Dialog sollte am Ende des aktuellen Dialogs direkt zu sehen sein) (Akt 2 fertig)
 
 ## Programming
-- fix Resonances
 - fix Error bei Dialogen
 - replace InputSettings with Unity build in solution
 - Interaktion überarbeiten
@@ -23,7 +22,6 @@
 - ForceTool Prompts bei Benutzung einfügen
 - Cut Scenes generell skipbar machen (aktuell nur schön bei Act 1 Ende)
 	- UI für Skip einbauen
-- Entscheidungen in Resonanzen drehen Kamera, das sieht aktuell etwas awkward aus
 
 ## Art
 - Sprites für UI Buttons im Hauptmenu

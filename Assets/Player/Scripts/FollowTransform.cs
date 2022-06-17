@@ -1,9 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class FollowTransform : MonoBehaviour {
-
     [SerializeField]
     private Vector3 locationOffset;
 
@@ -58,48 +55,28 @@ public class FollowTransform : MonoBehaviour {
     [SerializeField]
     [Range(0f, 2f)]
     private float zRotInfluence;
-
-
-
-
-
-    // Use this for initialization
-    void Start () {
-		
-	}
 	
-	// Update is called once per frame
 	void Update () {
-
         if (copyLocation) {
-
-            Vector3 targetLocation = this.transform.position;
+            Vector3 targetLocation = transform.position;
 
             if (xLoc) targetLocation.x = targetToFollow.position.x * xLocInfluence;
             if (yLoc) targetLocation.y = targetToFollow.position.y * yLocInfluence;
             if (zLoc) targetLocation.z = targetToFollow.position.z * zLocInfluence;
 
-            this.transform.position = targetLocation + locationOffset;
-
+            transform.position = targetLocation + locationOffset;
         }
         if (copyRotation) {
-
-            
+            // TODO: check if this is still necessary
             //Helper for this fucked up thing called CameraMovement, wtf?
             float helperAngle = targetToFollow.localEulerAngles.x > 90f ? targetToFollow.eulerAngles.x - 360f : targetToFollow.eulerAngles.x;
-            //Debug.Log(a);
-            Vector3 targetRotation = this.transform.localEulerAngles;
-
-            
+            Vector3 targetRotation = transform.localEulerAngles;
 
             if (xRot) targetRotation.x = Helper? helperAngle*xRotInfluence : targetToFollow.localEulerAngles.x * xRotInfluence;
             if (yRot) targetRotation.y = targetToFollow.localEulerAngles.y * yRotInfluence;
             if (zRot) targetRotation.z = targetToFollow.localEulerAngles.z * zRotInfluence;
 
-            this.transform.localEulerAngles = targetRotation + rotationOffset;
+            transform.localEulerAngles = targetRotation + rotationOffset;
         } 
-
 	}
-
-    
 }

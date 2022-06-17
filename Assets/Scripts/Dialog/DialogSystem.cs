@@ -77,6 +77,8 @@ public class DialogSystem : MonoBehaviour {
     [HideInInspector]
     public ArrayList dialogQueue;
 
+	private Coroutine currentDialog;
+
 	//------------------------------------------------------------------------------------------------------------------
 	// Singleton format, if unclear please google Singleton
 
@@ -133,12 +135,25 @@ public class DialogSystem : MonoBehaviour {
     // call this method from another gameobject/class to start the dialog routine
     /// <param name="filename">The name of the csv-File (without .csv file extension!)</param>
     public void StartDialog(string filename) {
-		StartCoroutine(PlayDialog(filename));
+		currentDialog = StartCoroutine(PlayDialog(filename));
 	}
 
     public void StartOneLiner(string id) {
-        StartCoroutine(PlayOneLiner(id));
+		currentDialog = StartCoroutine(PlayOneLiner(id));
     }
+
+	public void StopCurrentDialogOrOneLiner() {
+		if (currentDialog != null) {
+			StopCoroutine(currentDialog);
+
+			// after the dialog is done, disable text-object
+			dialogSubtitles.enabled = false;
+			// set dialogPlaying-flag to false
+			dialogPlaying = false;
+			// clear values
+			dialogTextFromExcel.ClearData();
+		}
+	}
 
 	IEnumerator PlayDialog(string filename) {
 		// get values from csv-file
@@ -171,6 +186,8 @@ public class DialogSystem : MonoBehaviour {
 
 		// remove first element in queue
 		//dialogQueue.RemoveAt(0);
+
+		currentDialog = null;
 	}
 
     /// <summary>Play a one Liner in german or english</summary>
@@ -188,22 +205,24 @@ public class DialogSystem : MonoBehaviour {
 		// get the index of the id
 		int i = dialogTextFromExcel.oneLinerID.IndexOf(ID);
 
-		{
-			// if subtitles should be english play english dialog, otherwise play german dialog
-			if (isEnglish) {
-				PlayeOneShot(dialogTextFromExcel.oneLinerEnglishSubtitles[i], onelinerAudioPath + dialogTextFromExcel.oneLinerEnglishAudio[i]);
-			} else {
-				PlayeOneShot(dialogTextFromExcel.oneLinerGermanSubtitles[i], onelinerAudioPath + dialogTextFromExcel.oneLinerGermanAudio[i]);
-			}
-            yield return new WaitForSeconds(dialogTextFromExcel.oneLinerPlayTimer[i]);
+		// if subtitles should be english play english dialog, otherwise play german dialog
+		if (isEnglish) {
+			PlayeOneShot(dialogTextFromExcel.oneLinerEnglishSubtitles[i], onelinerAudioPath + dialogTextFromExcel.oneLinerEnglishAudio[i]);
+		} else {
+			PlayeOneShot(dialogTextFromExcel.oneLinerGermanSubtitles[i], onelinerAudioPath + dialogTextFromExcel.oneLinerGermanAudio[i]);
 		}
+        yield return new WaitForSeconds(dialogTextFromExcel.oneLinerPlayTimer[i]);
+
 		// after the dialog is done, disable text-object
 		dialogSubtitles.enabled = false;
         // set dialogPlaying-flag to false
         dialogPlaying = false;
-		// remove first element in queue
+
 		// TODO: reenable
+		// remove first element in queue
 		//dialogQueue.RemoveAt(0);
+
+		currentDialog = null;
 	}
 
 	private void PlayeOneShot(string subtitleText, string audioFilePath) {

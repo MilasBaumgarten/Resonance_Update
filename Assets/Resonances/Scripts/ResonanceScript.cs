@@ -40,8 +40,12 @@ public class ResonanceScript : MonoBehaviour {
 
 	// The places where the players are, when they activate the resonance
 	private Vector3[] oldPlayersPositions;
+	private Quaternion[] oldPlayersRotations;
 
 	private GameObject[] players;
+
+	private bool shouldStopDialog = false;
+	private Coroutine currentDialog;
 	//------------------------------------------------------------------------------------------------------------------
 
 	// A function to express the whole sequence of the resonance.
@@ -50,9 +54,10 @@ public class ResonanceScript : MonoBehaviour {
 
 		players = GetPlayers();
 		oldPlayersPositions = GetPlayersPositions(players);
+		oldPlayersRotations = GetPlayersRotations(players);
 
 		// Get the current positions of the players, so we can set them back to default at the end of the resonance
-		TeleportPlayers(players, spawnPoint.transform.position);
+		TeleportPlayers(players, spawnPoint.transform.position, spawnPoint.transform.rotation);
 
 		// We need a Coroutine, so we can stop the function until the player gave an input.
 		StartCoroutine(DialoguesStage());
@@ -113,7 +118,7 @@ public class ResonanceScript : MonoBehaviour {
 		yield return new WaitUntil(() => resonanceTrigger.image.faded);
 
 		// Teleport the players back and set their speed to normal
-		TeleportPlayers(players, oldPlayersPositions);
+		TeleportPlayers(players, oldPlayersPositions, oldPlayersRotations);
 
 		if (dialogAfterResonance) {
 			dialogAfterResonance.StartDialog();
@@ -122,13 +127,31 @@ public class ResonanceScript : MonoBehaviour {
 
 	private IEnumerator PlayScenery(int i){
 		DialogSystem.instance.StartDialog(sceneryList[i].dialogueFileName);
-		yield return new WaitForSeconds(DialogSystem.instance.dialogTextFromExcel.GetTimeToDisplay() + 1f);
+		yield return WaitUntilDialogFinished(DialogSystem.instance.dialogTextFromExcel.GetTimeToDisplay());
 
 		foreach (var mat in sceneryList[i].materials) {
 			StartCoroutine(sceneryList[i].Fade(mat));
 		}
 
 		yield return new WaitUntil(() => sceneryList[i].faded);
+	}
+
+	private IEnumerator WaitUntilDialogFinished(float dialogTime) {
+		for (float timer = dialogTime; timer >= 0; timer -= Time.deltaTime){
+			if (shouldStopDialog){
+				shouldStopDialog = false;
+				DialogSystem.instance.StopCurrentDialogOrOneLiner();
+				yield break;
+			} else {
+				yield return null;
+			}
+		}
+	}
+
+	private void Update() {
+		if (Input.GetKeyDown(KeyCode.P)) {
+			shouldStopDialog = true;
+		}
 	}
 
 	//------------------------------------------------------------------------------------------------------------------
@@ -154,20 +177,31 @@ public class ResonanceScript : MonoBehaviour {
 		return tmp;
 	}
 
+	private Quaternion[] GetPlayersRotations(GameObject[] _players) {
+		Quaternion[] tmp = new Quaternion[_players.Length];
+
+		for (int i = 0; i < _players.Length; i++) {
+			tmp[i] = _players[i].transform.rotation;
+		}
+		return tmp;
+	}
+
 	private GameObject[] GetPlayers() {
 		GameObject[] allPlayers = GameObject.FindGameObjectsWithTag("Player");
 		return allPlayers;
 	}
 
-	private void TeleportPlayers(GameObject[] _players, Vector3 destination) {
+	private void TeleportPlayers(GameObject[] _players, Vector3 destination, Quaternion rotation) {
 		for (int i = 0; i < _players.Length; i++) {
 			_players[i].transform.position = destination;
+			_players[i].transform.rotation = rotation;
 		}
 	}
 
-	private void TeleportPlayers(GameObject[] _players, Vector3[] destinations) {
+	private void TeleportPlayers(GameObject[] _players, Vector3[] destinations, Quaternion[] rotations) {
 		for (int i = 0; i < _players.Length; i++) {
 			_players[i].transform.position = destinations[i];
+			_players[i].transform.rotation = rotations[i];
 		}
 	}
 }

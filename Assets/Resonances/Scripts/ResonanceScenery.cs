@@ -12,7 +12,7 @@ public class ResonanceScenery : MonoBehaviour {
 	[HideInInspector]
 	public Material[] materials;
 
-	[HideInInspector]
+	//[HideInInspector]
 	public bool isTriggered;
 
 	[HideInInspector]

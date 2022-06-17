@@ -38,7 +38,7 @@ public class Grabable : ArmToolModuleBehaviour {
 			// calculate the middle of both player's holding positions
 			Vector3 dist = Vector3.zero;
 			foreach (Transform trans in targetPositions) {
-				dist += trans.position - this.transform.position;
+				dist += trans.position - transform.position;
 			}
 
 			dist /= targetPositions.Count;
