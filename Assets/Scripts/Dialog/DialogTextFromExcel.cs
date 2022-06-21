@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 /**
  * should be attached to: DialogManager
@@ -103,11 +104,13 @@ public class DialogTextFromExcel {
 	}
 
     static public string[] SplitCsvLine(string line) {
-        return (from System.Text.RegularExpressions.Match m in System.Text.RegularExpressions.Regex.Matches(line,
-        @"(((?<x>(?=[,\r\n]+))|""(?<x>([^""]|"""")+)""|(?<x>[^,\r\n]+)),?)",
-        System.Text.RegularExpressions.RegexOptions.ExplicitCapture)
-                select m.Groups[1].Value).ToArray();
-    }
+		string[] content = Regex.Split(line, ",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
+
+		// remove quotes
+		content[1] = content[1].Trim('\"');
+		content[2] = content[2].Trim('\"');
+		return content;
+	}
 
     public void ClearData() {
         timeToDisplay.Clear();

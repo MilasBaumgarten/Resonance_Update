@@ -40,3 +40,6 @@
 
 # Backlog
 - mehr Dekoobjekte platzieren
+- Resonance3 scheint nicht verwendet zu werden (Audio und Csv sind da), könnte noch implementiert werden
+	- in Akt3_4 gab es eine ungenutzte Resonance, vlt gehört die dahin
+- es gibt Dialoge nach Resonanzen, die afaik aktuell nicht verwendet werden
