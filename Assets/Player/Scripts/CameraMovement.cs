@@ -47,15 +47,16 @@ public class CameraMovement : MonoBehaviourPun {
 	private void UpdateCameraMovement() {
 		// Clamp the Movement with the public Variables of the maximum movement across the horizontal / vertical axis
 		if (clampedCameraMotion) {
-			rotX += Mathf.Clamp(Input.GetAxis("Mouse X") * hSens * Time.deltaTime, -hClamp, hClamp);
+			rotX = Mathf.Clamp(Input.GetAxis("Mouse X") * hSens * Time.deltaTime, -hClamp, hClamp);
 			rotY = Mathf.Clamp(rotY - Mathf.Clamp(Input.GetAxis("Mouse Y") * vSens * Time.deltaTime, -vClamp, vClamp), minAngle, maxAngle);
 		} else {
-			rotX += Input.GetAxis("Mouse X") * hSens * Time.deltaTime;
+			rotX = Input.GetAxis("Mouse X") * hSens * Time.deltaTime;
 			rotY = Mathf.Clamp(rotY - Input.GetAxis("Mouse Y") * vSens * Time.deltaTime, minAngle, maxAngle);
 		}
 
 		// Rotate the player
-		transform.localEulerAngles = new Vector3(0, rotX, 0);
+		Vector3 oldRotation = transform.localEulerAngles;
+		transform.localEulerAngles = new Vector3(oldRotation.x, oldRotation.y + rotX, oldRotation.z);
 		// Tilt the Camera
 		playerCamera.transform.localEulerAngles = new Vector3(rotY, 0, 0);
 	}

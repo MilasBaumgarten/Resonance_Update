@@ -12,34 +12,34 @@ using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
 public class ResonanceTriggerScript : MonoBehaviour {
-
-	// We need the reference to get the player´s input, and to set the bool "activated" in ResonanceTestScript to true,
-	// if the player collided with the resonance.
-	[HideInInspector]
-	public ResonanceTestScript rts;
+	// Resonance that will be triggered
+	[SerializeField]
+	private ResonanceScript targetResonance;
 
 	public ImageFade image;
 
 	private AudioSource background;
 
-	// When someone triggers the resonance, the one who triggers it will have the instance of the ResonanceTestScript, so
-	// only he will be able to activate the dialogues.
+	private bool locked = false;
 
 	private void Start() {
 		background = GetComponent<AudioSource>();
 	}
 
+	// When someone triggers the resonance, the one who triggers it will have the instance of the ResonanceTestScript, so
+	// only he will be able to activate the dialogues.
 	private void OnTriggerEnter(Collider other) {
-		rts = other.gameObject.GetComponent<ResonanceTestScript>();
-		if (rts) {
+		if (!locked) {
+			if (other.CompareTag("Player")){
+				// So the other Player doesnt activate it in the transition
+				GetComponent<Collider>().enabled = false;
 
-			// So the other Player doesnt activate it in the transition
-			GetComponent<Collider>().enabled = false;
+				if (background)
+					background.Play();
 
-			if (background)
-				background.Play();
-
-			StartCoroutine(WaitForFade());
+				StartCoroutine(WaitForFade());
+				locked = true;
+			}
 		}
 	}
 
@@ -47,9 +47,7 @@ public class ResonanceTriggerScript : MonoBehaviour {
 		image.gameObject.GetComponent<Animation>().Play();
 		yield return new WaitUntil(() => image.faded);
 
-		if (rts) {
-			EventManager.instance.TriggerEvent("ResonanceTrigger");
-		}
+		targetResonance.BeginResonance();
 	}
 
 	public IEnumerator Fade() {

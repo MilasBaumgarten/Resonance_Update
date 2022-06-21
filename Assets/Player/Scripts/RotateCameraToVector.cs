@@ -4,7 +4,7 @@
 using System.Collections;
 using UnityEngine;
 
-enum CameraState {
+public enum CameraState {
 	IDLE,
 	MOVE_IN,
 	BACK
@@ -12,16 +12,13 @@ enum CameraState {
 
 public class RotateCameraToVector : MonoBehaviour {
 	[SerializeField]
-	private Transform playerCamera;
+	private Transform playerHead;
 	[SerializeField]
 	private CameraMovement cameraMovement;
 
 	[SerializeField]
 	[Tooltip("The transfrom the cam is rotated to")]
 	private Transform targetTransform;
-
-	[SerializeField]
-	private PlayerManager playerManager;
 
 	[SerializeField]
 	[Tooltip("How fast the cam should rotate")]
@@ -39,9 +36,15 @@ public class RotateCameraToVector : MonoBehaviour {
 	private Quaternion lookRotation;
 	private Quaternion startRotation;
 
-	private CameraState state;
+	public CameraState state { get; private set; }
 
 	private Vector3 direction;
+
+	public void Setup(Transform playerHead,
+					  CameraMovement cameraMovement) {
+		this.playerHead = playerHead;
+		this.cameraMovement = cameraMovement;
+	}
 
 	void Start() {
 		move_in_speed = speed / move_in_duration;
@@ -50,12 +53,12 @@ public class RotateCameraToVector : MonoBehaviour {
 
 	public void RotateCam(bool back) {
 		if (!back) {
-			startRotation = transform.rotation;
+			startRotation = playerHead.transform.rotation;
 			state = CameraState.MOVE_IN;
 			cameraMovement.SetCameraFree(false);
 
 			//find the vector pointing to the target
-			direction = (targetTransform.position - transform.position).normalized;
+			direction = (targetTransform.position - playerHead.transform.position).normalized;
 
 			//create the rotation
 			lookRotation = Quaternion.LookRotation(direction);
@@ -63,26 +66,25 @@ public class RotateCameraToVector : MonoBehaviour {
 			state = CameraState.BACK;
 			lookRotation = startRotation;
 
-			StartCoroutine("SetCameraToIdle");
+			StartCoroutine(SetCameraToIdle());
 		}
 	}
 
-	private void Update() {
+	private void FixedUpdate() {
 		if (state == CameraState.IDLE) {
 			return;
 		}
 
 		if (state == CameraState.MOVE_IN) {
-			transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * move_in_speed);
+			playerHead.transform.rotation = Quaternion.Slerp(playerHead.transform.rotation, lookRotation, Time.fixedDeltaTime * move_in_speed);
 		} 
 		else if (state == CameraState.BACK) {
-			transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * move_out_speed);
+			playerHead.transform.rotation = Quaternion.Slerp(playerHead.transform.rotation, lookRotation, Time.fixedDeltaTime * move_out_speed);
 		}
-		
 	}
 
 	IEnumerator SetCameraToIdle() {
-		yield return new WaitForSeconds(move_out_duration * Time.fixedDeltaTime);
+		yield return new WaitUntil(() => Quaternion.Angle(playerHead.transform.rotation, lookRotation) <= 0.1f);
 
 		state = CameraState.IDLE;
 		cameraMovement.SetCameraFree(true);

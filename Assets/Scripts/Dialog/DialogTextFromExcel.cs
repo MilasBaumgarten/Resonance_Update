@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 /**
  * should be attached to: DialogManager
@@ -41,7 +42,6 @@ public class DialogTextFromExcel {
 	/// Get the id, subtitles and audiofiles from the oneliner.csv
 	/// </summary>
 	public void GetOneLinerValues() {
-
 		// open streamreader 
 		using (var reader = new StreamReader(Application.streamingAssetsPath + "/resources/csv/oneliner.csv")) {
 
@@ -76,7 +76,6 @@ public class DialogTextFromExcel {
 	}
 
 	public void GetValues(string filename) {
-
 		// open streamreader
 		using (var reader = new StreamReader(Application.streamingAssetsPath + "/resources/csv/" + filename + ".csv")) {
 			// while streamreader has not reached end of file
@@ -105,11 +104,13 @@ public class DialogTextFromExcel {
 	}
 
     static public string[] SplitCsvLine(string line) {
-        return (from System.Text.RegularExpressions.Match m in System.Text.RegularExpressions.Regex.Matches(line,
-        @"(((?<x>(?=[,\r\n]+))|""(?<x>([^""]|"""")+)""|(?<x>[^,\r\n]+)),?)",
-        System.Text.RegularExpressions.RegexOptions.ExplicitCapture)
-                select m.Groups[1].Value).ToArray();
-    }
+		string[] content = Regex.Split(line, ",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
+
+		// remove quotes
+		content[1] = content[1].Trim('\"');
+		content[2] = content[2].Trim('\"');
+		return content;
+	}
 
     public void ClearData() {
         timeToDisplay.Clear();
@@ -117,10 +118,6 @@ public class DialogTextFromExcel {
         englishSubtitles.Clear();
         germanAudio.Clear();
         englishAudio.Clear();
-    }
-
-    public void ClearOneLinerData() {
-
     }
 
     public float GetTimeToDisplay() {

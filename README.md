@@ -12,7 +12,6 @@
 - Outlines for Interactables (ObjectContent) after Act 1
 
 ## Programming
-- fix Resonances
 - fix Error bei Dialogen
 - replace InputSettings with Unity build in solution
 - Interaktion überarbeiten
@@ -25,7 +24,6 @@
 
 ## Art
 - Sprites für UI Buttons im Hauptmenu
-- Spieler sollte aufhören zu wackeln, wenn das Lagbuch geöffnet ist
 
 ## Postprocessing
 - Postprocess Layer on camera should not be set to layermask "Everything"
@@ -38,3 +36,9 @@
 
 ## SFX
 - Sound für Tür wird aufgeschlossen finden und einbauen
+
+# Backlog
+- mehr Dekoobjekte platzieren
+- Resonance3 scheint nicht verwendet zu werden (Audio und Csv sind da), könnte noch implementiert werden
+	- in Akt3_4 gab es eine ungenutzte Resonance, vlt gehört die dahin
+- es gibt Dialoge nach Resonanzen, die afaik aktuell nicht verwendet werden
