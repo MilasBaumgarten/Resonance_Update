@@ -10,7 +10,6 @@
 - viel mehr Objekte interagierbar machen (vor allem Grabable)
 - Prefabs überprüfen und unnötige Collider (vor allem in Deko) löschen
 - Outlines for Interactables (ObjectContent) after Act 1
-- Spielerführung in Resonanzen verbessern (nächster Dialog sollte am Ende des aktuellen Dialogs direkt zu sehen sein) (Akt 2 fertig)
 
 ## Programming
 - fix Error bei Dialogen
