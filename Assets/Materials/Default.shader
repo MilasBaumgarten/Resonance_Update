@@ -1,6 +1,7 @@
 ﻿Shader "Custom/Default" {
 	Properties {
 		_ColorRough ("Basecolor and Roughness", 2D) = "white" {}
+		_ColorTint("Tint", Color) = (1.0, 1.0, 1.0, 1.0)
 		_Normal ("Normal", 2D) = "bump" {}
 		_Metallic ("Metallic", 2D) = "black" {}
 	}
@@ -16,6 +17,7 @@
 		#pragma target 3.0
 
 		sampler2D _ColorRough;
+		fixed4 _ColorTint;
 		sampler2D _Normal;
 		sampler2D _Metallic;
 
@@ -35,7 +37,7 @@
 			fixed3 normal = UnpackNormal(tex2D(_Normal, IN.uv_ColorRough));	// = -0.5) * 2 -> [-1; 1]
 			fixed3 metallic = tex2D(_Metallic, IN.uv_ColorRough);
 
-			o.Albedo = colorRough.rgb;
+			o.Albedo = colorRough.rgb * _ColorTint;
 			o.Smoothness = 1 - colorRough.a;
 
 			o.Normal = normal;

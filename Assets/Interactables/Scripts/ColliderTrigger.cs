@@ -26,8 +26,6 @@ public class ColliderTrigger : MonoBehaviour {
     public bool invokeOnlyOnce = true;
     [Tooltip("If true, the event won't fire if a dialog is playing.")]
     public bool lockIfDialogIsPlaying = true;
-    [Tooltip("Synchronize the event if true")]
-    public bool syncEvent = false;
 
     [Tooltip("List of gameobjects that get activated after this is triggered")]
     public GameObject[] activateGameobjects;
@@ -56,55 +54,27 @@ public class ColliderTrigger : MonoBehaviour {
         if (other.CompareTag("Player") && !hasPlayed) {
             // increase player-counter
             playerCount++;
-
-            if (!syncEvent) {
-                // if both players can trigger this, continue as usual
-                if (triggeredBy == Characters.BothCharacters) {
-                    Trigger();
-                }
-                // else, check if the entered player is the one who can trigger this
-                else {
-                    // only rob can trigger
-                    if (triggeredBy == Characters.Robert) {
-                        if (other.transform.name.Contains("Rob")) {
-
-                            Trigger();
-                        }
-                    }
-                    // only cat can trigger
-                    else if (triggeredBy == Characters.Catriona) {
-                        if (other.transform.name.Contains("Cat")) {
-
-                            Trigger();
-                        }
+            
+            // if both players can trigger this, continue as usual
+            if (triggeredBy == Characters.BothCharacters) {
+                Trigger();
+            }
+            // else, check if the entered player is the one who can trigger this
+            else {
+                // only rob can trigger
+                if (triggeredBy == Characters.Robert) {
+                    if (other.transform.name.Contains("Rob")) {
+                        Trigger();
                     }
                 }
-            } else {
-                // if both players can trigger this, continue as usual
-                if (triggeredBy == Characters.BothCharacters) {
-                    //other.gameObject.GetComponent<Interact>().SyncTriggerEvent(gameObject);
-                    Trigger();
-                }
-                // else, check if the entered player is the one who can trigger this
-                else {
-                    // only rob can trigger
-                    if (triggeredBy == Characters.Robert) {
-                        if (other.transform.name.Contains("Rob")) {
-
-                            //other.GetComponent<Interact>().SyncTriggerEvent(gameObject);
-                            Trigger();
-                        }
-                    }
-                    // only cat can trigger
-                    else if (triggeredBy == Characters.Catriona) {
-                        if (other.transform.name.Contains("Cat")) {
-
-                            //other.GetComponent<Interact>().SyncTriggerEvent(gameObject);
-                            Trigger();
-                        }
+                // only cat can trigger
+                else if (triggeredBy == Characters.Catriona) {
+                    if (other.transform.name.Contains("Cat")) {
+                        Trigger();
                     }
                 }
             }
+            
             
         }
     }

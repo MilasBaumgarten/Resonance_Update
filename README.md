@@ -5,14 +5,12 @@
 - Options Menu: implement options for Camera Controls
 - Act 2: fix Light Probes
 - Act 3_4: Kollisionen mit Deko sind akward (Spieler wird hochgedrückt)
-- Act 5: Tiles neu platzieren (sind alle krumm und schief)
-- Act 5: Gastank Wänden fehlt tlw. Kollision (außerdem kein Prefab)
 - viel mehr Objekte interagierbar machen (vor allem Grabable)
 - Prefabs überprüfen und unnötige Collider (vor allem in Deko) löschen
 - Outlines for Interactables (ObjectContent) after Act 1
+- Gangelemente anpassen (mittlere Streifen sind bei T und L Stücken nicht vorhanden oder unschön)
 
 ## Programming
-- fix Error bei Dialogen
 - replace InputSettings with Unity build in solution
 - Interaktion überarbeiten
 	- Interaktion Prompt
