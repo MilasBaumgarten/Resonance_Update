@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: 4650606250407384}
   - component: {fileID: 33673919421204566}
   - component: {fileID: 23929274121413082}
-  - component: {fileID: 65473227793208416}
   m_Layer: 0
   m_Name: GasStorageRoof
   m_TagString: Untagged
@@ -116,16 +115,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &65473227793208416
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1640030655365070}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.4977338, y: 0.0012042522, z: 2.0000007}
-  m_Center: {x: 1.2488664, y: 0.0006019473, z: 1.0000001}

@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: 4078825210782274}
   - component: {fileID: 33238318481390686}
   - component: {fileID: 23347510326892148}
-  - component: {fileID: 65886814288322614}
   m_Layer: 0
   m_Name: GasStoragePipeWall
   m_TagString: Untagged
@@ -116,16 +115,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &65886814288322614
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1888920271800522}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 6.291353, y: 2.3098388, z: 1.6390481}
-  m_Center: {x: -2.5543857, y: 0.12177181, z: 0.12654307}

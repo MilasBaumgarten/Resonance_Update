@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4077384468903212}
   - component: {fileID: 108007410866106808}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Point Light (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4077384468903212
 Transform:
@@ -44,8 +44,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.3170019, b: 0.2971698, a: 1}
-  m_Intensity: 9.29
-  m_Range: 12.755151
+  m_Intensity: 2
+  m_Range: 41.5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -106,12 +106,12 @@ GameObject:
   - component: {fileID: 33893219109136690}
   - component: {fileID: 23335827588198408}
   - component: {fileID: 65133310723801812}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4098074230206096
 Transform:
@@ -202,12 +202,12 @@ GameObject:
   - component: {fileID: 4928645770512322}
   - component: {fileID: 33608112514860658}
   - component: {fileID: 23742700605672634}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4928645770512322
 Transform:
@@ -283,12 +283,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4637145428837386}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: RedLamp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4637145428837386
 Transform:
@@ -297,9 +297,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1648119502350246}
-  m_LocalRotation: {x: 0.5000008, y: 0.49999928, z: -0.49999928, w: 0.5000008}
+  m_LocalRotation: {x: 0.50000006, y: 0.50000006, z: -0.5, w: 0.5}
   m_LocalPosition: {x: -10.882, y: 7.37, z: 41.93}
-  m_LocalScale: {x: 2.000001, y: 1.500001, z: 2.000001}
+  m_LocalScale: {x: 2, y: 1.500001, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4077384468903212}
