@@ -10,6 +10,7 @@
 - viel mehr Objekte interagierbar machen (vor allem Grabable)
 - Prefabs überprüfen und unnötige Collider (vor allem in Deko) löschen
 - Outlines for Interactables (ObjectContent) after Act 1
+- Gangelemente anpassen (mittlere Streifen sind bei T und L Stücken nicht vorhanden oder unschön)
 
 ## Programming
 - fix Error bei Dialogen
