@@ -230,7 +230,6 @@ GameObject:
   - component: {fileID: 147514129}
   - component: {fileID: 147514132}
   - component: {fileID: 147514131}
-  - component: {fileID: 147514130}
   m_Layer: 0
   m_Name: Plane (3)
   m_TagString: Untagged
@@ -247,26 +246,12 @@ Transform:
   m_GameObject: {fileID: 147514128}
   m_LocalRotation: {x: 0.00000035762784, y: -0, z: -1, w: 0}
   m_LocalPosition: {x: 37.771, y: -57.552998, z: 105.99699}
-  m_LocalScale: {x: 0.94753, y: 1, z: 0.02}
+  m_LocalScale: {x: 9.695975, y: 0.028732866, z: 0.09585}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1903031451}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: -180, y: -180, z: -0.000015258789}
---- !u!64 &147514130
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 147514128}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &147514131
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -316,7 +301,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 147514128}
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &327573079
 GameObject:
   m_ObjectHideFlags: 0
@@ -422,7 +407,6 @@ GameObject:
   - component: {fileID: 379391928}
   - component: {fileID: 379391931}
   - component: {fileID: 379391930}
-  - component: {fileID: 379391929}
   m_Layer: 0
   m_Name: Plane (2)
   m_TagString: Untagged
@@ -438,27 +422,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 379391927}
   m_LocalRotation: {x: 0.7071068, y: 0.000000031610135, z: 0.70710677, w: 0.00000003161013}
-  m_LocalPosition: {x: 14.591, y: -57.55, z: 103.028}
-  m_LocalScale: {x: 0.5672096, y: 1, z: 0.02}
+  m_LocalPosition: {x: 11.68, y: -57.55, z: 103.03}
+  m_LocalScale: {x: 5.8041973, y: 0.028732866, z: 0.09585}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1903031451}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 180, y: -90, z: 0}
---- !u!64 &379391929
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 379391927}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &379391930
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -508,7 +478,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 379391927}
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &389006202
 GameObject:
   m_ObjectHideFlags: 0
@@ -643,13 +613,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 108758967952976472, guid: 7892b4861cc3ef543b06a3a2b974e596,
         type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: NaN
+      objectReference: {fileID: 0}
+    - target: {fileID: 108758967952976472, guid: 7892b4861cc3ef543b06a3a2b974e596,
+        type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: NaN
+      objectReference: {fileID: 0}
+    - target: {fileID: 108758967952976472, guid: 7892b4861cc3ef543b06a3a2b974e596,
+        type: 3}
       propertyPath: m_BoundingSphereOverride.y
-      value: 38
+      value: -0.85621333
       objectReference: {fileID: 0}
     - target: {fileID: 108758967952976472, guid: 7892b4861cc3ef543b06a3a2b974e596,
         type: 3}
       propertyPath: m_BoundingSphereOverride.z
-      value: 12
+      value: NaN
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7892b4861cc3ef543b06a3a2b974e596, type: 3}
@@ -670,7 +650,6 @@ GameObject:
   - component: {fileID: 467554971}
   - component: {fileID: 467554974}
   - component: {fileID: 467554973}
-  - component: {fileID: 467554972}
   m_Layer: 0
   m_Name: Plane (1)
   m_TagString: Untagged
@@ -686,27 +665,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 467554970}
   m_LocalRotation: {x: 0.7071068, y: -0.000000031610135, z: -0.70710677, w: 0.00000003161013}
-  m_LocalPosition: {x: 22.36, y: -57.55, z: 101.9}
-  m_LocalScale: {x: 0.79301804, y: 1, z: 0.02}
+  m_LocalPosition: {x: 19.449001, y: -57.55, z: 101.902}
+  m_LocalScale: {x: 8.114871, y: 0.028732866, z: 0.09585}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1903031451}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 180, y: 89.99999, z: -0.000015258789}
---- !u!64 &467554972
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 467554970}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &467554973
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -756,7 +721,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 467554970}
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &471953262
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -839,22 +804,22 @@ PrefabInstance:
     - target: {fileID: 108758967952976472, guid: 7892b4861cc3ef543b06a3a2b974e596,
         type: 3}
       propertyPath: m_BoundingSphereOverride.w
-      value: 7.2172885e-31
+      value: 7.9316175e+34
       objectReference: {fileID: 0}
     - target: {fileID: 108758967952976472, guid: 7892b4861cc3ef543b06a3a2b974e596,
         type: 3}
       propertyPath: m_BoundingSphereOverride.x
-      value: 3.11e-43
+      value: 2.7073573e+23
       objectReference: {fileID: 0}
     - target: {fileID: 108758967952976472, guid: 7892b4861cc3ef543b06a3a2b974e596,
         type: 3}
       propertyPath: m_BoundingSphereOverride.y
-      value: -2.9175869e-34
+      value: 1.775259e+28
       objectReference: {fileID: 0}
     - target: {fileID: 108758967952976472, guid: 7892b4861cc3ef543b06a3a2b974e596,
         type: 3}
       propertyPath: m_BoundingSphereOverride.z
-      value: -9.480134e-36
+      value: 1.2053124e+13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7892b4861cc3ef543b06a3a2b974e596, type: 3}
@@ -953,7 +918,8 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.8e-44, y: -0.0000000015544988, z: 8.63e-43, w: 8.3e-44}
+  m_BoundingSphereOverride: {x: 1.7440043e+28, y: 3.690928e+24, z: 1.3066673e-14,
+    w: 5.2115857e-31}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -969,7 +935,6 @@ GameObject:
   - component: {fileID: 637892992}
   - component: {fileID: 637892995}
   - component: {fileID: 637892994}
-  - component: {fileID: 637892993}
   m_Layer: 0
   m_Name: Plane (5)
   m_TagString: Untagged
@@ -986,26 +951,12 @@ Transform:
   m_GameObject: {fileID: 637892991}
   m_LocalRotation: {x: -0.7071071, y: -0.00000003161015, z: 0.7071065, w: 0.000000031610128}
   m_LocalPosition: {x: 42.408993, y: -57.552998, z: 108.929}
-  m_LocalScale: {x: 0.56720996, y: 1, z: 0.02}
+  m_LocalScale: {x: 5.8042006, y: 0.028732866, z: 0.09585}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1903031451}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 180, y: -270, z: 0}
---- !u!64 &637892993
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 637892991}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &637892994
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1055,7 +1006,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 637892991}
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &682214453
 GameObject:
   m_ObjectHideFlags: 0
@@ -1067,7 +1018,6 @@ GameObject:
   - component: {fileID: 682214454}
   - component: {fileID: 682214457}
   - component: {fileID: 682214456}
-  - component: {fileID: 682214455}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -1083,27 +1033,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 682214453}
   m_LocalRotation: {x: -1, y: 0, z: 0, w: 0}
-  m_LocalPosition: {x: 19.229, y: -57.55, z: 105.96}
-  m_LocalScale: {x: 0.9475335, y: 1, z: 0.02}
+  m_LocalPosition: {x: 16.318, y: -57.55, z: 105.962}
+  m_LocalScale: {x: 9.6960125, y: 0.028732866, z: 0.09585}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1903031451}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -180, y: 0, z: 0}
---- !u!64 &682214455
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 682214453}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &682214456
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1153,7 +1089,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 682214453}
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &694274431
 GameObject:
   m_ObjectHideFlags: 0
@@ -1561,7 +1497,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 8.63e-43, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 4.32e-43, w: 6e-44}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -1658,22 +1594,22 @@ PrefabInstance:
     - target: {fileID: 108758967952976472, guid: 7892b4861cc3ef543b06a3a2b974e596,
         type: 3}
       propertyPath: m_BoundingSphereOverride.w
-      value: 2.304285e+18
+      value: 2.8183132e+20
       objectReference: {fileID: 0}
     - target: {fileID: 108758967952976472, guid: 7892b4861cc3ef543b06a3a2b974e596,
         type: 3}
       propertyPath: m_BoundingSphereOverride.x
-      value: 8.63e-43
+      value: 2.373939e+12
       objectReference: {fileID: 0}
     - target: {fileID: 108758967952976472, guid: 7892b4861cc3ef543b06a3a2b974e596,
         type: 3}
       propertyPath: m_BoundingSphereOverride.y
-      value: 1.61e-43
+      value: 7.1837854e+22
       objectReference: {fileID: 0}
     - target: {fileID: 108758967952976472, guid: 7892b4861cc3ef543b06a3a2b974e596,
         type: 3}
       propertyPath: m_BoundingSphereOverride.z
-      value: 0
+      value: 7.153777e+22
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7892b4861cc3ef543b06a3a2b974e596, type: 3}
@@ -1866,7 +1802,8 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.9363983e+31, y: 1.8491729e+28, z: 0, w: -1.349787e+35}
+  m_BoundingSphereOverride: {x: 4.5435787e+30, y: 3.9981665e+9, z: 2.8617108e+23,
+    w: 61.85881}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -2122,22 +2059,22 @@ PrefabInstance:
     - target: {fileID: 108758967952976472, guid: 7892b4861cc3ef543b06a3a2b974e596,
         type: 3}
       propertyPath: m_BoundingSphereOverride.w
-      value: 0.20326287
+      value: 1.8174015e+31
       objectReference: {fileID: 0}
     - target: {fileID: 108758967952976472, guid: 7892b4861cc3ef543b06a3a2b974e596,
         type: 3}
       propertyPath: m_BoundingSphereOverride.x
-      value: -8.918505e-33
+      value: 2.64533e+20
       objectReference: {fileID: 0}
     - target: {fileID: 108758967952976472, guid: 7892b4861cc3ef543b06a3a2b974e596,
         type: 3}
       propertyPath: m_BoundingSphereOverride.y
-      value: 4.9352775
+      value: 7.9316165e+34
       objectReference: {fileID: 0}
     - target: {fileID: 108758967952976472, guid: 7892b4861cc3ef543b06a3a2b974e596,
         type: 3}
       propertyPath: m_BoundingSphereOverride.z
-      value: -2.0406946e+29
+      value: 1.1631511e+33
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7892b4861cc3ef543b06a3a2b974e596, type: 3}
@@ -2229,22 +2166,22 @@ PrefabInstance:
     - target: {fileID: 108758967952976472, guid: 7892b4861cc3ef543b06a3a2b974e596,
         type: 3}
       propertyPath: m_BoundingSphereOverride.w
-      value: 0
+      value: 8.3e-44
       objectReference: {fileID: 0}
     - target: {fileID: 108758967952976472, guid: 7892b4861cc3ef543b06a3a2b974e596,
         type: 3}
       propertyPath: m_BoundingSphereOverride.x
-      value: 6.2067525e+22
+      value: -3095740.8
       objectReference: {fileID: 0}
     - target: {fileID: 108758967952976472, guid: 7892b4861cc3ef543b06a3a2b974e596,
         type: 3}
       propertyPath: m_BoundingSphereOverride.y
-      value: 6.265782e+22
+      value: -2.6056925e+12
       objectReference: {fileID: 0}
     - target: {fileID: 108758967952976472, guid: 7892b4861cc3ef543b06a3a2b974e596,
         type: 3}
       propertyPath: m_BoundingSphereOverride.z
-      value: 0
+      value: 9.84e-43
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7892b4861cc3ef543b06a3a2b974e596, type: 3}
@@ -2343,7 +2280,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.6927021e+22, y: 0, z: 0, w: 1.5e-44}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -2437,7 +2374,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.6927021e+22, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 7.5550794e+31, y: 7.315381e+34, z: 0.0025855538, w: 1.3563128e-19}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -2741,7 +2678,6 @@ GameObject:
   - component: {fileID: 1879603590}
   - component: {fileID: 1879603593}
   - component: {fileID: 1879603592}
-  - component: {fileID: 1879603591}
   m_Layer: 0
   m_Name: Plane (4)
   m_TagString: Untagged
@@ -2758,26 +2694,12 @@ Transform:
   m_GameObject: {fileID: 1879603589}
   m_LocalRotation: {x: 0.70710653, y: -0.00000003161012, z: 0.7071071, w: -0.00000003161016}
   m_LocalPosition: {x: 34.622, y: -57.552998, z: 110.056984}
-  m_LocalScale: {x: 0.79301995, y: 1, z: 0.02}
+  m_LocalScale: {x: 8.114891, y: 0.028732866, z: 0.09585}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1903031451}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 180, y: -90, z: -0.000015258789}
---- !u!64 &1879603591
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1879603589}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1879603592
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2827,7 +2749,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1879603589}
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1903031450
 GameObject:
   m_ObjectHideFlags: 0
@@ -3053,7 +2975,8 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 1.12869215e+27, y: 5.696349e-19, z: 7.0373626e+22,
+    w: 6.655585e-33}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -3214,11 +3137,21 @@ PrefabInstance:
     - target: {fileID: 108758967952976472, guid: 7892b4861cc3ef543b06a3a2b974e596,
         type: 3}
       propertyPath: m_BoundingSphereOverride.w
-      value: 3e-45
+      value: -1.5579208e+13
+      objectReference: {fileID: 0}
+    - target: {fileID: 108758967952976472, guid: 7892b4861cc3ef543b06a3a2b974e596,
+        type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 9.84e-43
       objectReference: {fileID: 0}
     - target: {fileID: 108758967952976472, guid: 7892b4861cc3ef543b06a3a2b974e596,
         type: 3}
       propertyPath: m_BoundingSphereOverride.y
+      value: 7.1e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 108758967952976472, guid: 7892b4861cc3ef543b06a3a2b974e596,
+        type: 3}
+      propertyPath: m_BoundingSphereOverride.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
