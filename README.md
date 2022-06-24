@@ -4,11 +4,8 @@
 - MainMenu: LobbyMenu visuell an andere Menus anpassen
 - Options Menu: implement options for Camera Controls
 - Act 2: fix Light Probes
-- Act 3_4: Kollisionen mit Deko sind akward (Spieler wird hochgedrückt)
 - viel mehr Objekte interagierbar machen (vor allem Grabable)
-- Prefabs überprüfen und unnötige Collider (vor allem in Deko) löschen
 - Outlines for Interactables (ObjectContent) after Act 1
-- Gangelemente anpassen (mittlere Streifen sind bei T und L Stücken nicht vorhanden oder unschön)
 
 ## Programming
 - replace InputSettings with Unity build in solution
@@ -19,6 +16,7 @@
 - ForceTool Prompts bei Benutzung einfügen
 - Cut Scenes generell skipbar machen (aktuell nur schön bei Act 1 Ende)
 	- UI für Skip einbauen
+- when Logbook get's opened from OpenContent and it is closed instantly, the mouse movement speed is very slow
 
 ## Art
 - Sprites für UI Buttons im Hauptmenu
@@ -36,6 +34,8 @@
 - Sound für Tür wird aufgeschlossen finden und einbauen
 
 # Backlog
+- Gangelemente anpassen (mittlere Streifen sind bei T und L Stücken nicht vorhanden oder unschön)
+- Prefabs überprüfen und unnötige Collider (vor allem in Deko) löschen
 - mehr Dekoobjekte platzieren
 - Resonance3 scheint nicht verwendet zu werden (Audio und Csv sind da), könnte noch implementiert werden
 	- in Akt3_4 gab es eine ungenutzte Resonance, vlt gehört die dahin

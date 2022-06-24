@@ -48,10 +48,6 @@ public class DialogSystem : MonoBehaviour {
 	// the text object in which the subtitles are displayed
 	[SerializeField]
 	private TextMeshProUGUI dialogSubtitles;
-	// should the text be displayed in german?
-	[Tooltip("Should the Dialog be in german or english?")]
-    [SerializeField]
-	private bool isEnglish;
     [Tooltip("Should subtitles be displayed?")]
 	// audio source
 	private AudioSource audioSource;
@@ -112,8 +108,9 @@ public class DialogSystem : MonoBehaviour {
 
 		dialogSubtitles.enabled = false;
 
-        isEnglish = playerSettings.isEnglish;
-    }
+		// get all one liners
+		dialogTextFromExcel.GetOneLinerValues();
+	}
 
     void Update() {
         if(dialogQueue.Count > 0 && !dialogPlaying) {
@@ -166,13 +163,13 @@ public class DialogSystem : MonoBehaviour {
 
 		for (int i = 0; i < dialogTextFromExcel.timeToDisplay.Count; i++) {
 			// if subtitles should be english play english dialog, otherwise play german dialog
-			if (isEnglish) {
+			if (playerSettings.isEnglish) {
                 
-                PlayeOneShot(dialogTextFromExcel.englishSubtitles[i], audioPath + dialogTextFromExcel.germanAudio[i]);
+                PlayeOneShot(dialogTextFromExcel.englishSubtitles[i], audioPath + dialogTextFromExcel.audio[i]);
 
             } else {
                 
-                PlayeOneShot(dialogTextFromExcel.germanSubtitles[i], audioPath + dialogTextFromExcel.germanAudio[i]);
+                PlayeOneShot(dialogTextFromExcel.germanSubtitles[i], audioPath + dialogTextFromExcel.audio[i]);
 			}
 			// wait for the set number of seconds (in the csv-file) before displaying the next bit of text
 			yield return new WaitForSeconds(dialogTextFromExcel.timeToDisplay[i]);
@@ -200,16 +197,14 @@ public class DialogSystem : MonoBehaviour {
         // set dialogPlaying-flag to true
         dialogPlaying = true;
 
-        dialogTextFromExcel.GetOneLinerValues();
-
 		// get the index of the id
 		int i = dialogTextFromExcel.oneLinerID.IndexOf(ID);
 
 		// if subtitles should be english play english dialog, otherwise play german dialog
-		if (isEnglish) {
-			PlayeOneShot(dialogTextFromExcel.oneLinerEnglishSubtitles[i], onelinerAudioPath + dialogTextFromExcel.oneLinerEnglishAudio[i]);
+		if (playerSettings.isEnglish) {
+			PlayeOneShot(dialogTextFromExcel.oneLinerEnglishSubtitles[i], onelinerAudioPath + dialogTextFromExcel.oneLinerAudio[i]);
 		} else {
-			PlayeOneShot(dialogTextFromExcel.oneLinerGermanSubtitles[i], onelinerAudioPath + dialogTextFromExcel.oneLinerGermanAudio[i]);
+			PlayeOneShot(dialogTextFromExcel.oneLinerGermanSubtitles[i], onelinerAudioPath + dialogTextFromExcel.oneLinerAudio[i]);
 		}
         yield return new WaitForSeconds(dialogTextFromExcel.oneLinerPlayTimer[i]);
 

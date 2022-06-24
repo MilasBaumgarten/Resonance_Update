@@ -27,16 +27,14 @@ public class DialogTextFromExcel {
 	public List<float> timeToDisplay = new List<float>();
 	public List<string> germanSubtitles = new List<string>();
 	public List<string> englishSubtitles = new List<string>();
-	public List<string> germanAudio = new List<string>();
-	public List<string> englishAudio = new List<string>();
+	public List<string> audio = new List<string>();
 
 	// variables for one liners 
 	public List<string> oneLinerID = new List<string>();
     public List<float>  oneLinerPlayTimer = new List<float>();
 	public List<string> oneLinerGermanSubtitles = new List<string>();
 	public List<string> oneLinerEnglishSubtitles = new List<string>();
-	public List<string> oneLinerGermanAudio = new List<string>();
-	public List<string> oneLinerEnglishAudio = new List<string>();
+	public List<string> oneLinerAudio = new List<string>();
 
 	/// <summary>
 	/// Get the id, subtitles and audiofiles from the oneliner.csv
@@ -62,13 +60,7 @@ public class DialogTextFromExcel {
                 string germanAudio = values[4].Replace("\"", "");
                 germanAudio = germanAudio.Trim(' ');
                 germanAudio = germanAudio.Split('.')[0];
-                oneLinerGermanAudio.Add(germanAudio);
-
-                /*
-                string englishAudio = values[5].Replace("\"", "");
-                englishAudio = englishAudio.Trim(' ');
-                englishAudio = englishAudio.Split('.')[0];
-                oneLinerEnglishAudio.Add(englishAudio);*/
+				oneLinerAudio.Add(germanAudio);
 			}
 
 		}
@@ -88,17 +80,11 @@ public class DialogTextFromExcel {
 				timeToDisplay.Add(float.Parse(values[0]));
 				germanSubtitles.Add(values[1]);
 				englishSubtitles.Add(values[2]);
-
-                string germanAudio = values[3].Replace("\"", "");
-                germanAudio = germanAudio.Trim(' ');
-                germanAudio = germanAudio.Split('.')[0];
-                this.germanAudio.Add(germanAudio);
-
-                /*
-                string englishAudio = values[4].Replace("\"", "");
-                englishAudio = englishAudio.Trim(' ');
-                englishAudio = englishAudio.Split('.')[0];
-                this.englishAudio.Add(englishAudio);*/
+				
+                string audioPath = values[3].Replace("\"", "");
+				audioPath = audioPath.Trim(' ');
+				audioPath = audioPath.Split('.')[0];
+				audio.Add(audioPath);
 			}
 		}
 	}
@@ -107,8 +93,8 @@ public class DialogTextFromExcel {
 		string[] content = Regex.Split(line, ",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
 
 		// remove quotes
-		content[1] = content[1].Trim('\"');
 		content[2] = content[2].Trim('\"');
+		content[3] = content[3].Trim('\"');
 		return content;
 	}
 
@@ -116,8 +102,7 @@ public class DialogTextFromExcel {
         timeToDisplay.Clear();
         germanSubtitles.Clear();
         englishSubtitles.Clear();
-        germanAudio.Clear();
-        englishAudio.Clear();
+        audio.Clear();
     }
 
     public float GetTimeToDisplay() {
