@@ -1,6 +1,5 @@
 # TODO
 ## Engine
-- MainMenu: implement functionality for Credits Button
 - MainMenu: LobbyMenu visuell an andere Menus anpassen
 - Options Menu: implement options for Camera Controls
 - Act 2: fix Light Probes
