@@ -90,16 +90,23 @@ public class Settings : ScriptableObject {
 
     [Space]
 
+    #region Interaction
+    [Header("Interaction settings")]
+    public float interactionDistance = 1.5f;
+    #endregion
+
+    [Space]
+
     #region ForceTool
     [Header("ForceTool")]
     [Tooltip("Speed of how fast the object will change distance to the player.")]
     public float distChangeSpeed = 10.0f;
 
     [Tooltip("Maximum distance between the object and the player.")]
-    public float maxDist = 5.0f;
+    public float forceToolMaxDist = 5.0f;
 
     [Tooltip("Minimum distance between the object and the player.")]
-    public float minDist = 1.5f;
+    public float forceToolMinDist = 1.5f;
     #endregion
 
     [Space]

@@ -10,27 +10,32 @@ using UnityEngine.UI;
 public class LookAtObject : MonoBehaviourPun {
 
 	[SerializeField]
-	[Tooltip("The UI-Text that displays the object name")]
-	private Text nameText;
-
-	[SerializeField]
-	[Tooltip("The UI-Text that displays the object info")]
-	private Text infoText;
-
-	[SerializeField]
 	[Tooltip("Camera attached to PlayerPrefab")]
 	private Camera cam;
 
-	[SerializeField]
-	[Tooltip("How far away can an Object be and still get registered")]
-	private float maxDistance = 5f;
+	[SerializeField] private LayerMask interactionLayers;
 
+	[SerializeField]
+	[Tooltip("Player settings reference")]
+	private Settings playerSettings;
+
+	[SerializeField]
+	[Tooltip("InputPrompt reference")]
+	private InputPrompt inputPrompt;
+
+	private bool interactableFound = false;
+	private bool grabableFound = false;
+	private int objectID;
+	private int lastObjectID;
 	// Transform of the viewed Object
 	private Transform objectTransform;
 	// Transform of the Object that was viewed in the previous frame
 	private Transform lastObjTransform;
 	private RaycastHit rayHit;
 	private Ray ray;
+	private Interactable interactable;
+	private Grabable grabable;
+
 
 	// Use this for initialization
 	void Start() {
@@ -40,37 +45,83 @@ public class LookAtObject : MonoBehaviourPun {
 	}
 
 	// Update is called once per frame
-	void Update() {
+	void LateUpdate() {
 		ray = cam.ScreenPointToRay(Input.mousePosition);
+		ray.direction = ray.direction.normalized * playerSettings.forceToolMaxDist * 2;
 
-		if (Physics.Raycast(ray, out rayHit)) {
-			objectTransform = rayHit.transform;
+		if(interactableFound && Vector3.Distance(ray.origin, rayHit.point) > playerSettings.interactionDistance){
+			ToggleInteractibleFound(false, false);
+			return;
+		}
 
-			// Uses the position of the player and the object the find the distance between them
-			float distance = Vector3.Magnitude(objectTransform.position - this.transform.position);
+		if(grabableFound && Vector3.Distance(ray.origin, rayHit.point) > playerSettings.forceToolMaxDist){
+			ToggleInteractibleFound(false, false);
+			return;
+		}
 
-			if (distance > maxDistance) {
-				infoText.text = " ";
-				nameText.text = " ";
-				return;
-			}
+		if (Physics.Raycast(ray, out rayHit, playerSettings.interactionDistance, interactionLayers)) {
+			// objectTransform = rayHit.transform;
+			objectID = rayHit.colliderInstanceID;
 
 			// Makes sure that getComponent is not called more than once when the object stays the same
-			if (objectTransform == lastObjTransform) {
+			if (objectID == lastObjectID) {
+				// Debug.Log("Looking at same id " + objectID + ". Returning.");
 				return;
 			}
 
-			lastObjTransform = objectTransform;
+			lastObjectID = objectID;
+			
+			// Debug.Log(rayHit.transform.name + ": " + objectID, rayHit.transform);
 
-			ObjectInfo objInfo = objectTransform.GetComponent<ObjectInfo>();
+			if(rayHit.transform.TryGetComponent<Interactable>(out interactable) && Vector3.Distance(ray.origin, rayHit.point) <= playerSettings.interactionDistance){
+				// Debug.Log("Interactable found at distance " + Vector3.Distance(rayHit.point, transform.position), interactable);
+				ToggleInteractibleFound(true, false);
+			} 
+			else if(rayHit.transform.TryGetComponent<Grabable>(out grabable) && Vector3.Distance(ray.origin, rayHit.point) <= playerSettings.forceToolMaxDist){
+				// Debug.Log("Grabable found at distance " + Vector3.Distance(rayHit.point, transform.position), grabable);
+				ToggleInteractibleFound(true, true);
+			} 
+			else {
+				ToggleInteractibleFound(false, false);
+			}
 
-			if (objInfo != null) {
-				infoText.text = objInfo.objectInfo;
-				nameText.text = objInfo.objectName;
-			} else {
-				infoText.text = " ";
-				nameText.text = " ";
+			// TODO: show button prompt for interaction
+		} 
+		// else if(Physics.Raycast(ray, out rayHit, playerSettings.forceToolMaxDist, interactionLayers)){
+		// 	objectID = rayHit.colliderInstanceID;
+
+		// 	// Makes sure that getComponent is not called more than once when the object stays the same
+		// 	if (objectID == lastObjectID) {
+		// 		return;
+		// 	}
+
+		// 	lastObjectID = objectID;
+
+		// 	if(rayHit.transform.TryGetComponent<Grabable>(out grabable) && Vector3.Distance(ray.origin, rayHit.point) <= playerSettings.forceToolMaxDist){
+		// 		// Debug.Log("Grabable found at distance " + Vector3.Distance(rayHit.point, transform.position), grabable);
+		// 		ToggleInteractibleFound(true, true);
+		// 	} else {
+		// 		ToggleInteractibleFound(false, false);
+		// 	}
+
+		// } 
+		else {
+			if(interactableFound){
+				ToggleInteractibleFound(false, false);
 			}
 		}
+	}
+
+	private void ToggleInteractibleFound(bool found, bool isGrabable){
+		interactableFound = found && !isGrabable;
+		grabableFound = found && isGrabable;
+		inputPrompt.TogglePrompt(found, isGrabable);
+		objectID = lastObjectID = found ? objectID : -1;
+	}
+
+	private void OnDrawGizmos() {
+		Gizmos.color = Color.red * 0.5f;
+		Gizmos.DrawSphere(rayHit.point, 0.1f);
+		Gizmos.DrawRay(ray);
 	}
 }

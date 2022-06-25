@@ -28,13 +28,13 @@ public class InputSettings : ScriptableObject {
     [Tooltip("Button for moving held Objects closer")]
     public KeyCode moveHeldObjectIn;
 
-    [Tooltip("Button for using the Arm Tool")]
+    [Tooltip("Button for using the currently equipped tool (ex. armtool, extinguisher etc.)")]
     public KeyCode armTool;
 
     [Tooltip("Button for opening and closing the logbook")]
     public KeyCode logbook;
 
-    [Tooltip("Button for interacting")]
+    [Tooltip("Button for interacting, interaction is prioritized over tool use")]
     public KeyCode interact;
 
     [Tooltip("Button for opening and closing the menu")]

@@ -65,7 +65,7 @@ public class ArmTool : MonoBehaviourPun {
 		if (Input.GetKeyDown(input.armTool)) {
 
 			GameObject interactTarget;
-			if (Physics.Raycast(cam.position, cam.forward, out RaycastHit hit, settings.maxDist, layerMask)) {
+			if (Physics.Raycast(cam.position, cam.forward, out RaycastHit hit, settings.forceToolMaxDist, layerMask)) {
 				interactTarget = hit.transform.gameObject;
 				if (interactTarget.GetComponent<Interactable>()) {
 					photonView.RPC("InteractRpc", RpcTarget.All, interactTarget.GetPhotonView().ViewID);
