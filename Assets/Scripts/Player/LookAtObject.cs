@@ -49,6 +49,7 @@ public class LookAtObject : MonoBehaviourPun {
 		ray = cam.ScreenPointToRay(Input.mousePosition);
 		ray.direction = ray.direction.normalized * playerSettings.forceToolMaxDist * 2;
 
+		// need to check for distance when something's found so we can update the prompt if distance grows too far
 		if(interactableFound && Vector3.Distance(ray.origin, rayHit.point) > playerSettings.interactionDistance){
 			ToggleInteractibleFound(false, false);
 			return;
@@ -60,51 +61,25 @@ public class LookAtObject : MonoBehaviourPun {
 		}
 
 		if (Physics.Raycast(ray, out rayHit, playerSettings.interactionDistance, interactionLayers)) {
-			// objectTransform = rayHit.transform;
 			objectID = rayHit.colliderInstanceID;
 
 			// Makes sure that getComponent is not called more than once when the object stays the same
 			if (objectID == lastObjectID) {
-				// Debug.Log("Looking at same id " + objectID + ". Returning.");
 				return;
 			}
 
 			lastObjectID = objectID;
-			
-			// Debug.Log(rayHit.transform.name + ": " + objectID, rayHit.transform);
 
 			if(rayHit.transform.TryGetComponent<Interactable>(out interactable) && Vector3.Distance(ray.origin, rayHit.point) <= playerSettings.interactionDistance){
-				// Debug.Log("Interactable found at distance " + Vector3.Distance(rayHit.point, transform.position), interactable);
 				ToggleInteractibleFound(true, false);
 			} 
 			else if(rayHit.transform.TryGetComponent<Grabable>(out grabable) && Vector3.Distance(ray.origin, rayHit.point) <= playerSettings.forceToolMaxDist){
-				// Debug.Log("Grabable found at distance " + Vector3.Distance(rayHit.point, transform.position), grabable);
 				ToggleInteractibleFound(true, true);
 			} 
-			else {
+			else { // very unlikely edge case when we've hit an object on the right layer but it can neither be interacted with nor grabbed
 				ToggleInteractibleFound(false, false);
 			}
-
-			// TODO: show button prompt for interaction
 		} 
-		// else if(Physics.Raycast(ray, out rayHit, playerSettings.forceToolMaxDist, interactionLayers)){
-		// 	objectID = rayHit.colliderInstanceID;
-
-		// 	// Makes sure that getComponent is not called more than once when the object stays the same
-		// 	if (objectID == lastObjectID) {
-		// 		return;
-		// 	}
-
-		// 	lastObjectID = objectID;
-
-		// 	if(rayHit.transform.TryGetComponent<Grabable>(out grabable) && Vector3.Distance(ray.origin, rayHit.point) <= playerSettings.forceToolMaxDist){
-		// 		// Debug.Log("Grabable found at distance " + Vector3.Distance(rayHit.point, transform.position), grabable);
-		// 		ToggleInteractibleFound(true, true);
-		// 	} else {
-		// 		ToggleInteractibleFound(false, false);
-		// 	}
-
-		// } 
 		else {
 			if(interactableFound){
 				ToggleInteractibleFound(false, false);

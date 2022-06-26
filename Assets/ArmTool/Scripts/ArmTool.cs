@@ -10,11 +10,12 @@ public class ArmTool : MonoBehaviourPun {
 	private BoneOverride[] boneOverridesRobert;
 	private BoneOverride[] boneOverrides;
 
+	[SerializeField]
+	private StateMachine stateMachine;
+	
 	[HideInInspector]
 	public bool armUp = false;
 
-	[SerializeField]
-	private StateMachine stateMachine;
 	[SerializeField]
 	private ArmToolModule[] equipped;
 	[SerializeField]
