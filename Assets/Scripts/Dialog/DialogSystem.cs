@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using TMPro;
-using UnityEngine.Events;
 
 /**
  * Author: Leon Ullrich
@@ -63,6 +62,8 @@ public class DialogSystem : MonoBehaviour {
     private string onelinerAudioPath = "Audio/Oneliner/";
 
 	// get subtitles from here
+	[SerializeField]
+	private float onelinerAdditionalSubtitleTime = 1.0f;
 	[HideInInspector]
 	public DialogTextFromExcel dialogTextFromExcel;
     // bool to check if a dialog is playing
@@ -206,7 +207,7 @@ public class DialogSystem : MonoBehaviour {
 		} else {
 			PlayeOneShot(dialogTextFromExcel.oneLinerGermanSubtitles[i], onelinerAudioPath + dialogTextFromExcel.oneLinerAudio[i]);
 		}
-        yield return new WaitForSeconds(dialogTextFromExcel.oneLinerPlayTimer[i]);
+        yield return new WaitForSeconds(dialogTextFromExcel.oneLinerPlayTimer[i] + onelinerAdditionalSubtitleTime);
 
 		// after the dialog is done, disable text-object
 		dialogSubtitles.enabled = false;
