@@ -71,7 +71,7 @@ public class Keypad : MonoBehaviour {
             {
 
                 EventManager.instance.TriggerEvent(correctCode);
-                logbookManager.DisablePanel();
+                logbookManager.CloseLogbook();
 
             }
             else
