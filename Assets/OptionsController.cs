@@ -8,6 +8,8 @@ public class OptionsController : MonoBehaviour {
 	private Toggle activateSubtitles;
 	[SerializeField]
 	private GameObject SubtitleSettingsUI;
+	[SerializeField]
+	private Text subtitleLanguageText;
 
 	private string subtitleLanguage = "";
 	private bool setter;
@@ -22,37 +24,35 @@ public class OptionsController : MonoBehaviour {
 		}
 	}
 
-	public void SetSubtitleActive() {
-		if (activateSubtitles.isOn) {
+	public void SetSubtitleState(bool state) {
+		if (state) {
 			subtitleSettings.displaySubtitles = true;
 			SubtitleSettingsUI.SetActive(true);
 		} else {
 			subtitleSettings.displaySubtitles = false;
 			SubtitleSettingsUI.SetActive(false);
 		}
+
+		if (subtitleSettings.isEnglish) {
+			subtitleLanguage = "English";
+			subtitleLanguageText.text = "English";
+			subtitleSettings.isEnglish = true;
+		} else {
+			subtitleLanguage = "German";
+			subtitleLanguageText.text = "German";
+			subtitleSettings.isEnglish = false;
+		}
 	}
 
-	public void ChangeSubtitleLanguage(Text language) {
-		subtitleLanguage = language.text;
-
-		switch (subtitleLanguage) {
-			case "Deutsch":
-				subtitleLanguage = "Englisch";
-				language.text = "Englisch";
-				subtitleSettings.isEnglish = true;
-				break;
-
-			case "Englisch":
-				subtitleLanguage = "Deutsch";
-				language.text = "Deutsch";
-				subtitleSettings.isEnglish = false;
-				break;
-
-			default:
-				subtitleLanguage = "Englisch";
-				language.text = "Englisch";
-				subtitleSettings.isEnglish = true;
-				break;
+	public void SwitchSuptitleLanguage() {
+		if (subtitleSettings.isEnglish) {
+			subtitleLanguage = "German";
+			subtitleLanguageText.text = "German";
+			subtitleSettings.isEnglish = false;
+		} else {
+			subtitleLanguage = "English";
+			subtitleLanguageText.text = "English";
+			subtitleSettings.isEnglish = true;
 		}
 	}
 }
