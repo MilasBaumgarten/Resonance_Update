@@ -12,14 +12,9 @@ public class ResonanceScenery : MonoBehaviour {
 	[HideInInspector]
 	public Material[] materials;
 
-	//[HideInInspector]
 	public bool isTriggered;
 
-	[HideInInspector]
-	public bool faded = false;
-
-	// Use this for initialization
-	void Start() {
+	void Awake() {
 		renderers = GetComponentsInChildren<Renderer>();
 		materials = new Material[renderers.Length];
 
@@ -28,35 +23,33 @@ public class ResonanceScenery : MonoBehaviour {
 		}
 	}
 
-	public IEnumerator Fade(Material mat) {
-		while (mat.GetColor("_Color").a > 0) {
-			Color tmp = mat.GetColor("_Color");
-			tmp.a -= fadeWaitValue;
-			mat.SetColor("_Color", tmp);
+	public IEnumerator FadeOut() {
+		while (materials[0].color.a > 0) {
+			foreach (Material mat in materials) {
+				Color tmp = mat.color;
+				tmp.a -= fadeWaitValue;
+				mat.color = tmp;
+			}
 
 			yield return new WaitForSeconds(fadeWaitValue);
 		}
-
-		faded = true;
+		gameObject.SetActive(false);
 	}
 
-	public IEnumerator FadeRed(Material mat) {
-		while (mat.GetColor("_Emission").b > 0) {
-			Color tmp = mat.GetColor("_Emission");
-			tmp.b -= fadeWaitValue;
-			tmp.g -= fadeWaitValue;
-			mat.SetColor("_Emission", tmp);
-
-			yield return new WaitForSeconds(fadeWaitValue);
+	public IEnumerator FadeIn() {
+		foreach (Material mat in materials) {
+			// first make fully transparent and then fade in
+			Color tmp = mat.color;
+			tmp.a = 0;
+			mat.color = tmp;
 		}
-	}
 
-	public IEnumerator FadeWhite(Material mat) {
-		while (mat.GetColor("_Emission").b < 255) {
-			Color tmp = mat.GetColor("_Emission");
-			tmp.b += fadeWaitValue;
-			tmp.g += fadeWaitValue;
-			mat.SetColor("_Emission", tmp);
+		while (materials[0].color.a < 1) {
+			foreach (Material mat in materials) {
+				Color tmp = mat.color;
+				tmp.a += fadeWaitValue;
+				mat.color = tmp;
+			}
 
 			yield return new WaitForSeconds(fadeWaitValue);
 		}

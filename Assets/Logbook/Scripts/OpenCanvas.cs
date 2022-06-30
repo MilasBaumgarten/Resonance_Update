@@ -19,7 +19,7 @@ public class OpenCanvas : MonoBehaviourPun {
 	void Update() {
 		if (Input.GetKeyDown(input.logbook)) {
 			if (logbook.isActive) {
-				logbook.DisablePanel();
+				logbook.CloseLogbook();
 			} else {
 				logbook.OpenLogbook();
 			}
@@ -27,7 +27,7 @@ public class OpenCanvas : MonoBehaviourPun {
 
 		if (Input.GetKeyDown(input.closeLogbook)) {
 			if (logbook.isActive) {
-				logbook.DisablePanel();
+				logbook.CloseLogbook();
 			}
 		}
 	}

@@ -49,7 +49,7 @@ public class DialogTextFromExcel {
 				// read every single line
 				var line = reader.ReadLine();
 				// split the line into seperate values
-				var values = SplitCsvLine(line);
+				var values = SplitCsvOneLiner(line);
 
 				// assign values to different lists
 				oneLinerID.Add(values[0]);
@@ -89,16 +89,26 @@ public class DialogTextFromExcel {
 		}
 	}
 
-    static public string[] SplitCsvLine(string line) {
+    static public string[] SplitCsvOneLiner(string line) {
 		string[] content = Regex.Split(line, ",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
 
 		// remove quotes
-		content[2] = content[2].Trim('\"');
-		content[3] = content[3].Trim('\"');
+		content[2] = content[2].Replace("\"", "");
+		content[3] = content[3].Replace("\"", "");
 		return content;
 	}
 
-    public void ClearData() {
+	static public string[] SplitCsvLine(string line) {
+		string[] content = Regex.Split(line, ",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
+
+		// remove quotes
+		content[1] = content[1].Replace("\"", "");
+		content[2] = content[2].Replace("\"", "");
+
+		return content;
+	}
+
+	public void ClearData() {
         timeToDisplay.Clear();
         germanSubtitles.Clear();
         englishSubtitles.Clear();

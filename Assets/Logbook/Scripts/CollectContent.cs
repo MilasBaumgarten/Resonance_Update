@@ -5,6 +5,7 @@
 using ExitGames.Client.Photon;
 using Photon.Pun;
 using Photon.Realtime;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -92,14 +93,17 @@ public class CollectContent : MonoBehaviour, IOnEventCallback {
 			ent.Value.SetActive(false);
 		}
 
+		StartCoroutine(OpenLogbookWhenCollectionContent(entry, objectType, objectName));
+	}
+
+	private IEnumerator OpenLogbookWhenCollectionContent(GameObject entry, string objectType, string objectName) {
+		yield return logbookManager.OpenLogbookRoutine();
+
+		logbookManager.EnableOnePanel(objectType);
+
 		entry.SetActive(true);
 
 		GameObject entryButton = logbookEntryButtonDict[objectName];
 		entryButton.SetActive(true);
-
-		if (networkInstance == playerId) {
-			logbookManager.OpenLogbook();
-			logbookManager.EnableOnePanel(objectType) ;
-		}
 	}
 }

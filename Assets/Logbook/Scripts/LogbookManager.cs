@@ -23,8 +23,6 @@ public class LogbookManager : SerializedMonoBehaviour {
 	private ArmTool armTool;
 
 	[SerializeField]
-	private RectTransform[] cornersRect;
-	[SerializeField]
 	private RectTransform startTransform;
 	[SerializeField]
 	private RectTransform targetTransform;
@@ -81,9 +79,6 @@ public class LogbookManager : SerializedMonoBehaviour {
 			return;
 		}
 
-		cornersRect[0].anchoredPosition = startTransform.anchoredPosition;
-		cornersRect[1].anchoredPosition = startTransform.anchoredPosition;
-
 		foreach (Transform child in panelParent.transform) {
 			panels.Add(child.name, child.gameObject);
 		}
@@ -121,79 +116,65 @@ public class LogbookManager : SerializedMonoBehaviour {
 		}
 	}
 
-	public void DisablePanel() {
-		armTool.enabled = true;
+	public void OpenLogbook() {
+		StartCoroutine(OpenLogbookRoutine());
+	}
 
-		logbookAudio.onCloseLogbook();
+	public IEnumerator OpenLogbookRoutine() {
+		armTool.DeselectTool();
 
+		panelParent.parent.gameObject.SetActive(true);
+
+		rotateCamToVect.RotateCam(false);
+		logbookAudio.onOpenLogbook();
+
+		// deactivate Player & Camera movement
+		playerMovement.enabled = false;
+		headBob.enabled = false;
+		cameraMovement.enabled = false;
+
+		// Animation stuff
+		boneOverride.enabled = false;
+		animator.SetTrigger("logbook active");
+
+		yield return ScaleAnimation(true);
+
+		// unlock Cursor
+		Cursor.lockState = CursorLockMode.None;
+		Cursor.visible = true;
+		isActive = true;
+	}
+
+	public void CloseLogbook() {
+		StartCoroutine(CloseLogbookRoutine());
+	}
+
+	public IEnumerator CloseLogbookRoutine() {
 		rotateCamToVect.RotateCam(true);
-
-		StartCoroutine(ScaleAnimation(false));
-
-		isActive = false;
-
-		//endOfClosing();
-		/*
-        // clear
-        DisableAllPanels();
-
-        // activate CameraMovement
-        // Lock cursor to middle of the screen
-        cameraMovement.enabled = true;
-        //cameraMovement.setRotY();
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        isActive = false;*/
+		logbookAudio.onCloseLogbook();
 
 		// Animation stuff
 		animator.ResetTrigger("logbook active");
 		boneOverride.enabled = true;
-	}
 
-	private void endOfClosing() {
+		yield return ScaleAnimation(false);
+
+		armTool.enabled = true;
 		panelParent.parent.gameObject.SetActive(false);
+
 		// clear
 		DisableAllPanels();
 
 		playerMovement.enabled = true;
 		headBob.enabled = true;
-		//headBob.SetBobbing(true);
 
 		// activate CameraMovement
-		// Lock cursor to middle of the screen
 		cameraMovement.enabled = true;
+
+		// Lock cursor to middle of the screen
 		Cursor.lockState = CursorLockMode.Locked;
 		Cursor.visible = false;
 		isActive = false;
-
-	}
-
-	public void OpenLogbook() {
-		armTool.DeselectTool();
-
-		panelParent.parent.gameObject.SetActive(true);
-
-		StartCoroutine(ScaleAnimation(true));
-
-		StartCoroutine("moveCorners1");
-		rotateCamToVect.RotateCam(false);
-
-		logbookAudio.onOpenLogbook();
-
-		playerMovement.enabled = false;
-
-		//headBob.SetBobbing(false);
-		headBob.enabled = false;
-
-		// deactivate CameraMovement
-		cameraMovement.enabled = false;
-		Cursor.lockState = CursorLockMode.None;
-		Cursor.visible = true;
-		isActive = true;
-
-		// Animation stuff
-		animator.SetTrigger("logbook active");
-		boneOverride.enabled = false;
 	}
 
 	IEnumerator ScaleAnimation(bool scaleUp) {
@@ -232,90 +213,6 @@ public class LogbookManager : SerializedMonoBehaviour {
 			panelParent.parent.transform.localScale = new Vector3(goalScale, goalScale, panelParent.parent.transform.localScale.z);
 		} else {
 			panelParent.parent.transform.localScale = new Vector3(0f, 0f, panelParent.parent.transform.localScale.z);
-			endOfClosing();
 		}
-
-		yield return null;
 	}
-
-
-
-	IEnumerator moveCorners1() {
-		float correction = 0.00055f;
-
-		if (openCloseTime == 0f) {
-			openCloseTime = 0.0001f;
-		}
-
-		yield return new WaitForSeconds(delay);
-
-		int i = 0;
-
-		float stepSizeY = (startTransform.anchoredPosition.y - targetTransform.anchoredPosition.y) / openCloseTime;
-		float stepSizeX = (startTransform.anchoredPosition.x - targetTransform.anchoredPosition.x) / openCloseTime;
-
-		cornersRect[0].anchoredPosition = startTransform.anchoredPosition;
-		cornersRect[1].anchoredPosition = startTransform.anchoredPosition;
-
-		while (i < 83 * openCloseTime) {
-			cornersRect[0].anchoredPosition = new Vector3(cornersRect[0].anchoredPosition.x - (stepSizeX * Time.deltaTime * correction), cornersRect[0].anchoredPosition.y - (stepSizeY * Time.deltaTime * correction), 0);
-			cornersRect[1].anchoredPosition = new Vector3(cornersRect[1].anchoredPosition.x + (stepSizeX * Time.deltaTime * correction), cornersRect[1].anchoredPosition.y - (stepSizeY * Time.deltaTime * correction), 0);
-
-			i++;
-
-			yield return null;
-
-		}
-
-		//corners[0].position = new Vector3(startScale, startScale, panelParent.parent.transform.localScale.z);
-		yield return null;
-	}
-
-	// Makes the logbook first wide then full size
-	/*IEnumerator AlternateScaleUp()
-    {
-
-        float startScale = defaultScale;      
-
-        panelParent.parent.transform.localScale = new Vector3(0f, 0f, panelParent.parent.transform.localScale.z);
-
-        float currentScale = panelParent.parent.transform.localScale.y;
-
-        if (openCloseTime == 0f)
-        {
-
-            openCloseTime = 0.0001f;
-
-        }
-
-        float stepSize = startScale / openCloseTime;
-
-        yield return new WaitForSeconds(delay);
-
-        while (currentScale < startScale/200f)
-        {
-
-            panelParent.parent.transform.localScale = new Vector3(currentScale += (stepSize * Time.deltaTime), currentScale += (stepSize * Time.deltaTime), panelParent.parent.transform.localScale.z);
-            yield return null;
-
-        }
-        
-        while (currentScale < startScale)
-        {
-
-            panelParent.parent.transform.localScale = new Vector3(currentScale += (stepSize * Time.deltaTime), panelParent.parent.transform.localScale.y, panelParent.parent.transform.localScale.z);
-            yield return null;
-
-        }
-
-        currentScale = panelParent.parent.transform.localScale.y;
-
-        while (currentScale < startScale)
-        {
-
-            panelParent.parent.transform.localScale = new Vector3(startScale, currentScale += (stepSize * Time.deltaTime), panelParent.parent.transform.localScale.z);
-            yield return null;
-
-        }
-    }*/
 }
