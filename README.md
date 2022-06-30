@@ -8,10 +8,6 @@
 
 ## Programming
 - replace InputSettings with Unity build in solution
-- Interaktion überarbeiten
-	- Interaktion Prompt
-	- nicht an ArmTool knüpfen (bzw. permanent aktiv)
-	- sollte über Proximity funktionieren
 - ForceTool Prompts bei Benutzung einfügen
 - Cut Scenes generell skipbar machen (aktuell nur schön bei Act 1 Ende)
 	- UI für Skip einbauen
