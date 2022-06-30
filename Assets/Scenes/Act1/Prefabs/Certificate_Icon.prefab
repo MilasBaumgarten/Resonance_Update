@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 608961275683459663}
   - component: {fileID: 608961275683459651}
   - component: {fileID: 608961275683459650}
-  - component: {fileID: 608961275683459648}
   - component: {fileID: 6227435938350695648}
   m_Layer: 13
   m_Name: Certificate_Icon
@@ -115,6 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onlyExecuteLocally: 1
+  outlineObject: {fileID: 2709559989630371494}
   bothPlayers: 0
   typeOfContent: pictures
   nameOfObject: catThing
@@ -122,19 +122,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: increaseNummberOfInteractions
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
+        m_TargetAssemblyTypeName: NoInteractionCollect, Assembly-CSharp
         m_MethodName: Collected
         m_Mode: 1
         m_Arguments:
@@ -175,48 +163,6 @@ MonoBehaviour:
   afterDialogFinishedEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &608961275683459648
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 610068473298967079}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33b25e511eecdf04daf26a5a672b2582, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnMouseEnterEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2709559989630371494}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-  OnMouseExitEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2709559989630371494}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &6227435938350695648
 MonoBehaviour:
   m_ObjectHideFlags: 0

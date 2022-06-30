@@ -71,17 +71,28 @@ public class LookAtObject : MonoBehaviourPun {
 			lastObjectID = objectID;
 
 			if(rayHit.transform.TryGetComponent<Interactable>(out interactable) && Vector3.Distance(ray.origin, rayHit.point) <= playerSettings.interactionDistance){
-				ToggleInteractibleFound(true, false);
+				if (!interactable.IsCollected()){
+					interactable.SetOutlineVisibility(true);
+					ToggleInteractibleFound(true, false);
+				} else {
+					interactable.SetOutlineVisibility(false);
+					ToggleInteractibleFound(false, false);
+				}
 			} 
 			else if(rayHit.transform.TryGetComponent<Grabable>(out grabable) && Vector3.Distance(ray.origin, rayHit.point) <= playerSettings.forceToolMaxDist){
 				ToggleInteractibleFound(true, true);
 			} 
 			else { // very unlikely edge case when we've hit an object on the right layer but it can neither be interacted with nor grabbed
+				if (interactableFound) {
+					interactable.SetOutlineVisibility(false);
+				}
+
 				ToggleInteractibleFound(false, false);
 			}
 		} 
 		else {
 			if(interactableFound){
+				interactable.SetOutlineVisibility(false);
 				ToggleInteractibleFound(false, false);
 			}
 		}
