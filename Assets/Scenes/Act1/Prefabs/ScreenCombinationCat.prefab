@@ -212,9 +212,8 @@ GameObject:
   - component: {fileID: 2951273860220075639}
   - component: {fileID: 2951273860220075632}
   - component: {fileID: 7550162171381598798}
-  - component: {fileID: 2951273860220075633}
   - component: {fileID: 2506105728235997487}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ScreenCombinationCat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -261,7 +260,8 @@ AudioSource:
   m_GameObject: {fileID: 2951739955004114678}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243513306208540536, guid: 8538da5c0f4085f49af51ee125e1b4a2,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 57498f3f349ec6846821dab4df33f06c, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -392,6 +392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onlyExecuteLocally: 1
+  outlineObject: {fileID: 250296653060410517}
   bothPlayers: 0
   typeOfContent: audio
   nameOfObject: catTheme
@@ -414,48 +415,6 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: DialogEvent, Assembly-CSharp
         m_MethodName: StartDialog
         m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &2951273860220075633
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2951739955004114678}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33b25e511eecdf04daf26a5a672b2582, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnMouseEnterEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 250296653060410517}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-  OnMouseExitEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 250296653060410517}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

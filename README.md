@@ -6,11 +6,6 @@
 - InGame Optionsmenu im Logbuch
 
 ## Programming
-- Interaktion überarbeiten
-	- Interaktion Prompt
-	- nicht an ArmTool knüpfen (bzw. permanent aktiv)
-	- sollte über Proximity funktionieren
-- ForceTool Prompts bei Benutzung einfügen
 - Cut Scenes generell skipbar machen (aktuell nur schön bei Act 1 Ende)
 	- UI für Skip einbauen
 - when Logbook get's opened from OpenContent and it is closed instantly, the mouse movement speed is very slow

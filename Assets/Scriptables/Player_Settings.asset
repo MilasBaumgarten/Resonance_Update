@@ -27,9 +27,10 @@ MonoBehaviour:
   minAngle: -90
   maxAngle: 90
   moveSpeed: 2.6
+  interactionDistance: 2.25
   distChangeSpeed: 10
-  maxDist: 5
-  minDist: 1.5
+  forceToolMaxDist: 5
+  forceToolMinDist: 1.5
   forceToolButton: 323
   moveOut: 114
   moveIn: 102

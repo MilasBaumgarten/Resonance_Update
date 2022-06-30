@@ -30,7 +30,7 @@ public class OpenInfo : MonoBehaviour {
         if (Input.GetKeyDown(input.interact)) {
             // search for interactable objects via raycast from the player camera (only supports grabbing for now)
             RaycastHit hit;
-            if (Physics.Raycast(cam.position, cam.forward, out hit, settings.maxDist, layerMask)) {
+            if (Physics.Raycast(cam.position, cam.forward, out hit, settings.forceToolMaxDist, layerMask)) {
 
                 //Debug.Log("RayCast hit " + hit.transform.gameObject.tag);
 
@@ -47,6 +47,6 @@ public class OpenInfo : MonoBehaviour {
     }
 
     void OnDrawGizmos() {
-        Gizmos.DrawRay(cam.position, cam.forward * settings.maxDist);
+        Gizmos.DrawRay(cam.position, cam.forward * settings.forceToolMaxDist);
     }
 }
