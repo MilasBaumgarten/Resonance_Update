@@ -248,13 +248,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0865efb4c0b1c3145962e6705133e8c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  permanentlyClosed: 0
+  locked: 0
   collisionMask:
     serializedVersion: 2
     m_Bits: 512
   openAudio: {fileID: 1260515369840197466}
   closeAudio: {fileID: 7978132064413206833}
   errorAudio: {fileID: 9219850532202914464}
+  unlockAudio: {fileID: 0}
 --- !u!65 &65906735126137200
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -295,7 +296,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1709539771863842}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -0.12399631, y: -0.15599991, z: -1.6030222}
+  m_LocalPosition: {x: 0.002, y: -0.15599991, z: -1.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

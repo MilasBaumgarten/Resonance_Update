@@ -1,6 +1,4 @@
-﻿using ExitGames.Client.Photon;
-using Photon.Pun;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -45,7 +43,6 @@ public class ResonanceScript : MonoBehaviour {
 	private GameObject[] players;
 
 	private bool shouldStopDialog = false;
-	private Coroutine currentDialog;
 	//------------------------------------------------------------------------------------------------------------------
 
 	// A function to express the whole sequence of the resonance.
@@ -63,7 +60,6 @@ public class ResonanceScript : MonoBehaviour {
 		StartCoroutine(DialoguesStage());
 	}
 
-	// TODO: instead of SetActive(true) use a fade in
 	private IEnumerator DialoguesStage() {
 		yield return new WaitForSeconds(waitTimeAfterTeleportation);
 
@@ -71,44 +67,30 @@ public class ResonanceScript : MonoBehaviour {
 			if (!sceneryList[i].isDecision) {
 				// Normal scenery
 				sceneryList[i].gameObject.SetActive(true);
+				StartCoroutine(sceneryList[i].FadeIn());
 				yield return new WaitUntil(() => sceneryList[i].isTriggered);
 
 				yield return PlayScenery(i);
-
-				sceneryList[i].gameObject.SetActive(false);
 			} else {
 				// display both options
 				sceneryList[i].gameObject.SetActive(true);
 				sceneryList[i + 1].gameObject.SetActive(true);
+
+				StartCoroutine(sceneryList[i].FadeIn());
+				StartCoroutine(sceneryList[i + 1].FadeIn());
 
 				// wait until player triggers an option
 				yield return new WaitUntil((
 					() => sceneryList[i].isTriggered || sceneryList[i + 1].isTriggered));
 
 				if (sceneryList[i].isTriggered) {
-					foreach (var mat in sceneryList[i + 1].materials) {
-						StartCoroutine(sceneryList[i + 1].Fade(mat));
-					}
-
-					yield return new WaitUntil(() => sceneryList[i + 1].faded);
-
-					sceneryList[i + 1].gameObject.SetActive(false);
+					StartCoroutine(sceneryList[i + 1].FadeOut());
 
 					yield return PlayScenery(i);
-
-					sceneryList[i].gameObject.SetActive(false);
 				} else {
-					foreach (var mat in sceneryList[i].materials) {
-						StartCoroutine(sceneryList[i].Fade(mat));
-					}
-
-					yield return new WaitUntil(() => sceneryList[i].faded);
-
-					sceneryList[i].gameObject.SetActive(false);
+					StartCoroutine(sceneryList[i].FadeOut());
 
 					yield return PlayScenery(i+1);
-
-					sceneryList[i + 1].gameObject.SetActive(false);
 				}
 				i += 1;
 			}
@@ -129,11 +111,7 @@ public class ResonanceScript : MonoBehaviour {
 		DialogSystem.instance.StartDialog(sceneryList[i].dialogueFileName);
 		yield return WaitUntilDialogFinished(DialogSystem.instance.dialogTextFromExcel.GetTimeToDisplay());
 
-		foreach (var mat in sceneryList[i].materials) {
-			StartCoroutine(sceneryList[i].Fade(mat));
-		}
-
-		yield return new WaitUntil(() => sceneryList[i].faded);
+		yield return sceneryList[i].FadeOut();
 	}
 
 	private IEnumerator WaitUntilDialogFinished(float dialogTime) {

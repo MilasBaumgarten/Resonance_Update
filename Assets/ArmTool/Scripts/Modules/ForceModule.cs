@@ -31,6 +31,12 @@ public class ForceModule : ArmToolModule {
         }
     }
 
+    private void Awake() {
+        if(holdPos == null){
+            Debug.LogError("Holding position transform of ForceModule not set", this);
+        }
+    }
+
     private void Start() {
         beamRenderer = GetComponentInChildren<LineRenderer>();
         if (beamRenderer.enabled) {
@@ -39,14 +45,12 @@ public class ForceModule : ArmToolModule {
     }
 
     private void Update() {
-        if (holdPos) {
-            // move the object further away from/closer to the player
-            if (Input.GetKey(input.moveHeldObjectIn) && holdPos.localPosition.magnitude < settings.maxDist) {
-                holdPos.localPosition += Vector3.forward * settings.distChangeSpeed * Time.deltaTime;
-            }
-            if (Input.GetKey(input.moveHeldObjectOut) && holdPos.localPosition.magnitude > settings.minDist) {
-                holdPos.localPosition -= Vector3.forward * settings.distChangeSpeed * Time.deltaTime;
-            }
+        // move the object further away from/closer to the player
+        if (Input.GetKey(input.moveHeldObjectIn) && holdPos.localPosition.magnitude < settings.forceToolMaxDist) {
+            holdPos.localPosition += Vector3.forward * settings.distChangeSpeed * Time.deltaTime;
+        }
+        if (Input.GetKey(input.moveHeldObjectOut) && holdPos.localPosition.magnitude > settings.forceToolMinDist) {
+            holdPos.localPosition -= Vector3.forward * settings.distChangeSpeed * Time.deltaTime;
         }
     }
 

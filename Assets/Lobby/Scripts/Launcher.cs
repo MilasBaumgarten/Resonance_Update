@@ -3,6 +3,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using System.Collections.Generic;
 using TMPro;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(PhotonView))]
 public class Launcher : MonoBehaviourPunCallbacks {
@@ -33,6 +34,8 @@ public class Launcher : MonoBehaviourPunCallbacks {
 	private TMP_InputField roomNameInputField;
 
 	[Header("Character Selection")]
+	[SerializeField]
+	private Button catrionaButton;
 	[SerializeField]
 	private TMP_Text catrionaSelectorTextHost;
 	[SerializeField]
@@ -94,6 +97,7 @@ public class Launcher : MonoBehaviourPunCallbacks {
 	public override void OnCreatedRoom() {
 		Debug.Log("Successfully created a Room.");
 		SelectNickname("CATRIONA");
+		catrionaButton.Select();
 	}
 
 	private void UpdateCachedRoomList(List<RoomInfo> roomList) {

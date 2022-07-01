@@ -14,9 +14,8 @@ GameObject:
   - component: {fileID: 124676552}
   - component: {fileID: 124676548}
   - component: {fileID: 124676549}
-  - component: {fileID: 124676551}
   - component: {fileID: 6782206565712641895}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Schottish_Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,24 +114,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onlyExecuteLocally: 1
+  outlineObject: {fileID: 4871789353398848085}
   bothPlayers: 0
   typeOfContent: pictures
   nameOfObject: robertCrest
   onInteract:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: increaseNummberOfInteractions
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: 
         m_MethodName: Collected
@@ -175,48 +163,6 @@ MonoBehaviour:
   afterDialogFinishedEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &124676551
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1144619787936160}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33b25e511eecdf04daf26a5a672b2582, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnMouseEnterEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4871789353398848085}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-  OnMouseExitEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4871789353398848085}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &6782206565712641895
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -23,10 +23,7 @@ public class ObjectContent : Interactable {
 	[Tooltip("The name of the logbook entry that will be activated by interacting with this object")]
 	private string nameOfObject;
 
-
 	public UnityEvent onInteract;
-
-	private bool collected = false;
 
 	/// <summary>Calls the collectContent event when the player interacts with the object this component is attached to/summary>
 	public override void Interact(ArmTool armTool) {

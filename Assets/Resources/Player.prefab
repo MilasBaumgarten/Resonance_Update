@@ -1022,6 +1022,7 @@ GameObject:
   - component: {fileID: -6700194551411441999}
   - component: {fileID: 1390905174}
   - component: {fileID: 1390905175}
+  - component: {fileID: 5497624560836501949}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -1213,6 +1214,24 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &5497624560836501949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231663946092024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e906cf76bacaaf94a9d7e6e1c7cf840f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 20519158966411814}
+  interactionLayers:
+    serializedVersion: 2
+    m_Bits: 8192
+  playerSettings: {fileID: 11400000, guid: fe4a6a23087b9a546bacc7a682bcf46f, type: 2}
+  inputPrompt: {fileID: 3595008192073741710}
 --- !u!1 &1232961209241066
 GameObject:
   m_ObjectHideFlags: 0
@@ -2270,7 +2289,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 2871
+    m_Bits: 11063
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -19033,7 +19052,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -21437,6 +21456,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3595008192073741710 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6632374030061272529, guid: 3513510c2130ffe49bfca7c4a18639ab,
+    type: 3}
+  m_PrefabInstance: {fileID: 7921521600971622495}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c54965c7c3b81b5449f4028144744f40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &7994767517513762467 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 224611945725169404, guid: 3513510c2130ffe49bfca7c4a18639ab,
@@ -21455,11 +21486,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialogSubtitles
       objectReference: {fileID: 0}
-    - target: {fileID: 819229617551821108, guid: efa2d9c3aa219064b836213e11204b10,
-        type: 3}
-      propertyPath: m_isRightToLeft
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 819229617551821109, guid: efa2d9c3aa219064b836213e11204b10,
         type: 3}
       propertyPath: m_Pivot.x
@@ -21468,7 +21494,7 @@ PrefabInstance:
     - target: {fileID: 819229617551821109, guid: efa2d9c3aa219064b836213e11204b10,
         type: 3}
       propertyPath: m_Pivot.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 819229617551821109, guid: efa2d9c3aa219064b836213e11204b10,
         type: 3}
@@ -21478,7 +21504,7 @@ PrefabInstance:
     - target: {fileID: 819229617551821109, guid: efa2d9c3aa219064b836213e11204b10,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 819229617551821109, guid: efa2d9c3aa219064b836213e11204b10,
         type: 3}
@@ -21498,12 +21524,12 @@ PrefabInstance:
     - target: {fileID: 819229617551821109, guid: efa2d9c3aa219064b836213e11204b10,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 500
+      value: -100.00003
       objectReference: {fileID: 0}
     - target: {fileID: 819229617551821109, guid: efa2d9c3aa219064b836213e11204b10,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 61.299988
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 819229617551821109, guid: efa2d9c3aa219064b836213e11204b10,
         type: 3}
@@ -21543,12 +21569,12 @@ PrefabInstance:
     - target: {fileID: 819229617551821109, guid: efa2d9c3aa219064b836213e11204b10,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 324.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 819229617551821109, guid: efa2d9c3aa219064b836213e11204b10,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 80.649994
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 819229617551821109, guid: efa2d9c3aa219064b836213e11204b10,
         type: 3}
