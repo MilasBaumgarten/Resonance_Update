@@ -29,6 +29,9 @@ public class Akt1Ending : MonoBehaviourPun {
 	[SerializeField]
 	private string nextScene;
 
+	[SerializeField]
+	private AudioSource levelAudio;
+
 	private float fadeAlpha;
 
 	private bool cutsceneRunning = false;
@@ -63,6 +66,7 @@ public class Akt1Ending : MonoBehaviourPun {
 		cutsceneRunning = true;
 		PlayerManager.localPlayerInstance.GetComponent<PlayerMovement>().enabled = false;
 		PlayerManager.localPlayerInstance.GetComponent<CameraMovement>().enabled = false;
+		levelAudio.Stop();
 		StartCoroutine(Ending());
 	}
 

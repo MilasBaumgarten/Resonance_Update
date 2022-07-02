@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 249258205}
   - component: {fileID: 249258208}
   - component: {fileID: 249258211}
+  - component: {fileID: 9125165959415626461}
   m_Layer: 13
   m_Name: FamilyFoto
   m_TagString: Untagged
@@ -185,6 +186,22 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &9125165959415626461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1220788683594742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07d7dc95315dcdd47b0d15009950a81c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnStateFlipped:
+    m_PersistentCalls:
+      m_Calls: []
+  selfLocking: 0
 --- !u!1 &1178164097727788714
 GameObject:
   m_ObjectHideFlags: 0

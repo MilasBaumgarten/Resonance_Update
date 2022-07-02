@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 124676548}
   - component: {fileID: 124676549}
   - component: {fileID: 6782206565712641895}
+  - component: {fileID: 1244260443840292183}
   m_Layer: 13
   m_Name: Schottish_Icon
   m_TagString: Untagged
@@ -185,6 +186,22 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &1244260443840292183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1144619787936160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07d7dc95315dcdd47b0d15009950a81c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnStateFlipped:
+    m_PersistentCalls:
+      m_Calls: []
+  selfLocking: 0
 --- !u!1 &4871789353398848085
 GameObject:
   m_ObjectHideFlags: 0

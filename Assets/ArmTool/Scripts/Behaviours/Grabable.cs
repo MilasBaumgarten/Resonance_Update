@@ -11,6 +11,9 @@ using Logic.Triggers;
 
 [RequireComponent(typeof(Rigidbody), typeof(ArmToolInteractionTrigger))]
 public class Grabable : ArmToolModuleBehaviour {
+	[SerializeField]
+	protected Transform grabPoint;
+
 	protected List<Transform> targetPositions;    // a list of all players' hold positions
 	protected List<LineRenderer> beamRenderers;
 	protected Rigidbody rb;
@@ -38,7 +41,7 @@ public class Grabable : ArmToolModuleBehaviour {
 			// calculate the middle of both player's holding positions
 			Vector3 dist = Vector3.zero;
 			foreach (Transform trans in targetPositions) {
-				dist += trans.position - transform.position;
+				dist += trans.position - grabPoint.position;
 			}
 
 			dist /= targetPositions.Count;
@@ -55,7 +58,7 @@ public class Grabable : ArmToolModuleBehaviour {
 
 	private void UpdateBeams(bool canLift) {
 		foreach (LineRenderer beamRenderer in beamRenderers) {
-			beamRenderer.SetPosition(1, beamRenderer.transform.InverseTransformPoint(transform.position));
+			beamRenderer.SetPosition(1, beamRenderer.transform.InverseTransformPoint(grabPoint.position));
 			if (canLift) {
 				beamRenderer.material.SetColor("_BeamColor", Color.blue);
 			} else {
