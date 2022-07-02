@@ -138,11 +138,11 @@ public class LogbookManager : SerializedMonoBehaviour {
 		boneOverride.enabled = false;
 		animator.SetTrigger("logbook active");
 
-		yield return ScaleAnimation(true);
-
 		// unlock Cursor
 		Cursor.lockState = CursorLockMode.None;
 		Cursor.visible = true;
+
+		yield return ScaleAnimation(true);
 	}
 
 	public void CloseLogbook() {
@@ -170,7 +170,6 @@ public class LogbookManager : SerializedMonoBehaviour {
 
 		// activate CameraMovement
 		cameraMovement.enabled = true;
-
 		// Lock cursor to middle of the screen
 		Cursor.lockState = CursorLockMode.Locked;
 		Cursor.visible = false;

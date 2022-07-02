@@ -100,10 +100,6 @@ public class ArmTool : MonoBehaviourPun {
 			selected = 2;
 			ChangeIconColor();
 		}
-		if (Input.GetKeyDown(KeyCode.Alpha4)) {
-			selected = 3;
-			ChangeIconColor();
-		}
 
 		if (selected == 0) {
 			armUp = false;

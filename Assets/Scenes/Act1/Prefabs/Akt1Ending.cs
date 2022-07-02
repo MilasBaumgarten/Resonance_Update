@@ -1,7 +1,6 @@
 ﻿using Photon.Pun;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Video;
@@ -10,8 +9,6 @@ public class Akt1Ending : MonoBehaviourPun {
 	[Header("Fade Settings")]
 	[SerializeField]
 	private GameObject fadeCanvasObject;
-	//[SerializeField]
-	//private Image fadeImage;
 	[SerializeField]
 	private Color fadeColor;
 	[SerializeField]
@@ -64,6 +61,8 @@ public class Akt1Ending : MonoBehaviourPun {
 
 	public void StartEnding() {
 		cutsceneRunning = true;
+		PlayerManager.localPlayerInstance.GetComponent<PlayerMovement>().enabled = false;
+		PlayerManager.localPlayerInstance.GetComponent<CameraMovement>().enabled = false;
 		StartCoroutine(Ending());
 	}
 
@@ -99,6 +98,8 @@ public class Akt1Ending : MonoBehaviourPun {
 
 	[PunRPC]
 	void RequestSceneChangeRPC() {
+		PlayerManager.localPlayerInstance.GetComponent<PlayerMovement>().enabled = true;
+		PlayerManager.localPlayerInstance.GetComponent<CameraMovement>().enabled = true;
 		SceneManager.LoadScene(nextScene);
 	}
 }
