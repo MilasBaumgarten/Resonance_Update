@@ -13,17 +13,16 @@ public class ForceModule : ArmToolModule {
 
     public UnityEvent onGrab;
 
-    //private Transform cam; // the camera attachtched to the player object
     private bool grabbing = false;      // indicates if the player is already interacting
 	private GameObject grabbingTarget;
-
-	//private int layerMask = ~(1 << 9);
 
 	[SerializeField]
     private HeadBob headBob;
     [SerializeField]
     private PlayerMovement playerMovement;
     private LineRenderer beamRenderer;
+
+    public override ToolType type { get => ToolType.FORCE; }
 
     public override Color color {
         get {
@@ -58,9 +57,6 @@ public class ForceModule : ArmToolModule {
 		if (grabbing) {
             armTool.photonView.RPC("InteractModuleRpc", RpcTarget.All, grabbingTarget.GetPhotonView().ViewID);
 
-			// unlock player
-			headBob.SetBobbing(true);
-			playerMovement.enabled = true;
             grabbing = false;
 
             onGrab.Invoke();
@@ -72,9 +68,6 @@ public class ForceModule : ArmToolModule {
 					armTool.photonView.RPC("InteractModuleRpc", RpcTarget.All, interactTarget.GetPhotonView().ViewID);
                     holdPos.localPosition = Vector3.forward * (interactTarget.transform.position - transform.position).magnitude;
 
-					// lock player
-					headBob.SetBobbing(false);
-					playerMovement.enabled = false;
                     grabbing = true;
 
                     onGrab.Invoke();

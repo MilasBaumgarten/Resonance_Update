@@ -28,11 +28,11 @@ namespace Logic.Connections {
         public void Countdown() {
             if (timer > 0.0f) {
                 timer -= Time.deltaTime;
-                // method from Connection.cs
-                base.TriggerAction();
             }
             else if (timer <= 0.0f) {
                 runTimer = false;
+                // method from Connection.cs
+                base.TriggerAction();
             }
         }
 

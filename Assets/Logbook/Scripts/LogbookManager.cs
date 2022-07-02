@@ -121,6 +121,7 @@ public class LogbookManager : SerializedMonoBehaviour {
 	}
 
 	public IEnumerator OpenLogbookRoutine() {
+		isActive = true;
 		armTool.DeselectTool();
 
 		panelParent.parent.gameObject.SetActive(true);
@@ -142,7 +143,6 @@ public class LogbookManager : SerializedMonoBehaviour {
 		// unlock Cursor
 		Cursor.lockState = CursorLockMode.None;
 		Cursor.visible = true;
-		isActive = true;
 	}
 
 	public void CloseLogbook() {

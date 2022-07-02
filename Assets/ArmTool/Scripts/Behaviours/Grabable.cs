@@ -14,6 +14,7 @@ public class Grabable : ArmToolModuleBehaviour {
 	protected List<Transform> targetPositions;    // a list of all players' hold positions
 	protected List<LineRenderer> beamRenderers;
 	protected Rigidbody rb;
+	[SerializeField]
 	protected MeshRenderer meshRenderer;
 	[SerializeField]
 	private Material forceMaterial;
@@ -27,7 +28,6 @@ public class Grabable : ArmToolModuleBehaviour {
 		// initialize variables
 		targetPositions = new List<Transform>();
 		beamRenderers = new List<LineRenderer>();
-		meshRenderer = GetComponent<MeshRenderer>();
 		rb = GetComponent<Rigidbody>();
 		/*movePower = 1000 / rb.mass;*/ // placeholder calculation for force applied
 		trigger = GetComponent<ArmToolInteractionTrigger>();
@@ -82,7 +82,7 @@ public class Grabable : ArmToolModuleBehaviour {
 		if (targetPositions.Count <= (requiresBothPlayers ? 1 : 0)) {
 			rb.useGravity = true;
 			rb.drag = 0.1f;
-			rb.velocity = Vector3.zero;
+			//rb.velocity = Vector3.zero;
 		}
 	}
 
