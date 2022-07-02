@@ -40,8 +40,14 @@ public class Credits : MonoBehaviour {
 			fadeImage.color = alphaTransition;
 		}
 	}
+
+	public void StartTimerForEndOfCredits(float timerLength) {
+		Invoke("EndCredits", timerLength);
+	}
 	
 	public void EndCredits() {
+		Cursor.lockState = CursorLockMode.None;
+		Cursor.visible = true;
 		PhotonNetwork.Disconnect();
 	}
 }
