@@ -30,7 +30,7 @@ public class GameManager_PUN : MonoBehaviourPunCallbacks {
 
 	void OnSceneLoaded(Scene scene, LoadSceneMode loadingMode) {
 		// ignore credits scene
-		if (scene.name.ToLower().Contains("credits")) {
+		if (scene.name.ToLower().Contains("credits") || scene.name.ToLower().Contains("mainmenu")) {
 			return;
 		}
 
@@ -53,13 +53,6 @@ public class GameManager_PUN : MonoBehaviourPunCallbacks {
 
 	public void LeaveRoom() {
 		PhotonNetwork.LeaveRoom();
-	}
-
-	/// <summary>
-	/// Called when the local player left the room. We need to load the launcher scene.
-	/// </summary>
-	public override void OnLeftRoom() {
-		SceneManager.LoadScene(0);
 	}
 
 	public override void OnPlayerEnteredRoom(Player other) {

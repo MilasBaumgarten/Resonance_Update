@@ -1,5 +1,6 @@
 ﻿using Photon.Pun;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Credits : MonoBehaviour {
@@ -42,12 +43,16 @@ public class Credits : MonoBehaviour {
 	}
 
 	public void StartTimerForEndOfCredits(float timerLength) {
+		Debug.Log("Starting Timer for: " + timerLength + " seconds");
 		Invoke("EndCredits", timerLength);
 	}
 	
 	public void EndCredits() {
+		Debug.Log("Ending Credits");
 		Cursor.lockState = CursorLockMode.None;
 		Cursor.visible = true;
 		PhotonNetwork.Disconnect();
+		Destroy(PlayerManager.localPlayerInstance);
+		SceneManager.LoadScene(0);	// load main menu
 	}
 }
