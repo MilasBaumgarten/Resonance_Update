@@ -1,5 +1,85 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &224860001
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 224860002}
+  - component: {fileID: 224860004}
+  - component: {fileID: 224860003}
+  m_Layer: 5
+  m_Name: ResonanceRework
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &224860002
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 224860001}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 210773531925515821}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 12.999999, y: 52}
+  m_SizeDelta: {x: 1383.38, y: 697.57}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &224860004
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 224860001}
+  m_CullTransparentMesh: 0
+--- !u!114 &224860003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 224860001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 202d9cc93fd62a649a2c9fc1ce80bf0a, type: 3}
+    m_FontSize: 120
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 120
+    m_Alignment: 1
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: RESONANCE REWORK
 --- !u!1 &210773531662171247
 GameObject:
   m_ObjectHideFlags: 0
@@ -35,7 +115,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 12.999999, y: -3155}
+  m_AnchoredPosition: {x: 12.999999, y: -3641}
   m_SizeDelta: {x: 1401.7, y: 697.57}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &210773531662171240
@@ -115,7 +195,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 12.999999, y: -4435}
+  m_AnchoredPosition: {x: 12.999999, y: -4942}
   m_SizeDelta: {x: 1401.7, y: 697.57}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &210773531757258558
@@ -275,7 +355,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 12.999999, y: -1801}
+  m_AnchoredPosition: {x: 12.999999, y: -2272}
   m_SizeDelta: {x: 1401.7, y: 697.57}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &210773531845918518
@@ -355,7 +435,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 12.999999, y: 50}
+  m_AnchoredPosition: {x: 12.999999, y: -413}
   m_SizeDelta: {x: 1401.7, y: 697.57}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &210773531905824101
@@ -440,6 +520,7 @@ Transform:
   - {fileID: 210773532203471790}
   - {fileID: 210773531757258556}
   - {fileID: 210773532804751276}
+  - {fileID: 224860002}
   m_Father: {fileID: 210773532976473609}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -678,7 +759,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 12.999999, y: -3995}
+  m_AnchoredPosition: {x: 12.999999, y: -4498}
   m_SizeDelta: {x: 1401.7, y: 697.57}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &210773532203471784
@@ -915,7 +996,7 @@ PlayableDirector:
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: dc54eee6b2bda5c43a3c6e815e0b1780, type: 2}
   m_InitialState: 1
-  m_WrapMode: 2
+  m_WrapMode: 0
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
   m_SceneBindings:
@@ -927,6 +1008,7 @@ PlayableDirector:
     value: {fileID: 210773532976473608}
   m_ExposedReferences:
     m_References:
+    - 93b2ae4f36adf2c489356394e9cf0e09: {fileID: 210773532142719735}
     - 2a2e6198f52abd24594df921eebbe5a7: {fileID: 210773532976473614}
 --- !u!1 &210773532472394684
 GameObject:
@@ -963,7 +1045,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 12.999999, y: -691}
+  m_AnchoredPosition: {x: 12.999999, y: -1136}
   m_SizeDelta: {x: 1401.7, y: 697.57}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &210773532472394681
@@ -1043,8 +1125,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5, y: -13}
-  m_SizeDelta: {x: 1401.7, y: 697.57}
+  m_AnchoredPosition: {x: 5, y: -2704.0198}
+  m_SizeDelta: {x: 1401.7, y: 11462.611}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &210773532566723006
 CanvasRenderer:
@@ -1087,7 +1169,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Oliver Buse\nErik Neumann\nNicole Tauber\nMichelle Hammer\nEliseo Malo\n\n\n\nFlorian
+  m_Text: "Milas Baumgarten\nFabian Schocke\nJoshua Queck\nJesco Vogt\n\n\n\n\nOliver
+    Buse\nErik Neumann\nNicole Tauber\nMichelle Hammer\nEliseo Malo\n\n\n\nFlorian
     Hinze\nFranz-Joseph Funke\n\n\n\nJoshua Queck\n\n\n\nMilas Baumgarten\n\n\n\nManuel
     Fischer\n\n\n\nRonja Schneider\nMiriam Kreher\nAntonia Langhof\nEleonore Bens\nEliseo
     Malo\n\n\n\nTim Schuchert\nAlbina Hironymus\nNoah Stolz\nAnne Schmidt\nStefanie
@@ -1213,7 +1296,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 12.999999, y: -1136}
+  m_AnchoredPosition: {x: 12.999999, y: -1596}
   m_SizeDelta: {x: 1401.7, y: 697.57}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &210773532723130946
@@ -1293,7 +1376,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 12.999999, y: -5121}
+  m_AnchoredPosition: {x: 12.999999, y: -5617}
   m_SizeDelta: {x: 1401.7, y: 697.57}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &210773532804751278
@@ -1410,7 +1493,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 12.999999, y: -3380}
+  m_AnchoredPosition: {x: 12.999999, y: -3859}
   m_SizeDelta: {x: 1401.7, y: 697.57}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &210773532935621421
@@ -1546,7 +1629,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 12.999999, y: -918}
+  m_AnchoredPosition: {x: 12.999999, y: -1359}
   m_SizeDelta: {x: 1401.7, y: 697.57}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &210773533220150743
@@ -1702,7 +1785,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 12.999999, y: -403}
+  m_AnchoredPosition: {x: 12.999999, y: -865}
   m_SizeDelta: {x: 1401.7, y: 697.57}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &210773533346986360
@@ -1782,7 +1865,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 12.999999, y: -1359}
+  m_AnchoredPosition: {x: 12.999999, y: -1819}
   m_SizeDelta: {x: 1401.7, y: 697.57}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &210773533476231027

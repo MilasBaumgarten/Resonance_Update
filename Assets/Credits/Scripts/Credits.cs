@@ -1,4 +1,5 @@
 ﻿using Photon.Pun;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -31,8 +32,8 @@ public class Credits : MonoBehaviour {
 	}
 
 	private void Update() {
-		if (Input.GetKeyDown(KeyCode.Escape) || (creditAnimation.GetCurrentAnimatorStateInfo(0).IsName("Credits") && creditAnimation.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)) {
-			EndCredits();
+		if (Input.GetKeyDown(KeyCode.Escape)) {
+			StartCoroutine(EndCredits());
 		}
 
 		if (alphaFloat >= 0) {
@@ -43,16 +44,21 @@ public class Credits : MonoBehaviour {
 	}
 
 	public void StartTimerForEndOfCredits(float timerLength) {
-		Debug.Log("Starting Timer for: " + timerLength + " seconds");
-		Invoke("EndCredits", timerLength);
+		StartCoroutine(EndCredits(timerLength));
 	}
 	
-	public void EndCredits() {
+	public IEnumerator EndCredits(float delay = 0.0f) {
+		Debug.Log("Ending Credits after: " + delay + " seconds.");
+		yield return new WaitForSeconds(delay);
+
 		Debug.Log("Ending Credits");
 		Cursor.lockState = CursorLockMode.None;
 		Cursor.visible = true;
-		PhotonNetwork.Disconnect();
-		Destroy(PlayerManager.localPlayerInstance);
+
+		if (PhotonNetwork.IsConnected){
+			PhotonNetwork.Disconnect();
+			Destroy(PlayerManager.localPlayerInstance);
+		}
 		SceneManager.LoadScene(0);	// load main menu
 	}
 }
