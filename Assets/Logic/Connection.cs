@@ -15,11 +15,11 @@ namespace Logic {
         [Tooltip("Should the Connection lock it's State after passing it's State-Check once?")]
         private bool selfLocking;
         private bool locked;        //lock-state of the connection, if true the connection won't react to triggers
-        private uint checkState;    //an integer the connection compares to after a trigger got interacted with
+        protected uint checkState;    //an integer the connection compares to after a trigger got interacted with
         private uint state = 1;     //the current state of the connection
 
         ///<summary> used for intitialization </summary>
-        private void Start() {
+        protected virtual void Start() {
             checkState = (uint)1 << triggers.Length;            //bit-shifting 1 left by the amount of triggers linked to this connection
             foreach (Trigger trigger in triggers) {
                 trigger.GetTriggerEvent().AddListener(Receive); //adding listeners to all events in the triggers

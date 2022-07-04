@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Resonance_Material
+  m_Name: Hangar_Forcefield
   m_Shader: {fileID: 4800000, guid: 112418f253aebd2418a19f431a390cb7, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -22,6 +22,10 @@ Material:
     m_TexEnvs:
     - _Noise:
         m_Texture: {fileID: 2800000, guid: 712f1717bf9cd0e4a8b5682b89997ad8, type: 3}
+        m_Scale: {x: 1, y: 0.3}
+        m_Offset: {x: 0, y: 0}
+    - _TextureSample0:
+        m_Texture: {fileID: 2800000, guid: 1932f43bab1353d4a9b38410f9dff1f0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _texcoord:
@@ -31,10 +35,13 @@ Material:
     m_Ints: []
     m_Floats:
     - _ASEOutlineWidth: 0
+    - _Columns: 6
     - _EdgeLength: 15
+    - _Rows: 5
+    - _Speed: 10
     - __dirty: 0
     m_Colors:
     - _ASEOutlineColor: {r: 0, g: 0, b: 0, a: 0}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Panning_Speed: {r: 0.1, g: 0, b: 0, a: 0}
+    - _Color: {r: 0.15566039, g: 0.9055769, b: 1, a: 1}
+    - _Panning_Speed: {r: 0, g: -0.1, b: 0, a: 0}
   m_BuildTextureStacks: []

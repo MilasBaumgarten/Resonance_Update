@@ -30,7 +30,8 @@ public class ArmTool : MonoBehaviourPun {
 	[SerializeField]
 	private Settings settings;
 
-	private int layerMask = ~(1 << 9);  // TODO: DAFUQ
+	// use every layer except layer number 9 aka player layer
+	private int layerMask = ~(1 << 9);
 	[SerializeField]
 	private Transform cam;
 
@@ -63,8 +64,14 @@ public class ArmTool : MonoBehaviourPun {
 			return;
 		}
 
-		if (Input.GetKeyDown(input.armTool)) {
+		bool armtoolInUse = false;
+		if (equipped[selected] && equipped[selected].type == ToolType.EXTINGUISHER) {
+			armtoolInUse = Input.GetKey(input.armTool);
+		} else {
+			armtoolInUse = Input.GetKeyDown(input.armTool);
+		}
 
+		if (armtoolInUse) {
 			GameObject interactTarget;
 			if (Physics.Raycast(cam.position, cam.forward, out RaycastHit hit, settings.forceToolMaxDist, layerMask)) {
 				interactTarget = hit.transform.gameObject;
@@ -91,10 +98,6 @@ public class ArmTool : MonoBehaviourPun {
 		}
 		if (Input.GetKeyDown(KeyCode.Alpha3)) {
 			selected = 2;
-			ChangeIconColor();
-		}
-		if (Input.GetKeyDown(KeyCode.Alpha4)) {
-			selected = 3;
 			ChangeIconColor();
 		}
 

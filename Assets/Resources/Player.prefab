@@ -1149,8 +1149,8 @@ MonoBehaviour:
   boneOverridesRobert:
   - {fileID: 2841196217015446254}
   - {fileID: 4698430625483159148}
-  armUp: 0
   stateMachine: {fileID: -6700194551411441999}
+  armUp: 0
   equipped:
   - {fileID: 0}
   - {fileID: 7499977024380303288}
@@ -2347,7 +2347,7 @@ MonoBehaviour:
   volumeTrigger: {fileID: 4776686743495920}
   volumeLayer:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 8961
   stopNaNPropagation: 1
   finalBlitToCameraTarget: 1
   antialiasingMode: 0
@@ -21248,15 +21248,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4623670470493520, guid: e60ce84d015ea1b4e911262a090bad2d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.009
       objectReference: {fileID: 0}
     - target: {fileID: 4623670470493520, guid: e60ce84d015ea1b4e911262a090bad2d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.004
       objectReference: {fileID: 0}
     - target: {fileID: 4623670470493520, guid: e60ce84d015ea1b4e911262a090bad2d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.07
       objectReference: {fileID: 0}
     - target: {fileID: 4623670470493520, guid: e60ce84d015ea1b4e911262a090bad2d, type: 3}
       propertyPath: m_LocalRotation.w

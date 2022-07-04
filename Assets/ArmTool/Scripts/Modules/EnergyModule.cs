@@ -6,6 +6,8 @@ public class EnergyModule : ArmToolModule {
     [SerializeField]
     private GameObject cablePrefab;
 
+    public override ToolType type { get => ToolType.ENERGY; }
+
     public override Color color {
         get {
             return new Color(0.8118f, 0.7137f, 0.0235f);

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 608961275683459651}
   - component: {fileID: 608961275683459650}
   - component: {fileID: 6227435938350695648}
+  - component: {fileID: 4985541523906703991}
   m_Layer: 13
   m_Name: Certificate_Icon
   m_TagString: Untagged
@@ -185,6 +186,22 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &4985541523906703991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 610068473298967079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07d7dc95315dcdd47b0d15009950a81c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnStateFlipped:
+    m_PersistentCalls:
+      m_Calls: []
+  selfLocking: 1
 --- !u!1 &2709559989630371494
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,6 +24,8 @@ public class Launcher : MonoBehaviourPunCallbacks {
 	private string gameVersion = "0.0.1";
 
 	[Header("UI")]
+	[SerializeField]
+	private GameObject lobbyPanel;
 	[Tooltip("The Ui Panel to let the user enter name, connect and play")]
 	[SerializeField]
 	private GameObject controlPanel;
@@ -68,13 +70,25 @@ public class Launcher : MonoBehaviourPunCallbacks {
 	void Start() {
 		progressLabel.SetActive(false);
 		controlPanel.SetActive(true);
+	}
 
+	public void OpenLobbyPanel() {
 		if (!PhotonNetwork.IsConnected) {
 			// #Critical, we must first and foremost connect to Photon Online Server.
 			// keep track of the will to join a room, because when we come back from the game we will get a callback that we are connected, so we need to know what to do then
 			PhotonNetwork.ConnectUsingSettings();
 			PhotonNetwork.GameVersion = gameVersion;
+		} else {
+			PhotonNetwork.JoinLobby(customLobby);
+			lobbyPanel.SetActive(true);
 		}
+	}
+
+	public void LeaveLobby() {
+		if (PhotonNetwork.InRoom) {
+			PhotonNetwork.LeaveRoom();
+		}
+		PhotonNetwork.LeaveLobby();
 	}
 
 	public void SetRoomName(string newRoomName) {
@@ -151,7 +165,11 @@ public class Launcher : MonoBehaviourPunCallbacks {
 
 	public override void OnConnectedToMaster() {
 		Debug.Log("PUN Basics Tutorial/Launcher: OnConnectedToMaster() was called by PUN");
-		PhotonNetwork.JoinLobby(customLobby);
+
+		if (!PhotonNetwork.InLobby) {
+			PhotonNetwork.JoinLobby(customLobby);
+			lobbyPanel.SetActive(true);
+		}
 	}
 
 	public override void OnJoinedRoom() {

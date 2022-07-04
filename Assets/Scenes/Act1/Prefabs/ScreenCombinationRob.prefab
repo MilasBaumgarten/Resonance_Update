@@ -213,6 +213,7 @@ GameObject:
   - component: {fileID: 5295012739391407475}
   - component: {fileID: 5588504323492858862}
   - component: {fileID: 1215617364517893769}
+  - component: {fileID: 2244764917250786034}
   m_Layer: 13
   m_Name: ScreenCombinationRob
   m_TagString: Untagged
@@ -260,7 +261,8 @@ AudioSource:
   m_GameObject: {fileID: 5588390148800770953}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243513306208540536, guid: 8538da5c0f4085f49af51ee125e1b4a2,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 7596e1cc465e4374e8feee7611876ea0, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -272,9 +274,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 6
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -444,6 +446,22 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &2244764917250786034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5588390148800770953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07d7dc95315dcdd47b0d15009950a81c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnStateFlipped:
+    m_PersistentCalls:
+      m_Calls: []
+  selfLocking: 0
 --- !u!1001 &5588504323741544532
 PrefabInstance:
   m_ObjectHideFlags: 0

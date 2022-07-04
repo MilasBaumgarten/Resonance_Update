@@ -84,9 +84,9 @@ public class RotateCameraToVector : MonoBehaviour {
 	}
 
 	IEnumerator SetCameraToIdle() {
+		cameraMovement.SetCameraFree(true);
 		yield return new WaitUntil(() => Quaternion.Angle(playerHead.transform.rotation, lookRotation) <= 0.1f);
 
 		state = CameraState.IDLE;
-		cameraMovement.SetCameraFree(true);
 	}
 }

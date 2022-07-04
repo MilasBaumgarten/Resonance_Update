@@ -51,8 +51,8 @@ Shader "Hidden/Templates/Unlit"
 }
 /*ASEBEGIN
 Version=16100
-1984;316;1700;653;-298.4099;340.2176;1;True;True
-Node;AmplifyShaderEditor.TexturePropertyNode;1;-384,-128;Float;True;Property;_Noise;Noise;0;0;Create;True;0;0;False;0;538ad28ec77f85d4d8f6f722d5d08b53;654e6baed3a5c2442921015e3400d41c;False;white;Auto;Texture2D;0;1;SAMPLER2D;0
+0;21;1099;708;-598.9099;364.7176;1;True;False
+Node;AmplifyShaderEditor.TexturePropertyNode;1;-384,-128;Float;True;Property;_Noise;Noise;0;0;Create;True;0;0;False;0;538ad28ec77f85d4d8f6f722d5d08b53;712f1717bf9cd0e4a8b5682b89997ad8;False;white;Auto;Texture2D;0;1;SAMPLER2D;0
 Node;AmplifyShaderEditor.TextureCoordinatesNode;8;-128,0;Float;False;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.SimpleTimeNode;3;-128,256;Float;False;1;0;FLOAT;1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.Vector2Node;9;-128,128;Float;False;Property;_Panning_Speed;Panning_Speed;1;0;Create;True;0;0;False;0;0.1,0;0.1,0;0;3;FLOAT2;0;FLOAT;1;FLOAT;2
@@ -83,4 +83,4 @@ WireConnection;25;1;23;4
 WireConnection;14;2;24;0
 WireConnection;14;9;25;0
 ASEEND*/
-//CHKSM=6841DEC2E4555353382A204F6EC09111D764989E
+//CHKSM=F83BE768ED2D15339A61FB2FD8F20C53DF2CA985
