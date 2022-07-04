@@ -34,24 +34,24 @@ public class OptionsController : MonoBehaviour {
 		}
 
 		if (subtitleSettings.isEnglish) {
-			subtitleLanguage = "English";
-			subtitleLanguageText.text = "English";
+			subtitleLanguage = "Englisch";
+			subtitleLanguageText.text = "Englisch";
 			subtitleSettings.isEnglish = true;
 		} else {
-			subtitleLanguage = "German";
-			subtitleLanguageText.text = "German";
+			subtitleLanguage = "Deutsch";
+			subtitleLanguageText.text = "Deutsch";
 			subtitleSettings.isEnglish = false;
 		}
 	}
 
 	public void SwitchSuptitleLanguage() {
 		if (subtitleSettings.isEnglish) {
-			subtitleLanguage = "German";
-			subtitleLanguageText.text = "German";
+			subtitleLanguage = "Deutsch";
+			subtitleLanguageText.text = "Deutsch";
 			subtitleSettings.isEnglish = false;
 		} else {
-			subtitleLanguage = "English";
-			subtitleLanguageText.text = "English";
+			subtitleLanguage = "Englisch";
+			subtitleLanguageText.text = "Englisch";
 			subtitleSettings.isEnglish = true;
 		}
 	}
