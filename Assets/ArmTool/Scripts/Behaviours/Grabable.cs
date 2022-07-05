@@ -91,10 +91,9 @@ public class Grabable : ArmToolModuleBehaviour {
 	// overridden Interact Method inherited from ForceToolBehaviour
 	public override void Interact(ArmToolModule module) {
 		ForceModule forceModule = module as ForceModule;
-		Debug.Log(module, module);
 		LineRenderer beamRenderer = forceModule.GetBeamRenderer();
 
-		if (forceModule.GetGrabStatus()) {
+		if (targetPositions.Contains(forceModule.GetHoldPosition())) {
 			RemoveGrab(forceModule.GetHoldPosition());
 			beamRenderers.Remove(beamRenderer);
 			beamRenderer.enabled = false;

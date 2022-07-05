@@ -139,9 +139,6 @@ public class ArmTool : MonoBehaviourPun {
 		PhotonView source = PhotonNetwork.GetPhotonView(sourceId);
 		PhotonView target = PhotonNetwork.GetPhotonView(targetId);
 
-		Debug.Log(source, source);
-		Debug.Log(target, target);
-
 		ArmToolModuleBehaviour targetBehaviour = target.GetComponent<ArmToolModuleBehaviour>();
 		ArmTool sourceArmTool = source.GetComponent<ArmTool>();
 		targetBehaviour.Interact(sourceArmTool.equipped[selectedModule]);
