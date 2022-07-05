@@ -55,7 +55,7 @@ public class ForceModule : ArmToolModule {
 
     public override void Function(GameObject interactTarget) {
 		if (grabbing) {
-            armTool.photonView.RPC("InteractModuleRpc", RpcTarget.All, grabbingTarget.GetPhotonView().ViewID);
+            armTool.photonView.RPC("InteractModuleRpc", RpcTarget.All, armTool.photonView.ViewID, armTool.GetSelected(), grabbingTarget.GetPhotonView().ViewID); ;
 
             grabbing = false;
 
@@ -65,7 +65,7 @@ public class ForceModule : ArmToolModule {
 				// if an interactable object is hit and it is within range, interact with it
 				if (interactTarget.GetComponent<ArmToolModuleBehaviour>()) {
 					grabbingTarget = interactTarget;
-					armTool.photonView.RPC("InteractModuleRpc", RpcTarget.All, interactTarget.GetPhotonView().ViewID);
+					armTool.photonView.RPC("InteractModuleRpc", RpcTarget.All, armTool.photonView.ViewID, armTool.GetSelected(), interactTarget.GetPhotonView().ViewID);
                     holdPos.localPosition = Vector3.forward * (interactTarget.transform.position - transform.position).magnitude;
 
                     grabbing = true;

@@ -85,13 +85,13 @@ public class Grabable : ArmToolModuleBehaviour {
 		if (targetPositions.Count <= (requiresBothPlayers ? 1 : 0)) {
 			rb.useGravity = true;
 			rb.drag = 0.1f;
-			//rb.velocity = Vector3.zero;
 		}
 	}
 
 	// overridden Interact Method inherited from ForceToolBehaviour
 	public override void Interact(ArmToolModule module) {
 		ForceModule forceModule = module as ForceModule;
+		Debug.Log(module, module);
 		LineRenderer beamRenderer = forceModule.GetBeamRenderer();
 
 		if (forceModule.GetGrabStatus()) {

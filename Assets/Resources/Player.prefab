@@ -1090,6 +1090,7 @@ MonoBehaviour:
   logbook: {fileID: 5776464903765512612}
   catrionaAnimator: {fileID: 95972992953345104}
   robertAnimator: {fileID: 7169800453656705562}
+  eventSystem: {fileID: 2476028858358710666}
   spawnOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &1390905170
 MonoBehaviour:
@@ -1155,7 +1156,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 7499977024380303288}
   - {fileID: 6719080119169799438}
-  selected: 0
   toolIcon: {fileID: 1394690494680263389}
   modules: {fileID: 901203152964496240}
   input: {fileID: 11400000, guid: 2b43902296d300b4a9e9c85d474c7e57, type: 2}
@@ -19052,7 +19052,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
