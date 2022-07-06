@@ -12488,6 +12488,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ResonanceArea_Act5_1
       objectReference: {fileID: 0}
+    - target: {fileID: 1720436932450872, guid: bb53ad9b968c79d4185b3dca0f50b04b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4277083029333906, guid: bb53ad9b968c79d4185b3dca0f50b04b, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -17186,6 +17190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onlyExecuteLocally: 0
+  outlineObject: {fileID: 0}
   correctCode: 5842
   onSuccess:
     m_PersistentCalls:
