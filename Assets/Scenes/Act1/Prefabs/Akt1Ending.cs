@@ -23,18 +23,12 @@ public class Akt1Ending : MonoBehaviourPun {
 	private RawImage videoScreen;
 
 	[SerializeField]
-	private float holdTimeUntilSkip = 1.0f;
-	private float heldTime = 0.0f;
-
-	[SerializeField]
 	private string nextScene;
 
 	[SerializeField]
 	private AudioSource levelAudio;
 
 	private float fadeAlpha;
-
-	private bool cutsceneRunning = false;
 
 	private void Start() {
 		fadeCanvasObject.SetActive(false);
@@ -43,27 +37,7 @@ public class Akt1Ending : MonoBehaviourPun {
 		videoScreen.color = fadeColor;
 	}
 
-	//private void Update() {
-	//	if (!cutsceneRunning) {
-	//		return;
-	//	}
-
-	//	if (Input.anyKey) {
-	//		if (heldTime >= holdTimeUntilSkip) {
-	//			StopCoroutine(Ending());
-	//			photonView.RPC("RequestSceneChangeRPC", RpcTarget.MasterClient);
-	//		} else {
-	//			heldTime += Time.deltaTime;
-	//		}
-	//	} else {
-	//		if (heldTime > 0) {
-	//			heldTime -= Time.deltaTime;
-	//		}
-	//	}
-	//}
-
 	public void StartEnding() {
-		cutsceneRunning = true;
 		PlayerManager.localPlayerInstance.GetComponent<PlayerMovement>().enabled = false;
 		PlayerManager.localPlayerInstance.GetComponent<CameraMovement>().enabled = false;
 		levelAudio.Stop();
@@ -98,7 +72,6 @@ public class Akt1Ending : MonoBehaviourPun {
 		photonView.RPC("ReactivatePlayerRPC", RpcTarget.All);
 		if (PhotonNetwork.IsMasterClient) {
 			SceneManager.LoadScene(nextScene);
-			//photonView.RPC("RequestSceneChangeRPC", RpcTarget.MasterClient);
 		}
 	}
 
@@ -107,10 +80,5 @@ public class Akt1Ending : MonoBehaviourPun {
 		//PlayerManager.localPlayerInstance.transform.position = Vector3.zero;
 		PlayerManager.localPlayerInstance.GetComponent<PlayerMovement>().enabled = true;
 		PlayerManager.localPlayerInstance.GetComponent<CameraMovement>().enabled = true;
-	}
-
-	[PunRPC]
-	private void RequestSceneChangeRPC() {
-		SceneManager.LoadScene(nextScene);
 	}
 }

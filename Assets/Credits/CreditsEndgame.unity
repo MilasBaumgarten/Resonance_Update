@@ -198,6 +198,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &538699608 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6097771402997093837, guid: 88e919739128953498683b452deb4edd,
+    type: 3}
+  m_PrefabInstance: {fileID: 210773531516180301}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f1c5417c9d7ab4b84e531f83f60a4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &814054376
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -299,6 +311,8 @@ MonoBehaviour:
   fadeImage: {fileID: 1892372916}
   transitionSpeed: 0.492
   creditAnimation: {fileID: 210773531516180302}
+  skipVisualisation: {fileID: 538699608}
+  holdTimeUntilSkip: 1
 --- !u!4 &1001583753
 Transform:
   m_ObjectHideFlags: 0
@@ -881,9 +895,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 210773532233225202, guid: 88e919739128953498683b452deb4edd,
         type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 1154461349}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88e919739128953498683b452deb4edd, type: 3}
 --- !u!95 &210773531516180302 stripped

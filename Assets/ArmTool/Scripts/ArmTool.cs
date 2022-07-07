@@ -86,24 +86,23 @@ public class ArmTool : MonoBehaviourPun {
 		if (Input.GetKeyDown(KeyCode.Alpha1)) {
 			selected = 0;
 			ChangeIconColor();
+			armUp = false;
+			boneOverrides[0].photonView.RPC("SetActivationStateRPC", RpcTarget.All, false);
+			boneOverrides[1].photonView.RPC("SetActivationStateRPC", RpcTarget.All, false);
 		}
 		if (Input.GetKeyDown(KeyCode.Alpha2)) {
 			selected = 1;
 			ChangeIconColor();
+			armUp = true;
+			boneOverrides[0].photonView.RPC("SetActivationStateRPC", RpcTarget.All, true);
+			boneOverrides[1].photonView.RPC("SetActivationStateRPC", RpcTarget.All, true);
 		}
 		if (Input.GetKeyDown(KeyCode.Alpha3)) {
 			selected = 2;
 			ChangeIconColor();
-		}
-
-		if (selected == 0) {
-			armUp = false;
-			boneOverrides[0].enabled = false;
-			boneOverrides[1].enabled = false;
-		} else {
 			armUp = true;
-			boneOverrides[0].enabled = true;
-			boneOverrides[1].enabled = true;
+			boneOverrides[0].photonView.RPC("SetActivationStateRPC", RpcTarget.All, true);
+			boneOverrides[1].photonView.RPC("SetActivationStateRPC", RpcTarget.All, true);
 		}
 	}
 

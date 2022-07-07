@@ -16301,9 +16301,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f5f8bbb444d6504f8dc944fa27f5289, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onlyExecuteLocally: 0
+  onlyExecuteLocally: 1
   outlineObject: {fileID: 0}
-  bothPlayers: 1
+  bothPlayers: 0
   typeOfContent: text
   nameOfObject: MissionBriefing
   onInteract:
@@ -16366,13 +16366,12 @@ MonoBehaviour:
   - {fileID: 1416303564}
   - {fileID: 4742869234103276}
   - {fileID: 4570374929201356}
-  - {fileID: 2060675254}
   - {fileID: 1742856451}
   - {fileID: 4570373979570680}
   actions:
   - {fileID: 2056613102}
   selfLocking: 1
-  necessaryTriggers: 3
+  necessaryTriggers: 2
 --- !u!1 &2057230054
 GameObject:
   m_ObjectHideFlags: 0
@@ -16463,6 +16462,10 @@ PrefabInstance:
     - target: {fileID: 1144619787936160, guid: 39d0522fcf5ae4f41a6a5a0874d0d6f1, type: 3}
       propertyPath: m_Name
       value: Schottish_Icon (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1144619787936160, guid: 39d0522fcf5ae4f41a6a5a0874d0d6f1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1144619787936160, guid: 39d0522fcf5ae4f41a6a5a0874d0d6f1, type: 3}
       propertyPath: m_StaticEditorFlags

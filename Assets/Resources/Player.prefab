@@ -73,6 +73,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4836658057154680}
   - component: {fileID: 114431446971884172}
+  - component: {fileID: 184876829263962901}
   m_Layer: 0
   m_Name: mixamorig:LeftArm
   m_TagString: Untagged
@@ -103,7 +104,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1047640533595580}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e0ac4cc34efb82f43b71c55017a6a3ef, type: 3}
   m_Name: 
@@ -111,8 +112,29 @@ MonoBehaviour:
   aimAtTarget: 0
   LookAtTarget: {fileID: 0}
   Offset: {x: 25, y: -10, z: -31}
-  isActive: 0
   anim: {fileID: 95972992953345104}
+--- !u!114 &184876829263962901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1047640533595580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1049145726007858
 GameObject:
   m_ObjectHideFlags: 0
@@ -528,6 +550,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4243907024958058}
   - component: {fileID: 114353142007315798}
+  - component: {fileID: 6818897990647932242}
   m_Layer: 0
   m_Name: mixamorig:RightForeArm
   m_TagString: Untagged
@@ -558,7 +581,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1105167530446376}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e0ac4cc34efb82f43b71c55017a6a3ef, type: 3}
   m_Name: 
@@ -566,8 +589,29 @@ MonoBehaviour:
   aimAtTarget: 1
   LookAtTarget: {fileID: 909278940797592508}
   Offset: {x: 70, y: 18, z: 3}
-  isActive: 0
   anim: {fileID: 95972992953345104}
+--- !u!114 &6818897990647932242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1105167530446376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1124489779903738
 GameObject:
   m_ObjectHideFlags: 0
@@ -3010,6 +3054,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4769845553904274}
   - component: {fileID: 114359731640296262}
+  - component: {fileID: 2328035703746111369}
   m_Layer: 0
   m_Name: mixamorig:RightArm
   m_TagString: Untagged
@@ -3040,7 +3085,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1382118932712314}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e0ac4cc34efb82f43b71c55017a6a3ef, type: 3}
   m_Name: 
@@ -3048,8 +3093,29 @@ MonoBehaviour:
   aimAtTarget: 1
   LookAtTarget: {fileID: 5707332471018114319}
   Offset: {x: 70, y: 18, z: 3}
-  isActive: 0
   anim: {fileID: 95972992953345104}
+--- !u!114 &2328035703746111369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382118932712314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1389508469366566
 GameObject:
   m_ObjectHideFlags: 0
@@ -12225,6 +12291,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1213709953460535158}
   - component: {fileID: 7692021554566260636}
+  - component: {fileID: 8820492521324762396}
   m_Layer: 0
   m_Name: mixamorig:LeftArm
   m_TagString: Untagged
@@ -12255,7 +12322,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2696646159614430908}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e0ac4cc34efb82f43b71c55017a6a3ef, type: 3}
   m_Name: 
@@ -12263,8 +12330,29 @@ MonoBehaviour:
   aimAtTarget: 0
   LookAtTarget: {fileID: 0}
   Offset: {x: 12, y: 0, z: -20}
-  isActive: 0
   anim: {fileID: 7169800453656705562}
+--- !u!114 &8820492521324762396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2696646159614430908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &2723429592293021451
 GameObject:
   m_ObjectHideFlags: 0
@@ -15642,6 +15730,7 @@ GameObject:
   m_Component:
   - component: {fileID: 545516222057880749}
   - component: {fileID: 2841196217015446254}
+  - component: {fileID: 5134698833593920429}
   m_Layer: 0
   m_Name: mixamorig:RightArm
   m_TagString: Untagged
@@ -15672,7 +15761,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5115942766746177523}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e0ac4cc34efb82f43b71c55017a6a3ef, type: 3}
   m_Name: 
@@ -15680,8 +15769,29 @@ MonoBehaviour:
   aimAtTarget: 1
   LookAtTarget: {fileID: 5707332471018114319}
   Offset: {x: 70, y: 18, z: 3}
-  isActive: 0
   anim: {fileID: 7169800453656705562}
+--- !u!114 &5134698833593920429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5115942766746177523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &5277057591904463181
 GameObject:
   m_ObjectHideFlags: 0
@@ -18508,6 +18618,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8766865993373309741}
   - component: {fileID: 4698430625483159148}
+  - component: {fileID: 6580991688184883921}
   m_Layer: 0
   m_Name: mixamorig:RightForeArm
   m_TagString: Untagged
@@ -18539,7 +18650,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7162516192126052914}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e0ac4cc34efb82f43b71c55017a6a3ef, type: 3}
   m_Name: 
@@ -18547,8 +18658,29 @@ MonoBehaviour:
   aimAtTarget: 1
   LookAtTarget: {fileID: 909278940797592508}
   Offset: {x: 70, y: 18, z: 3}
-  isActive: 0
   anim: {fileID: 7169800453656705562}
+--- !u!114 &6580991688184883921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7162516192126052914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &7188502437452544413
 GameObject:
   m_ObjectHideFlags: 0

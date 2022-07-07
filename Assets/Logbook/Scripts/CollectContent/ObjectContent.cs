@@ -13,9 +13,6 @@ public class ObjectContent : Interactable {
 	public ArmTool interactor { get; private set; }
 
 	[SerializeField]
-	private bool bothPlayers = true;
-
-	[SerializeField]
 	[Tooltip("The type of an object determines what tab of the logbook it is added to")]
 	private string typeOfContent;
 
@@ -46,7 +43,7 @@ public class ObjectContent : Interactable {
 	}
 
 	private void SendCollectContentEvent(int playerId) {
-		object[] content = new object[] { nameOfObject, typeOfContent, bothPlayers, playerId };
+		object[] content = new object[] { nameOfObject, typeOfContent, playerId };
 		RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
 		PhotonNetwork.RaiseEvent((byte) EventCodes.CollectContent, content, raiseEventOptions, SendOptions.SendReliable);
 	}

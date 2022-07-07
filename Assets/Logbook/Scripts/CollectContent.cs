@@ -70,18 +70,16 @@ public class CollectContent : MonoBehaviour, IOnEventCallback {
 		if (photonEvent.Code == (byte) EventCodes.CollectContent) {
 			object[] data = (object[])photonEvent.CustomData;
 
-			CollectCont((string) data[0], (string) data[1], (bool) data[2], (int) data[3]);
+			CollectCont((string) data[0], (string) data[1], (int) data[2]);
 		}
 	}
 
 
 	/// <summary>Set a logbook entry to active based on the currentID of the ObjectContent class</summary>
-	public void CollectCont(string objectName, string objectType, bool bothPlayers, int playerId) {
-		if (!bothPlayers) {
-			if (networkInstance != playerId) {
-				Debug.LogWarning("wrong player");
-				return;
-			}
+	public void CollectCont(string objectName, string objectType, int playerId) {
+		if (networkInstance != playerId) {
+			Debug.LogWarning("wrong player");
+			return;
 		}
 
 		Debug.Log("Collecting: " + objectName);

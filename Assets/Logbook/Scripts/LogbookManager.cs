@@ -135,7 +135,7 @@ public class LogbookManager : SerializedMonoBehaviour {
 		cameraMovement.enabled = false;
 
 		// Animation stuff
-		boneOverride.enabled = false;
+		boneOverride.photonView.RPC("SetActivationStateRPC", RpcTarget.All, false);
 		animator.SetTrigger("logbook active");
 
 		// unlock Cursor
