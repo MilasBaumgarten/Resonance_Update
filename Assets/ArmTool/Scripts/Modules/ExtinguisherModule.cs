@@ -15,6 +15,6 @@ public class ExtinguisherModule : ArmToolModule {
     }
 
 	public override void Function(GameObject interactTarget) {
-        armTool.photonView.RPC("InteractModuleRpc", RpcTarget.All, extinguisher.GetPhotonView().ViewID);
+        armTool.photonView.RPC("InteractModuleRpc", RpcTarget.All, armTool.photonView.ViewID, armTool.GetSelected(), extinguisher.GetPhotonView().ViewID);
     }
 }

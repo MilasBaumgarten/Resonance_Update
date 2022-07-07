@@ -1090,6 +1090,7 @@ MonoBehaviour:
   logbook: {fileID: 5776464903765512612}
   catrionaAnimator: {fileID: 95972992953345104}
   robertAnimator: {fileID: 7169800453656705562}
+  eventSystem: {fileID: 2476028858358710666}
   spawnOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &1390905170
 MonoBehaviour:
@@ -1155,7 +1156,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 7499977024380303288}
   - {fileID: 6719080119169799438}
-  selected: 0
   toolIcon: {fileID: 1394690494680263389}
   modules: {fileID: 901203152964496240}
   input: {fileID: 11400000, guid: 2b43902296d300b4a9e9c85d474c7e57, type: 2}
@@ -1211,6 +1211,7 @@ MonoBehaviour:
   - {fileID: 1390905174}
   - {fileID: 2060897435}
   - {fileID: 88002228419738461}
+  - {fileID: 4437857201508969418}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -19052,7 +19053,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -19121,6 +19122,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9212097134332796041}
+  - component: {fileID: 4437857201508969418}
   m_Layer: 9
   m_Name: GrabTarget
   m_TagString: Untagged
@@ -19143,6 +19145,22 @@ Transform:
   m_Father: {fileID: 4776686743495920}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4437857201508969418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7644635292226282896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &7738087818434358423
 GameObject:
   m_ObjectHideFlags: 0
@@ -20989,8 +21007,7 @@ PrefabInstance:
         type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 1510187567626997270, guid: b1880ad461d6fd5418939d8e4572d14e,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 1510574221374420604, guid: b1880ad461d6fd5418939d8e4572d14e,
         type: 3}
       propertyPath: player

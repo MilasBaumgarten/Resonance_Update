@@ -11643,9 +11643,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2104441271}
     m_Modifications:
+    - target: {fileID: 1231781090937502, guid: 573f1f939bbce2242a9ec71903195c49, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1291467224991662, guid: 573f1f939bbce2242a9ec71903195c49, type: 3}
       propertyPath: m_Name
       value: Door (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1738153336649974, guid: 573f1f939bbce2242a9ec71903195c49, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4557864465145706, guid: 573f1f939bbce2242a9ec71903195c49, type: 3}
       propertyPath: m_RootOrder
@@ -16295,7 +16303,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onlyExecuteLocally: 0
   outlineObject: {fileID: 0}
-  bothPlayers: 0
+  bothPlayers: 1
   typeOfContent: text
   nameOfObject: MissionBriefing
   onInteract:
@@ -16341,6 +16349,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   objCont: {fileID: 2056613101}
+  broadcastActivation: 1
 --- !u!114 &2056613103
 MonoBehaviour:
   m_ObjectHideFlags: 0

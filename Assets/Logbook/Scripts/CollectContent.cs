@@ -35,7 +35,11 @@ public class CollectContent : MonoBehaviour, IOnEventCallback {
 	private Dictionary<string, GameObject> logbookEntryButtonDict = new Dictionary<string, GameObject>();
 
 	void Start() {
-		networkInstance = player.GetPhotonView().ViewID;
+		if (!player.GetPhotonView().IsMine){
+			enabled = false;
+		} else {
+			networkInstance = player.GetPhotonView().ViewID;
+		}
 
 		// Get all the Entries
 		for (int i = 0; i < EntryParents.Length; i++) {
@@ -65,6 +69,7 @@ public class CollectContent : MonoBehaviour, IOnEventCallback {
 	public void OnEvent(EventData photonEvent) {
 		if (photonEvent.Code == (byte) EventCodes.CollectContent) {
 			object[] data = (object[])photonEvent.CustomData;
+
 			CollectCont((string) data[0], (string) data[1], (bool) data[2], (int) data[3]);
 		}
 	}
