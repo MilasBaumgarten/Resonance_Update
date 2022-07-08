@@ -35,7 +35,7 @@ public class Credits : MonoBehaviour {
 
 		// disable player cameras and lock players
 		foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player")) {
-			player.GetComponent<CameraMovement>().playerCamera.gameObject.SetActive(false);
+			player.GetComponent<CameraMovement>().playerCamera.SetActive(false);
 			player.GetComponent<PlayerMovement>().enabled = false;
 			player.GetComponent<OpenCanvas>().enabled = false;
 		}

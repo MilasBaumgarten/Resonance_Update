@@ -21,7 +21,6 @@
 - Sound für Tür wird aufgeschlossen finden und einbauen
 
 # Backlog
-- Ladebildschirme einbauen
 - Gangelemente anpassen (mittlere Streifen sind bei T und L Stücken nicht vorhanden oder unschön)
 - Prefabs überprüfen und unnötige Collider (vor allem in Deko) löschen
 - mehr Dekoobjekte platzieren

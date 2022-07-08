@@ -12,7 +12,7 @@ namespace Logic.Actions {
 
         private bool tryingToCollect = false;
 
-		private void Update() {
+		private void LateUpdate() {
 			if (tryingToCollect) {
                 if (!PlayerManager.localPlayerInstance.GetComponent<PlayerManager>().logbook.isActive) {
                     objCont.Interact(PlayerManager.localPlayerInstance.GetComponent<ArmTool>());

@@ -133,6 +133,8 @@ public class Launcher : MonoBehaviourPunCallbacks {
 		progressLabel.SetActive(true);
 		controlPanel.SetActive(false);
 
+		LoadingScreen.SetState(true);
+
 		// Load the Room Level.
 		PhotonNetwork.LoadLevel(lobbyScene);
 	}

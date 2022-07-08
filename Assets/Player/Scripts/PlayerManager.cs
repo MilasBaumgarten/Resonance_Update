@@ -82,6 +82,8 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
 					break;
 				}
 			}
+
+			LoadingScreen.SetState(false);
 		}
 	}
 

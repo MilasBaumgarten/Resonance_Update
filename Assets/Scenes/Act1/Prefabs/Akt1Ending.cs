@@ -71,6 +71,7 @@ public class Akt1Ending : MonoBehaviourPun {
 
 		photonView.RPC("ReactivatePlayerRPC", RpcTarget.All);
 		if (PhotonNetwork.IsMasterClient) {
+			LoadingScreen.SetState(true);
 			SceneManager.LoadScene(nextScene);
 		}
 	}
