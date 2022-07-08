@@ -18,7 +18,6 @@ public class ArmTool : MonoBehaviourPun {
 
 	[SerializeField]
 	private ArmToolModule[] equipped;
-	[SerializeField]
 	private int selected = 0;
 	[SerializeField]
 	private Image toolIcon;
@@ -60,10 +59,6 @@ public class ArmTool : MonoBehaviourPun {
 	}
 
 	void Update() {
-		if (!photonView.IsMine) {
-			return;
-		}
-
 		bool armtoolInUse = false;
 		if (equipped[selected] && equipped[selected].type == ToolType.EXTINGUISHER) {
 			armtoolInUse = Input.GetKey(input.armTool);
@@ -76,7 +71,7 @@ public class ArmTool : MonoBehaviourPun {
 			if (Physics.Raycast(cam.position, cam.forward, out RaycastHit hit, settings.forceToolMaxDist, layerMask)) {
 				interactTarget = hit.transform.gameObject;
 				if (interactTarget.GetComponent<Interactable>()) {
-					photonView.RPC("InteractRpc", RpcTarget.All, interactTarget.GetPhotonView().ViewID);
+					photonView.RPC("InteractRpc", RpcTarget.All, PlayerManager.localPlayerInstance.GetPhotonView().ViewID, interactTarget.GetPhotonView().ViewID);
 				}
 				if (equipped[selected]) {
 					equipped[selected].Function(interactTarget);
@@ -91,24 +86,23 @@ public class ArmTool : MonoBehaviourPun {
 		if (Input.GetKeyDown(KeyCode.Alpha1)) {
 			selected = 0;
 			ChangeIconColor();
+			armUp = false;
+			boneOverrides[0].photonView.RPC("SetActivationStateRPC", RpcTarget.All, false);
+			boneOverrides[1].photonView.RPC("SetActivationStateRPC", RpcTarget.All, false);
 		}
 		if (Input.GetKeyDown(KeyCode.Alpha2)) {
 			selected = 1;
 			ChangeIconColor();
+			armUp = true;
+			boneOverrides[0].photonView.RPC("SetActivationStateRPC", RpcTarget.All, true);
+			boneOverrides[1].photonView.RPC("SetActivationStateRPC", RpcTarget.All, true);
 		}
 		if (Input.GetKeyDown(KeyCode.Alpha3)) {
 			selected = 2;
 			ChangeIconColor();
-		}
-
-		if (selected == 0) {
-			armUp = false;
-			boneOverrides[0].enabled = false;
-			boneOverrides[1].enabled = false;
-		} else {
 			armUp = true;
-			boneOverrides[0].enabled = true;
-			boneOverrides[1].enabled = true;
+			boneOverrides[0].photonView.RPC("SetActivationStateRPC", RpcTarget.All, true);
+			boneOverrides[1].photonView.RPC("SetActivationStateRPC", RpcTarget.All, true);
 		}
 	}
 
@@ -126,16 +120,26 @@ public class ArmTool : MonoBehaviourPun {
 		}
 	}
 
-	[PunRPC]
-	public void InteractRpc(int targetId) {
-		PhotonView target = PhotonNetwork.GetPhotonView(targetId);
-		target.GetComponent<Interactable>().Interact(this);
+	public int GetSelected() {
+		return selected;
 	}
 
 	[PunRPC]
-	public void InteractModuleRpc(int targetId) {
-		// send the server a command telling it the player is intending to interact with something
+	public void InteractRpc(int sourceId, int targetId) {
+		PhotonView source = PhotonNetwork.GetPhotonView(sourceId);
 		PhotonView target = PhotonNetwork.GetPhotonView(targetId);
-		target.GetComponent<ArmToolModuleBehaviour>().Interact(equipped[selected]);
+
+		target.GetComponent<Interactable>().Interact(source.GetComponent<ArmTool>());
+	}
+
+	[PunRPC]
+	public void InteractModuleRpc(int sourceId, int selectedModule, int targetId) {
+		// send the server a command telling it the player is intending to interact with something
+		PhotonView source = PhotonNetwork.GetPhotonView(sourceId);
+		PhotonView target = PhotonNetwork.GetPhotonView(targetId);
+
+		ArmToolModuleBehaviour targetBehaviour = target.GetComponent<ArmToolModuleBehaviour>();
+		ArmTool sourceArmTool = source.GetComponent<ArmTool>();
+		targetBehaviour.Interact(sourceArmTool.equipped[selectedModule]);
 	}
 }

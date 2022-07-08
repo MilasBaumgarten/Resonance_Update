@@ -85,7 +85,6 @@ public class Grabable : ArmToolModuleBehaviour {
 		if (targetPositions.Count <= (requiresBothPlayers ? 1 : 0)) {
 			rb.useGravity = true;
 			rb.drag = 0.1f;
-			//rb.velocity = Vector3.zero;
 		}
 	}
 
@@ -94,7 +93,7 @@ public class Grabable : ArmToolModuleBehaviour {
 		ForceModule forceModule = module as ForceModule;
 		LineRenderer beamRenderer = forceModule.GetBeamRenderer();
 
-		if (forceModule.GetGrabStatus()) {
+		if (targetPositions.Contains(forceModule.GetHoldPosition())) {
 			RemoveGrab(forceModule.GetHoldPosition());
 			beamRenderers.Remove(beamRenderer);
 			beamRenderer.enabled = false;

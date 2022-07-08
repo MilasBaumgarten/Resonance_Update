@@ -9,7 +9,8 @@ using Photon.Pun;
 using UnityEngine;
 
 public class CameraMovement : MonoBehaviourPun {
-	public Transform playerCamera;
+	public Transform playerHead;
+	public GameObject playerCamera;
 
 	[SerializeField]
 	private Settings playerSettings;
@@ -32,7 +33,7 @@ public class CameraMovement : MonoBehaviourPun {
 		// check if is local player
 		if (photonView.IsMine == false && PhotonNetwork.IsConnected == true) {
 			enabled = false;
-			playerCamera.gameObject.SetActive(false);
+			playerCamera.SetActive(false);
 		}
 
 		Cursor.lockState = CursorLockMode.Locked;
@@ -58,7 +59,7 @@ public class CameraMovement : MonoBehaviourPun {
 		Vector3 oldRotation = transform.localEulerAngles;
 		transform.localEulerAngles = new Vector3(oldRotation.x, oldRotation.y + rotX, oldRotation.z);
 		// Tilt the Camera
-		playerCamera.transform.localEulerAngles = new Vector3(rotY, 0, 0);
+		playerHead.transform.localEulerAngles = new Vector3(rotY, 0, 0);
 	}
 
 	/// <summary>

@@ -10,6 +10,8 @@ namespace Logic.Actions {
 		public override void Activate() {
 			base.Activate();
 
+			LoadingScreen.SetState(true);
+
 			photonView.RPC("RequestSceneChangeRPC", RpcTarget.MasterClient);
 		}
 

@@ -1,15 +1,18 @@
-﻿using UnityEngine;
+﻿using Photon.Pun;
+using UnityEngine;
 
 namespace Logic.Actions {
-
     public class CollectContentAction : Action {
         [SerializeField]
         [Tooltip("The Object Content used to trigger")]
         private ObjectContent objCont;
 
+        [SerializeField]
+        private bool broadcastActivation = false;
+
         private bool tryingToCollect = false;
 
-		private void Update() {
+		private void LateUpdate() {
 			if (tryingToCollect) {
                 if (!PlayerManager.localPlayerInstance.GetComponent<PlayerManager>().logbook.isActive) {
                     objCont.Interact(PlayerManager.localPlayerInstance.GetComponent<ArmTool>());
@@ -19,6 +22,16 @@ namespace Logic.Actions {
 		}
 
 		public override void Activate() {
+            Debug.Log("Getting Activation", this);
+            if (!broadcastActivation) {
+                tryingToCollect = true;
+            } else {
+				photonView.RPC("ActivateActionRpc", RpcTarget.All);
+            }
+        }
+
+        [PunRPC]
+        void ActivateActionRpc() {
             tryingToCollect = true;
         }
     }

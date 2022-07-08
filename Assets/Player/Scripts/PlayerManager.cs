@@ -24,6 +24,9 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
 	public Animator animator { get; private set; }
 
 	[SerializeField]
+	private GameObject eventSystem;
+
+	[SerializeField]
 	private Vector3 spawnOffset = new Vector3(0.0f, 0.6f, 0.0f);
 
 	public string nickname { get; private set; }
@@ -32,6 +35,8 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
 		// used in GameManager.cs: we keep track of the localPlayer instance to prevent instantiation when levels are synchronized
 		if (photonView.IsMine) {
 			localPlayerInstance = gameObject;
+		} else {
+			eventSystem.SetActive(false);
 		}
 
 		DontDestroyOnLoad(gameObject);
@@ -77,6 +82,8 @@ public class PlayerManager : MonoBehaviourPunCallbacks {
 					break;
 				}
 			}
+
+			LoadingScreen.SetState(false);
 		}
 	}
 

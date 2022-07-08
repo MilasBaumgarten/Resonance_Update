@@ -2,13 +2,9 @@
 ## Engine
 - Options Menu: implement options for Camera Controls
 - viel mehr Objekte interagierbar machen (vor allem Grabable)
-- Outlines for Interactables (ObjectContent) after Act 1
 - InGame Optionsmenu im Logbuch
 
 ## Programming
-- Cut Scenes generell skipbar machen (aktuell nur schön bei Act 1 Ende)
-	- UI für Skip einbauen
-- Was passiert, wenn der Close Button gedrückt wird, während man in einer Lobby ist?
 
 ## Art
 
@@ -25,7 +21,6 @@
 - Sound für Tür wird aufgeschlossen finden und einbauen
 
 # Backlog
-- Ladebildschirme einbauen
 - Gangelemente anpassen (mittlere Streifen sind bei T und L Stücken nicht vorhanden oder unschön)
 - Prefabs überprüfen und unnötige Collider (vor allem in Deko) löschen
 - mehr Dekoobjekte platzieren

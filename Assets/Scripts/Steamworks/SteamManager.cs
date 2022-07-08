@@ -9,7 +9,7 @@ public class SteamManager : MonoBehaviour {
     private static SteamManager Instance;
 
     // The AppID of the Steam Game
-    private const uint _appID = 480;
+    private const uint _appID = 2079230;
 
     private void Awake() {
 

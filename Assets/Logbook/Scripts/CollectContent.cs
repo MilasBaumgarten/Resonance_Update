@@ -35,7 +35,11 @@ public class CollectContent : MonoBehaviour, IOnEventCallback {
 	private Dictionary<string, GameObject> logbookEntryButtonDict = new Dictionary<string, GameObject>();
 
 	void Start() {
-		networkInstance = player.GetPhotonView().ViewID;
+		if (!player.GetPhotonView().IsMine){
+			enabled = false;
+		} else {
+			networkInstance = player.GetPhotonView().ViewID;
+		}
 
 		// Get all the Entries
 		for (int i = 0; i < EntryParents.Length; i++) {
@@ -65,18 +69,17 @@ public class CollectContent : MonoBehaviour, IOnEventCallback {
 	public void OnEvent(EventData photonEvent) {
 		if (photonEvent.Code == (byte) EventCodes.CollectContent) {
 			object[] data = (object[])photonEvent.CustomData;
-			CollectCont((string) data[0], (string) data[1], (bool) data[2], (int) data[3]);
+
+			CollectCont((string) data[0], (string) data[1], (int) data[2]);
 		}
 	}
 
 
 	/// <summary>Set a logbook entry to active based on the currentID of the ObjectContent class</summary>
-	public void CollectCont(string objectName, string objectType, bool bothPlayers, int playerId) {
-		if (!bothPlayers) {
-			if (networkInstance != playerId) {
-				Debug.LogWarning("wrong player");
-				return;
-			}
+	public void CollectCont(string objectName, string objectType, int playerId) {
+		if (networkInstance != playerId) {
+			Debug.LogWarning("wrong player");
+			return;
 		}
 
 		Debug.Log("Collecting: " + objectName);
