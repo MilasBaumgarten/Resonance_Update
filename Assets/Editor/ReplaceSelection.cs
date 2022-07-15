@@ -14,12 +14,18 @@ public class ReplaceSelection : ScriptableWizard
  
     public GameObject ReplacementObject = null;
     public bool KeepOriginals = false;
+
+    static ScriptableWizard replaceSelectionWizard;
  
     [MenuItem("GameObject/-Replace Selection...")]
     static void CreateWizard()
     {
-        ScriptableWizard.DisplayWizard(
-            "Replace Selection", typeof(ReplaceSelection), "Replace");
+        if(replaceSelectionWizard){
+            replaceSelectionWizard.Show();
+        } else {
+            replaceSelectionWizard = ScriptableWizard.DisplayWizard(
+                "Replace Selection", typeof(ReplaceSelection), "Replace");
+        }
     }
  
     public ReplaceSelection()
