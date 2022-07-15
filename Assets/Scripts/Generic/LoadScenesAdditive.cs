@@ -9,6 +9,7 @@ public class LoadScenesAdditive : MonoBehaviour {
 	// load all specified Scenes
 	void Start () {
 		foreach(string scene in sceneNames){
+			if(SceneManager.GetSceneByName(scene).isLoaded) continue;
 			SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
 		}
 	}
