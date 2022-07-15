@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Shader Graphs_Resonance_worldSpace_noise_shader
+  m_Shader: {fileID: -6465566751694194690, guid: 127228175b8aa914fa35c66166af6ea0,
+    type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _SampleTexture2D_33bef42161ea42dca3922d628b9b772a_Texture_1:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture:
+        m_Texture: {fileID: 2800000, guid: 0d8da41af85e7fa4d89f2f1ae66a8793, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_280bb30e02d9429c839161cb32c10972_Out_0:
+        m_Texture: {fileID: 2800000, guid: 538ad28ec77f85d4d8f6f722d5d08b53, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_af6857e3c94c4975b4d80c8ed8877891_Out_0:
+        m_Texture: {fileID: 2800000, guid: 538ad28ec77f85d4d8f6f722d5d08b53, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _Alpha_Offset: 0.01
+    - _BUILTIN_QueueControl: 0
+    - _BUILTIN_QueueOffset: 0
+    - _Cell_Density: 10
+    - _Flickering_Speed: 0.8
+    - _Hololines_Contrast: 3
+    - _Hololines_Mod: 1.5
+    - _Hololines_Mod_X: 0
+    - _Hololines_Mod_Y: 0.5
+    - _Hololines_Mod_Z: 0
+    - _Hololines_Offset_Speed_X: 0
+    - _Hololines_Offset_Speed_Y: -0.8
+    - _Hololines_Offset_Speed_Z: 0
+    - _Noise_Offset_Speed_Y: 0.25
+    - _Object_Offset_Speed: -0.2
+    - _Object_Offset_Speed_X: 0
+    - _Object_Offset_Speed_Y: -0.8
+    - _Object_Offset_Speed_Y_1: 0
+    - _Object_Offset_Speed_Y_2: 0
+    - _Object_Offset_Speed_Y_3: 0
+    - _Object_Offset_Speed_Z: 0
+    - _Offset_Speed: 0.5
+    - _Texture_Add: 0.005
+    - _Texture_Contrast: 1.18
+    - _World_Offset_Speed: 0.1
+    m_Colors:
+    - _Color: {r: 0.05724919, g: 1, b: 0, a: 1}
+    - _Emission_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
+--- !u!114 &503415848098976981
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 639247ca83abc874e893eb93af2b5e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 0

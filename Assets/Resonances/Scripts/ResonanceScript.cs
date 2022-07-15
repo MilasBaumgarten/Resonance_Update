@@ -67,7 +67,7 @@ public class ResonanceScript : MonoBehaviour {
 			if (!sceneryList[i].isDecision) {
 				// Normal scenery
 				sceneryList[i].gameObject.SetActive(true);
-				StartCoroutine(sceneryList[i].FadeIn());
+				StartCoroutine(sceneryList[i].FadeMaterialColors(true));
 				yield return new WaitUntil(() => sceneryList[i].isTriggered);
 
 				yield return PlayScenery(i);
@@ -76,19 +76,19 @@ public class ResonanceScript : MonoBehaviour {
 				sceneryList[i].gameObject.SetActive(true);
 				sceneryList[i + 1].gameObject.SetActive(true);
 
-				StartCoroutine(sceneryList[i].FadeIn());
-				StartCoroutine(sceneryList[i + 1].FadeIn());
+				StartCoroutine(sceneryList[i].FadeMaterialColors(true));
+				StartCoroutine(sceneryList[i + 1].FadeMaterialColors(true));
 
 				// wait until player triggers an option
 				yield return new WaitUntil((
 					() => sceneryList[i].isTriggered || sceneryList[i + 1].isTriggered));
 
 				if (sceneryList[i].isTriggered) {
-					StartCoroutine(sceneryList[i + 1].FadeOut());
+					StartCoroutine(sceneryList[i + 1].FadeMaterialColors(false));
 
 					yield return PlayScenery(i);
 				} else {
-					StartCoroutine(sceneryList[i].FadeOut());
+					StartCoroutine(sceneryList[i].FadeMaterialColors(false));
 
 					yield return PlayScenery(i+1);
 				}
@@ -111,7 +111,7 @@ public class ResonanceScript : MonoBehaviour {
 		DialogSystem.instance.StartDialog(sceneryList[i].dialogueFileName);
 		yield return WaitUntilDialogFinished(DialogSystem.instance.dialogTextFromExcel.GetTimeToDisplay());
 
-		yield return sceneryList[i].FadeOut();
+		yield return sceneryList[i].FadeMaterialColors(false);
 	}
 
 	private IEnumerator WaitUntilDialogFinished(float dialogTime) {

@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7533866986754298358
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 639247ca83abc874e893eb93af2b5e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 0
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
@@ -8,7 +21,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Resonance_Material
-  m_Shader: {fileID: 4800000, guid: 112418f253aebd2418a19f431a390cb7, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 127228175b8aa914fa35c66166af6ea0,
+    type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 0
@@ -24,6 +38,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: 712f1717bf9cd0e4a8b5682b89997ad8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Texture:
+        m_Texture: {fileID: 2800000, guid: 0d8da41af85e7fa4d89f2f1ae66a8793, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _texcoord:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -31,10 +49,30 @@ Material:
     m_Ints: []
     m_Floats:
     - _ASEOutlineWidth: 0
+    - _BUILTIN_QueueControl: 0
+    - _BUILTIN_QueueOffset: 0
     - _EdgeLength: 15
+    - _Flickering_Speed: 0.2
+    - _FresnelPower: 1
+    - _FresnelScale: 1
+    - _Hololines_Contrast: 2
+    - _Hololines_Mod_X: 0
+    - _Hololines_Mod_Y: 0.5
+    - _Hololines_Mod_Z: 0
+    - _Hololines_Offset_Speed_X: 0
+    - _Hololines_Offset_Speed_Y: -0.8
+    - _Hololines_Offset_Speed_Z: 0
+    - _Hololines_X_Offset: 0
+    - _Hololines_Y_Offset: 0
+    - _Hololines_Z_Offset: 0
+    - _Noise_Offset_Speed_Y: 0.25
+    - _Texture_Add: 0.005
+    - _Texture_Contrast: 1.18
     - __dirty: 0
     m_Colors:
     - _ASEOutlineColor: {r: 0, g: 0, b: 0, a: 0}
-    - _Color: {r: 0.5509693, g: 1, b: 0.3820755, a: 1}
+    - _Color: {r: 0, g: 1, b: 0.14117648, a: 1}
+    - _Color_A: {r: 0, g: 1, b: 0.14186478, a: 1}
+    - _Color_B: {r: 0.06170082, g: 1, b: 0, a: 1}
     - _Panning_Speed: {r: 0.1, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

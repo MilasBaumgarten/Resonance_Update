@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ResonanceScenery : MonoBehaviour {
 	public string dialogueFileName;
-	public float fadeWaitValue = 0.01f;
+	public float timeToFadeIn = 5f, timeToFadeOut = 5f;
 	public bool isDecision;
 	public bool isBlocked;
 
@@ -14,44 +14,48 @@ public class ResonanceScenery : MonoBehaviour {
 
 	public bool isTriggered;
 
+	private Color[] tmpColors;
+
 	void Awake() {
 		renderers = GetComponentsInChildren<Renderer>();
 		materials = new Material[renderers.Length];
+		tmpColors = new Color[renderers.Length];
 
 		for (int i = 0; i < renderers.Length; i++) {
 			materials[i] = renderers[i].material;
 		}
 	}
 
-	public IEnumerator FadeOut() {
-		while (materials[0].color.a > 0) {
-			foreach (Material mat in materials) {
-				Color tmp = mat.color;
-				tmp.a -= fadeWaitValue;
-				mat.color = tmp;
-			}
-
-			yield return new WaitForSeconds(fadeWaitValue);
+	public IEnumerator FadeMaterialColors(bool inOut){
+		for(int i = 0; i < materials.Length; i++){
+			tmpColors[i] = materials[i].color;
+			tmpColors[i].a = inOut ? 0f : 1f; // set full transparent if fading in, full opaque if fading out
+			materials[i].color = tmpColors[i];
 		}
-		gameObject.SetActive(false);
-	}
+		
+		float timeToFade = inOut ? timeToFadeIn : timeToFadeOut;
+		float lerp = 0f;
 
-	public IEnumerator FadeIn() {
-		foreach (Material mat in materials) {
-			// first make fully transparent and then fade in
-			Color tmp = mat.color;
-			tmp.a = 0;
-			mat.color = tmp;
-		}
+		if(inOut){
+			for(float t = 0f; t < timeToFade; t += Time.deltaTime){
+				lerp = t / timeToFade;
 
-		while (materials[0].color.a < 1) {
-			foreach (Material mat in materials) {
-				Color tmp = mat.color;
-				tmp.a += fadeWaitValue;
-				mat.color = tmp;
+				for(int i = 0; i < materials.Length; i++){
+					tmpColors[i].a = lerp;
+					materials[i].color = tmpColors[i];
+				}
+				yield return null;
 			}
+		} else {
+			for(float t = timeToFade; t > 0; t -= Time.deltaTime){
+				lerp = t / timeToFade;
 
-			yield return new WaitForSeconds(fadeWaitValue);
+				for(int i = 0; i < materials.Length; i++){
+					tmpColors[i].a = lerp;
+					materials[i].color = tmpColors[i];
+				}
+				yield return null;
+			}
 		}
 	}
 
