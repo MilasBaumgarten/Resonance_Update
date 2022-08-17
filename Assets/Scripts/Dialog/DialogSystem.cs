@@ -166,11 +166,11 @@ public class DialogSystem : MonoBehaviour {
 			// if subtitles should be english play english dialog, otherwise play german dialog
 			if (playerSettings.isEnglish) {
                 
-                PlayeOneShot(dialogTextFromExcel.englishSubtitles[i], audioPath + dialogTextFromExcel.audio[i]);
+                PlayOneShot(dialogTextFromExcel.englishSubtitles[i], audioPath + dialogTextFromExcel.audio[i]);
 
             } else {
                 
-                PlayeOneShot(dialogTextFromExcel.germanSubtitles[i], audioPath + dialogTextFromExcel.audio[i]);
+                PlayOneShot(dialogTextFromExcel.germanSubtitles[i], audioPath + dialogTextFromExcel.audio[i]);
 			}
 			// wait for the set number of seconds (in the csv-file) before displaying the next bit of text
 			yield return new WaitForSeconds(dialogTextFromExcel.timeToDisplay[i]);
@@ -198,30 +198,29 @@ public class DialogSystem : MonoBehaviour {
         // set dialogPlaying-flag to true
         dialogPlaying = true;
 
+
 		// get the index of the id
 		int i = dialogTextFromExcel.oneLinerID.IndexOf(ID);
 
+
 		// if subtitles should be english play english dialog, otherwise play german dialog
 		if (playerSettings.isEnglish) {
-			PlayeOneShot(dialogTextFromExcel.oneLinerEnglishSubtitles[i], onelinerAudioPath + dialogTextFromExcel.oneLinerAudio[i]);
+			PlayOneShot(dialogTextFromExcel.oneLinerEnglishSubtitles[i], onelinerAudioPath + dialogTextFromExcel.oneLinerAudio[i]);
 		} else {
-			PlayeOneShot(dialogTextFromExcel.oneLinerGermanSubtitles[i], onelinerAudioPath + dialogTextFromExcel.oneLinerAudio[i]);
+			PlayOneShot(dialogTextFromExcel.oneLinerGermanSubtitles[i], onelinerAudioPath + dialogTextFromExcel.oneLinerAudio[i]);
 		}
-        yield return new WaitForSeconds(dialogTextFromExcel.oneLinerPlayTimer[i] + onelinerAdditionalSubtitleTime);
+
+		yield return new WaitForSeconds(dialogTextFromExcel.oneLinerPlayTimer[i] + onelinerAdditionalSubtitleTime);
 
 		// after the dialog is done, disable text-object
 		dialogSubtitles.enabled = false;
         // set dialogPlaying-flag to false
         dialogPlaying = false;
 
-		// TODO: reenable
-		// remove first element in queue
-		//dialogQueue.RemoveAt(0);
-
 		currentDialog = null;
 	}
 
-	private void PlayeOneShot(string subtitleText, string audioFilePath) {
+	private void PlayOneShot(string subtitleText, string audioFilePath) {
 		// stop audio to prevent multiple files playing simultaneously
 		if (audioSource.isPlaying) {
 			audioSource.Stop();

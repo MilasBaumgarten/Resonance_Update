@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Globalization;
 
 /**
  * should be attached to: DialogManager
@@ -53,7 +54,7 @@ public class DialogTextFromExcel {
 
 				// assign values to different lists
 				oneLinerID.Add(values[0]);
-                oneLinerPlayTimer.Add(float.Parse(values[1]));
+				oneLinerPlayTimer.Add(float.Parse(values[1], CultureInfo.InvariantCulture));
 				oneLinerGermanSubtitles.Add(values[2]);
 				oneLinerEnglishSubtitles.Add(values[3]);
 
@@ -77,7 +78,7 @@ public class DialogTextFromExcel {
                 // split the line into seperate values
                 var values = SplitCsvLine(line);
 				// assign values to different lists
-				timeToDisplay.Add(float.Parse(values[0]));
+				timeToDisplay.Add(float.Parse(values[0], CultureInfo.InvariantCulture));
 				germanSubtitles.Add(values[1]);
 				englishSubtitles.Add(values[2]);
 				
