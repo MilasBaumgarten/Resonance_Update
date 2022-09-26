@@ -13,10 +13,11 @@ public class ExitGame : MonoBehaviour {
             UnityEditor.EditorApplication.isPlaying = false;
         #else
             PhotonNetwork.Disconnect();
+            Application.Quit();
         #endif
     }
 
-	public void Exit() {
+    public void Exit() {
         #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
         #else
